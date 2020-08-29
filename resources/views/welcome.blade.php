@@ -67,14 +67,12 @@
         <div class="flex-center position-ref full-height">
             @if (Route::has('login'))
                 <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
+                    @auth()
+                        <a href="{{ getAtualGuardLoggedIn() === "alloom_customer_user" ? route('alloom_customer.home') : route('alloom_user.home') }}">Home</a>
                     @else
                         <a href="{{ route('alloom_customer.login') }}">Login</a>
 
-                        @if (Route::has('register'))
-                            <a href="{{ route('alloom_customer.register') }}">Register</a>
-                        @endif
+                        <a href="{{ route('alloom_customer.register') }}">Register</a>
                     @endauth
                 </div>
             @endif
