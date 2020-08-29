@@ -34,6 +34,6 @@ class CreateAlloomCustomerUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('alloom_customer_users');
     }
 }
