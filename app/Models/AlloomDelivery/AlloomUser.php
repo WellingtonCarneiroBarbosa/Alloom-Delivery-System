@@ -1,16 +1,16 @@
 <?php
 
-namespace App;
+namespace App\Models\AlloomDelivery;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-class User extends Authenticatable
+class AlloomUser extends Authenticatable
 {
     use Notifiable;
 
-    protected $table = "alloom_customer_users";
+    protected $table = "alloom_users";
 
     /**
      * The attributes that are mass assignable.

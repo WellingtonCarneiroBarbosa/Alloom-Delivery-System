@@ -14,8 +14,8 @@ return [
     */
 
     'defaults' => [
-        'guard' => 'web',
-        'passwords' => 'users',
+        'guard' => 'alloom_customer_user',
+        'passwords' => 'alloom_customer_users',
     ],
 
     /*
@@ -36,16 +36,21 @@ return [
     */
 
     'guards' => [
-        'web' => [
+        'alloom_customer_user' => [
             'driver' => 'session',
-            'provider' => 'users',
+            'provider' => 'alloom_customer_users',
         ],
 
-        'api' => [
-            'driver' => 'token',
-            'provider' => 'users',
-            'hash' => false,
+        'alloom_user' => [
+            'driver' => 'session',
+            'provider' => 'alloom_users',
         ],
+
+        //api' => [
+        //    'driver' => 'token',
+        //    'provider' => 'users',
+        //    'hash' => false,
+        //],
     ],
 
     /*
@@ -66,11 +71,16 @@ return [
     */
 
     'providers' => [
-        'users' => [
+        'alloom_customer_users' => [
             'driver' => 'eloquent',
             'model' => App\User::class,
         ],
 
+
+        'alloom_users' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\AlloomDelivery\AlloomUser::class,
+        ],
         // 'users' => [
         //     'driver' => 'database',
         //     'table' => 'users',
@@ -93,8 +103,14 @@ return [
     */
 
     'passwords' => [
-        'users' => [
-            'provider' => 'users',
+        'alloom_customer_users' => [
+            'provider' => 'alloom_customer_users',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'alloom_users' => [
+            'provider' => 'alloom_users',
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,
