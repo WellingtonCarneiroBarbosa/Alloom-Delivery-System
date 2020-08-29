@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,4 +20,39 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+/**
+ * Alloom Customer Routes.
+ *
+ */
+Route::prefix('cliente')->name('alloom_customer.')->group(function () {
+    Route::get('/login', 'Auth\LoginController@showAlloomCustomerUserLoginForm')->name('login');
+    Route::get('/cadastro', 'Auth\RegisterController@showAlloomCustomerUserRegisterForm')->name('register');
+
+    Route::post('/login', 'Auth\LoginController@alloomCustomerUserLogin');
+    Route::post('/cadastro', 'Auth\RegisterController@createAlloomCustomerUser');
+
+    Route::namespace('AlloomCustomers')->prefix('dash')->middleware('auth:alloom_customer_user')->group(function () {
+        Route::get('/', 'HomeController@index')->name('home');
+    });
+});
+
+
+/**
+ * Alloom Delivery Routes.
+ *
+ */
+Route::prefix('alloom')->name('alloom_user.')->group(function () {
+    Route::get('/login', 'Auth\LoginController@showAlloomUserLoginForm')->name('login');
+    Route::get('/cadastro', 'Auth\RegisterController@showAlloomUserRegisterForm')->name('register');
+
+    Route::post('/login', 'Auth\LoginController@alloomUserLogin');
+    Route::post('/cadastro', 'Auth\RegisterController@createAlloomUser');
+
+
+    Route::namespace('AlloomDelivery')->prefix('dash')->middleware('auth:alloom_user')->group(function () {
+        Route::get('/', 'HomeController@index')->name('home');
+    });
+});
+
+
+
