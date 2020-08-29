@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\Customers;
+namespace App\Models\AlloomCustomers\Customers;
 
 use Illuminate\Database\Eloquent\Model;
 

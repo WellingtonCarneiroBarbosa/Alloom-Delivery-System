@@ -2,13 +2,14 @@
 
 namespace App\Models\AlloomDelivery;
 
+use Spatie\Permission\Traits\HasRoles;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
 
 class AlloomUser extends Authenticatable
 {
-    use Notifiable;
+    use Notifiable, HasRoles;
 
     protected $table = "alloom_users";
 
@@ -38,4 +39,8 @@ class AlloomUser extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function getRole() {
+        return __("roles.{$this->roles[0]->guard_name}.{$this->roles[0]->name}");
+    }
 }

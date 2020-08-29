@@ -14,7 +14,7 @@
                         </div>
                     @endif
 
-                    {{ __('You are logged in!') }} as alloom e nao sei ainda se é gerente ou atendente \o/
+                    {{ __('You are logged in as')  }} <strong>{{ auth()->user()->getRole() }}</strong> on alloom customer dashboard \o/
                 </div>
             </div>
         </div>

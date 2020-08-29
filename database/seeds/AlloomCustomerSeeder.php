@@ -1,5 +1,7 @@
 <?php
 
+use App\User;
+use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
 
 class AlloomCustomerSeeder extends Seeder
@@ -11,6 +13,45 @@ class AlloomCustomerSeeder extends Seeder
      */
     public function run()
     {
-        //
+        $manager = User::create([
+            'name' => "Gerente",
+            'email' => "manager@example.com",
+            'email_verified_at' => now(),
+            "password" => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            'remember_token' => Str::random(10),
+        ]);
+
+        $manager->assignRole('manager')->guard(['alloom_customer_user']);
+
+        $clerk = User::create([
+            'name' => "Atendente",
+            'email' => "clerk@example.com",
+            'email_verified_at' => now(),
+            "password" => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            'remember_token' => Str::random(10),
+        ]);
+
+        $clerk->assignRole('clerk')->guard(['alloom_customer_user']);
+
+        $delivery_man = User::create([
+            'name' => "Entregador",
+            'email' => "delivery_man@example.com",
+            'email_verified_at' => now(),
+            "password" => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            'remember_token' => Str::random(10),
+        ]);
+
+        $delivery_man->assignRole('delivery_man')->guard(['alloom_customer_user']);
+
+        $cooker = User::create([
+            'name' => "Cozinheiro",
+            'email' => "cooker@example.com",
+            'email_verified_at' => now(),
+            "password" => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            'remember_token' => Str::random(10),
+        ]);
+
+        $cooker->assignRole('cooker')->guard(['alloom_customer_user']);
+
     }
 }

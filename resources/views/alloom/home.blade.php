@@ -14,7 +14,7 @@
                         </div>
                     @endif
 
-                    {{ __('You are logged in!') }} as alloom master admin \o/
+                    {{ __('You are logged in as ') . auth()->user()->getRole() }} on alloom dashboard \o/
                 </div>
             </div>
         </div>
