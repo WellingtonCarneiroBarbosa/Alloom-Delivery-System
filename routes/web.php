@@ -1,3 +1,4 @@
+
 <?php
 
 use Illuminate\Support\Facades\Auth;
@@ -26,14 +27,25 @@ Auth::routes();
  */
 Route::group(['guard' => 'alloom_customer_user'], function () {
     Route::prefix('cliente')->name('alloom_customer.')->group(function () {
+        /**
+         * Auth Routes.
+         */
         Route::get('/login', 'Auth\LoginController@showAlloomCustomerUserLoginForm')->name('login');
         Route::get('/cadastro', 'Auth\RegisterController@showAlloomCustomerUserRegisterForm')->name('register');
 
         Route::post('/login', 'Auth\LoginController@alloomCustomerUserLogin');
         Route::post('/cadastro', 'Auth\RegisterController@createAlloomCustomerUser');
 
+        /**
+         * Dashboard Routes.
+         */
         Route::namespace('AlloomCustomers')->prefix('dash')->middleware('auth:alloom_customer_user')->group(function () {
             Route::get('/', 'HomeController@index')->name('home');
+
+            Route::get('/produtos', function () {
+                //dd(auth()->id());
+                return \App\Models\AlloomCustomers\Products\Product::all()->toJson();
+            });
         });
     });
 });
@@ -45,6 +57,9 @@ Route::group(['guard' => 'alloom_customer_user'], function () {
  */
 Route::group(['guard' => 'alloom_user'], function () {
     Route::prefix('alloom')->name('alloom_user.')->group(function () {
+        /**
+         * Auth Routes.
+         */
         Route::get('/login', 'Auth\LoginController@showAlloomUserLoginForm')->name('login');
         Route::get('/cadastro', 'Auth\RegisterController@showAlloomUserRegisterForm')->name('register');
 
@@ -52,6 +67,9 @@ Route::group(['guard' => 'alloom_user'], function () {
         Route::post('/cadastro', 'Auth\RegisterController@createAlloomUser');
 
 
+        /**
+         * Dashboard Routes.
+         */
         Route::namespace('AlloomDelivery')->prefix('dash')->middleware('auth:alloom_user')->group(function () {
             Route::get('/', 'HomeController@index')->name('home');
         });
