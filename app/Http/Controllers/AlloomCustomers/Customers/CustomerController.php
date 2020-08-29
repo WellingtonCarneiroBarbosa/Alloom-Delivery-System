@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\AlloomDelivery\Customers;
 
-use App\Models\AlloomDelivery\AlloomCustomer;
 use Illuminate\Http\Request;
+use App\Models\AlloomCustomers\Customers\Customer;
+use App\Http\Controllers\Controller;
 
-class AlloomCustomerController extends Controller
+class CustomerController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +42,10 @@ class AlloomCustomerController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\AlloomDelivery\AlloomCustomer  $alloomCustomer
+     * @param  \App\Models\Customers\Customer  $customer
      * @return \Illuminate\Http\Response
      */
-    public function show(AlloomCustomer $alloomCustomer)
+    public function show(Customer $customer)
     {
         //
     }
@@ -52,10 +53,10 @@ class AlloomCustomerController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\AlloomDelivery\AlloomCustomer  $alloomCustomer
+     * @param  \App\Models\Customers\Customer  $customer
      * @return \Illuminate\Http\Response
      */
-    public function edit(AlloomCustomer $alloomCustomer)
+    public function edit(Customer $customer)
     {
         //
     }
@@ -64,10 +65,10 @@ class AlloomCustomerController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\AlloomDelivery\AlloomCustomer  $alloomCustomer
+     * @param  \App\Models\Customers\Customer  $customer
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, AlloomCustomer $alloomCustomer)
+    public function update(Request $request, Customer $customer)
     {
         //
     }
@@ -75,10 +76,10 @@ class AlloomCustomerController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\AlloomDelivery\AlloomCustomer  $alloomCustomer
+     * @param  \App\Models\Customers\Customer  $customer
      * @return \Illuminate\Http\Response
      */
-    public function destroy(AlloomCustomer $alloomCustomer)
+    public function destroy(Customer $customer)
     {
         //
     }

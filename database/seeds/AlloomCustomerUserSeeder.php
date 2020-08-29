@@ -4,7 +4,7 @@ use App\User;
 use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
 
-class AlloomCustomerSeeder extends Seeder
+class AlloomCustomerUserSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -16,9 +16,11 @@ class AlloomCustomerSeeder extends Seeder
         $manager = User::create([
             'name' => "Gerente",
             'email' => "manager@example.com",
+            'is_master' => true,
             'email_verified_at' => now(),
             "password" => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'remember_token' => Str::random(10),
+            'alloom_customer_id' => 1,
         ]);
 
         $manager->assignRole('manager')->guard(['alloom_customer_user']);
@@ -26,9 +28,11 @@ class AlloomCustomerSeeder extends Seeder
         $clerk = User::create([
             'name' => "Atendente",
             'email' => "clerk@example.com",
+            'is_master' => false,
             'email_verified_at' => now(),
             "password" => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'remember_token' => Str::random(10),
+            'alloom_customer_id' => 1,
         ]);
 
         $clerk->assignRole('clerk')->guard(['alloom_customer_user']);
@@ -36,9 +40,11 @@ class AlloomCustomerSeeder extends Seeder
         $delivery_man = User::create([
             'name' => "Entregador",
             'email' => "delivery_man@example.com",
+            'is_master' => false,
             'email_verified_at' => now(),
             "password" => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'remember_token' => Str::random(10),
+            'alloom_customer_id' => 1,
         ]);
 
         $delivery_man->assignRole('delivery_man')->guard(['alloom_customer_user']);
@@ -46,9 +52,11 @@ class AlloomCustomerSeeder extends Seeder
         $cooker = User::create([
             'name' => "Cozinheiro",
             'email' => "cooker@example.com",
+            'is_master' => false,
             'email_verified_at' => now(),
             "password" => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'remember_token' => Str::random(10),
+            'alloom_customer_id' => 1,
         ]);
 
         $cooker->assignRole('cooker')->guard(['alloom_customer_user']);

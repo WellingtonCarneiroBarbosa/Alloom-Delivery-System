@@ -7,6 +7,6 @@ use Faker\Generator as Faker;
 
 $factory->define(AlloomUser::class, function (Faker $faker) {
     return [
-        //
+
     ];
 });

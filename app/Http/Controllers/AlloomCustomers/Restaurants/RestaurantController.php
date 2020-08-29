@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\AlloomCustomers\Restaurants;
 
-use App\Models\Customers\Customer;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Models\AlloomCustomers\Restaurants\Restaurant;
 
-class CustomerController extends Controller
+class RestaurantController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +42,10 @@ class CustomerController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Customers\Customer  $customer
+     * @param  \App\Models\AlloomCustomers\Restaurants\Restaurant  $restaurant
      * @return \Illuminate\Http\Response
      */
-    public function show(Customer $customer)
+    public function show(Restaurant $restaurant)
     {
         //
     }
@@ -52,10 +53,10 @@ class CustomerController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Customers\Customer  $customer
+     * @param  \App\Models\AlloomCustomers\Restaurants\Restaurant  $restaurant
      * @return \Illuminate\Http\Response
      */
-    public function edit(Customer $customer)
+    public function edit(Restaurant $restaurant)
     {
         //
     }
@@ -64,10 +65,10 @@ class CustomerController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Customers\Customer  $customer
+     * @param  \App\Models\AlloomCustomers\Restaurants\Restaurant  $restaurant
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Customer $customer)
+    public function update(Request $request, Restaurant $restaurant)
     {
         //
     }
@@ -75,10 +76,10 @@ class CustomerController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Customers\Customer  $customer
+     * @param  \App\Models\AlloomCustomers\Restaurants\Restaurant  $restaurant
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Customer $customer)
+    public function destroy(Restaurant $restaurant)
     {
         //
     }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAlloomCustomersTable extends Migration
+class CreateAlloomCustomerCustomersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,11 @@ class CreateAlloomCustomersTable extends Migration
      */
     public function up()
     {
-        Schema::create('alloom_customers', function (Blueprint $table) {
-            $table->integerIncrements('id');
+        Schema::create('alloom_customer_customers', function (Blueprint $table) {
+            $table->id();
             $table->string('name');
-            $table->string('email')->unique();
-            $table->string('cpf')->unique();
-            $table->string('phone')->unique();
+            $table->unsignedInteger('alloom_customer_id')->nullable();
+            $table->foreign('alloom_customer_id')->references('id')->on('alloom_customers')->onUpdate('cascade')->onDelete('set null');
             $table->timestamps();
         });
     }
@@ -30,6 +29,6 @@ class CreateAlloomCustomersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('alloom_customers');
+        Schema::dropIfExists('alloom_customer_customers');
     }
 }

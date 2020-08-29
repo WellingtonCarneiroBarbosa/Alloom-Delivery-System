@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\AlloomCustomers\Products;
 
-use App\Models\AlloomDelivery\AlloomUser;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Models\AlloomCustomers\Products\Product;
 
-class AlloomUserController extends Controller
+class ProductController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +42,10 @@ class AlloomUserController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\AlloomDelivery\AlloomUser  $alloomUser
+     * @param  \App\Models\AlloomCustomers\Products\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function show(AlloomUser $alloomUser)
+    public function show(Product $product)
     {
         //
     }
@@ -52,10 +53,10 @@ class AlloomUserController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\AlloomDelivery\AlloomUser  $alloomUser
+     * @param  \App\Models\AlloomCustomers\Products\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function edit(AlloomUser $alloomUser)
+    public function edit(Product $product)
     {
         //
     }
@@ -64,10 +65,10 @@ class AlloomUserController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\AlloomDelivery\AlloomUser  $alloomUser
+     * @param  \App\Models\AlloomCustomers\Products\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, AlloomUser $alloomUser)
+    public function update(Request $request, Product $product)
     {
         //
     }
@@ -75,10 +76,10 @@ class AlloomUserController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\AlloomDelivery\AlloomUser  $alloomUser
+     * @param  \App\Models\AlloomCustomers\Products\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function destroy(AlloomUser $alloomUser)
+    public function destroy(Product $product)
     {
         //
     }
