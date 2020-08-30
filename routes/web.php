@@ -15,8 +15,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::namespace('Home')->name('home.')->group(function () {
+    Route::get('/', function () {
+        return view('home');
+    })->name('index');
 });
 
 Auth::routes();
