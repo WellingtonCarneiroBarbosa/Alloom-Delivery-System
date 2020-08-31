@@ -3,7 +3,6 @@
 @section('title', 'Login')
 
 @section('main-content')
-<x-front.form-loader />
 <main>
     <section class="vh-100 d-flex align-items-center section-image overlay-soft-dark" data-background="{{ asset('assets/img/blog/image-3.jpg') }}">
         <div class="container">
@@ -28,7 +27,7 @@
                                 </div>
                                 <div class="d-block d-sm-flex justify-content-between align-items-center mt-2">
                                     <div class="form-group form-check mt-3"><input type="checkbox" name="remember" class="form-check-input" id="exampleCheck1"> <label class="form-check-label form-check-sign-white" for="exampleCheck1">Mantenha-me conectado</label></div>
-                                    <div><a href="{{ url('forgot-password.html') }}" class="small text-right">Esqueceu sua senha?</a></div>
+                                    <div><a href="{{ route('password.request') }}" class="small text-right">Esqueceu sua senha?</a></div>
                                 </div>
                             </div>
                             <div class="mt-3"><button type="submit" class="btn btn-block btn-primary">Entrar</button></div>

@@ -1,7 +1,26 @@
+<!--
+
+=========================================================
+* Impact Design System - v1.0.0
+=========================================================
+
+* Product Page: https://www.creative-tim.com/product/impact-design-system
+* Copyright 2010 Creative Tim (https://www.creative-tim.com)
+* Licensed under MIT (https://github.com/creativetimofficial/impact-design-system/blob/master/LICENSE.md)
+
+* Coded by Creative Tim
+
+=========================================================
+
+* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+-->
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
 <head>
+
     <title>Alloom Delivery - @yield('title')</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
@@ -27,36 +46,78 @@
     <link rel="mask-icon" href="{{ asset('assets/img/favicon/safari-pinned-tab.svg') }}" color="#ffffff">
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="theme-color" content="#ffffff">
-    <link type="text/css" href="{{ asset('vendor/%40fortawesome/fontawesome-free/css/all.min.css') }}" rel="stylesheet">
+
+    <!-- Favicon -->
+    <link rel="icon" href="{{ asset('front/assets/img/favicon/favicon.png') }}" type="image/png">
+
+    <!-- Fontawesome -->
+    <link type="text/css" href={{ asset( 'vendor/@fortawesome/fontawesome-free/css/all.min.css') }} rel="stylesheet">
+
+    <!-- Nucleo icons -->
+    <link rel="stylesheet" href="{{ asset('dashboard/assets/vendor/nucleo/css/nucleo.css') }}" type="text/css">
+
+    <!-- Prism -->
     <link type="text/css" href="{{ asset('vendor/prismjs/themes/prism.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('vendor/jqvmap/dist/jqvmap.min.css') }}">
-    <link type="text/css" href="{{ asset('css/rocket.css') }}" rel="stylesheet">
+
+    <!-- Front CSS -->
+    <link type="text/css" href="{{ asset('front/css/front.css') }}" rel="stylesheet">
 
     @yield('head-content')
 </head>
 
 <body>
-    @yield('nav-content')
+    <x-front.loader />
+
+    <header class="header-global">
+        @yield('nav-content')
+    </header>
+
     <main>
+
         @yield('main-content')
 
         @yield('footer-content')
+
     </main>
+
+    <!-- Core -->
     <script src="{{ asset('vendor/jquery/dist/jquery.min.js') }}"></script>
     <script src="{{ asset('vendor/popper.js/dist/umd/popper.min.js') }}"></script>
     <script src="{{ asset('vendor/bootstrap/dist/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('vendor/headroom.js/dist/headroom.min.js') }}"></script>
-    <script src="{{ asset('vendor/countup.js/dist/countUp.min.js') }}"></script>
-    <script src="{{ asset('vendor/jquery-countdown/dist/jquery.countdown.min.js') }}"></script>
+
+    <!-- Vendor JS -->
+    <script src="{{ asset('vendor/onscreen/dist/on-screen.umd.min.js') }}"></script>
+    <script src="{{ asset('vendor/waypoints/lib/jquery.waypoints.min.js') }}"></script>
+    <script src="{{ asset('vendor/jarallax/dist/jarallax.min.js') }}"></script>
     <script src="{{ asset('vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js') }}"></script>
-    <script src="{{ asset('vendor/prismjs/prism.js') }}"></script>
-    <script src="{{ asset('vendor/chartist/dist/chartist.min.js') }}"></script>
-    <script src="{{ asset('vendor/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js') }}"></script>
-    <script src="{{ asset('vendor/jqvmap/dist/jquery.vmap.min.js') }}"></script>
-    <script src="{{ asset('vendor/jqvmap/dist/maps/jquery.vmap.world.js') }}"></script>
-    <script src="{{ asset('assets/js/rocket.js') }}"></script>
+
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+    <!-- Impact JS -->
+    <script src="{{asset('front/assets/js/front.js') }}"></script>
+
+    <script>
+        $(document).ready(function() {
+            /**
+             * If has any submit
+             *
+             */
+            $(".form-loader").on("submit", function() {
+
+                /**
+                 * block more submits
+                 *
+                 */
+                $("button[type='submit']").attr('disabled', true).html("Carregando...")
+            });
+        });
+    </script>
 
     @yield('script-content')
 </body>
 
 </html>
+
+{{-- ---------- --}}

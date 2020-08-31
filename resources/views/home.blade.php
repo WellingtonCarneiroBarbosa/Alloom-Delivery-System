@@ -3,7 +3,6 @@
 @section('title', 'Início')
 
 @section('nav-content')
-    <x-front.loader />
     <x-front.nav />
 @endsection
 
@@ -37,249 +36,207 @@
     </div>
     <div class="pattern bottom"></div>
 </section>
+
 <section class="section section-lg pt-6">
     <div class="container">
-        <div class="row justify-content-center mb-5 mb-lg-6">
+        <div class="row justify-content-center mb-5 mb-md-7">
             <div class="col-12 col-md-8 text-center">
-                <h2 class="h1 font-weight-bolder mb-4">Who is Rocket for?</h2>
+                <h2 class="h1 font-weight-bolder mb-4">Meet our intuitive platform</h2>
                 <p class="lead">Self-Service Analytics or ad hoc reporting gives users the ability to develop rapid reports, empowering users to analyze their data.</p>
             </div>
         </div>
+        <div class="row row-grid align-items-center mb-5 mb-md-7">
+            <div class="col-12 col-md-5">
+                <h2 class="font-weight-bolder mb-4">Site Audit</h2>
+                <p class="lead">Site Audit crawls all the pages it finds on your website – then provides an overall SEO health score, visualises key data in charts, flags all possible SEO issues and provides recommendations on how to fix them.</p>
+                <p class="lead">Have a huge website? Not an issue.</p><a href="./about.html" class="btn btn-primary mt-3 animate-up-2">Learn More <span class="icon icon-xs ml-2"><i class="fas fa-external-link-alt"></i></span></a></div>
+            <div class="col-12 col-md-6 ml-md-auto"><img src="../assets/img/illustrations/feature-illustration.svg" alt=""></div>
+        </div>
+        <div class="row row-grid align-items-center mb-5 mb-md-7">
+            <div class="col-12 col-md-5 order-md-2">
+                <h2 class="font-weight-bolder mb-4">Rank Tracker</h2>
+                <p>We track your desktop and mobile keyword rankings from any location and plot your full ranking history on a handy graph.</p>
+                <p>You can set up automated ranking reports to be sent to your email address, so you’ll never forget to check your ranking progress.</p><a href="./about.html" class="btn btn-primary mt-3 animate-up-2">Rank Tracker Tool <span class="icon icon-xs ml-2"><i class="fas fa-external-link-alt"></i></span></a></div>
+            <div class="col-12 col-md-6 mr-lg-auto"><img src="../assets/img/illustrations/feature-illustration-2.svg" alt=""></div>
+        </div>
         <div class="row">
-            <div class="col-12 col-md-6 col-lg-4 mb-5 mb-lg-0 text-center">
+            <div class="col-12 col-md-6 col-lg-4 mb-4">
                 <div class="card border-light p-4">
-                    <div class="card-header pb-0">
-                        <div class="image-md"><img src="../assets/img/icons/marketing.svg" alt="icon"></div>
-                        <h2 class="h4 mt-3">Marketing</h2>
-                        <p class="mb-0">Reveal best strategies from the market and your competitors</p>
-                    </div>
                     <div class="card-body">
-                        <ul class="list-group">
-                            <li class="list-group-item d-flex text-left pl-0"><span class="list-icon"><i class="fas fa-check-circle text-success"></i></span>
-                                <div>Uncover the best SEO and content strategies</div>
-                            </li>
-                            <li class="list-group-item d-flex text-left pl-0"><span class="list-icon"><i class="fas fa-check-circle text-success"></i></span>
-                                <div>Build & grow your affiliate and media partnerships</div>
-                            </li>
-                            <li class="list-group-item d-flex text-left pl-0"><span class="list-icon"><i class="fas fa-check-circle text-success"></i></span>
-                                <div>Enhance your display and paid search strategies</div>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="card-footer pt-0"><a href="about.html" class="btn btn-block btn-primary">Learn more<span class="icon icon-xs ml-2"><i class="fas fa-arrow-right"></i></span></a></div>
+                        <h2 class="display-2 mb-2">98%</h2><span>Average satisfaction rating received in the past year</span></div>
                 </div>
             </div>
-            <div class="col-12 col-md-6 col-lg-4 mb-5 mb-lg-0 text-center">
+            <div class="col-12 col-md-6 col-lg-4 mb-4">
                 <div class="card border-light p-4">
-                    <div class="card-header pb-0">
-                        <div class="image-md"><img src="../assets/img/icons/research.svg" alt="icon"></div>
-                        <h2 class="h4 mt-3">Research</h2>
-                        <p class="mb-0">Understand your market, your competitors and your customers</p>
-                    </div>
                     <div class="card-body">
-                        <ul class="list-group">
-                            <li class="list-group-item d-flex text-left pl-0"><span class="list-icon"><i class="fas fa-check-circle text-success"></i></span>
-                                <div>Benchmark your market and find ways to grow</div>
-                            </li>
-                            <li class="list-group-item d-flex text-left pl-0"><span class="list-icon"><i class="fas fa-check-circle text-success"></i></span>
-                                <div>Analyze trends, competitors' strategy and audience</div>
-                            </li>
-                            <li class="list-group-item d-flex text-left pl-0"><span class="list-icon"><i class="fas fa-check-circle text-success"></i></span>
-                                <div>Understand the shopper’s journey for best decisions</div>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="card-footer pt-0"><a href="about.html" class="btn btn-block btn-primary">Learn more<span class="icon icon-xs ml-2"><i class="fas fa-arrow-right"></i></span></a></div>
+                        <h2 class="display-2 mb-2">24/7</h2><span>Our support team is a quick chat or email away — 24 hours a day</span></div>
                 </div>
             </div>
-            <div class="col-12 col-md-6 col-lg-4 mb-5 mb-lg-0 text-center">
+            <div class="col-12 col-md-6 col-lg-4 mb-4">
                 <div class="card border-light p-4">
-                    <div class="card-header pb-0">
-                        <div class="image-md"><img src="../assets/img/icons/sales.svg" alt="icon"></div>
-                        <h2 class="h4 mt-3">Sales</h2>
-                        <p class="mb-0">Enhance performance throughout your sales funnel</p>
-                    </div>
                     <div class="card-body">
-                        <ul class="list-group">
-                            <li class="list-group-item d-flex text-left pl-0"><span class="list-icon"><i class="fas fa-check-circle text-success"></i></span>
-                                <div>Find, enrich and qualify leads to increase sales</div>
-                            </li>
-                            <li class="list-group-item d-flex text-left pl-0"><span class="list-icon"><i class="fas fa-check-circle text-success"></i></span>
-                                <div>Generate the insights you need to perfect your pitch</div>
-                            </li>
-                            <li class="list-group-item d-flex text-left pl-0"><span class="list-icon"><i class="fas fa-check-circle text-success"></i></span>
-                                <div>Monitor website traffic statistics to boost retention</div>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="card-footer pt-0"><a href="about.html" class="btn btn-block btn-primary">Learn more<span class="icon icon-xs ml-2"><i class="fas fa-arrow-right"></i></span></a></div>
+                        <h2 class="display-2 mb-2">220k+</h2><span>Extension installs from the two major mobile app stores</span></div>
                 </div>
             </div>
         </div>
     </div>
 </section>
-<div class="section section-sm py-5">
+<section class="section section-lg bg-soft">
     <div class="container">
+        <div class="row justify-content-center mb-5 mb-md-7">
+            <div class="col-12 col-md-8 text-center">
+                <h2 class="h1 font-weight-bolder mb-4">SEO solutions for every need</h2>
+                <p class="lead">We build best-in-class SEO software for every situation, from our all-in-one SEO platform to tools for local SEO, enterprise SERP analytics, and a powerful API.</p>
+            </div>
+        </div>
         <div class="row">
-            <div class="col-12 text-gray text-center">
-                <div class="icon icon-xl mr-2 mr-sm-5"><span class="fab fa-stripe"></span></div>
-                <div class="icon icon-xl mr-2 mr-sm-5"><span class="fab fa-digg"></span></div>
-                <div class="icon icon-xl mr-2 mr-sm-5"><span class="fab fa-fedex"></span></div>
-                <div class="icon icon-xl mr-2 mr-sm-5"><span class="fab fa-ember"></span></div>
-                <div class="icon icon-xl mr-2 mr-sm-5"><span class="fab fa-d-and-d-beyond"></span></div>
-                <div class="icon icon-xl"><span class="fab fa-angrycreative"></span></div>
-            </div>
-        </div>
-    </div>
-</div>
-<section class="section section-lg bg-white">
-    <div class="container">
-        <div class="row row-grid align-items-center mb-7">
-            <div class="col-12 col-lg-5">
-                <h2 class="font-weight-bolder mb-4">Content Explorer</h2>
-                <p>Put any keyword into this tool to see which content has performed best in terms of social buzz, number of backlinks and organic search traffic.</p>
-                <p>Find all articles that mentioned your target keyword and use the "Highlight unlinked domains" feature to see which of these websites have never linked to you.</p><a href="dashboard/app-analysis.html" class="btn btn-primary mt-3 animate-up-2">Content Explorer Tool <span class="icon icon-xs ml-2"><i class="fas fa-external-link-alt"></i></span></a></div>
-            <div
-                class="col-12 col-lg-6 ml-lg-auto"><img src="../assets/img/homepage-feature-2.png" alt="image"></div>
-    </div>
-    <div class="row row-grid align-items-center">
-        <div class="col-12 col-lg-5 order-lg-2">
-            <h2 class="font-weight-bolder mb-4">Rank Tracker</h2>
-            <p>We track your desktop and mobile keyword rankings from any location and plot your full ranking history on a handy graph.</p>
-            <p>You can set up automated ranking reports to be sent to your email address, so you’ll never forget to check your ranking progress.</p><a href="dashboard/traffic-sources.html" class="btn btn-primary mt-3 animate-up-2">Rank Tracker Tool <span class="icon icon-xs ml-2"><i class="fas fa-external-link-alt"></i></span></a></div>
-        <div
-            class="col-12 col-lg-6 mr-lg-auto"><img src="../assets/img/homepage-feature-1.png" alt="image"></div>
-    </div>
-    </div>
-</section>
-<section class="section section-lg py-7 py-lg-10 bg-primary">
-    <div class="pattern top"></div>
-    <div class="container">
-        <div class="container">
-            <div class="row text-white">
-                <div class="col-md-6 col-lg-8 text-center mx-auto">
-                    <h2 class="h1 mb-4">More Rocket perks</h2>
-                    <p class="lead">The best and most complete data in the industry powers Rocket's tools</p>
+            <div class="col-12 col-md-6 col-lg-4 mb-5">
+                <div class="card shadow-soft border-light">
+                    <div class="card-header p-0"><img src="../assets/img/saas-platform-3.jpg" class="card-img-top rounded-top" alt="image"></div>
+                    <div class="card-body">
+                        <h3 class="card-title mt-3">Impact Local</h3>
+                        <p class="card-text">Moz Local distributes your business information across the web for maximum search engine visibility.</p>
+                        <ul class="list-group d-flex justify-content-center mb-4">
+                            <li class="list-group-item d-flex pl-0 pb-1"><span class="mr-2"><i class="fas fa-check-circle text-success"></i></span>
+                                <div>Real-time distribution</div>
+                            </li>
+                            <li class="list-group-item d-flex pl-0 pb-1"><span class="mr-2"><i class="fas fa-check-circle text-success"></i></span>
+                                <div>Duplicate closure</div>
+                            </li>
+                            <li class="list-group-item d-flex pl-0 pb-1"><span class="mr-2"><i class="fas fa-check-circle text-success"></i></span>
+                                <div>Review management</div>
+                            </li>
+                        </ul><a href="./about.html" class="btn btn-primary">Learn More</a></div>
                 </div>
             </div>
-            <div class="row mt-6">
-                <div class="col-sm-12 col-md-12 col-lg-6">
-                    <div class="card border-light text-primary mb-4">
-                        <div class="card-body">
-                            <div class="d-flex p-3">
-                                <div>
-                                    <div class="icon icon-primary"><span class="fas fa-headset"></span></div>
-                                </div>
-                                <div class="pl-4">
-                                    <h5 class="mb-3">24/5 customer support</h5>
-                                    <p class="icon-box-text">Have a question, concern or feedback for us? Our support team is a quick chat or email away — 24 hours a day, Monday to Friday.</p><a href="support-topic.html" class="btn btn-sm btn-primary">Read more <i class="fas fa-link ml-1"></i></a></div>
-                            </div>
-                        </div>
-                    </div>
+            <div class="col-12 col-md-6 col-lg-4 mb-5">
+                <div class="card shadow-soft border-light">
+                    <div class="card-header p-0"><img src="../assets/img/saas-platform-4.jpg" class="card-img-top rounded-top" alt="image"></div>
+                    <div class="card-body">
+                        <h3 class="card-title mt-3">Impact Pro</h3>
+                        <p class="card-text">Our SEO solution to help you rank higher, drive qualified traffic to your website, and run high-impact SEO campaigns.</p>
+                        <ul class="list-group d-flex justify-content-center mb-4">
+                            <li class="list-group-item d-flex pl-0 pb-1"><span class="mr-2"><i class="fas fa-check-circle text-success"></i></span>
+                                <div>Keyword & link research</div>
+                            </li>
+                            <li class="list-group-item d-flex pl-0 pb-1"><span class="mr-2"><i class="fas fa-check-circle text-success"></i></span>
+                                <div>Technical site audits</div>
+                            </li>
+                            <li class="list-group-item d-flex pl-0 pb-1"><span class="mr-2"><i class="fas fa-check-circle text-success"></i></span>
+                                <div>SEO insights & reporting</div>
+                            </li>
+                        </ul><a href="./about.html" class="btn btn-primary">Learn More</a></div>
                 </div>
-                <div class="col-sm-12 col-md-12 col-lg-6">
-                    <div class="card border-light text-primary mb-4">
-                        <div class="card-body">
-                            <div class="d-flex p-3">
-                                <div>
-                                    <div class="icon icon-primary"><span class="fas fa-users"></span></div>
-                                </div>
-                                <div class="pl-4">
-                                    <h5 class="icon-box-title">Private community</h5>
-                                    <p class="icon-box-text">Take full advantage of insights from highly-accomplished SEO specialists and digital marketers in our customers-only community.</p><a href="support-topic.html" class="btn btn-sm btn-primary">Read more <i class="fas fa-link ml-1"></i></a></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-12 col-md-12 col-lg-6">
-                    <div class="card border-light text-primary mb-4">
-                        <div class="card-body">
-                            <div class="d-flex p-3">
-                                <div>
-                                    <div class="icon icon-primary"><span class="fas fa-book-reader"></span></div>
-                                </div>
-                                <div class="pl-4">
-                                    <h5 class="icon-box-title">Learning materials</h5>
-                                    <p class="icon-box-text">The marketing tutorials on our blog and YouTube channel, and in the Rocket Academy, often feature our tools.</p><a href="support-topic.html" class="btn btn-sm btn-primary">Read more <i class="fas fa-link ml-1"></i></a></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-12 col-md-12 col-lg-6">
-                    <div class="card border-light text-primary mb-4">
-                        <div class="card-body">
-                            <div class="d-flex p-3">
-                                <div>
-                                    <div class="icon icon-primary"><span class="fas fa-rocket"></span></div>
-                                </div>
-                                <div class="pl-4">
-                                    <h5 class="icon-box-title">Features released regularly</h5>
-                                    <p class="icon-box-text">We frequently update existing tools and release new features — many of which are heavily influenced by requests from our customers.</p><a href="support-topic.html" class="btn btn-sm btn-primary">Read more <i class="fas fa-link ml-1"></i></a></div>
-                            </div>
-                        </div>
-                    </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-4 mb-5">
+                <div class="card shadow-soft border-light">
+                    <div class="card-header p-0"><img src="../assets/img/saas-platform-5.jpg" class="card-img-top rounded-top" alt="image"></div>
+                    <div class="card-body">
+                        <h3 class="card-title mt-3">Impact STAT</h3>
+                        <p class="card-text">STAT offers serious SERP tracking for experts. Track thousands to millions of keywords across any location.</p>
+                        <ul class="list-group d-flex justify-content-center mb-4">
+                            <li class="list-group-item d-flex pl-0 pb-1"><span class="mr-2"><i class="fas fa-check-circle text-success"></i></span>
+                                <div>Daily tracking</div>
+                            </li>
+                            <li class="list-group-item d-flex pl-0 pb-1"><span class="mr-2"><i class="fas fa-check-circle text-success"></i></span>
+                                <div>Local and mobile SERPs</div>
+                            </li>
+                            <li class="list-group-item d-flex pl-0 pb-1"><span class="mr-2"><i class="fas fa-check-circle text-success"></i></span>
+                                <div>Competitor intelligence</div>
+                            </li>
+                        </ul><a href="./about.html" class="btn btn-primary">Learn More</a></div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="pattern bottom"></div>
 </section>
-<section class="section">
+<section class="section section-lg bg-primary text-center text-white">
+    <div class="container">
+        <div class="row justify-content-center mb-4 mb-lg-6">
+            <div class="col-12">
+                <h1 class="display-3 mb-4 mb-lg-5">The world's most accurate SEO data.</h1>
+                <div class="row text-white">
+                    <div class="col-12 col-lg-4 px-md-0 mb-4 mb-lg-0">
+                        <div class="card-body text-center bg-primary border-right border-default py-4">
+                            <!-- Heading -->
+                            <h2 class="font-weight-bold"><span class="h1 mr-2">36.5 trillion</span></h2>
+                            <!-- Text --><span class="h5 font-weight-normal">links indexed by Link Explorer with our tools</span></div>
+                    </div>
+                    <div class="col-12 col-lg-4 px-md-0 mb-4 mb-lg-0">
+                        <div class="card-body text-center bg-primary border-right border-default py-4">
+                            <!-- Heading -->
+                            <h2 class="font-weight-bold"><span class="h1 mr-2">500 million</span></h2>
+                            <!-- Text --><span class="h5 font-weight-normal">keyword suggestions in Keyword Explorer</span></div>
+                    </div>
+                    <div class="col-12 col-lg-4 px-md-0">
+                        <div class="card-body text-center bg-primary py-4">
+                            <!-- Heading -->
+                            <h2 class="font-weight-bold"><span class="h1 mr-2">250,000</span></h2>
+                            <!-- Text --><span class="h5 font-weight-normal">local business listings optimized with Moz Local</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-8">
+                <form action="../../dashboard/pages/dashboards/dashboard.html" class="form-group mb-4">
+                    <div class="d-flex flex-row justify-content-center">
+                        <div class="input-group"><input class="form-control form-control-xl border-light" placeholder="Enter a domain" type="text">
+                            <div class="input-group-prepend"><button type="submit" class="btn btn-secondary rounded-right">Analyze domain</button></div>
+                        </div>
+                    </div>
+                </form><span class="small">Impact also offers access to our best-in-class proprietary metrics including Keyword Difficulty, Spam Score, Page Authority, and Domain Authority — the most highly correlated metric with actual Google rankings available today.</span></div>
+        </div>
+    </div>
+</section>
+<section class="section section-lg">
     <div class="container">
         <div class="row justify-content-center mb-5 mb-lg-7">
             <div class="col-12 col-md-8 text-center">
-                <h1 class="h1 mb-4">Recommended by leading experts in marketing and SEO</h1>
+                <h1 class="h1 font-weight-bolder mb-4">Recommended by leading experts in marketing and SEO</h1>
                 <p class="lead">Our products are loved by users worldwide</p>
             </div>
         </div>
         <div class="row mb-lg-5">
             <div class="col-12 col-lg-6">
                 <div class="customer-testimonial d-flex mb-5"><img src="../assets/img/team/profile-picture-1.jpg" class="image image-sm mr-3 rounded-circle shadow" alt="">
-                    <div class="content-wrapper bg-soft shadow-soft border border-light rounded position-relative p-4">
+                    <div class="content bg-soft shadow-soft border border-light rounded position-relative p-4">
                         <div class="d-flex mb-4"><span class="text-warning mr-2"><i class="star fas fa-star"></i></span> <span class="text-warning mr-2"><i class="star fas fa-star"></i></span> <span class="text-warning mr-2"><i class="star fas fa-star"></i></span>
-                            <span
-                                class="text-warning mr-2"><i class="star fas fa-star"></i></span> <span class="text-warning mr-2"><i class="star fas fa-star"></i></span></div>
-                        <p class="mt-2">"We use Rocket mainly for its site explorer, and it’s immensely improved how we find link targets. We use it both for getting quick analysis of a site, as well as utilizing its extensive index when we want to dive deep."</p>
-                        <span
-                            class="h6">- James Curran <small class="ml-0 ml-md-2">General Manager Spotify</small></span>
+                            <span class="text-warning mr-2"><i class="star fas fa-star"></i></span> <span class="text-warning mr-2"><i class="star fas fa-star"></i></span></div>
+                        <p class="mt-2">"We use Impact mainly for its site explorer, and it’s immensely improved how we find link targets. We use it both for getting quick analysis of a site, as well as utilizing its extensive index when we want to dive deep."</p>
+                        <span class="h6">- James Curran <small class="ml-0 ml-md-2">General Manager Spotify</small></span>
                     </div>
                 </div>
                 <div class="customer-testimonial d-flex mb-5"><img src="../assets/img/team/profile-picture-2.jpg" class="image image-sm mr-3 rounded-circle shadow" alt="">
-                    <div class="content-wrapper bg-soft shadow-soft border border-light rounded position-relative p-4">
+                    <div class="content bg-soft shadow-soft border border-light rounded position-relative p-4">
                         <div class="d-flex mb-4"><span class="text-warning mr-2"><i class="star fas fa-star"></i></span> <span class="text-warning mr-2"><i class="star fas fa-star"></i></span> <span class="text-warning mr-2"><i class="star fas fa-star"></i></span>
-                            <span
-                                class="text-warning mr-2"><i class="star fas fa-star"></i></span> <span class="text-warning mr-2"><i class="star fas fa-star"></i></span></div>
-                        <p class="mt-2">"We use Rocket mainly for its site explorer, and it’s immensely improved how we find link targets. We use it both for getting quick analysis of a site, as well as utilizing its extensive index when we want to dive deep."</p>
-                        <span
-                            class="h6">- Richard Thomas <small class="ml-0 ml-md-2">Front-end developer Oracle</small></span>
+                            <span class="text-warning mr-2"><i class="star fas fa-star"></i></span> <span class="text-warning mr-2"><i class="star fas fa-star"></i></span></div>
+                        <p class="mt-2">"We use Impact mainly for its site explorer, and it’s immensely improved how we find link targets. We use it both for getting quick analysis of a site, as well as utilizing its extensive index when we want to dive deep."</p>
+                        <span class="h6">- Richard Thomas <small class="ml-0 ml-md-2">Front-end developer Oracle</small></span>
                     </div>
                 </div>
             </div>
             <div class="col-12 col-lg-6 pt-lg-6">
                 <div class="customer-testimonial d-flex mb-5"><img src="../assets/img/team/profile-picture-4.jpg" class="image image-sm mr-3 rounded-circle shadow" alt="">
-                    <div class="content-wrapper bg-soft shadow-soft border border-light rounded position-relative p-4">
+                    <div class="content bg-soft shadow-soft border border-light rounded position-relative p-4">
                         <div class="d-flex mb-4"><span class="text-warning mr-2"><i class="star fas fa-star"></i></span> <span class="text-warning mr-2"><i class="star fas fa-star"></i></span> <span class="text-warning mr-2"><i class="star fas fa-star"></i></span>
-                            <span
-                                class="text-warning mr-2"><i class="star fas fa-star"></i></span> <span class="text-warning mr-2"><i class="star fas fa-star"></i></span></div>
-                        <p class="mt-2">"We use Rocket mainly for its site explorer, and it’s immensely improved how we find link targets. We use it both for getting quick analysis of a site, as well as utilizing its extensive index when we want to dive deep."</p>
-                        <span
-                            class="h6">- Jose Evans <small class="ml-0 ml-md-2">Chief Engineer Apple</small></span>
+                            <span class="text-warning mr-2"><i class="star fas fa-star"></i></span> <span class="text-warning mr-2"><i class="star fas fa-star"></i></span></div>
+                        <p class="mt-2">"We use Impact mainly for its site explorer, and it’s immensely improved how we find link targets. We use it both for getting quick analysis of a site, as well as utilizing its extensive index when we want to dive deep."</p>
+                        <span class="h6">- Jose Evans <small class="ml-0 ml-md-2">Chief Engineer Apple</small></span>
                     </div>
                 </div>
                 <div class="customer-testimonial d-flex mb-5"><img src="../assets/img/team/profile-picture-6.jpg" class="image image-sm mr-3 rounded-circle shadow" alt="">
-                    <div class="content-wrapper bg-soft shadow-soft border border-light rounded position-relative p-4">
+                    <div class="content bg-soft shadow-soft border border-light rounded position-relative p-4">
                         <div class="d-flex mb-4"><span class="text-warning mr-2"><i class="star fas fa-star"></i></span> <span class="text-warning mr-2"><i class="star fas fa-star"></i></span> <span class="text-warning mr-2"><i class="star fas fa-star"></i></span>
-                            <span
-                                class="text-warning mr-2"><i class="star fas fa-star"></i></span> <span class="text-warning mr-2"><i class="star fas fa-star"></i></span></div>
-                        <p class="mt-2">"We use Rocket mainly for its site explorer, and it’s immensely improved how we find link targets. We use it both for getting quick analysis of a site, as well as utilizing its extensive index when we want to dive deep."</p>
-                        <span
-                            class="h6">- Richard Thomas <small class="ml-0 ml-md-2">Designer Google</small></span>
+                            <span class="text-warning mr-2"><i class="star fas fa-star"></i></span> <span class="text-warning mr-2"><i class="star fas fa-star"></i></span></div>
+                        <p class="mt-2">"We use Impact mainly for its site explorer, and it’s immensely improved how we find link targets. We use it both for getting quick analysis of a site, as well as utilizing its extensive index when we want to dive deep."</p>
+                        <span class="h6">- Richard Thomas <small class="ml-0 ml-md-2">Manager IBM</small></span>
                     </div>
                 </div>
             </div>
         </div>
         <div class="row">
-            <div class="col text-center"><a href="testimonials.html" class="btn btn-primary animate-up-2"><span class="mr-2"><i class="fas fa-book-open"></i></span> See all stories</a></div>
+            <div class="col text-center"><a href="#" class="btn btn-primary animate-up-2"><span class="mr-2"><i class="fas fa-book-open"></i></span> See all stories</a></div>
         </div>
     </div>
 </section>
@@ -287,43 +244,14 @@
     <div class="container">
         <div class="row">
             <div class="col-12 text-center mb-5">
-                <h2 class="mb-4">Faster growth starts with Rocket</h2>
-                <p class="lead mb-5">Join over <span class="font-weight-bolder">300,000+</span> users</p><a href="#" class="icon icon-lg text-gray mr-3"><span class="fab fa-mailchimp"></span> </a><a href="#" class="icon icon-lg text-gray mr-3"><span class="fab fa-cpanel"></span> </a>
-                <a
-                    href="#" class="icon icon-lg text-gray mr-3"><span class="fab fa-dhl"></span> </a><a href="#" class="icon icon-lg text-gray mr-3"><span class="fab fa-github-alt"></span> </a><a href="#" class="icon icon-lg text-gray mr-3"><span class="fab fa-aws"></span> </a>
-                    <a href="#" class="icon icon-lg text-gray"><span class="fab fa-node"></span></a>
+                <h2 class="mb-4">Faster growth starts with Impact</h2>
+                <p class="lead mb-5">Join over <span class="font-weight-bolder">300,000+</span> users</p><a href="#" class="icon icon-lg text-gray mr-3"><i class="fab fa-mailchimp"></i> </a><a href="#" class="icon icon-lg text-gray mr-3"><i class="fab fa-cpanel"></i> </a>
+                <a href="#" class="icon icon-lg text-gray mr-3"><i class="fab fa-dhl"></i> </a><a href="#" class="icon icon-lg text-gray mr-3"><i class="fab fa-github-alt"></i> </a><a href="#" class="icon icon-lg text-gray mr-3"><i class="fab fa-aws"></i> </a>
+                <a href="#" class="icon icon-lg text-gray"><i class="fab fa-node"></i></a>
             </div>
-            <div class="col-12 text-center"> <button type="button" class="btn btn-secondary animate-up-2" data-toggle="modal" data-target=".pricing-modal"><span class="mr-2"><i class="fas fa-hand-pointer"></i></span>Start 30-days trial</button></div>
+            <div class="col-12 text-center">
+                <!-- Button Modal --><a href="../../dashboard/pages/dashboards/dashboard.html" class="btn btn-secondary animate-up-2"><span class="mr-2"><i class="fas fa-hand-pointer"></i></span>Start 30-days trial</a></div>
         </div>
     </div>
 </section>
-<div id="pricing-modal" class="modal fade pricing-modal" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
-        <div class="modal-content py-4">
-            <div class="px-3">
-                <div class="col-12 d-flex justify-content-end d-lg-none"><i class="fas fa-times" data-dismiss="modal" aria-label="Close"></i></div>
-            </div>
-            <div class="modal-header text-center text-black">
-                <div class="col-12">
-                    <h4 class="px-lg-6">Our 30-days trial gives you full access to all tools and features of your chosen plan.</h4>
-                </div>
-            </div>
-            <div class="modal-body">
-                <div class="row">
-                    <div class="col-12 col-lg-6 text-left">
-                        <div class="form-check card border-light p-3"><input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1"> <label class="form-check-label" for="exampleRadios1"><span class="h6 text-black d-block">Free</span> <span class="small text-gray">30 days for free, then $99/mo</span> <span class="text-gray mt-3 d-block p">Suits freelance marketers and solopreneurs. Get full access to Ahrefs' core tools and features with enough data to do SEO for your personal projects.</span></label></div>
-                    </div>
-                    <div class="col-12 col-lg-6 text-left">
-                        <div class="form-check card border-light p-3"><input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2" checked="checked"> <label class="form-check-label" for="exampleRadios2"><span class="h6 text-black d-block">Premium</span> <span class="small text-gray">200$/mo</span> <span class="text-gray mt-3 d-block p">Perfect for SEO consultants and in-house marketers. Get everything in Lite with more features and increased data limits to research a large number of websites.</span></label></div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer border-0 text-center">
-                <div class="col text-gray"><a href="checkout.html" class="btn btn-primary mb-4">Continue</a>
-                    <p class="small mb-0">You can upgrade, downgrade, or cancel your subscription anytime.<br>No contracts, no hidden charges.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 @endsection
