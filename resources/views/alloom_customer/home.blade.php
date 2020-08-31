@@ -10,6 +10,11 @@
     <x-alloom-customer.top-nav />
 @endsection
 
+
+@section('footer-content')
+    <x-alloom-customer.footer />
+@endsection
+
 @section('header-content')
 <div class="header bg-primary pb-6">
     <div class="container-fluid">
@@ -95,9 +100,6 @@
 </div>
 @endsection
 
-@section('footer-content')
-    <x-alloom-customer.footer />
-@endsection
 
 @section('main-content')
 
@@ -291,6 +293,7 @@
             </div>
         </div>
     </div>
+</div>
 @endsection
 
 

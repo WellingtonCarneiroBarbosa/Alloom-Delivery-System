@@ -19,6 +19,7 @@ Route::namespace('Home')->name('home.')->group(function () {
     Route::get('/', function () {
         return view('home');
     })->name('index');
+
 });
 
 Auth::routes();
@@ -43,6 +44,10 @@ Route::group(['guard' => 'alloom_customer_user'], function () {
          */
         Route::namespace('AlloomCustomers')->prefix('dash')->middleware('auth:alloom_customer_user')->group(function () {
             Route::get('/', 'HomeController@index')->name('home');
+
+            Route::get('/clientes', function () {
+                return view('alloom_customer.customers.create');
+            });
 
             Route::get('/produtos', function () {
                 //dd(auth()->id());
@@ -74,6 +79,14 @@ Route::group(['guard' => 'alloom_user'], function () {
          */
         Route::namespace('AlloomDelivery')->prefix('dash')->middleware('auth:alloom_user')->group(function () {
             Route::get('/', 'HomeController@index')->name('home');
+
+            /**
+             * Customers Routes.
+             *
+             */
+            Route::namespace('Customers')->prefix('clientes')->name('customers.')->group(function (){
+                Route::get('/cadastrar', 'AlloomCustomerController@create')->name('create');
+            });
         });
     });
 });

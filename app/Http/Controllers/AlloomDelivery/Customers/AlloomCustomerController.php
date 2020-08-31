@@ -25,7 +25,7 @@ class AlloomCustomerController extends Controller
      */
     public function create()
     {
-        //
+        return view('alloom.customers.create');
     }
 
     /**
