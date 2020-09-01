@@ -18,7 +18,7 @@ class AlloomCustomerUserSeeder extends Seeder
             'email' => "manager@example.com",
             'is_master' => true,
             'email_verified_at' => now(),
-            "password" => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            "password" => bcrypt("password"),
             'remember_token' => Str::random(10),
             'alloom_customer_id' => 1,
         ]);
@@ -30,7 +30,7 @@ class AlloomCustomerUserSeeder extends Seeder
             'email' => "clerk@example.com",
             'is_master' => false,
             'email_verified_at' => now(),
-            "password" => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            "password" => bcrypt("password"),
             'remember_token' => Str::random(10),
             'alloom_customer_id' => 1,
         ]);
@@ -42,7 +42,7 @@ class AlloomCustomerUserSeeder extends Seeder
             'email' => "delivery_man@example.com",
             'is_master' => false,
             'email_verified_at' => now(),
-            "password" => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            "password" => bcrypt("password"),
             'remember_token' => Str::random(10),
             'alloom_customer_id' => 1,
         ]);
@@ -54,7 +54,7 @@ class AlloomCustomerUserSeeder extends Seeder
             'email' => "cooker@example.com",
             'is_master' => false,
             'email_verified_at' => now(),
-            "password" => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            "password" => bcrypt("password"),
             'remember_token' => Str::random(10),
             'alloom_customer_id' => 1,
         ]);

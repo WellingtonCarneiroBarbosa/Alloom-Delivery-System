@@ -149,11 +149,14 @@
                     <div class="col">
                         <h3 class="mb-0">Pedidos de Teste</h3>
                     </div>
+                    @if(count($testRequests) <= 0)
+                    <span>Não há pedidos pendentes no momento.</span>
+                    @endif
                     <div class="col text-right"><a href="#!" class="btn btn-sm btn-primary">Ver Todos</a></div>
                 </div>
             </div>
+            @if(count($testRequests) > 0)
             <div class="table-responsive">
-                <!-- Projects table -->
                 <table class="table align-items-center table-flush">
                     <thead class="thead-light">
                         <tr>
@@ -161,18 +164,36 @@
                             <th scope="col">Empresa</th>
                             <th scope="col">WhatsApp</th>
                             <th scope="col">Tamanho da Empresa</th>
+                            <th scope="col">Ação</th>
                         </tr>
                     </thead>
+
                     <tbody>
+                        @foreach ($testRequests as $testRequest)
                         <tr>
-                            <th scope="row">John Michael</th>
-                            <td>John Michael Pizzas</td>
-                            <td>(41) 9 8492-7850</td>
-                            <td>25+</td>
+                            <th scope="row">{{ $testRequest->name }}</th>
+                            <td>{{ $testRequest->company_name }}</td>
+                            <td>{{ $testRequest->phone }}</td>
+                            <td>{{ $testRequest->company_size }}</td>
+                            <td>
+                                <div class="dropdown">
+                                    <button class="btn btn-outline" type="button" data-toggle="dropdown" aria-haspopup="false" aria-expanded="false"><i class="fas fa-ellipsis-v"></i></button>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        <form action="{{ route('alloom_user.test.changeStatus.inProspection', [$testRequest]) }}" method="POST" class="form-loader">
+                                            @csrf
+                                            @method("put")
+
+                                            <button class="dropdown-item" type="submit">Marcar como "em prospecção"</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </td>
                         </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>
+            @endif
         </div>
     </div>
     <div class="col-xl-4">
@@ -267,4 +288,16 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('script-content')
+<script>
+    $('.table-responsive').on('show.bs.dropdown', function () {
+        $('.table-responsive').css( "overflow", "inherit" );
+    });
+
+    $('.table-responsive').on('hide.bs.dropdown', function () {
+        $('.table-responsive').css( "overflow", "auto" );
+    });
+</script>
 @endsection

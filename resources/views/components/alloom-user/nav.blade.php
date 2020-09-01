@@ -21,7 +21,8 @@
                     <li class="nav-item"><a class="nav-link" href="#navbar-customers" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-customers"><i class="ni ni-ungroup text-orange"></i> <span class="nav-link-text">Clientes</span></a>
                         <div class="collapse" id="navbar-customers">
                             <ul class="nav nav-sm flex-column">
-                                <li class="nav-item"><a href="pages/customers/login.html" class="nav-link"><span class="sidenav-mini-icon">L </span><span class="sidenav-normal">Novo Cliente</span></a></li>
+                                <li class="nav-item"><a href="{{ route('alloom_user.customers.create') }}" class="nav-link"><span class="sidenav-mini-icon"> </span><span class="sidenav-normal">Novo Cliente</span></a></li>
+                                <li class="nav-item"><a href="{{ route('alloom_user.test.inProspection') }}" class="nav-link"><span class="sidenav-mini-icon"> </span><span class="sidenav-normal">Em Prospecção</span></a></li>
                             </ul>
                         </div>
                     </li>

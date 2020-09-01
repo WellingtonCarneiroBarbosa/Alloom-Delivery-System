@@ -16,10 +16,15 @@ class CreateAlloomCustomersTable extends Migration
         Schema::create('alloom_customers', function (Blueprint $table) {
             $table->integerIncrements('id');
             $table->string('name');
-            $table->string('email')->unique();
-            $table->string('cpf')->unique();
-            $table->string('phone')->unique();
+            $table->string('company_name')->unique();
+            $table->string('company_size')->nullable();
+            $table->string('email')->unique()->nullable();
+            $table->string('cpf')->unique()->nullable();
+            $table->string('phone')->unique()->nullable();
+            $table->boolean('is_tester')->default(false);
+            $table->string('status', 1)->nullable()->default(null);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

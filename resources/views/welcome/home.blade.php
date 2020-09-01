@@ -22,12 +22,14 @@
             <div class="col-12 col-lg-5">
                 <div class="card shadow-sm text-dark p-4">
                     <div class="card-body p-2">
-                        <form action="#">
+                        <form class="form-loader" action="{{ route('home.test.request') }}" method="POST">
+                            @csrf
+
                             <div class="form-group mb-4"><label class="h6 text-dark" for="full-name">Seu Nome Completo</label> <input id="full-name" name="name" type="text" class="form-control" placeholder="Ex. James Curran" required></div>
-                            <div class="form-group mb-4"><label class="h6 text-dark" for="company-name">Nome de Seu Negócio</label> <input id="company-name" name="company-name" type="text" class="form-control" placeholder="Ex. James Curran Pizzas" required></div>
+                            <div class="form-group mb-4"><label class="h6 text-dark" for="company-name">Nome de Seu Negócio</label> <input id="company-name" name="company_name" type="text" class="form-control" placeholder="Ex. James Curran Pizzas" required></div>
                             <div class="form-group mb-4"><label class="h6 text-dark" for="phone">Seu Telefone (WhatsApp)</label> <input id="phone" name="phone" type="number" class="form-control" placeholder="(xx) x xxxx-xxxx" required></div>
                             <div class="form-group mb-4"><label class="h6 text-dark" for="company-size">Tamanho da Empresa</label>
-                                <div class="position-relative"><select class="custom-select" id="company-size" required=""><option selected="" value="">Selecione uma opção</option><option value="1-5">1-5</option><option value="5-25">5-25</option><option value="25+">25+</option></select></div>
+                                <div class="position-relative"><select name="company_size" class="custom-select" id="company-size" required=""><option selected="" value="">Selecione uma opção</option><option value="1-5">1-5</option><option value="5-25">5-25</option><option value="25+">25+</option></select></div>
                             </div><button class="btn btn-primary btn-block btn-loading" type="submit">Solicitar Teste Gratuito</button></form>
                     </div>
                 </div>

@@ -1,16 +1,11 @@
 <?php
 
-namespace App;
+namespace App\Models\AlloomDelivery;
 
-use Spatie\Permission\Traits\HasRoles;
-use Illuminate\Notifications\Notifiable;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Model;
 
-class User extends Authenticatable
+class AlloomMasterCustomer extends Model
 {
-    use Notifiable, HasRoles;
-
     protected $table = "alloom_customer_users";
 
     /**
@@ -40,7 +35,7 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function getRole() {
-        return __("roles.{$this->roles[0]->guard_name}.{$this->roles[0]->name}");
+    public static function master() {
+        return static::where('is_master', true);
     }
 }

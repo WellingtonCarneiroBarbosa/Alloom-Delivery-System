@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\AlloomDelivery\Customers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\AlloomDelivery\Customers\TestRequest;
 use App\Http\Controllers\Controller;
 use App\Models\AlloomDelivery\AlloomCustomer;
 

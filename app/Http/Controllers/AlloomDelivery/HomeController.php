@@ -4,6 +4,7 @@ namespace App\Http\Controllers\AlloomDelivery;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\AlloomDelivery\AlloomCustomer;
 
 class HomeController extends Controller
 {
@@ -14,6 +15,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('alloom.home');
+        $testRequests = AlloomCustomer::testRequests()->get();
+        return view('alloom.home', [
+            'testRequests' => $testRequests,
+        ]);
     }
 }

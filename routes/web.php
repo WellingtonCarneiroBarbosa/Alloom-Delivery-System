@@ -17,9 +17,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::namespace('Home')->name('home.')->group(function () {
     Route::get('/', function () {
-        return view('home');
+        return view('welcome.home');
     })->name('index');
 
+    Route::post('/solicitar-teste', 'TestRequestController@request')->name('test.request');
 });
 
 Auth::routes();
@@ -86,6 +87,25 @@ Route::group(['guard' => 'alloom_user'], function () {
              */
             Route::namespace('Customers')->prefix('clientes')->name('customers.')->group(function (){
                 Route::get('/cadastrar', 'AlloomCustomerController@create')->name('create');
+
+                Route::prefix('master')->name('master.')->group(function () {
+                    Route::get('/', 'MasterCustomerController@index')->name('index');
+                    Route::get('/cadastrar/{customer}', 'MasterCustomerController@create')->name('create');
+
+                    Route::post('/cadastrar/{customer}', 'MasterCustomerController@store')->name('store');
+                });
+            });
+
+            /**
+             * Test Routes.
+             *
+             */
+            Route::namespace('Tests')->prefix('testes')->name('test.')->group(function () {
+                Route::get('/em-prospeccao', 'TestController@inProspectionTests')->name('inProspection');
+
+                Route::name('changeStatus.')->prefix('status')->group(function () {
+                    Route::put('/em-prospeccao/{testRequest}', 'TestController@changeStatusToInProspection')->name('inProspection');
+                });
             });
         });
     });

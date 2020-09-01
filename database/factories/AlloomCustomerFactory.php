@@ -21,8 +21,16 @@ $factory->define(AlloomCustomer::class, function (Faker $faker) {
 
     array_push($phones, $phone);
 
+    $company_size = [
+        "1-5", "5-25", "25+"
+    ];
+
+    $company_size_index = array_rand($company_size);
+
     return [
         'name' => $faker->name,
+        'company_name' => $faker->unique()->company,
+        'company_size' =>   $company_size[$company_size_index],
         'email' => $faker->unique()->email,
         'cpf' => $cpf,
         'phone' => $phone,
