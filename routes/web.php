@@ -26,6 +26,14 @@ Route::namespace('Home')->name('home.')->group(function () {
 Auth::routes();
 
 /**
+ * Alloom Customer Front Routes.
+ *
+ */
+Route::prefix('{tenant_company}')->name('tenant_company.')->group(function() {
+    Route::get('/', 'Tenant\HomeController@index')->name('index');
+});
+
+/**
  * Alloom Customer Routes.
  *
  */

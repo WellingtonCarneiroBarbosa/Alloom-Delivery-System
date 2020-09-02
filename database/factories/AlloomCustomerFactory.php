@@ -30,6 +30,7 @@ $factory->define(AlloomCustomer::class, function (Faker $faker) {
     return [
         'name' => $faker->name,
         'company_name' => $faker->unique()->company,
+        'url_prefix' =>  $faker->unique()->company,
         'company_size' =>   $company_size[$company_size_index],
         'email' => $faker->unique()->email,
         'cpf' => $cpf,

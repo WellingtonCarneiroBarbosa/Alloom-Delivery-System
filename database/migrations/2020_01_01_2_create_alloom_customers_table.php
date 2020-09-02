@@ -17,6 +17,7 @@ class CreateAlloomCustomersTable extends Migration
             $table->integerIncrements('id');
             $table->string('name');
             $table->string('company_name')->unique();
+            $table->string('url_prefix')->unique();
             $table->string('company_size')->nullable();
             $table->string('email')->unique()->nullable();
             $table->string('cpf')->unique()->nullable();
