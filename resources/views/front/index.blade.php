@@ -3,7 +3,7 @@
    <head>
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Allom Delivery</title>
+      <title>{{ $tenant->company_name }}</title>
       <!-- Vendor Stylesheets -->
       <link rel="stylesheet" href="{{asset('pizza/assets/css/plugins/bootstrap.min.css')}}">
       <link rel="stylesheet" href="{{asset('pizza/assets/css/plugins/animate.min.css')}}">
@@ -17,6 +17,7 @@
       <link rel="stylesheet" href="{{asset('pizza/assets/css/style.css')}}">
       <!-- Favicon -->
       <link rel="icon" type="image/png" sizes="32x32" href="{{asset('pizza/favicon.ico')}}">
+
    </head>
    <body>
       <!-- Preloader Start -->
@@ -371,7 +372,7 @@
                <h1>{{ $tenant->company_name }}</h1>
                <nav aria-label="breadcrumb">
                   <ol class="breadcrumb">
-                     <li class="breadcrumb-item"><a href="#">Pizzaria Alloom</a></li>
+                     <li class="breadcrumb-item"><a href="#">{{ $tenant->company_name }}</a></li>
                      <li class="breadcrumb-item active" aria-current="page">Centro</li>
                   </ol>
                </nav>
@@ -597,10 +598,13 @@
          </div>
       </footer>
       <!-- Vendor Scripts -->
+
+
       <script src="{{asset('pizza/assets/js/plugins/isotope.pkgd.min.js')}}"></script>
       <script src="{{asset('pizza/assets/js/plugins/jquery-3.4.1.min.js')}}"></script>
       <script src="{{asset('pizza/assets/js/plugins/popper.min.js')}}"></script>
       <script src="{{asset('pizza/assets/js/plugins/waypoint.js')}}"></script>
+      <script src="{{asset('pizza/assets/js/plugins/bootstrap.min.js')}}"></script>
       <script src="{{asset('pizza/assets/js/plugins/jquery.magnific-popup.min.js')}}"></script>
       <script src="{{asset('pizza/assets/js/plugins/jquery.slimScroll.min.js')}}"></script>
       <script src="{{asset('pizza/assets/js/plugins/imagesloaded.min.js')}}"></script>
