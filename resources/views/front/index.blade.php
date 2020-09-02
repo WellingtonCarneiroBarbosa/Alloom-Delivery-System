@@ -377,7 +377,7 @@
       <!-- Menu Wrapper Start -->
       <div class="section section-padding">
          <div class="container">
-
+            <h1 class="pdh1">Pizzas</h1>
             <div class="menu-container row menu-v2">
                <!-- Product Start -->
                <div class="col-lg-4 col-md-6 pizzas offers">
@@ -451,7 +451,7 @@
                </div>
                <!-- Product End -->
             </div>
-
+            <h1 class="pdh1">Bebidas</h1>
             <div class="menu-container row menu-v2">
                <!-- Product Start -->
                <div class="col-lg-4 col-md-6 beverages desserts">
@@ -488,7 +488,7 @@
                </div>
                <!-- Product End -->
             </div>
-
+            <h1 class="pdh1">Sobremesas</h1>
             <div class="menu-container row menu-v2">
                <!-- Product Start -->
                <div class="col-lg-4 col-md-6 desserts">
@@ -508,7 +508,7 @@
                </div>
                <!-- Product End -->
             </div>
-
+            <h1 class="pdh1">Acompanhamentos</h1>
             <div class="menu-container row menu-v2">
                <!-- Product Start -->
                <div class="col-lg-4 col-md-6 pasta">
