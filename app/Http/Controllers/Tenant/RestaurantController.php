@@ -12,11 +12,19 @@ class RestaurantController extends Controller
 
     public function __construct(Request $request)
     {
-        $this->tenant_restaurant = $request->route()->parameter('tenant_restaurant');
+        $this->url_tenant_company = $request->route()->parameter('tenant_company');
 
-        $this->tenant = AlloomCustomer::urlPrefix($this->tenant_company)->first();
+        $this->url_restaurant = $request->route()->parameter('tenant_restaurant');
+
+        $this->tenant = AlloomCustomer::urlPrefix($this->url_tenant_company)->first();
 
         if(! $this->tenant) {
+            abort(404);
+        }
+
+        $this->tenant_restaurant = $this->tenant->restaurants->where('name', $this->url_restaurant)->first();
+
+        if(! $this->tenant_restaurant) {
             abort(404);
         }
     }
@@ -29,7 +37,13 @@ class RestaurantController extends Controller
      */
     public function index()
     {
-        //
+        # TODO
+        # REMOVE RESTAURANTS KEY FROM JSON.......
+        # SHOW UNIQUE RESTAURANT.
+        return response()->json([
+            'restaurant' => $this->tenant_restaurant,
+            'tenant' => $this->tenant,
+        ]);
     }
 
     /**
