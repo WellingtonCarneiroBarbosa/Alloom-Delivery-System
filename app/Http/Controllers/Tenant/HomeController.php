@@ -23,10 +23,16 @@ class HomeController extends Controller {
     }
 
     public function index() {
-        $this->tenant->products;
+        if(count($this->tenant->restaurants) > 1) {
+            return view('front.chooseRestaurant', [
+                'tenant' => $this->tenant
+            ]);
+        } else {
+            $this->tenant->products;
 
-        return view('front.index', [
-            'tenant' => $this->tenant,
-        ]);
+            return view('front.index', [
+                'tenant' => $this->tenant,
+            ]);
+        }
     }
 }

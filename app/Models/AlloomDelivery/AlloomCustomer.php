@@ -5,6 +5,7 @@ namespace App\Models\AlloomDelivery;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\AlloomDelivery\AlloomCustomers\Products\Product;
+use  App\Models\AlloomCustomers\Restaurants\Restaurant;
 
 class AlloomCustomer extends Model
 {
@@ -35,5 +36,9 @@ class AlloomCustomer extends Model
 
     public function products() {
         return $this->hasMany(Product::class, 'alloom_customer_id');
+    }
+
+    public function restaurants() {
+        return $this->hasMany(Restaurant::class, 'alloom_customer_id');
     }
 }
