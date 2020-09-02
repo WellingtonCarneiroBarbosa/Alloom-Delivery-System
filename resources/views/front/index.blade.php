@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="pt-br" dir="ltr">
    <head>
@@ -379,7 +377,7 @@
       <!-- Menu Wrapper Start -->
       <div class="section section-padding">
          <div class="container">
-            <h1 class="pdh1">Pizzas</h1>
+
             <div class="menu-container row menu-v2">
                <!-- Product Start -->
                <div class="col-lg-4 col-md-6 pizzas offers">
@@ -453,7 +451,7 @@
                </div>
                <!-- Product End -->
             </div>
-            <h1 class="pdh1">Bebidas</h1>
+
             <div class="menu-container row menu-v2">
                <!-- Product Start -->
                <div class="col-lg-4 col-md-6 beverages desserts">
@@ -490,7 +488,7 @@
                </div>
                <!-- Product End -->
             </div>
-            <h1 class="pdh1">Sobremesas</h1>
+
             <div class="menu-container row menu-v2">
                <!-- Product Start -->
                <div class="col-lg-4 col-md-6 desserts">
@@ -510,7 +508,7 @@
                </div>
                <!-- Product End -->
             </div>
-            <h1 class="pdh1">Acompanhamentos</h1>
+
             <div class="menu-container row menu-v2">
                <!-- Product Start -->
                <div class="col-lg-4 col-md-6 pasta">
@@ -643,16 +641,15 @@
          </div>
       </footer>
       <!-- Vendor Scripts -->
+      <script src="{{asset('pizza/assets/js/plugins/isotope.pkgd.min.js')}}"></script>
       <script src="{{asset('pizza/assets/js/plugins/jquery-3.4.1.min.js')}}"></script>
       <script src="{{asset('pizza/assets/js/plugins/popper.min.js')}}"></script>
       <script src="{{asset('pizza/assets/js/plugins/waypoint.js')}}"></script>
-      <script src="{{asset('pizza/assets/js/plugins/bootstrap.min.js')}}"></script>
       <script src="{{asset('pizza/assets/js/plugins/jquery.magnific-popup.min.js')}}"></script>
       <script src="{{asset('pizza/assets/js/plugins/jquery.slimScroll.min.js')}}"></script>
       <script src="{{asset('pizza/assets/js/plugins/imagesloaded.min.js')}}"></script>
       <script src="{{asset('pizza/assets/js/plugins/jquery.steps.min.js')}}"></script>
       <script src="{{asset('pizza/assets/js/plugins/jquery.countdown.min.js')}}"></script>
-      <script src="{{asset('pizza/assets/js/plugins/isotope.pkgd.min.js')}}"></script>
       <script src="{{asset('pizza/assets/js/plugins/slick.min.js')}}"></script>
       <!-- Slices Scripts -->
       <script src="{{asset('pizza/assets/js/main.js')}}"></script>
