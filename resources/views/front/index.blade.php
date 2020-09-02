@@ -39,7 +39,7 @@
       <div class="modal fade" id="customizeModal" tabindex="-1" role="dialog" aria-hidden="true">
          <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
             <div class="modal-content">
-               <div class="modal-header modal-bg" style="background-image: url('pizza/assets/img/blog/11.jpg')">
+               <div class="modal-header modal-bg" style="background-image: url('{{asset('pizza/assets/img/blog/11.jpg')}})">
                   <button type="button" class="close-btn" data-dismiss="modal" aria-label="Close">
                   <span></span>
                   <span></span>
@@ -157,7 +157,7 @@
                <div class="cart-sidebar-scroll">
                   <div class="cart-sidebar-item">
                      <div class="media">
-                        <a href="menu-item-v1.html"><img src="pizza/assets/img/prods-sm/1.png" alt="product"></a>
+                        <a href="menu-item-v1.html"><img src="{{asset('pizza/assets/img/prods-sm/1.png')}}" alt="product"></a>
                         <div class="media-body">
                            <h5> <a href="menu-item-v1.html" title="Pepperoni">Pepperoni</a> </h5>
                            <span>4x 9.99$</span>
@@ -178,7 +178,7 @@
                   </div>
                   <div class="cart-sidebar-item">
                      <div class="media">
-                        <a href="menu-item-v1.html"><img src="pizza/assets/img/prods-sm/2.png" alt="product"></a>
+                        <a href="menu-item-v1.html"><img src="{{asset('pizza/assets/img/prods-sm/2.png')}}" alt="product"></a>
                         <div class="media-body">
                            <h5> <a href="menu-item-v1.html" title="Vegetarian">Vegetarian</a> </h5>
                            <span>2x 5.99$</span>
@@ -197,7 +197,7 @@
                   </div>
                   <div class="cart-sidebar-item">
                      <div class="media">
-                        <a href="menu-item-v1.html"><img src="pizza/assets/img/prods-sm/3.png" alt="product"></a>
+                        <a href="menu-item-v1.html"><img src="{{asset('pizza/assets/img/prods-sm/3.png')}}" alt="product"></a>
                         <div class="media-body">
                            <h5> <a href="menu-item-v1.html" title="Italian Jalapeno Special">Italian Jalapeno Special</a> </h5>
                            <span>1x 12.99$</span>
@@ -218,7 +218,7 @@
                   </div>
                   <div class="cart-sidebar-item">
                      <div class="media">
-                        <a href="menu-item-v1.html"><img src="pizza/assets/img/prods-sm/4.png" alt="product"></a>
+                        <a href="menu-item-v1.html"><img src="{{asset('pizza/assets/img/prods-sm/4.png')}}" alt="product"></a>
                         <div class="media-body">
                            <h5> <a href="menu-item-v1.html" title="Barbeque Chicken">Barbeque Chicken</a> </h5>
                            <span>4x 9.99$</span>
@@ -240,7 +240,7 @@
                   </div>
                   <div class="cart-sidebar-item">
                      <div class="media">
-                        <a href="menu-item-v1.html"><img src="pizza/assets/img/prods-sm/5.png" alt="product"></a>
+                        <a href="menu-item-v1.html"><img src="{{asset('pizza/assets/img/prods-sm/5.png')}}" alt="product"></a>
                         <div class="media-body">
                            <h5> <a href="menu-item-v1.html" title="Four Cheese">Four Cheese</a> </h5>
                            <span>2x 5.99$</span>
@@ -260,7 +260,7 @@
                   </div>
                   <div class="cart-sidebar-item">
                      <div class="media">
-                        <a href="menu-item-v1.html"><img src="pizza/assets/img/prods-sm/6.png" alt="product"></a>
+                        <a href="menu-item-v1.html"><img src="{{asset('pizza/assets/img/prods-sm/6.png')}}" alt="product"></a>
                         <div class="media-body">
                            <h5> <a href="menu-item-v1.html" title="Swiss Mushroom">Swiss Mushroom</a> </h5>
                            <span>1x 12.99$</span>
@@ -307,7 +307,7 @@
       <!-- Search Form End-->
       <!-- Aside (Mobile Navigation) -->
       <aside class="main-aside">
-         <a class="navbar-brand" href="index.html"> <img src="pizza/assets/img/logo.png" alt="logo"> </a>
+         <a class="navbar-brand" href="index.html"> <img src="{{asset('pizza/assets/img/logo.png')}}" alt="logo"> </a>
          <div class="aside-scroll">
             <ul>
                <li class="menu-item">
@@ -334,7 +334,7 @@
          <div class="container">
             <nav class="navbar">
                <!-- Logo -->
-               <a class="navbar-brand" href="index.html"> <img src="pizza/assets/img/logo-light.png" alt="logo"> </a>
+               <a class="navbar-brand" href="index.html"> <img src="{{asset('pizza/assets/img/logo-light.png')}}" alt="logo"> </a>
                <!-- Menu -->
                <ul class="navbar-nav">
                   <li class="menu-item">
@@ -366,7 +366,7 @@
       </header>
       <!-- Header End -->
       <!-- Subheader Start -->
-      <div class="subheader dark-overlay dark-overlay-2" style="background-image: url('pizza/assets/img/subheader.jpg')">
+      <div class="subheader dark-overlay dark-overlay-2" style="background-image: url('{{asset('pizza/assets/img/subheader.jpg')}}')">
          <div class="container">
             <div class="subheader-inner">
                <h1>{{ $tenant->company_name }}</h1>
@@ -388,7 +388,7 @@
                <!-- Product Start -->
                <div class="col-lg-4 col-md-6 pizzas offers">
                   <div class="product">
-                     <a class="product-thumb" href="menu-item-v1.html"> <img src="pizza/assets/img/prods-sm/2.png" alt="menu item" /> </a>
+                     <a class="product-thumb" href="menu-item-v1.html"> <img src="{{asset('pizza/assets/img/prods-sm/2.png')}}" alt="menu item" /> </a>
                      <div class="product-body">
                         <div class="product-desc">
                            <h4> <a href="menu-item-v1.html">Pizza Pequena </a> </h4>
@@ -405,7 +405,7 @@
                <!-- Product Start -->
                <div class="col-lg-4 col-md-6 pizzas">
                   <div class="product">
-                     <a class="product-thumb" href="menu-item-v1.html"> <img src="pizza/assets/img/prods-sm/5.png" alt="menu item" /> </a>
+                     <a class="product-thumb" href="menu-item-v1.html"> <img src="{{asset('pizza/assets/img/prods-sm/5.png')}}" alt="menu item" /> </a>
                      <div class="product-body">
                         <div class="product-desc">
                            <h4> <a href="menu-item-v1.html">Pizza Média</a> </h4>
@@ -422,7 +422,7 @@
                <!-- Product Start -->
                <div class="col-lg-4 col-md-6 pizzas">
                   <div class="product">
-                     <a class="product-thumb" href="menu-item-v1.html"> <img src="pizza/assets/img/prods-sm/3.png" alt="menu item" /> </a>
+                     <a class="product-thumb" href="menu-item-v1.html"> <img src="{{asset('pizza/assets/img/prods-sm/3.png')}}" alt="menu item" /> </a>
                      <div class="product-body">
                         <div class="product-desc">
                            <h4> <a href="menu-item-v1.html">Pizza Grande</a> </h4>
@@ -442,7 +442,7 @@
                      <div class="favorite">
                         <i class="far fa-heart"></i>
                      </div>
-                     <a class="product-thumb" href="menu-item-v1.html"> <img src="pizza/assets/img/prods-sm/3.png" alt="menu item" /> </a>
+                     <a class="product-thumb" href="menu-item-v1.html"> <img src="{{asset('pizza/assets/img/prods-sm/3.png')}}" alt="menu item" /> </a>
                      <div class="product-body">
                         <div class="product-desc">
                            <h4> <a href="menu-item-v1.html">Pizza Gigante</a> </h4>
@@ -462,7 +462,7 @@
                <!-- Product Start -->
                <div class="col-lg-4 col-md-6 beverages desserts">
                   <div class="product">
-                     <a class="product-thumb" href="menu-item-v1.html"> <img src="pizza/assets/img/prods-sm/13.png" alt="menu item" /> </a>
+                     <a class="product-thumb" href="menu-item-v1.html"> <img src="{{asset('pizza/assets/img/prods-sm/13.png')}}" alt="menu item" /> </a>
                      <div class="product-body">
                         <div class="product-desc">
                            <h4> <a href="menu-item-v1.html">Coca Cola</a> </h4>
@@ -479,7 +479,7 @@
                <!-- Product Start -->
                <div class="col-lg-4 col-md-6 beverages offers">
                   <div class="product">
-                     <a class="product-thumb" href="menu-item-v1.html"> <img src="pizza/assets/img/prods-sm/10.png" alt="menu item" /> </a>
+                     <a class="product-thumb" href="menu-item-v1.html"> <img src="{{asset('pizza/assets/img/prods-sm/10.png')}}" alt="menu item" /> </a>
                      <div class="product-body">
                         <div class="product-desc">
                            <h4> <a href="menu-item-v1.html">Cerveja</a> </h4>
@@ -499,7 +499,7 @@
                <!-- Product Start -->
                <div class="col-lg-4 col-md-6 desserts">
                   <div class="product">
-                     <a class="product-thumb" href="menu-item-v1.html"> <img src="pizza/assets/img/prods-sm/12.png" alt="menu item" /> </a>
+                     <a class="product-thumb" href="menu-item-v1.html"> <img src="{{asset('pizza/assets/img/prods-sm/12.png')}}" alt="menu item" /> </a>
                      <div class="product-body">
                         <div class="product-desc">
                            <h4> <a href="menu-item-v1.html">Chocolate Cookies</a> </h4>
@@ -519,7 +519,7 @@
                <!-- Product Start -->
                <div class="col-lg-4 col-md-6 pasta">
                   <div class="product">
-                     <a class="product-thumb" href="menu-item-v1.html"> <img src="pizza/assets/img/prods-sm/11.png" alt="menu item" /> </a>
+                     <a class="product-thumb" href="menu-item-v1.html"> <img src="{{asset('pizza/assets/img/prods-sm/11.png')}}" alt="menu item" /> </a>
                      <div class="product-body">
                         <div class="product-desc">
                            <h4> <a href="menu-item-v1.html">Sea Food Pasta</a> </h4>
@@ -536,7 +536,7 @@
                <!-- Product Start -->
                <div class="col-lg-4 col-md-6 salads sides">
                   <div class="product">
-                     <a class="product-thumb" href="menu-item-v1.html"> <img src="pizza/assets/img/prods-sm/15.png" alt="menu item" /> </a>
+                     <a class="product-thumb" href="menu-item-v1.html"> <img src="{{asset('pizza/assets/img/prods-sm/15.png')}}" alt="menu item" /> </a>
                      <div class="product-body">
                         <div class="product-desc">
                            <h4> <a href="menu-item-v1.html">Ceaser Salad</a> </h4>
@@ -553,7 +553,7 @@
                <!-- Product Start -->
                <div class="col-lg-4 col-md-6 sides">
                   <div class="product">
-                     <a class="product-thumb" href="menu-item-v1.html"> <img src="pizza/assets/img/prods-sm/14.png" alt="menu item" /> </a>
+                     <a class="product-thumb" href="menu-item-v1.html"> <img src="{{asset('pizza/assets/img/prods-sm/14.png')}}" alt="menu item" /> </a>
                      <div class="product-body">
                         <div class="product-desc">
                            <h4> <a href="menu-item-v1.html">Chicken Wrap</a> </h4>
@@ -577,7 +577,7 @@
          <div class="container">
             <div class="footer-top">
                <div class="footer-logo">
-                  <img src="pizza/assets/img/logo-light.png" alt="logo">
+                  <img src="{{asset('pizza/assets/img/logo-light.png')}}" alt="logo">
                </div>
             </div>
          </div>

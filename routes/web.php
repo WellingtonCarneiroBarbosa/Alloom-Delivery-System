@@ -31,6 +31,9 @@ Auth::routes();
  */
 Route::prefix('{tenant_company}')->name('tenant_company.')->group(function() {
     Route::get('/', 'Tenant\HomeController@index')->name('index');
+    Route::get('/carrinho', function(){
+        return view('front.cart');
+    })->name('cart');
 });
 
 
