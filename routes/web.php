@@ -65,6 +65,15 @@ Route::group(['guard' => 'alloom_customer_user'], function () {
             });
 
             /**
+             * Restaurant Routes.
+             *
+             */
+            Route::namespace('Restaurants')->prefix('restaurantes')->name('restaurants.')->group(function () {
+                Route::get('/cadastrar', 'RestaurantController@create')->name('create');
+                Route::post('/cadastrar', 'RestaurantController@store')->name('store');
+            });
+
+            /**
              * Products routes.
              *
              */

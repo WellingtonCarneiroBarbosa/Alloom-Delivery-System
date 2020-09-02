@@ -5,6 +5,7 @@ namespace App\Http\Controllers\AlloomCustomers\Restaurants;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\AlloomCustomers\Restaurants\Restaurant;
+use App\Http\Requests\AlloomCustomer\Restaurants\CreateRestaurantRequest;
 
 class RestaurantController extends Controller
 {
@@ -25,18 +26,27 @@ class RestaurantController extends Controller
      */
     public function create()
     {
-        //
+        return view('alloom_customer.restaurants.create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\AlloomCustomer\Restaurants\CreateRestaurantRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateRestaurantRequest $request)
     {
-        //
+        $data = $request->validated();
+        try {
+            Restaurant::create($data);
+
+            return redirect()->route('alloom_customer.restaurants.create')->with(['success' => "Unidade" . " " . ucfirst($data['name']) . " " . __('success.created')]);
+        } catch (\Exception $e) {
+            if(config('app.debug'))
+                throw new \Exception($e->getMessage());
+            return redirect()->route('alloom_customer.restaurants.create')->withInput($data)->with(['error' => __('exceptions.error')]);
+        }
     }
 
     /**
