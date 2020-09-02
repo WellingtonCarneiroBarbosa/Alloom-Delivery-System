@@ -42,7 +42,7 @@ class ProductController extends Controller
         $data = $request->validated();
         try {
             Product::create($data);
-            return redirect()->route('alloom_customer.products.create')->with(['success' => __('success.created')]);
+            return redirect()->route('alloom_customer.products.create')->with(['success' => ucfirst($data['name']) . " " . __('success.created')]);
         } catch (\Exception $e) {
             if(config('app.debug'))
                 throw new \Exception($e->getMessage());

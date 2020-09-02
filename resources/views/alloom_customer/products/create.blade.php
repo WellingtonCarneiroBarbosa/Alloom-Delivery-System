@@ -44,6 +44,7 @@
     <div class="col-xl-12">
         <div class="card bg-default">
             <div class="card-header bg-transparent">
+                <x-alert />
                 <div class="row align-items-center">
                     <div class="col">
                         <h6 class="text-light text-uppercase ls-1 mb-1">Cadastrar</h6>

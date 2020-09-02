@@ -2,5 +2,5 @@
 
 return [
     'status' => "Status alterado.",
-    'created' => "Cadastrado(a)",
+    'created' => "cadastrado(a)",
 ];
