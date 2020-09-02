@@ -58,14 +58,13 @@
             <div class="card-body">
                 <div class="col">
                     <div class="card shadow-sm text-dark p-4">
-                        <div class="card-body p-2">
-                            <form class="form-loader" action="{{ route('alloom_user.customers.master.create', [$alloom_customer->id]) }}" method="POST">
-                                @csrf
+                        <form class="form-loader" action="{{ route('alloom_user.customers.master.create', [$alloom_customer->id]) }}" method="POST">
+                            @csrf
 
-                                <div class="form-group mb-4"><label class="h4 text-dark" for="full-name">Nome Completo</label> <input id="full-name" name="name" type="text" class="form-control" placeholder="Ex. James Curran" value="{{ old('email') ?? $alloom_customer->name }}" required></div>
-                                <div class="form-group mb-4"><label class="h4 text-dark" for="company-name">E-mail</label> <input id="company-name" name="email" type="email" class="form-control" placeholder="Ex. jamescurrar@example.org" required></div>
-                                </div><button class="btn btn-primary btn-block btn-loading" type="submit">Cadastrar</button></form>
-                        </div>
+                            <div class="form-group mb-4"><label class="h4 text-dark" for="full-name">Nome Completo</label> <input id="full-name" name="name" type="text" class="form-control" placeholder="Ex. James Curran" value="{{ old('email') ?? $alloom_customer->name }}" required></div>
+                            <div class="form-group mb-4"><label class="h4 text-dark" for="company-name">E-mail</label> <input id="company-name" name="email" type="email" class="form-control" placeholder="Ex. jamescurrar@example.org" required></div>
+                            <button class="btn btn-primary btn-block btn-loading" type="submit">Cadastrar</button>
+                        </form>
                     </div>
                 </div>
             </div>

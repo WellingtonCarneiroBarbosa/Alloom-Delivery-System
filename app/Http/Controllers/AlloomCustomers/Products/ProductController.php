@@ -5,9 +5,12 @@ namespace App\Http\Controllers\AlloomCustomers\Products;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\AlloomCustomers\Products\Product;
+use App\Http\Requests\AlloomCustomer\Products\CreateProductRequest;
 
 class ProductController extends Controller
 {
+
+
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +18,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        Product::all();
     }
 
     /**
@@ -25,18 +28,27 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        return view('alloom_customer.products.create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\AlloomCustomer\Products\CreateProductRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateProductRequest $request)
     {
-        //
+        $data = $request->validated();
+        try {
+            Product::create($data);
+            return redirect()->route('alloom_customer.products.create')->with(['success' => __('success.created')]);
+        } catch (\Exception $e) {
+            if(config('app.debug'))
+                throw new \Exception($e->getMessage());
+
+            return redirect()->route('alloom_customer.products.create')->withInput($data)->with(['error' => __('exceptions.error')]);
+        }
     }
 
     /**

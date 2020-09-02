@@ -51,16 +51,25 @@ Route::group(['guard' => 'alloom_customer_user'], function () {
         /**
          * Dashboard Routes.
          */
-        Route::namespace('AlloomCustomers')->prefix('dash')->middleware('auth:alloom_customer_user')->group(function () {
+        Route::namespace('AlloomCustomers')->prefix('dash')->middleware(['auth:alloom_customer_user'])->group(function () {
             Route::get('/', 'HomeController@index')->name('home');
 
             Route::get('/clientes', function () {
                 return view('alloom_customer.customers.create');
             });
 
-            Route::get('/produtos', function () {
-                //dd(auth()->id());
-                return \App\Models\AlloomCustomers\Products\Product::all()->toJson();
+            Route::get('/me', function () {
+                return auth()->user();
+            });
+
+            /**
+             * Products routes.
+             *
+             */
+            Route::namespace('Products')->prefix('produtos')->name('products.')->group(function () {
+                Route::get('/', 'ProductController@index')->name('index');
+                Route::get('/cadastrar', 'ProductController@create')->name('create');
+                Route::post('/cadastrar', 'ProductController@store')->name('store');
             });
         });
     });
