@@ -30,10 +30,7 @@ Auth::routes();
  *
  */
 Route::prefix('{tenant_company}')->name('tenant_company.')->group(function() {
-    //Route::get('/', 'Tenant\HomeController@index')->name('index');
-    Route::get('/', function(){
-        return view('front.index');
-    })->name('index');
+    Route::get('/', 'Tenant\HomeController@index')->name('index');
 });
 
 

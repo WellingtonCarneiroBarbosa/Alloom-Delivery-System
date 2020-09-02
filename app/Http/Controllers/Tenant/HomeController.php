@@ -24,7 +24,8 @@ class HomeController extends Controller {
 
     public function index() {
         $this->tenant->products;
-        return response()->json([
+
+        return view('front.index', [
             'tenant' => $this->tenant,
         ]);
     }

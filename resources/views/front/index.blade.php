@@ -28,6 +28,11 @@
             </div>
          </div>
       </div>
+
+
+      @foreach($tenant->products as $product)
+        {{ $product->name }}
+      @endforeach
       <!-- Preloader End -->
       <!-- Customize Modal Start -->
       <div class="modal fade" id="customizeModal" tabindex="-1" role="dialog" aria-hidden="true">
@@ -363,7 +368,7 @@
       <div class="subheader dark-overlay dark-overlay-2" style="background-image: url('pizza/assets/img/subheader.jpg')">
          <div class="container">
             <div class="subheader-inner">
-               <h1>Pizzaria Allom</h1>
+               <h1>{{ $tenant->company_name }}</h1>
                <nav aria-label="breadcrumb">
                   <ol class="breadcrumb">
                      <li class="breadcrumb-item"><a href="#">Pizzaria Alloom</a></li>
