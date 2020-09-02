@@ -382,7 +382,7 @@
       <!-- Menu Wrapper Start -->
       <div class="section section-padding">
          <div class="container">
-
+            <h1 class="pdh1">Pizzas</h1>
             <div class="menu-container row menu-v2">
                <!-- Product Start -->
                <div class="col-lg-4 col-md-6 pizzas offers">
@@ -456,7 +456,7 @@
                </div>
                <!-- Product End -->
             </div>
-
+            <h1 class="pdh1">Bebidas</h1>
             <div class="menu-container row menu-v2">
                <!-- Product Start -->
                <div class="col-lg-4 col-md-6 beverages desserts">
@@ -493,7 +493,7 @@
                </div>
                <!-- Product End -->
             </div>
-
+            <h1 class="pdh1">Sobremesas</h1>
             <div class="menu-container row menu-v2">
                <!-- Product Start -->
                <div class="col-lg-4 col-md-6 desserts">
@@ -513,7 +513,7 @@
                </div>
                <!-- Product End -->
             </div>
-
+            <h1 class="pdh1">Acompanhamentos</h1>
             <div class="menu-container row menu-v2">
                <!-- Product Start -->
                <div class="col-lg-4 col-md-6 pasta">
@@ -580,56 +580,7 @@
                </div>
             </div>
          </div>
-         <!-- Middle Footer -->
-         <div class="footer-middle">
-            <div class="container">
-               <div class="row">
-                  <div class="col-xl-3 col-lg-3 col-md-4 col-sm-12 footer-widget">
-                     <h5 class="widget-title">Information</h5>
-                     <ul>
-                        <li> <a href="index.html">Home</a> </li>
-                        <li> <a href="blog-grid.html">Blog</a> </li>
-                        <li> <a href="about-us.html">About Us</a> </li>
-                        <li> <a href="menu-v1.html">Menu</a> </li>
-                        <li> <a href="contact-us.html">Contact Us</a> </li>
-                     </ul>
-                  </div>
-                  <div class="col-xl-3 col-lg-3 col-md-4 col-sm-12 footer-widget">
-                     <h5 class="widget-title">Top Items</h5>
-                     <ul>
-                        <li> <a href="#">Pepperoni</a> </li>
-                        <li> <a href="#">Swiss Mushroom</a> </li>
-                        <li> <a href="#">Barbeque Chicken</a> </li>
-                        <li> <a href="#">Vegetarian</a> </li>
-                        <li> <a href="#">Ham & Cheese</a> </li>
-                     </ul>
-                  </div>
-                  <div class="col-xl-3 col-lg-3 col-md-4 col-sm-12 footer-widget">
-                     <h5 class="widget-title">Others</h5>
-                     <ul>
-                        <li> <a href="checkout.html">Checkout</a> </li>
-                        <li> <a href="cart.html">Cart</a> </li>
-                        <li> <a href="menu-item-v1.html">Product</a> </li>
-                        <li> <a href="locations.html">Locations</a> </li>
-                        <li> <a href="legal.html">Legal</a> </li>
-                     </ul>
-                  </div>
-                  <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 footer-widget">
-                     <h5 class="widget-title">Social Media</h5>
-                     <ul class="social-media">
-                        <li> <a href="#" class="facebook"> <i class="fab fa-facebook-f"></i> </a> </li>
-                        <li> <a href="#" class="pinterest"> <i class="fab fa-pinterest-p"></i> </a> </li>
-                        <li> <a href="#" class="google"> <i class="fab fa-google"></i> </a> </li>
-                        <li> <a href="#" class="twitter"> <i class="fab fa-twitter"></i> </a> </li>
-                     </ul>
-                     <div class="footer-offer">
-                        <p>Signup and get exclusive offers and coupon codes</p>
-                        <a href="#" class="btn-custom btn-sm shadow-none">Sign Up</a>
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </div>
+
          <!-- Footer Bottom -->
          <div class="footer-bottom">
             <div class="container">
