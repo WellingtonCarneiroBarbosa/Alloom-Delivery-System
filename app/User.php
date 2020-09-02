@@ -6,6 +6,7 @@ use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Models\AlloomDelivery\AlloomCustomer;
 
 class User extends Authenticatable
 {
@@ -42,5 +43,9 @@ class User extends Authenticatable
 
     public function getRole() {
         return __("roles.{$this->roles[0]->guard_name}.{$this->roles[0]->name}");
+    }
+
+    public function tenant() {
+        return $this->hasOne(AlloomCustomer::class, 'id', 'alloom_customer_id');
     }
 }
