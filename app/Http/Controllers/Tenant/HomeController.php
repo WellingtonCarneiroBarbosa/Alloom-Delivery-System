@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Tenant;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\AlloomDelivery\AlloomCustomer;
+use App\Models\AlloomDelivery\AlloomCustomers\Products\Product;
 
 class HomeController extends Controller {
 
@@ -22,8 +23,8 @@ class HomeController extends Controller {
     }
 
     public function index() {
-        return [
-            $this->tenant
-        ];
+        $products = $this->tenant->products()->get();
+        return response()->json(['tenant_id' => $this->tenant->id,
+        'tenant_products' => $products]);
     }
 }

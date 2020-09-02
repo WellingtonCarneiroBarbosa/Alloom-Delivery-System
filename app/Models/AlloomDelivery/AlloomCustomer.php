@@ -4,6 +4,7 @@ namespace App\Models\AlloomDelivery;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Models\AlloomDelivery\AlloomCustomers\Products\Product;
 
 class AlloomCustomer extends Model
 {
@@ -30,6 +31,10 @@ class AlloomCustomer extends Model
 
     public static function urlPrefix($url) {
         return static::where('url_prefix', "LIKE", "%" . $url . "%");
+    }
+
+    public function products() {
+        return $this->hasMany(Product::class, 'alloom_customer_id');
     }
 
 }

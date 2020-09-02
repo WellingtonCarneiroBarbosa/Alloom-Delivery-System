@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Builder;
 
 trait MultiTenantTable {
     protected static function bootMultiTenantTable() {
-        if (auth()->check()) {
+        if (auth()->guard('alloom_customer_user')->check()) {
             static::creating(function ($model) {
                 $model->alloom_customer_id = auth()->id();
             });
