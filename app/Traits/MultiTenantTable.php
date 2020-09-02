@@ -15,9 +15,11 @@ trait MultiTenantTable {
                 $builder->where('alloom_customer_id', auth()->id());
             });
         } else {
-            if(config('app.debug'))
-                throw new \Exception("Tenant ID not found", 404);
-            abort(401, "Tenant ID not found");
+            if(app()->environment() === 'production') {
+                if(config('app.debug'))
+                    throw new \Exception("Tenant ID not found", 404);
+                abort(401, "Tenant ID not found");
+            }
         }
     }
 }

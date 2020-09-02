@@ -7,7 +7,6 @@ use App\Models\AlloomDelivery\AlloomCustomer;
 
 class Product extends Model
 {
-
     protected $table = "alloom_customer_products";
 
     protected $fillable = [

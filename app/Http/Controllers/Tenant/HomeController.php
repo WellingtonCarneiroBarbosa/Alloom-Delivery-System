@@ -23,8 +23,9 @@ class HomeController extends Controller {
     }
 
     public function index() {
-        $products = $this->tenant->products()->get();
-        return response()->json(['tenant_id' => $this->tenant->id,
-        'tenant_products' => $products]);
+        $this->tenant->products;
+        return response()->json([
+            'tenant' => $this->tenant,
+        ]);
     }
 }
