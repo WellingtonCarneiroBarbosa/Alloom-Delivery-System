@@ -31,9 +31,14 @@ Auth::routes();
  */
 Route::prefix('{tenant_company}')->name('tenant_company.')->group(function() {
     Route::get('/', 'Tenant\HomeController@index')->name('index');
+
     Route::get('/carrinho', function(){
         return view('front.cart');
     })->name('cart');
+
+
+    Route::get('{tenant_restaurant}', 'Tenant\RestaurantController@index')->name('index.restaurant');
+
 });
 
 
@@ -65,6 +70,15 @@ Route::group(['guard' => 'alloom_customer_user'], function () {
 
             Route::get('/me', function () {
                 return auth()->user();
+            });
+
+            /**
+             * Restaurant Routes.
+             *
+             */
+            Route::namespace('Restaurants')->prefix('restaurantes')->name('restaurants.')->group(function () {
+                Route::get('/cadastrar', 'RestaurantController@create')->name('create');
+                Route::post('/cadastrar', 'RestaurantController@store')->name('store');
             });
 
             /**
