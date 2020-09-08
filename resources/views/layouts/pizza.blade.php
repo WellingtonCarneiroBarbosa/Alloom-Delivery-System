@@ -16,7 +16,7 @@
         <!-- Slices Style sheet -->
         <link rel="stylesheet" href="{{asset('pizza/assets/css/style.css')}}">
         <!-- Favicon -->
-        <link rel="icon" type="image/png" sizes="32x32" href="{{asset('pizza/favicon.ico')}}">
+        <link rel="icon" type="image/png" sizes="32x32" href="{{asset('pizza/assets/img/favicon.ico')}}">
 
             <!-- Page Specific Styles -->
         <link rel="stylesheet" href="{{asset('pizza/assets/css/plugins/leaflet.css')}}">
