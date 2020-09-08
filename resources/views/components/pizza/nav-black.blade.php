@@ -189,14 +189,14 @@
     <div class="container">
        <nav class="navbar">
           <!-- Logo -->
-          <a class="navbar-brand" href="index.html"> <img src="{{asset('pizza/assets/img/logo3.png')}}" alt="logo"> </a>
+          <a class="navbar-brand" href=""> <img src="{{asset('pizza/assets/img/logo3.png')}}" alt="logo"> </a>
           <!-- Menu -->
           <ul class="navbar-nav">
              <li class="menu-item">
-                <a href="contact-us.html">Página Inicial</a>
+                <a href="">Página Inicial</a>
              </li>
              <li class="menu-item">
-                <a href="contact-us.html">Localização</a>
+                <a href="localizacao">Localização</a>
              </li>
           </ul>
           <div class="header-controls">
