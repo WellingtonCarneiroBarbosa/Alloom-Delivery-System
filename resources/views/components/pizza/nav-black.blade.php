@@ -162,7 +162,7 @@
  <!-- Search Form End-->
  <!-- Aside (Mobile Navigation) -->
  <aside class="main-aside">
-    <a class="navbar-brand" href="index.html"> <img src="{{asset('pizza/assets/img/logo.png')}}" alt="logo"> </a>
+    <a class="navbar-brand" href="index.html"> <img src="{{asset('pizza/assets/img/logo3.png')}}" alt="logo"> </a>
     <div class="aside-scroll">
        <ul>
           <li class="menu-item">
@@ -185,11 +185,11 @@
  </aside>
  <div class="aside-overlay aside-trigger"></div>
  <!-- Header Start -->
- <header class="main-header header-1 header-absolute header-light">
+ <header class="main-header header-1 header-absolute header-dark">
     <div class="container">
        <nav class="navbar">
           <!-- Logo -->
-          <a class="navbar-brand" href="index.html"> <img src="{{asset('pizza/assets/img/logo-light.png')}}" alt="logo"> </a>
+          <a class="navbar-brand" href="index.html"> <img src="{{asset('pizza/assets/img/logo3.png')}}" alt="logo"> </a>
           <!-- Menu -->
           <ul class="navbar-nav">
              <li class="menu-item">

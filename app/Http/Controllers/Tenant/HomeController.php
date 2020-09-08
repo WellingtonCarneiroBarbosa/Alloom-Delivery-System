@@ -35,4 +35,12 @@ class HomeController extends Controller {
             ]);
         }
     }
+
+    public function cart() {
+        $this->tenant->products;
+
+        return view('front.cart', [
+            'tenant' => $this->tenant,
+        ]);
+    }
 }
