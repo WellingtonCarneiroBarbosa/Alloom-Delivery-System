@@ -18,6 +18,9 @@
         <!-- Favicon -->
         <link rel="icon" type="image/png" sizes="32x32" href="{{asset('pizza/favicon.ico')}}">
 
+            <!-- Page Specific Styles -->
+        <link rel="stylesheet" href="{{asset('pizza/assets/css/plugins/leaflet.css')}}">
+
      </head>
 <body>
       <!-- Preloader Start -->
@@ -52,5 +55,10 @@
      <script src="{{asset('pizza/assets/js/plugins/slick.min.js')}}"></script>
      <!-- Slices Scripts -->
      <script src="{{asset('pizza/assets/js/main.js')}}"></script>
+         <!-- Page Specific Scripts -->
+    <script src="{{asset('pizza/assets/js/plugins/leaflet.js')}}"></script>
+    <script src="{{asset('pizza/assets/js/map.js')}}"></script>
+
+
 </body>
 </html>

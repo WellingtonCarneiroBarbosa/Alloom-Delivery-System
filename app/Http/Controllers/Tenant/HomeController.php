@@ -43,4 +43,12 @@ class HomeController extends Controller {
             'tenant' => $this->tenant,
         ]);
     }
+
+    public function location() {
+        $this->tenant->products;
+
+        return view('front.location', [
+            'tenant' => $this->tenant,
+        ]);
+    }
 }

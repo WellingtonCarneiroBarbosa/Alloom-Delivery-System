@@ -34,6 +34,8 @@ Route::prefix('{tenant_company}')->name('tenant_company.')->group(function() {
 
     Route::get('/carrinho', 'Tenant\HomeController@cart')->name('cart');
 
+    Route::get('/localizacao', 'Tenant\HomeController@location')->name('location');
+
     Route::get('{tenant_restaurant}', 'Tenant\RestaurantController@index')->name('index.restaurant');
 
 });
