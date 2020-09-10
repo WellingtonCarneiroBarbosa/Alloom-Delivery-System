@@ -51,4 +51,13 @@ class HomeController extends Controller {
             'tenant' => $this->tenant,
         ]);
     }
+
+
+    public function cookies() {
+        $this->tenant->products;
+
+        return view('front.cookies', [
+            'tenant' => $this->tenant,
+        ]);
+    }
 }
