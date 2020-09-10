@@ -2,14 +2,12 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\User;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Hash;
 use App\Providers\RouteServiceProvider;
-use App\Models\AlloomDelivery\AlloomUser;
-use Illuminate\Support\Facades\Validator;
+use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller
 {
@@ -40,44 +38,22 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest:alloom_user');
-        $this->middleware('guest:alloom_customer_user');
+        $this->middleware('guest');
     }
 
     /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function showAlloomUserRegisterForm()
-    {
-        return view('auth.register', ['url' => 'alloom']);
-    }
-
-    /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function showAlloomCustomerUserRegisterForm()
-    {
-        return view('auth.register', ['url' => 'cliente']);
-    }
-
-    /**
-     * Create a new user instance after a valid registration.
+     * Get a validator for an incoming registration request.
      *
      * @param  array  $data
-     * @return \App\Models\AlloomDelivery\AlloomUser
+     * @return \Illuminate\Contracts\Validation\Validator
      */
-    protected function createAlloomUser(Request $request)
+    protected function validator(array $data)
     {
-        $data = $request->all();
-        $this->validatorAlloomUser($data);
-
-        AlloomUser::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
+        return Validator::make($data, [
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
-
-        return redirect()->intended('alloom/login');
     }
 
     /**
@@ -86,61 +62,12 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\User
      */
-    protected function createAlloomCustomerUser(Request $request)
+    protected function create(array $data)
     {
-
-        $data = $request->all();
-        $this->validatorAlloomCustomerUser($data);
-
-        User::create([
+        return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
-
-        return redirect()->intended('cliente/login');
-    }
-
-
-    /**
-     * Get a validator for an incoming registration request.
-     *
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
-     */
-    protected function validatorAlloomUser(array $data)
-    {
-        $validator = Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:alloom_users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-        ]);
-
-        if ($validator->fails()) {
-            return redirect('alloom/register')
-                        ->withErrors($validator)
-                        ->withInput();
-        }
-    }
-
-     /**
-     * Get a validator for an incoming registration request.
-     *
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
-     */
-    protected function validatorAlloomCustomerUser(array $data)
-    {
-        $validator = Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:alloom_customer_users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-        ]);
-
-        if ($validator->fails()) {
-            return redirect('cliente/register')
-                        ->withErrors($validator)
-                        ->withInput();
-        }
     }
 }

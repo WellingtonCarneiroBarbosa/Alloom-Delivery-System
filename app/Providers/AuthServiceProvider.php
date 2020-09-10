@@ -37,7 +37,5 @@ class AuthServiceProvider extends ServiceProvider
             });
             $this->app['auth']->setDefaultDriver($routeGuard);
         });
-
-        //
     }
 }

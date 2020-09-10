@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Tenant\Restaurant;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -12,32 +13,17 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         /**
-         * Default seeders
-         */
-        $this->call(RoleSeeder::class);
-
-        /**
-         * Local database seeder
+         * Local Seeders
          */
         if(app()->environment() === "local") {
-            factory(App\Models\AlloomDelivery\AlloomCustomer::class, 2)->create();
-            //Default testing users
-            $this->call(AlloomCustomerUserSeeder::class);
-            $this->call(AlloomUserSeeder::class);
+            $this->call(UserSeeder::class);
+            $this->call(TenantSeeder::class);
+            $this->call(TenantUserSeeder::class);
 
-
-            factory(App\Models\AlloomCustomers\Products\Product::class, 10)->create();
-            factory(App\Models\AlloomCustomers\Restaurants\Restaurant::class, 2)->create();
-            factory(App\Models\AlloomCustomers\Orders\Order::class, 10)->create();
-        }/**End local database seeder */
-
-        /**
-         * Production database seeder
-         */
-        if(app()->environment() === "production") {
-
+            echo "\rFactoring Restaurants\n";
+            factory(Restaurant::class, 3)->create();
+            echo "\rRestaurants Factored\n";
         }
 
-        // $this->call(UserSeeder::class);
     }
 }

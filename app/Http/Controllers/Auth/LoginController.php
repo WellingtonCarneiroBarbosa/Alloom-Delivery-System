@@ -37,49 +37,49 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest:alloom_customer_user')->except('logout');
-        $this->middleware('guest:alloom_user')->except('logout');
+        $this->middleware('guest:web')->except('logout');
+        $this->middleware('guest:tenant')->except('logout');
     }
 
-     public function showAlloomUserLoginForm()
+     public function showUserLoginForm()
     {
         return view('auth.login', ['url' => 'alloom']);
     }
 
-    public function alloomUserLogin(Request $request)
+    public function userLogin(Request $request)
     {
         $this->validate($request, [
             'email'   => 'required|email',
             'password' => 'required|min:6'
         ]);
 
-        if (Auth::guard('alloom_user')->attempt(['email' => $request->email, 'password' => $request->password], $request->get('remember'))) {
-            return redirect()->intended('/alloom/dash');
+        if (Auth::guard('web')->attempt(['email' => $request->email, 'password' => $request->password], $request->get('remember'))) {
+            return redirect()->intended(RouteServiceProvider::HOME);
         }
         return back()->withInput($request->only('email', 'remember'))->withErrors([
-            'email' => "Email e/ou senha incorreto(s) :p"
+            'email' => __('auth.failed')
         ]);
     }
 
-     public function showAlloomCustomerUserLoginForm()
+     public function showTenantUserLoginForm()
     {
         return view('auth.login', ['url' => 'cliente']);
     }
 
-    public function alloomCustomerUserLogin(Request $request)
+    public function tenantUserLogin(Request $request)
     {
         $this->validate($request, [
             'email'   => 'required|email',
             'password' => 'required|min:6'
         ]);
 
-        if (Auth::guard('alloom_customer_user')->attempt(['email' => $request->email, 'password' => $request->password], $request->get('remember'))) {
+        if (Auth::guard('tenant')->attempt(['email' => $request->email, 'password' => $request->password], $request->get('remember'))) {
 
-            return redirect()->intended('/cliente/dash');
+            return redirect()->intended(RouteServiceProvider::TENANT_HOME);
         }
 
         return back()->withInput($request->only('email', 'remember'))->withErrors([
-            'email' => "Email e/ou senha incorreto(s) :p"
+            'email' => __('auth.failed')
         ]);
     }
 }

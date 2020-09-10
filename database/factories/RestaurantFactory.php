@@ -2,22 +2,13 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use App\Models\AlloomCustomers\Restaurants\Restaurant;
+use App\Models\Alloom\Tenant;
+use App\Models\Tenant\Restaurant;
 use Faker\Generator as Faker;
 
 $factory->define(Restaurant::class, function (Faker $faker) {
-    $opens_at = $faker->time;
-
-    do {
-        $closes_at = $faker->time;
-    } while($opens_at > $closes_at);
-
-
     return [
-        'name' => $faker->word,
-        'address' => $faker->unique()->address,
-        'opens_at' => $opens_at,
-        'closes_at' => $closes_at,
-        'alloom_customer_id' => factory(App\Models\AlloomDelivery\AlloomCustomer::class),
+        "unit_name" => $faker->unique()->company,
+        "tenant_id" => factory(Tenant::class),
     ];
 });

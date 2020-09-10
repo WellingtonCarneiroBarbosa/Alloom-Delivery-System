@@ -2,40 +2,11 @@
 
 namespace App\Exceptions;
 
-use Throwable;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Throwable;
 
 class Handler extends ExceptionHandler
 {
-    protected function unauthenticated($request, AuthenticationException $exception)
-    {
-        if ($request->expectsJson()) {
-            return response()->json(['error' => 'Unauthenticated.'], 401);
-        }
-
-        /**
-         * Checks if user is not authenticated
-         * by other guard.
-         *
-         */
-        if(Auth::guard('alloom_customer_user')->check()) {
-            return redirect()->route('alloom_customer.home');
-        } else if(Auth::guard('alloom_user')->check()) {
-            return redirect()->route('alloom_user.home');
-        }
-
-        if ($request->is('cliente/*')) {
-            return redirect()->guest('/cliente/login');
-        }
-        if ($request->is('alloom/*')) {
-            return redirect()->guest('/alloom/login');
-        }
-
-        return abort(500, "Something went wrong");
-    }
-
     /**
      * A list of the exception types that are not reported.
      *

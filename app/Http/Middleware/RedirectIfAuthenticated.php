@@ -20,16 +20,16 @@ class RedirectIfAuthenticated
     {
         if(Auth::guard($guard)->check()) {
             switch ($guard) {
-                case 'alloom_customer_user':
+                case 'web':
                     $route = RouteServiceProvider::HOME;
                     break;
 
-                case 'alloom_user':
-                    $route = RouteServiceProvider::ALLOOM_HOME;
+                case 'tenant':
+                    $route = RouteServiceProvider::TENANT_HOME;
                     break;
 
                 default:
-                    abort(422, "Guard not found");
+                    abort(401, "Guard not found");
                     break;
             }
             return redirect($route);

@@ -1,7 +1,5 @@
-
 <?php
 
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,140 +13,81 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/politica-de-cookies', 'Tenant\HomeController@cookies')->name('cookies');
-
-Route::get('/home', 'Tenant\HomeController@home')->name('home');
-
-Route::namespace('Home')->name('home.')->group(function () {
-    Route::get('/', function () {
-        return view('welcome.home');
-    })->name('index');
-
-    Route::post('/solicitar-teste', 'TestRequestController@request')->name('test.request');
+Route::get('/', function () {
+    return view('welcome');
 });
 
-Auth::routes();
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
 
 /**
- * Alloom Customer Front Routes.
+ * TenantFront Routes.
  *
  */
-Route::prefix('{tenant_company}')->name('tenant_company.')->group(function() {
-    Route::get('/', 'Tenant\HomeController@index')->name('index');
-
-    Route::get('/carrinho', 'Tenant\HomeController@cart')->name('cart');
-
-    Route::get('/localizacao', 'Tenant\HomeController@location')->name('location');
-
-    Route::get('{tenant_restaurant}', 'Tenant\RestaurantController@index')->name('index.restaurant');
-
-});
-
-
-
-/**
- * Alloom Customer Routes.
- *
- */
-Route::group(['guard' => 'alloom_customer_user'], function () {
-    Route::prefix('cliente')->name('alloom_customer.')->group(function () {
-        /**
-         * Auth Routes.
-         */
-        Route::get('/login', 'Auth\LoginController@showAlloomCustomerUserLoginForm')->name('login');
-        Route::get('/cadastro', 'Auth\RegisterController@showAlloomCustomerUserRegisterForm')->name('register');
-
-        Route::post('/login', 'Auth\LoginController@alloomCustomerUserLogin');
-        Route::post('/cadastro', 'Auth\RegisterController@createAlloomCustomerUser');
+Route::namespace('TenantFront')->prefix('estabelecimentos')->name('tenant-front.')->group(function () {
+    Route::prefix('/{tenant_url_prefix}')->group(function () {
+        Route::get('/', 'TenantFrontController@chooseUnit')->name('choose-unit');
 
         /**
-         * Dashboard Routes.
+         * Tenant Unit Routes.
+         *
          */
-        Route::namespace('AlloomCustomers')->prefix('dash')->middleware(['auth:alloom_customer_user'])->group(function () {
-            Route::get('/', 'HomeController@index')->name('home');
-
-            Route::get('/clientes', function () {
-                return view('alloom_customer.customers.create');
-            });
-
-            Route::get('/me', function () {
-                return auth()->user();
-            });
-
-            /**
-             * Restaurant Routes.
-             *
-             */
-            Route::namespace('Restaurants')->prefix('restaurantes')->name('restaurants.')->group(function () {
-                Route::get('/cadastrar', 'RestaurantController@create')->name('create');
-                Route::post('/cadastrar', 'RestaurantController@store')->name('store');
-            });
-
-            /**
-             * Products routes.
-             *
-             */
-            Route::namespace('Products')->prefix('produtos')->name('products.')->group(function () {
-                Route::get('/', 'ProductController@index')->name('index');
-                Route::get('/cadastrar', 'ProductController@create')->name('create');
-                Route::post('/cadastrar', 'ProductController@store')->name('store');
-            });
+        Route::prefix('/{restaurant_unit_name}')->name('unit.')->group(function () {
+            Route::get('/', 'TenantFrontController@index')->name('index');
         });
     });
 });
 
-
 /**
- * Alloom Delivery Routes.
+ * Tenant Management Routes.
  *
  */
-Route::group(['guard' => 'alloom_user'], function () {
-    Route::prefix('alloom')->name('alloom_user.')->group(function () {
-        /**
-         * Auth Routes.
-         */
-        Route::get('/login', 'Auth\LoginController@showAlloomUserLoginForm')->name('login');
-        Route::get('/cadastro', 'Auth\RegisterController@showAlloomUserRegisterForm')->name('register');
+Route::group(['guard' => 'tenant'], function () {
+    Route::name('tenant.')->prefix('cliente')->group(function() {
+        Route::get('/login', 'Auth\LoginController@showTenantUserLoginForm')->name('login');
+        //Route::get('/cadastro', 'Auth\RegisterController@showTenantUserRegisterForm')->name('register');
 
-        Route::post('/login', 'Auth\LoginController@alloomUserLogin');
-        Route::post('/cadastro', 'Auth\RegisterController@createAlloomUser');
+        Route::post('/login', 'Auth\LoginController@TenantUserLogin');
+        //Route::post('/cadastro', 'Auth\RegisterController@createTenantUser');
 
+        Route::namespace('Tenant')->middleware(['auth:tenant'])->prefix('dash')->group(function () {
+            Route::get('/', 'HomeController@index');
 
-        /**
-         * Dashboard Routes.
-         */
-        Route::namespace('AlloomDelivery')->prefix('dash')->middleware('auth:alloom_user')->group(function () {
-            Route::get('/', 'HomeController@index')->name('home');
+            /**RESTAURANTS MANAGEMENT */
+            Route::resource('restaurantes', 'RestaurantController', [
+                'except' => [
+                    "store", "update"
+                ],
 
-            /**
-             * Customers Routes.
-             *
-             */
-            Route::namespace('Customers')->prefix('clientes')->name('customers.')->group(function (){
-                Route::get('/cadastrar', 'AlloomCustomerController@create')->name('create');
+                'parameters' => "teste",
 
-                Route::prefix('master')->name('master.')->group(function () {
-                    Route::get('/', 'MasterCustomerController@index')->name('index');
-                    Route::get('/cadastrar/{customer}', 'MasterCustomerController@create')->name('create');
+                "prefix" => "cadastrar",
 
-                    Route::post('/cadastrar/{customer}', 'MasterCustomerController@store')->name('store');
-                });
-            });
+                "as" => "restaurants"
+            ]);
 
-            /**
-             * Test Routes.
-             *
-             */
-            Route::namespace('Tests')->prefix('testes')->name('test.')->group(function () {
-                Route::get('/em-prospeccao', 'TestController@inProspectionTests')->name('inProspection');
-
-                Route::name('changeStatus.')->prefix('status')->group(function () {
-                    Route::put('/em-prospeccao/{testRequest}', 'TestController@changeStatusToInProspection')->name('inProspection');
-                });
-            });
+            Route::post('/restaurantes', 'RestaurantController@storeRequest')->name('restaurants');
         });
     });
 });
 
 
 
+/**
+ * Alloom Routes.
+ *
+ */
+Route::group(['guard' => 'web'], function () {
+    Route::name('alloom.')->prefix('alloom')->group(function () {
+        Route::get('/login', 'Auth\LoginController@showUserLoginForm')->name('login');
+        //Route::get('/cadastro', 'Auth\RegisterController@showUserRegisterForm')->name('register');
+
+        Route::post('/login', 'Auth\LoginController@userLogin');
+        //Route::post('/cadastro', 'Auth\RegisterController@createUser');
+
+        Route::namespace('Alloom')->middleware(['auth:web'])->prefix('dash')->group(function () {
+            Route::get('/', 'HomeController@index');
+        });
+    });
+});

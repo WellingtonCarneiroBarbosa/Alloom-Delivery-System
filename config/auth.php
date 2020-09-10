@@ -14,8 +14,8 @@ return [
     */
 
     'defaults' => [
-        'guard' => 'alloom_customer_user',
-        'passwords' => 'alloom_customer_users',
+        'guard' => 'web',
+        'passwords' => 'users',
     ],
 
     /*
@@ -36,21 +36,21 @@ return [
     */
 
     'guards' => [
-        'alloom_customer_user' => [
+        'web' => [
             'driver' => 'session',
-            'provider' => 'alloom_customer_users',
+            'provider' => 'users',
         ],
 
-        'alloom_user' => [
+        'tenant' => [
             'driver' => 'session',
-            'provider' => 'alloom_users',
+            'provider' => 'tenants'
         ],
 
-        //api' => [
-        //    'driver' => 'token',
-        //    'provider' => 'users',
-        //    'hash' => false,
-        //],
+        'api' => [
+            'driver' => 'token',
+            'provider' => 'users',
+            'hash' => false,
+        ],
     ],
 
     /*
@@ -71,16 +71,16 @@ return [
     */
 
     'providers' => [
-        'alloom_customer_users' => [
+        'users' => [
             'driver' => 'eloquent',
             'model' => App\User::class,
         ],
 
-
-        'alloom_users' => [
+        'tenants' => [
             'driver' => 'eloquent',
-            'model' => App\Models\AlloomDelivery\AlloomUser::class,
+            'model' => App\TenantUser::class,
         ],
+
         // 'users' => [
         //     'driver' => 'database',
         //     'table' => 'users',
@@ -103,14 +103,15 @@ return [
     */
 
     'passwords' => [
-        'alloom_customer_users' => [
-            'provider' => 'alloom_customer_users',
+        'users' => [
+            'provider' => 'users',
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,
         ],
-        'alloom_users' => [
-            'provider' => 'alloom_users',
+
+        'tenants' => [
+            'provider' => 'tenants',
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,
