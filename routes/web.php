@@ -17,6 +17,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/politica-de-cookies', 'Tenant\HomeController@cookies')->name('cookies');
 
+Route::get('/home', 'Tenant\HomeController@home')->name('home');
+
 Route::namespace('Home')->name('home.')->group(function () {
     Route::get('/', function () {
         return view('welcome.home');
