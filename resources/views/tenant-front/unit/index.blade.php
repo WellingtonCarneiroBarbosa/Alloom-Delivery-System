@@ -14,7 +14,7 @@
                         <div class="card-body">
                             <strong>{{ $flavor->flavors->name }}</strong>
                             @if(! $unit->tenant->configurations->price_per_pizza_size)
-                            <strong>{{ $flavor->flavors->price }}</strong>
+                                <strong>{{ $flavor->flavors->price }}</strong>
                             @endif
                         </div>
                     </div>
