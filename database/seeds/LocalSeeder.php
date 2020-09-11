@@ -155,6 +155,30 @@ class LocalSeeder extends Seeder
                 "label_id" => 3,
                 "tenant_id" => 1
             ],
+
+            3 => [
+                "name" => "Calabresa",
+                "label_id" => 1,
+                "tenant_id" => 1
+            ],
+
+            4 => [
+                "name" => "Lombinho",
+                "label_id" => 1,
+                "tenant_id" => 1
+            ],
+
+            5 => [
+                "name" => "Costela",
+                "label_id" => 2,
+                "tenant_id" => 1
+            ],
+
+            6 => [
+                "name" => "Chocolate Branco",
+                "label_id" => 3,
+                "tenant_id" => 1
+            ],
         ];
         foreach ($pizza_flavors as $flavor) {
             Flavor::create($flavor);
