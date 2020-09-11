@@ -12,7 +12,7 @@
                         <div class="card-header">Categoria: <strong>{{ $flavor->flavors->label->name }}</strong></div>
 
                         <div class="card-body">
-                            <strong> {{ $flavor->flavors->name }}</strong>
+                            <strong>{{ $flavor->flavors->name }}</strong>
                         </div>
                     </div>
                 </div>
