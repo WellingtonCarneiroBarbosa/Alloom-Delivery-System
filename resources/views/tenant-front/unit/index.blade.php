@@ -13,12 +13,14 @@
 
                         <div class="card-body">
                             <strong>{{ $flavor->flavors->name }}</strong>
+                            @if(! $unit->tenant->configurations->price_per_pizza_size)
+                            <strong>{{ $flavor->flavors->price }}</strong>
+                            @endif
                         </div>
                     </div>
                 </div>
             @endforeach
         </div>
-
 
         <h1>Tamanhos Disponíveis</h1>
         <div class="row">
@@ -26,6 +28,12 @@
                 <div class="col-md-4 mb-2">
                     <div class="card">
                         <div class="card-header"><strong>{{  $size->sizes->name  }}</strong></div>
+
+                        @if($unit->tenant->configurations->price_per_pizza_size)
+                            <div class="card-body">
+                                Preço: <strong>{{ $size->sizes->price }}</strong>
+                            </div>
+                        @endif
                     </div>
                 </div>
             @endforeach

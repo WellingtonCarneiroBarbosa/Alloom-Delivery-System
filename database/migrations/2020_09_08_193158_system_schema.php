@@ -86,6 +86,18 @@ class SystemSchema extends Migration
         echo "\rMigrated tenant_users\n";
 
         /**
+         * Tenant Configurations table
+         *
+         */
+        Schema::create('tenant_configurations', function (Blueprint $table) {
+            $table->id();
+            $table->boolean('price_per_pizza_size')->default(false);
+            $table->foreignId('tenant_id')->onUpdate('cascade')->onDelete('cascade');
+            $table->timestamps();
+        });
+
+
+        /**
          * Status table
          *
          */
@@ -102,6 +114,8 @@ class SystemSchema extends Migration
         //    'name' => '',
         //    'progress' => '',
         //]);
+
+        echo "\rMigrated status\n";
     }
 
     /**

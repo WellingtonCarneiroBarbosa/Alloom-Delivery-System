@@ -7,6 +7,7 @@ use App\Models\Alloom\Tenant;
 use Illuminate\Database\Seeder;
 use App\Models\Tenant\Pizza\Size;
 use App\Models\Tenant\Pizza\Flavor;
+use App\Models\Tenant\Configuration;
 use App\Models\Tenant\Pizza\SizeAvailableOn;
 use App\Models\Tenant\Pizza\FlavorAvailableOn;
 
@@ -27,6 +28,16 @@ class LocalSeeder extends Seeder
             'url_prefix' => "pizza-do-ze"
         ]);
         echo "\rSeeded Tenant\n";
+
+        /**
+         * Set tenant configurations
+         *
+         */
+        Configuration::create([
+            "tenant_id" => 1,
+            'price_per_pizza_size' => true
+        ]);
+        echo "\rSeeded Tenant Configuration\n";
 
         /**
          * Create a new tenant user
