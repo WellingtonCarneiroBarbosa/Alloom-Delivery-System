@@ -244,7 +244,7 @@ class LocalSeeder extends Seeder
             ],
 
             6 => [
-                "pizza_flavor_id" => 3,
+                "pizza_flavor_id" => 7,
                 "restaurant_id" => 1,
                 "tenant_id" => 1
             ],
