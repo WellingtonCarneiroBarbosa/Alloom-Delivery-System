@@ -33,7 +33,11 @@ class TenantFrontController extends Controller
     }
 
     public function index() {
-        return response()->json($this->getTenantUnitOrFail());
+        $unit = $this->getTenantUnitOrFail();
+
+        dd($unit->id);
+
+        return response()->json();
     }
 
     protected function getTenantUnitOrFail() {

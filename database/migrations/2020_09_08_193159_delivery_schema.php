@@ -78,6 +78,7 @@ class DeliverySchema extends Migration
         Schema::create('pizza_flavors', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->float('price')->nullable();
             $table->foreignId('label_id')->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('tenant_id')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
@@ -106,6 +107,7 @@ class DeliverySchema extends Migration
         Schema::create('pizza_sizes', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->float('price')->nullable();
             $table->foreignId('tenant_id')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });

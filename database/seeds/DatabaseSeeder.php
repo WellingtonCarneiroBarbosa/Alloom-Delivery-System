@@ -16,13 +16,11 @@ class DatabaseSeeder extends Seeder
          * Local Seeders
          */
         if(app()->environment() === "local") {
-            $this->call(UserSeeder::class);
-            $this->call(TenantSeeder::class);
-            $this->call(TenantUserSeeder::class);
-
-            echo "\rFactoring Restaurants\n";
+            echo "\rFactoring Restaurants...\n";
             factory(Restaurant::class, 3)->create();
             echo "\rRestaurants Factored\n";
+
+            $this->call(LocalSeeder::class);
         }
 
     }
