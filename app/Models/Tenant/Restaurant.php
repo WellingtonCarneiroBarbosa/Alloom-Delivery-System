@@ -3,6 +3,8 @@
 namespace App\Models\Tenant;
 
 use App\Models\Alloom\Tenant;
+use App\Models\Tenant\Pizza\FlavorAvailableOn;
+use App\Models\Tenant\Pizza\SizeAvailableOn;
 use App\Traits\MultiTenantTable;
 use Illuminate\Database\Eloquent\Model;
 
@@ -41,6 +43,14 @@ class Restaurant extends Model
     }
 
     public function tenant() {
-        $this->belongsTo(Tenant::class);
+        return $this->belongsTo(Tenant::class);
+    }
+
+    public function pizzaFlavors() {
+        return $this->hasMany(FlavorAvailableOn::class);
+    }
+
+    public function pizzaSizes() {
+        return $this->hasMany(SizeAvailableOn::class);
     }
 }

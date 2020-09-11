@@ -35,9 +35,11 @@ class TenantFrontController extends Controller
     public function index() {
         $unit = $this->getTenantUnitOrFail();
 
-        dd($unit->id);
-
-        return response()->json();
+        return view('tenant-front.unit.index', [
+            "unit" => $unit,
+            "unit_flavors" => $unit->pizzaFlavors,
+            "unit_sizes" => $unit->pizzaSizes,
+        ]);
     }
 
     protected function getTenantUnitOrFail() {
