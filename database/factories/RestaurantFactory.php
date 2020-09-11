@@ -8,7 +8,8 @@ use Faker\Generator as Faker;
 
 $factory->define(Restaurant::class, function (Faker $faker) {
     return [
-        "unit_name" => $faker->unique()->company,
-        "tenant_id" => factory(Tenant::class),
+        "unit_name" => $faker->company,
+        "unit_url_prefix" => strtolower($faker->unique()->city),
+        "tenant_id" => 1,
     ];
 });

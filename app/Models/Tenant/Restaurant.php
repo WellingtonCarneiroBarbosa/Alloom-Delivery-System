@@ -29,11 +29,15 @@ class Restaurant extends Model
     use MultiTenantTable;
 
     protected $fillable = [
-        "unit_name", "tenant_id"
+        "unit_name", "unit_url_prefix", "tenant_id"
     ];
 
-    public static function getUnitByNameOrFail($unit_name)  {
-        return static::where('unit_name', $unit_name)->firstOrFail();
+    public static function getUnitByUrlPrefixOrFail($unit_url_prefix)  {
+        return static::where('unit_url_prefix', $unit_url_prefix)->firstOrFail();
+    }
+
+    public function setUnitUrlPrefixAttribute($url) {
+        $this->attributes['unit_url_prefix'] = utf8_encode(strtolower(preg_replace('/[^A-Za-z0-9\-]/', '', str_replace(" ", "-", $url))));
     }
 
     public function tenant() {

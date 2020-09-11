@@ -20,6 +20,7 @@ class DeliverySchema extends Migration
         Schema::create('restaurants', function (Blueprint $table) {
             $table->id();
             $table->string('unit_name');
+            $table->string('unit_url_prefix');
             $table->foreignId('tenant_id')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });

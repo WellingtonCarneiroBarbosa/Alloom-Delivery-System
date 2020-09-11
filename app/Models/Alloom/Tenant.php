@@ -27,7 +27,7 @@ class Tenant extends Model
     ];
 
     public function setUrlPrefixAttribute($url) {
-        $this->attributes['url_prefix'] = utf8_encode(strtolower(str_replace(" ", "-", $url)));
+        $this->attributes['url_prefix'] = utf8_encode(strtolower(preg_replace('/[^A-Za-z0-9\-]/', '', str_replace(" ", "-", $url))));
     }
 
     public static function getTenantByUrlPrefixOrFail($tenant_url_prefix) {

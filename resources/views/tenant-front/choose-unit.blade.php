@@ -10,7 +10,7 @@
                     <div class="card-header">Unidade: <strong>{{ $restaurant->unit_name }}</strong></div>
 
                     <div class="card-body">
-                        <a href="{{ route('tenant-front.unit.index', [$tenant->url_prefix, $restaurant->unit_name]) }}">
+                        <a href="{{ route('tenant-front.unit.index', [$tenant->url_prefix, $restaurant->unit_url_prefix]) }}">
                             <button class="btn btn-primary">Escolher</button>
                         </a>
                     </div>

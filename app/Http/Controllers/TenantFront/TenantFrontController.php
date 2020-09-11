@@ -37,6 +37,6 @@ class TenantFrontController extends Controller
     }
 
     protected function getTenantUnitOrFail() {
-        return $this->tenant->restaurants()->where('unit_name', Route::current()->restaurant_unit_name)->firstOrFail();
+        return $this->tenant->restaurants()->where('unit_url_prefix', Route::current()->unit_url_prefix)->firstOrFail();
     }
 }

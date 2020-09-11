@@ -33,7 +33,7 @@ Route::namespace('TenantFront')->prefix('estabelecimentos')->name('tenant-front.
          * Tenant Unit Routes.
          *
          */
-        Route::prefix('/{restaurant_unit_name}')->name('unit.')->group(function () {
+        Route::prefix('/{unit_url_prefix}')->name('unit.')->group(function () {
             Route::get('/', 'TenantFrontController@index')->name('index');
         });
     });
