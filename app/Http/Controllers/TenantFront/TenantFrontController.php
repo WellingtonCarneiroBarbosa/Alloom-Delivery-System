@@ -22,9 +22,6 @@ class TenantFrontController extends Controller
                 "tenant" => $this->tenant
             ]);
         } catch (Exception $e) {
-            if(Illuminate\Database\Eloquent\ModelNotFoundException::class instanceof $e)
-                abort(404);
-
             if(config('app.debug'))
                 throw new Exception($e->getMessage());
 
