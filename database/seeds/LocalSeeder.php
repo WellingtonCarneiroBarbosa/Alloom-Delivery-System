@@ -207,6 +207,30 @@ class LocalSeeder extends Seeder
                 "restaurant_id" => 1,
                 "tenant_id" => 1
             ],
+
+            3 => [
+                "pizza_flavor_id" => 4,
+                "restaurant_id" => 1,
+                "tenant_id" => 1
+            ],
+
+            4 => [
+                "pizza_flavor_id" => 5,
+                "restaurant_id" => 1,
+                "tenant_id" => 1
+            ],
+
+            5 => [
+                "pizza_flavor_id" => 6,
+                "restaurant_id" => 1,
+                "tenant_id" => 1
+            ],
+
+            6 => [
+                "pizza_flavor_id" => 3,
+                "restaurant_id" => 1,
+                "tenant_id" => 1
+            ],
         ];
         foreach ($pizza_flavors_available_on as $pizza_flavor_available_on) {
             FlavorAvailableOn::create($pizza_flavor_available_on);
