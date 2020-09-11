@@ -17,6 +17,6 @@ class Size extends Model
     ];
 
     public function sizeAvailableOn() {
-        return $this->hasMany(SizeAvailableOn::class);
+        return $this->belongsTo(SizeAvailableOn::class);
     }
 }

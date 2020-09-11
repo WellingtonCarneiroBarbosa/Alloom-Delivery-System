@@ -17,6 +17,6 @@ class SizeAvailableOn extends Model
     ];
 
     public function sizes() {
-        return $this->belongsTo(Size::class);
+        return $this->hasOne(Size::class, 'id', 'pizza_size_id');
     }
 }

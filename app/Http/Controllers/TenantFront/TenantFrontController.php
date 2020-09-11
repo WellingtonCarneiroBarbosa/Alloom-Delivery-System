@@ -34,11 +34,11 @@ class TenantFrontController extends Controller
 
     public function index() {
         $unit = $this->getTenantUnitOrFail();
+        $unit->pizzaFlavors;
+        $unit->pizzaSizes;
 
         return view('tenant-front.unit.index', [
             "unit" => $unit,
-            "unit_flavors" => $unit->pizzaFlavors,
-            "unit_sizes" => $unit->pizzaSizes,
         ]);
     }
 
