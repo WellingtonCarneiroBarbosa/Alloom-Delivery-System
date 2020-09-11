@@ -69,18 +69,24 @@ class LocalSeeder extends Seeder
         $pizza_sizes = [
             0 => [
                 "name" => "Pequena",
+                "max_flavors" => 1,
+                "pieces" => 4,
                 "tenant_id" => 1,
                 "price" => "25.99"
             ],
 
             1 => [
                 "name" => "Média",
+                "max_flavors" => 2,
+                "pieces" => 8,
                 "tenant_id" => 1,
                 "price" => "45.44"
             ],
 
             2 => [
                 "name" => "Grande",
+                "max_flavors" => 3,
+                "pieces" => 12,
                 "tenant_id" => 1,
                 "price" => "55.80"
             ]

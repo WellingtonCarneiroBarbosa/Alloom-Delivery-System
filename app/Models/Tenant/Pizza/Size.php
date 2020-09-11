@@ -13,7 +13,7 @@ class Size extends Model
     protected $table = "pizza_sizes";
 
     protected $fillable = [
-        "name", "tenant_id"
+        "name", "max_flavors", "pieces", "tenant_id"
     ];
 
     public function sizeAvailableOn() {
