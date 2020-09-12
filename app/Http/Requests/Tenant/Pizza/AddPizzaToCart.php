@@ -27,7 +27,8 @@ class AddPizzaToCart extends FormRequest
         return [
             "unit_id" => ['required', 'exists:restaurants,id'],
             "pizza_size_id" => ['required', 'exists:pizza_sizes,id'],
-            "pizza_flavors" => ['required', 'array', new AddPizzaToCartRule($this->get("pizza_size_id"))]
+            "pizza_flavors" => ['required', 'array', new AddPizzaToCartRule($this->get("pizza_size_id"))],
+            "pizza_order_qty" => ['required']
         ];
     }
 }

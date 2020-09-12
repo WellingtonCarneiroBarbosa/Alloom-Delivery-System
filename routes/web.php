@@ -36,11 +36,15 @@ Route::namespace('TenantFront')->prefix('estabelecimentos')->name('tenant-front.
         Route::prefix('/{unit_url_prefix}')->name('unit.')->group(function () {
             Route::get('/', 'TenantFrontController@index')->name('index');
 
-            Route::get('/visualizar-carrinho', "TenantFrontController@viewCart")->name('view-cart');
+            Route::get('/visualizar-carrinho-de-pizzas', "TenantFrontController@viewPizzaCart")->name('view-pizza-cart');
 
-            Route::get('/deletar-carrinho', "TenantFrontController@deleteCart")->name('delete-cart');
+            Route::get('/deletar-carrinho-de-pizza', "TenantFrontController@deletePizzaCart")->name('delete-pizza-cart');
 
             Route::post("/adicionar-pizza-ao-carrinho", "TenantFrontController@addPizzaToCart")->name('add-pizza-to-cart');
+
+            Route::prefix('/pedir')->name("order.")->group(function () {
+                Route::get('/detalhes-do-remetente', "TenantFrontController@viewAddBillingData")->name('view.add-billing-data');
+            });
         });
     });
 });

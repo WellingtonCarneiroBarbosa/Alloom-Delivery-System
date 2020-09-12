@@ -3,7 +3,7 @@
 namespace App\Carts;
 
 class PizzaCartPricePerSize {
-    public $pizzas = null;
+    public $pizzas = [];
     public $totalQty = 0;
     public $totalPrice = 0;
     public $unit_id;
@@ -18,26 +18,30 @@ class PizzaCartPricePerSize {
         }
     }
 
-    public function add($pizza_size, $flavors, $pizza_size_id, $unit_id) {
+    public function add($pizza_size, $flavors, $pizza_order_qty, $unit_id) {
 
         $storedPizzaSize = [
-            "qty" => 0,
-            "price" => $pizza_size->price,
+            "qty" => $pizza_order_qty,
+            "unit_price" => $pizza_size->price,
+            "total_price" => 0,
             "pizza_size" => $pizza_size,
             "pizza_flavors" => $flavors,
         ];
 
-        if ($this->pizzas) {
+
+        /**
+         * if ($this->pizzas) {
             if(array_key_exists($pizza_size_id, $this->pizzas)) {
                 $storedPizzaSize = $this->pizzas[$pizza_size_id];
             }
         }
+         */
 
-        $storedPizzaSize["qty"]++;
-        $storedPizzaSize["price"] = $pizza_size->price * $storedPizzaSize["qty"];
-        $this->pizzas[$pizza_size_id] = $storedPizzaSize;
-        $this->totalQty++;
-        $this->totalPrice += $pizza_size->price;
+        $storedPizzaSize["total_price"] = $pizza_size->price * $storedPizzaSize["qty"];
+        array_push($this->pizzas, $storedPizzaSize);
+        //$this->pizzas[] = $storedPizzaSize;
+        $this->totalQty += $storedPizzaSize["qty"];
+        $this->totalPrice += $storedPizzaSize["total_price"];
         $this->unit_id = $unit_id;
     }
 }

@@ -52,7 +52,7 @@ class TenantFrontController extends Controller
 
         $flavors = Flavor::whereIn('id', $data["pizza_flavors"])->get();
 
-        $cart->add($pizzaSize, $flavors, $data["pizza_size_id"], $data["unit_id"]);
+        $cart->add($pizzaSize, $flavors, $data["pizza_order_qty"], $data["unit_id"]);
 
         $request->session()->put('pizza_cart', $cart);
 
@@ -61,16 +61,22 @@ class TenantFrontController extends Controller
         ]);
     }
 
-    public function viewCart() {
+    public function viewPizzaCart() {
         return view("tenant-front.unit.view-cart", [
-            "unit" => ""
-        ])->with(["cart" => Session::has('pizza_cart') ? Session::get('pizza_cart') : null]);
+            "unit" => $this->getTenantUnitOrFail()
+        ]);
     }
 
-    public function deleteCart(Request $request) {
+    public function deletePizzaCart(Request $request) {
         $request->session()->flush("pizza_cart");
 
         return redirect()->route('tenant-front.unit.index', [$this->tenant->url_prefix, $this->getTenantUnitOrFail()->unit_url_prefix]);
+    }
+
+    public function viewAddBillingData() {
+        return view("tenant-front.unit.order.add-billing-data", [
+            "unit" => $this->getTenantUnitOrFail()
+        ]);
     }
 
     protected function getTenantUnitOrFail() {

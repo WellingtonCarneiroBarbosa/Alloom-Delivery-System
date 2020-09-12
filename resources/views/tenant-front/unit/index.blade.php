@@ -7,7 +7,14 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header">Adicionar Pizza ao Carrinho</div>
+                    <div class="card-header">
+                        Adicionar Pizza ao Carrinho
+                        <div class="float-right">
+                            <a href="{{ route("tenant-front.unit.view-pizza-cart", [$unit->tenant->url_prefix, $unit->unit_url_prefix]) }}">
+                                Visualizar Carrinho
+                            </a>
+                        </div>
+                    </div>
 
                     <div class="card-body">
                         @if ($errors->any())
@@ -16,6 +23,14 @@
                                     @foreach ($errors->all() as $error)
                                         <li>{{ $error }}</li>
                                     @endforeach
+                                </ul>
+                            </div>
+                        @endif
+
+                        @if (session("success"))
+                            <div class="alert alert-success">
+                                <ul>
+                                    <li>{{ session("success") }}</li>
                                 </ul>
                             </div>
                         @endif
@@ -56,6 +71,11 @@
                             @endforeach
 
                             <br>
+                            <hr>
+
+                            <label for="pizza_order_qty">Quantidade</label>
+                            <input type="number" name="pizza_order_qty" id="pizza_order_qty" value="1">
+
                             <hr>
                             <button type="submit" class="btn btn-primary">Adicionar ao Carrinho</button>
                         </form>
