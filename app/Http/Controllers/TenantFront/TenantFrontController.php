@@ -11,6 +11,7 @@ use App\Models\Tenant\Pizza\Flavor;
 use App\Carts\PizzaCartPricePerSize;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
+use App\Http\Requests\Tenant\Order\AddBilingData;
 use App\Http\Requests\Tenant\Pizza\AddPizzaToCart;
 
 class TenantFrontController extends Controller
@@ -74,6 +75,14 @@ class TenantFrontController extends Controller
     }
 
     public function viewAddBillingData() {
+        return view("tenant-front.unit.order.add-billing-data", [
+            "unit" => $this->getTenantUnitOrFail()
+        ]);
+    }
+
+    public function addBillingDataAndMakeOrder(AddBilingData $request) {
+        dd($request->all());
+
         return view("tenant-front.unit.order.add-billing-data", [
             "unit" => $this->getTenantUnitOrFail()
         ]);

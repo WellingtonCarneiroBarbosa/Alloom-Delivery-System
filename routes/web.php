@@ -44,6 +44,9 @@ Route::namespace('TenantFront')->prefix('estabelecimentos')->name('tenant-front.
 
             Route::prefix('/pedir')->name("order.")->group(function () {
                 Route::get('/detalhes-do-remetente', "TenantFrontController@viewAddBillingData")->name('view.add-billing-data');
+
+                Route::post("/", "TenantFrontController@addBillingDataAndMakeOrder")->name("add-billing-data-and-make-order");
+
             });
         });
     });
