@@ -2,13 +2,16 @@
 
 namespace App\Http\Controllers\TenantFront;
 
-use Exception;
-use App\Models\Alloom\Tenant;
-use App\Http\Controllers\Controller;
-use App\Http\Requests\Tenant\Pizza\AddPizzaToCart;
-use App\Carts\PizzaCart;
-use Illuminate\Support\Facades\Route;
 use Session;
+use Exception;
+use Illuminate\Http\Request;
+use App\Models\Alloom\Tenant;
+use App\Models\Tenant\Pizza\Size;
+use App\Models\Tenant\Pizza\Flavor;
+use App\Carts\PizzaCartPricePerSize;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Route;
+use App\Http\Requests\Tenant\Pizza\AddPizzaToCart;
 
 class TenantFrontController extends Controller
 {
@@ -43,11 +46,31 @@ class TenantFrontController extends Controller
 
         $oldcart = Session::has('pizza_cart') ? Session::get('pizza_cart') : null;
 
-        $cart = new PizzaCart($oldcart);
+        $cart = new PizzaCartPricePerSize($oldcart);
 
-        $cart->add($data, $data["pizza_size_id"]);
+        $pizzaSize = Size::find($data["pizza_size_id"]);
 
-        dd($cart);
+        $flavors = Flavor::whereIn('id', $data["pizza_flavors"])->get();
+
+        $cart->add($pizzaSize, $flavors, $data["pizza_size_id"], $data["unit_id"]);
+
+        $request->session()->put('pizza_cart', $cart);
+
+        return redirect()->back()->with([
+            "success" => "Pizza adicionada ao carrinho"
+        ]);
+    }
+
+    public function viewCart() {
+        return view("tenant-front.unit.view-cart", [
+            "unit" => ""
+        ])->with(["cart" => Session::has('pizza_cart') ? Session::get('pizza_cart') : null]);
+    }
+
+    public function deleteCart(Request $request) {
+        $request->session()->flush("pizza_cart");
+
+        return redirect()->route('tenant-front.unit.index', [$this->tenant->url_prefix, $this->getTenantUnitOrFail()->unit_url_prefix]);
     }
 
     protected function getTenantUnitOrFail() {
