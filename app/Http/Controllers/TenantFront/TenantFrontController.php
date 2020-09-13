@@ -13,6 +13,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
 use App\Http\Requests\Tenant\Order\AddBilingData;
 use App\Http\Requests\Tenant\Pizza\AddPizzaToCart;
+use App\Models\Tenant\Order\Billing;
+use App\Models\Tenant\Order\Pizza;
 
 class TenantFrontController extends Controller
 {
@@ -81,11 +83,51 @@ class TenantFrontController extends Controller
     }
 
     public function addBillingDataAndMakeOrder(AddBilingData $request) {
-        dd($request->all());
+        try {
+            $data = $request->validated();
+            $pizzaCart = $request->session()->get("pizza_cart");
 
-        return view("tenant-front.unit.order.add-billing-data", [
-            "unit" => $this->getTenantUnitOrFail()
-        ]);
+            //[TODO]
+            //Add also prices from other carts
+            $data["sub_total"] = $pizzaCart->totalPrice;
+
+            $data["tenant_id"] = $this->tenant->id;
+            $data["restaurant_id"] = $this->getTenantUnitOrFail()->id;
+
+            $billing = Billing::create($data);
+            $pizzas = [];
+            foreach($pizzaCart->pizzas as $pizza) {
+
+                $flavors = array();
+
+                foreach($pizza["pizza_flavors"] as $flavor) {
+                    $flavors[] = $flavor->id;
+                }
+
+                $pizzaTemp = [
+                    "order_id" => $billing->id,
+                    "pizza_size_id" => $pizza["pizza_size"]->id,
+                    "qty" => $pizza["qty"],
+                    "flavors" => $flavors,
+                    "unit_price" => $pizza["unit_price"],
+                    "total_price" => $pizza["total_price"],
+                ];
+
+                array_push($pizzas, Pizza::create($pizzaTemp));
+            }
+
+
+            return response()->json([
+                $billing, $pizzas, "message" => "Created successfully"
+            ]);
+        } catch (Exception $e) {
+            if(config('app.debug'))
+                throw new Exception($e->getMessage());
+
+            return redirect()->back()->with([
+                "error" => "Não foi possível salvar seu pedido. Tente novamente"
+            ]);
+        }
     }
 
     protected function getTenantUnitOrFail() {

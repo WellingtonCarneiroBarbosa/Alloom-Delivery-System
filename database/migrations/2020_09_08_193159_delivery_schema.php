@@ -190,8 +190,9 @@ class DeliverySchema extends Migration
             $table->boolean('pick_up_at_the_counter')->default(false);
             $table->foreignId('status_id')->nullable()->onUpdate('cascade')->onDelete('set null');
             $table->float('delivery_fee')->nullable();
-            $table->float('total');
+            $table->float('sub_total');
             $table->foreignId('restaurant_id')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId("tenant_id")->onUpdate("cascade")->onDelete("cascade");
             $table->timestamps();
         });
 
@@ -217,9 +218,13 @@ class DeliverySchema extends Migration
          */
         Schema::create('order_pizzas', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->foreignId("pizza_size_id")->onUpdate("cascade")->onDelete('cascade');
+            //$table->foreingId("pizza_border_id")->onUpdate("cascade")->onDelete("cascade");
+            $table->string("flavors");
+            $table->float("unit_price");
+            $table->float("total_price");
+            $table->string("qty")->default(1);
             $table->foreignId('order_id')->onUpdate('cascade')->onDelete('cascade');
-            $table->foreignId('tenant_id')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
 
