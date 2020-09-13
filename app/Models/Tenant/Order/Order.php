@@ -5,7 +5,7 @@ namespace App\Models\Tenant\Order;
 use App\Traits\MultiTenantTable;
 use Illuminate\Database\Eloquent\Model;
 
-class Billing extends Model
+class Order extends Model
 {
     use MultiTenantTable;
 

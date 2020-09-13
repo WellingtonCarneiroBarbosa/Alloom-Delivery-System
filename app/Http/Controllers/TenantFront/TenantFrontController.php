@@ -13,7 +13,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
 use App\Http\Requests\Tenant\Order\AddBilingData;
 use App\Http\Requests\Tenant\Pizza\AddPizzaToCart;
-use App\Models\Tenant\Order\Billing;
+use App\Models\Tenant\Order\Order;
 use App\Models\Tenant\Order\Pizza;
 
 class TenantFrontController extends Controller
@@ -84,17 +84,26 @@ class TenantFrontController extends Controller
 
     public function addBillingDataAndMakeOrder(AddBilingData $request) {
         try {
-            $data = $request->validated();
+            $order = $request->validated();
             $pizzaCart = $request->session()->get("pizza_cart");
 
             //[TODO]
             //Add also prices from other carts
-            $data["sub_total"] = $pizzaCart->totalPrice;
 
-            $data["tenant_id"] = $this->tenant->id;
-            $data["restaurant_id"] = $this->getTenantUnitOrFail()->id;
+            /**
+             * Add order and billing data
+             * to database
+             *
+             */
+            $order["sub_total"] = $pizzaCart->totalPrice;
+            $order["tenant_id"] = $this->tenant->id;
+            $order["restaurant_id"] = $this->getTenantUnitOrFail()->id;
+            $order = Order::create($order);
 
-            $billing = Billing::create($data);
+            /**
+             * Add pizzas to database
+             *
+             */
             $pizzas = [];
             foreach($pizzaCart->pizzas as $pizza) {
 
@@ -105,7 +114,7 @@ class TenantFrontController extends Controller
                 }
 
                 $pizzaTemp = [
-                    "order_id" => $billing->id,
+                    "order_id" => $order->id,
                     "pizza_size_id" => $pizza["pizza_size"]->id,
                     "qty" => $pizza["qty"],
                     "flavors" => $flavors,
@@ -118,7 +127,7 @@ class TenantFrontController extends Controller
 
 
             return response()->json([
-                $billing, $pizzas, "message" => "Created successfully"
+                $order, $pizzas, "message" => "Created successfully"
             ]);
         } catch (Exception $e) {
             if(config('app.debug'))
