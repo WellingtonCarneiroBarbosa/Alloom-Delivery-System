@@ -16,7 +16,7 @@
 <div class="banner banner-2">
   <div class="banner-slider-2">
     <div class="banner-item">
-      <div class="banner-bg bg-cover" style="background-image: url('{{asset('pizza/assets/img/banner/1.jpg')}}')"></div>
+      <div class="banner-bg bg-cover" style="background-image: url('{{asset('pizza-slices/assets/img/banner/1.jpg')}}')"></div>
       <div class="banner-inner">
         <div class="banner-text">
           <h1 class="title">Crie Sua Presença Digital</h1>
@@ -27,7 +27,7 @@
         </div>
         <a href="#" class="btn-custom primary">Saiba Mais</a>
       </div>
-      <!--<img src="{{asset('pizza/assets/img/veg/12.png')}}" alt="bg">-->
+      <!--<img src="{{asset('pizza-slices/assets/img/veg/12.png')}}" alt="bg">-->
     </div>
   </div>
 </div>
@@ -91,7 +91,7 @@
     <div class="row align-items-center">
 
       <div class="col-lg-6 mb-lg-30">
-        <img src="{{asset('pizza/assets/img/misc/cta2.png')}}" alt="img">
+        <img src="{{asset('pizza-slices/assets/img/misc/cta2.png')}}" alt="img">
       </div>
       <div class="col-lg-6">
         <div class="banner-inner">
@@ -126,7 +126,7 @@
         </div>
       </div>
       <div class="col-lg-6 mb-lg-30">
-        <img src="{{asset('pizza/assets/img/misc/cta2.png')}}" alt="img">
+        <img src="{{asset('pizza-slices/assets/img/misc/cta2.png')}}" alt="img">
       </div>
 
 
@@ -151,7 +151,7 @@
       <div class="ct-testimonial-slider-item">
         <div class="ct-testimonial-item">
           <div class="ct-testimonial-thumb">
-            <img src="{{asset('pizza/assets/img/people/1.jpg')}}" alt="person">
+            <img src="{{asset('pizza-slices/assets/img/people/1.jpg')}}" alt="person">
           </div>
           <div class="ct-testimonial-content">
             <i class="flaticon-left-quote"></i>
@@ -169,7 +169,7 @@
       <div class="ct-testimonial-slider-item">
         <div class="ct-testimonial-item">
           <div class="ct-testimonial-thumb">
-            <img src="{{asset('pizza/assets/img/people/2.jpg')}}" alt="person">
+            <img src="{{asset('pizza-slices/assets/img/people/2.jpg')}}" alt="person">
           </div>
           <div class="ct-testimonial-content">
             <i class="flaticon-left-quote"></i>
@@ -187,7 +187,7 @@
       <div class="ct-testimonial-slider-item">
         <div class="ct-testimonial-item">
           <div class="ct-testimonial-thumb">
-            <img src="{{asset('pizza/assets/img/people/3.jpg')}}" alt="person">
+            <img src="{{asset('pizza-slices/assets/img/people/3.jpg')}}" alt="person">
           </div>
           <div class="ct-testimonial-content">
             <i class="flaticon-left-quote"></i>
@@ -205,7 +205,7 @@
       <div class="ct-testimonial-slider-item">
         <div class="ct-testimonial-item">
           <div class="ct-testimonial-thumb">
-            <img src="{{asset('pizza/assets/img/people/4.jpg')}}" alt="person">
+            <img src="{{asset('pizza-slices/assets/img/people/4.jpg')}}" alt="person">
           </div>
           <div class="ct-testimonial-content">
             <i class="flaticon-left-quote"></i>
@@ -231,7 +231,7 @@
 <!-- Testimonials End -->
 
 <!-- Newsletter start -->
-<section class="section bg-center bg-cover dark-overlay" style="background-image:url('{{asset('pizza/assets/img/bg/1.jpg')}}')">
+<section class="section bg-center bg-cover dark-overlay" style="background-image:url('{{asset('pizza-slices/assets/img/bg/1.jpg')}}')">
   <div class="container">
 
     <div class="ct-newsletter">

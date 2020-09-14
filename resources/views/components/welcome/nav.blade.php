@@ -1,6 +1,6 @@
   <!-- Aside (Mobile Navigation) -->
   <aside class="main-aside">
-    <a class="navbar-brand" href="index.html"> <img src="{{asset('pizza/assets/img/logo.png')}}" alt="logo"> </a>
+    <a class="navbar-brand" href="index.html"> <img src="{{asset('pizza-slices/assets/img/logo.png')}}" alt="logo"> </a>
 
     <div class="aside-scroll">
       <ul>
@@ -37,7 +37,7 @@
 
     <nav class="navbar">
       <!-- Logo -->
-      <a class="navbar-brand" href="index.html"> <img src="{{asset('pizza/assets/img/logo.png')}}" alt="logo"> </a>
+      <a class="navbar-brand" href="index.html"> <img src="{{asset('pizza-slices/assets/img/logo.png')}}" alt="logo"> </a>
       <!-- Menu -->
       <ul class="navbar-nav">
         <li class="menu-item">

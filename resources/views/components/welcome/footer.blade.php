@@ -4,7 +4,7 @@
 <div class="container">
     <div class="footer-top">
         <div class="footer-logo">
-            <img src="{{asset('pizza/assets/img/logo.png')}}" alt="logo">
+            <img src="{{asset('pizza-slices/assets/img/logo.png')}}" alt="logo">
         </div>
     </div>
 </div>

@@ -2,20 +2,6 @@
 
 @section('content')
     <div class="container">
-        @foreach ($unit->pizzaBorders as $border)
-            @if(! $border->borders->is_traditional)
-
-                <strong>Borda de {{ $border->borders->name }}</strong>
-                <br>
-                @foreach ($border->borders->prices as $price)
-                    <strong>Tamanho: {{ $price->sizes->name }}</strong> |
-                    <strong>Preço: R$ {{ $price->price }}</strong>
-                    <br>
-                @endforeach
-                <hr>
-                <br>
-            @endif
-        @endforeach
         <h1>Restaurante: {{ $unit->tenant->url_prefix }}</h1>
         <h1>Unidade: {{ $unit->unit_name }}</h1>
         <div class="row">
@@ -89,6 +75,30 @@
 
                             <label for="pizza_order_qty">Quantidade</label>
                             <input type="number" name="pizza_order_qty" id="pizza_order_qty" value="1">
+
+                            <br>
+                            <hr>
+
+                            <strong>Tipo de Borda</strong>
+                            <br>
+                                @foreach ($unit->pizzaBorders as $border)
+
+                                    @if(! $border->borders->is_traditional)
+                                        <label for="pizza_border_type_id[{{ $border->borders->id }}]">
+                                            <strong>Borda de {{ $border->borders->name }}</strong>
+                                        </label>
+
+                                        @foreach ($border->borders->prices as $price)
+                                            <strong>Preço para pizza {{ $price->sizes->name }}: R$ {{ $price->price }}</strong> |
+                                            <input type="checkbox" id="pizza_border_type_id[{{ $price->pizza_border_type_id }}]" name="pizza_border_type_id[{{ $price->pizza_border_type_id }}]" value="{{ $price->id }}">
+                                        @endforeach
+                                        <hr>
+                                        <br>
+                                    @endif
+                                @endforeach
+
+                            <br>
+                            <hr>
 
                             <hr>
                             <button type="submit" class="btn btn-primary">Adicionar ao Carrinho</button>
