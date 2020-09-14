@@ -1,171 +1,305 @@
-@extends('layouts.app')
+@extends('layouts.tenant-front.pizza')
 
-@section('content')
-    <div class="container">
-        <h1>Restaurante: {{ $unit->tenant->url_prefix }}</h1>
-        <h1>Unidade: {{ $unit->unit_name }}</h1>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-header">
-                        Adicionar Pizza ao Carrinho
-                        <div class="float-right">
-                            <a href="{{ route("tenant-front.unit.view-pizza-cart", [$unit->tenant->url_prefix, $unit->unit_url_prefix]) }}">
-                                Visualizar Carrinho
-                            </a>
-                        </div>
-                    </div>
+@section('nav-content')
+    <x-tenant-front.nav />
+@endsection
 
-                    <div class="card-body">
-                        @if ($errors->any())
-                            <div class="alert alert-danger">
-                                <ul>
-                                    @foreach ($errors->all() as $error)
-                                        <li>{{ $error }}</li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                        @endif
+@section('footer-content')
+    <x-tenant-front.footer />
+@endsection
 
-                        @if (session("success"))
-                            <div class="alert alert-success">
-                                <ul>
-                                    <li>{{ session("success") }}</li>
-                                </ul>
-                            </div>
-                        @endif
-                        <form action="{{ route('tenant-front.unit.add-pizza-to-cart', [$unit->tenant->url_prefix, $unit->unit_url_prefix]) }}" method="POST">
-                            @csrf
 
-                            <input type="hidden" name="unit_id" value="{{ $unit->id }}">
+@section('main-content')
 
-                            @foreach ($unit->pizzaSizes as $size)
-                            <label for="pizza_size_id[{{ $size->pizza_size_id }}]">
-                                Tamanho: <strong>{{ $size->sizes->name }}</strong>
-                                <br>
-                                Fatias: <strong>{{ $size->sizes->pieces }}</strong>
-                                <br>
-                                Quantidade de Sabores: <strong>{{ $size->sizes->max_flavors }}</strong>
-                                @if($unit->tenant->configurations->price_per_pizza_size)
-                                    <br>
-                                    Preço: <strong>{{ $size->sizes->price }}</strong>
-                                @endif
-                            </label>
-                            <input type="radio" name="pizza_size_id" id="pizza_size_id[{{ $size->pizza_size_id }}]" value="{{ $size->pizza_size_id }}">
-                            |
-                            @endforeach
-
-                            <br>
-                            <hr>
-                            @foreach($unit->pizzaFlavors as $flavor)
-                                <label for="pizza_flavor[{{ $flavor->pizza_flavor_id }}]">
-                                    Categoria: <strong>{{ $flavor->flavors->label->name }}</strong>
-                                    <br>
-                                    Sabor: <strong>{{ $flavor->flavors->name }}</strong>
-                                    @if(! $unit->tenant->configurations->price_per_pizza_size)
-                                        Preço: <strong>{{ $flavor->flavors->price }}</strong>
-                                    @endif
-                                </label>
-                                |
-                                <input type="checkbox" name="pizza_flavors[{{ $flavor->pizza_flavor_id }}]" id="pizza_flavor[{{ $flavor->pizza_flavor_id }}]" value="{{ $flavor->pizza_flavor_id }}">
-                            @endforeach
-
-                            <br>
-                            <hr>
-
-                            <label for="pizza_order_qty">Quantidade</label>
-                            <input type="number" name="pizza_order_qty" id="pizza_order_qty">
-
-                            <br>
-                            <hr>
-
-                            <strong>Borda Especial</strong>
-                            <br>
-                                @foreach ($unit->pizzaBorders as $border)
-
-                                    @if(! $border->borders->is_traditional)
-                                        <strong>Borda de {{ $border->borders->name }}</strong>
-
-                                        @foreach ($border->borders->prices as $price)
-                                            <label>
-                                                <strong>Preço para pizza {{ $price->sizes->name }}: R$ {{ $price->price }}</strong> |
-                                            </label>
-                                            <input type="checkbox" name="pizza_border_type_id[{{ $price->pizza_border_type_id }}]" value="{{ $price->id }}">
-                                        @endforeach
-                                        <hr>
-                                    @endif
-                                @endforeach
-
-                            <label for="traditional_border">Borda Tradicional</label>
-                            <input type="checkbox" name="traditional_border" id="traditional_border" value="1">
-
-                            <hr>
-                            <button type="submit" class="btn btn-primary">Adicionar ao Carrinho</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-
-            @foreach($unit->pizzaSizes as $size)
-                <div class="col-md-4 mb-2">
-                    <div class="card">
-                        <div class="card-header">
-                            <strong>{{  $size->sizes->name  }}</strong>
-                            <div class="float-right">
-                                <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modalFlavors">
-                                    Adicionar ao Carrinho
-                                </button>
-                            </div>
-                        </div>
-
-                        @if($unit->tenant->configurations->price_per_pizza_size)
-                            <div class="card-body">
-                                Preço: <strong>{{ $size->sizes->price }}</strong>
-                                <br>
-                                Pedaços: <strong>{{ $size->sizes->pieces }}</strong>
-                                <br>
-                                Sabores: <strong>{{ $size->sizes->max_flavors }}</strong>
-                            </div>
-                        @endif
-                    </div>
-                </div>
-            @endforeach
-        </div>
-    </div>
-
-    {{-- Flavors Modal --}}
-    <div class="modal fade" id="modalFlavors" tabindex="-1" role="dialog" aria-labelledby="modalFlavorsLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
+    <!-- Preloader End -->
+    <!-- Customize Modal Start -->
+    <div class="modal fade" id="customizeModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
         <div class="modal-content">
-            <div class="modal-header">
-            <h5 class="modal-title" id="modalFlavorsLabel">Escolha o Sabor</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
+        <div class="modal-header modal-bg" style="background-image: url('{{asset('pizza-slices/assets/img/blog/11.jpg')}})">
+            <button type="button" class="close-btn" data-dismiss="modal" aria-label="Close">
+            <span></span>
+            <span></span>
             </button>
+        </div>
+        <div class="modal-body">
+            <div class="customize-meta">
+                <h4 class="customize-title">Pizza Pequena <span class="custom-primary">R$ 13,99</span> </h4>
+                <p>
+                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy
+                </p>
             </div>
-            <div class="modal-body">
+            <div class="customize-variations">
+                <div class="customize-size-wrapper">
+                    <h5>Quantidade de sabores: </h5>
+                    <div class="customize-size active">
+                    1
+                    </div>
+                    <div class="customize-size">
+                    2
+                    </div>
+                    <div class="customize-size">
+                    3
+                    </div>
+                </div>
                 <div class="row">
-                    @foreach($unit->pizzaFlavors as $flavor)
-                        <div class="col-md-4 mb-2">
-                            <div class="card">
-                                <div class="card-header">Categoria: <strong>{{ $flavor->flavors->label->name }}</strong></div>
-
-                                <div class="card-body">
-                                    <strong>{{ $flavor->flavors->name }}</strong>
-                                    @if(! $unit->tenant->configurations->price_per_pizza_size)
-                                        <strong>{{ $flavor->flavors->price }}</strong>
-                                    @endif
-                                </div>
+                    <!-- Variation End -->
+                    <!-- Variation Start -->
+                    <div class="col-lg-4 col-12">
+                    <div class="customize-variation-wrapper">
+                        <i class="flaticon-pizza-slice"></i>
+                        <h5>Borda</h5>
+                        <div class="customize-variation-item" data-price="4.00">
+                            <div class="custom-control custom-radio">
+                                <input type="radio" id="cheeseCrust" name="crust" class="custom-control-input">
+                                <label class="custom-control-label" for="cheeseCrust">Cheddar</label>
                             </div>
+                            <span>+4.00$</span>
                         </div>
-                    @endforeach
+                        <div class="customize-variation-item" data-price="3.25">
+                            <div class="custom-control custom-radio">
+                                <input type="radio" id="butterCrust" name="crust" class="custom-control-input">
+                                <label class="custom-control-label" for="butterCrust">Catupiry</label>
+                            </div>
+                            <span>+3.25$</span>
+                        </div>
+                    </div>
+                    </div>
+                    <!-- Variation End -->
+                    <!-- Variation Start -->
+                    <div class="col-lg-4 col-12">
+                    <div class="customize-variation-wrapper">
+                        <i class="flaticon-pizza-and-cutted-slice"></i>
+                        <h5>Sabores</h5>
+                        <div class="customize-variation-item" data-price="2.00">
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="addChicken">
+                                <label class="custom-control-label" for="addChicken">Frango com catupiry</label>
+                            </div>
+                            <span>+2.00$</span>
+                        </div>
+                        <div class="customize-variation-item" data-price="1.20">
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="addFourCheese">
+                                <label class="custom-control-label" for="addFourCheese">Quatro Queijos</label>
+                            </div>
+                            <span>+1.20$</span>
+                        </div>
+                        <div class="customize-variation-item" data-price="0.75">
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="addFreshMushroom">
+                                <label class="custom-control-label" for="addFreshMushroom">Calabresa</label>
+                            </div>
+                            <span>+0.75$</span>
+                        </div>
+                        <div class="customize-variation-item" data-price="0.25">
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="addBellPepper">
+                                <label class="custom-control-label" for="addBellPepper">Alho e óleo</label>
+                            </div>
+                            <span>+0.25$</span>
+                        </div>
+                    </div>
+                    </div>
+                    <!-- Variation End -->
                 </div>
             </div>
-            <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-            <button type="button" class="btn btn-primary">Adicionar ao Carrinho</button>
+            <div class="customize-controls">
+                <div class="qty">
+                    <span class="qty-subtract"><i class="fas fa-minus"></i></span>
+                    <input type="text" name="qty" value="1">
+                    <span class="qty-add"><i class="fas fa-plus"></i></span>
+                </div>
+                <div class="customize-total" data-price="13.99">
+                    <h5>Preço Total: <span class="final-price custom-primary"><span>R$</span> 13,99 </span> </h5>
+                </div>
             </div>
+            <button type="button" class="btn-custom btn-block">Adicionar ao carrinho</button>
         </div>
         </div>
     </div>
+    </div>
+    <!-- Customize Modal End -->
+
+    <!-- Header End -->
+    <!-- Subheader Start -->
+    <div class="subheader dark-overlay dark-overlay-2" style="background-image: url('{{asset('pizza-slices/assets/img/subheader.jpg')}}')">
+    <div class="container">
+        <div class="subheader-inner">
+        <h1></h1>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#">{{ $unit->tenant->url_prefix }}</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{{ $unit->unit_name }}</li>
+            </ol>
+        </nav>
+        </div>
+    </div>
+    </div>
+    <!-- Subheader End -->
+    <!-- Menu Wrapper Start -->
+    <div class="section section-padding">
+    <div class="container">
+        <h1 class="pdh1">Pizzas</h1>
+        <div class="menu-container row menu-v2">
+
+        <!-- Product Start -->
+        @foreach ($unit->pizzaSizes as $size)
+        <div class="col-lg-4 col-md-6 pizzas offers">
+            <div class="product">
+                <a class="product-thumb" href="menu-item-v1.html"> <img src="{{asset('pizza-slices/assets/img/prods-sm/2.png')}}" alt="menu item" /> </a>
+                <div class="product-body">
+                    <div class="product-desc">
+                    <h4> <a href="menu-item-v1.html">{{ $size->sizes->name }}</a> </h4>
+                    <p>{{ $size->sizes->name }} de {{ $size->sizes->pieces }} pedaços</p>
+                    </div>
+                    <div class="product-controls">
+                    <p class="product-price">R$
+                        @if($unit->tenant->configurations->price_per_pizza_size)
+                            {{ $size->sizes->price }}
+                        @endif</p>
+                    <a href="#customizeModal" data-toggle="modal"  class="Adicionar ao carrinho-item btn-custom btn-sm shadow-none">Adicionar ao carrinho<i class="fas fa-shopping-cart"></i> </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @endforeach
+
+
+
+        <!-- Product End -->
+        <!-- Product Start --
+        <div class="col-lg-4 col-md-6 pizzas">
+            <div class="product">
+                <a class="product-thumb" href="menu-item-v1.html"> <img src="{{asset('pizza-slices/assets/img/prods-sm/3.png')}}" alt="menu item" /> </a>
+                <div class="product-body">
+                    <div class="product-desc">
+                    <h4> <a href="menu-item-v1.html">Pizza Grande</a> </h4>
+                    <p>Pizza Grande de 12 pedaços</p>
+                    </div>
+                    <div class="product-controls">
+                    <p class="product-price">R$ 13,99</p>
+                    <a href="#customizeModal" data-toggle="modal" class="Adicionar ao carrinho-item btn-custom btn-sm shadow-none">Adicionar ao carrinho<i class="fas fa-shopping-cart"></i> </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Product End -->
+
+        </div>
+        <h1 class="pdh1">Bebidas</h1>
+        <div class="menu-container row menu-v2">
+        <!-- Product Start -->
+        <div class="col-lg-4 col-md-6 beverages desserts">
+            <div class="product">
+                <a class="product-thumb" href="menu-item-v1.html"> <img src="{{asset('pizza-slices/assets/img/prods-sm/13.png')}}" alt="menu item" /> </a>
+                <div class="product-body">
+                    <div class="product-desc">
+                    <h4> <a href="menu-item-v1.html">Coca Cola</a> </h4>
+                    <p>Li Europan lingues es membres del sam familie. Lor separat existentie es un myth. Por scientie, musica, sport etc</p>
+                    </div>
+                    <div class="product-controls">
+                    <p class="product-price">R$ 3,99</p>
+                    <a href="#" class="Adicionar ao carrinho-item btn-custom btn-sm shadow-none">Adicionar ao carrinho<i class="fas fa-shopping-cart"></i> </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Product End -->
+        <!-- Product Start -->
+        <div class="col-lg-4 col-md-6 beverages offers">
+            <div class="product">
+                <a class="product-thumb" href="menu-item-v1.html"> <img src="{{asset('pizza-slices/assets/img/prods-sm/10.png')}}" alt="menu item" /> </a>
+                <div class="product-body">
+                    <div class="product-desc">
+                    <h4> <a href="menu-item-v1.html">Cerveja</a> </h4>
+                    <p>Li Europan lingues es membres del sam familie. Lor separat existentie es un myth. Por scientie, musica, sport etc</p>
+                    </div>
+                    <div class="product-controls">
+                    <p class="product-price">14,99$</p>
+                    <a href="#" class="Adicionar ao carrinho-item btn-custom btn-sm shadow-none">Adicionar ao carrinho<i class="fas fa-shopping-cart"></i> </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Product End -->
+        </div>
+        <h1 class="pdh1">Sobremesas</h1>
+        <div class="menu-container row menu-v2">
+        <!-- Product Start -->
+        <div class="col-lg-4 col-md-6 desserts">
+            <div class="product">
+                <a class="product-thumb" href="menu-item-v1.html"> <img src="{{asset('pizza-slices/assets/img/prods-sm/12.png')}}" alt="menu item" /> </a>
+                <div class="product-body">
+                    <div class="product-desc">
+                    <h4> <a href="menu-item-v1.html">Chocolate Cookies</a> </h4>
+                    <p>Li Europan lingues es membres del sam familie. Lor separat existentie es un myth. Por scientie, musica, sport etc</p>
+                    </div>
+                    <div class="product-controls">
+                    <p class="product-price">4,99$</p>
+                    <a href="#" class="Adicionar ao carrinho-item btn-custom btn-sm shadow-none">Adicionar ao carrinho<i class="fas fa-shopping-cart"></i> </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Product End -->
+        </div>
+        <h1 class="pdh1">Acompanhamentos</h1>
+        <div class="menu-container row menu-v2">
+        <!-- Product Start -->
+        <div class="col-lg-4 col-md-6 pasta">
+            <div class="product">
+                <a class="product-thumb" href="menu-item-v1.html"> <img src="{{asset('pizza-slices/assets/img/prods-sm/11.png')}}" alt="menu item" /> </a>
+                <div class="product-body">
+                    <div class="product-desc">
+                    <h4> <a href="menu-item-v1.html">Sea Food Pasta</a> </h4>
+                    <p>Li Europan lingues es membres del sam familie. Lor separat existentie es un myth. Por scientie, musica, sport etc</p>
+                    </div>
+                    <div class="product-controls">
+                    <p class="product-price">14,99$</p>
+                    <a href="#" class="Adicionar ao carrinho-item btn-custom btn-sm shadow-none">Adicionar ao carrinho<i class="fas fa-shopping-cart"></i> </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Product End -->
+        <!-- Product Start -->
+        <div class="col-lg-4 col-md-6 salads sides">
+            <div class="product">
+                <a class="product-thumb" href="menu-item-v1.html"> <img src="{{asset('pizza-slices/assets/img/prods-sm/15.png')}}" alt="menu item" /> </a>
+                <div class="product-body">
+                    <div class="product-desc">
+                    <h4> <a href="menu-item-v1.html">Ceaser Salad</a> </h4>
+                    <p>Li Europan lingues es membres del sam familie. Lor separat existentie es un myth. Por scientie, musica, sport etc</p>
+                    </div>
+                    <div class="product-controls">
+                    <p class="product-price">10,99$</p>
+                    <a href="#" class="Adicionar ao carrinho-item btn-custom btn-sm shadow-none">Adicionar ao carrinho<i class="fas fa-shopping-cart"></i> </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Product End -->
+        <!-- Product Start -->
+        <div class="col-lg-4 col-md-6 sides">
+            <div class="product">
+                <a class="product-thumb" href="menu-item-v1.html"> <img src="{{asset('pizza-slices/assets/img/prods-sm/14.png')}}" alt="menu item" /> </a>
+                <div class="product-body">
+                    <div class="product-desc">
+                    <h4> <a href="menu-item-v1.html">Chicken Wrap</a> </h4>
+                    <p>Li Europan lingues es membres del sam familie. Lor separat existentie es un myth. Por scientie, musica, sport etc</p>
+                    </div>
+                    <div class="product-controls">
+                    <p class="product-price">5,99$</p>
+                    <a href="#" class="Adicionar ao carrinho-item btn-custom btn-sm shadow-none">Adicionar ao carrinho<i class="fas fa-shopping-cart"></i> </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Product End -->
+        </div>
+    </div>
+    </div>
+
+
 @endsection
