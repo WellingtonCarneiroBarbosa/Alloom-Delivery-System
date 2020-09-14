@@ -8,6 +8,9 @@ use Illuminate\Database\Seeder;
 use App\Models\Tenant\Pizza\Size;
 use App\Models\Tenant\Pizza\Flavor;
 use App\Models\Tenant\Configuration;
+use App\Models\Tenant\Pizza\Border;
+use App\Models\Tenant\Pizza\BorderAvailableOn;
+use App\Models\Tenant\Pizza\BorderPrice;
 use App\Models\Tenant\Pizza\SizeAvailableOn;
 use App\Models\Tenant\Pizza\FlavorAvailableOn;
 
@@ -125,6 +128,104 @@ class LocalSeeder extends Seeder
             SizeAvailableOn::create($size_available_on);
         }
         echo "\rSeeded Pizza Sizes Available On\n";
+
+        /**
+         * Create a new pizza border type
+         */
+        $pizza_borders = [
+            0 => [
+                "name" => "Tradicional",
+                "is_traditional" => true,
+                "tenant_id" => 1
+            ],
+
+            1 => [
+                "name" => "Catupiry",
+                "tenant_id" => 1
+            ],
+
+            2 => [
+                "name" => "Cheddar",
+                "tenant_id" => 1
+            ]
+        ];
+
+        foreach($pizza_borders as $pizza_border) {
+            Border::create($pizza_border);
+        }
+
+        echo "\rSeeded Pizza Border Types\n";
+
+        /**
+         * Create prices to these borders
+         */
+        $pizza_border_prices = [
+            0 => [
+                "pizza_border_type_id" => 2,
+                "pizza_size_id" => 1,
+                "price" => 1.00,
+            ],
+            1 => [
+                "pizza_border_type_id" => 2,
+                "pizza_size_id" => 2,
+                "price" => 2.00
+            ],
+            2 => [
+                "pizza_border_type_id" => 2,
+                "pizza_size_id" => 3,
+                "price" => 4.00
+            ],
+            3 => [
+                "pizza_border_type_id" => 3,
+                "pizza_size_id" => 1,
+                "price" => 2.00
+            ],
+            4 => [
+                "pizza_border_type_id" => 3,
+                "pizza_size_id" => 2,
+                "price" => 3.00
+            ],
+            5 => [
+                "pizza_border_type_id" => 3,
+                "pizza_size_id" => 3,
+                "price" => 5.00
+            ]
+        ];
+
+        foreach ($pizza_border_prices as $border_price) {
+            BorderPrice::create($border_price);
+        }
+
+        echo "\rSeeded Border Prices\n";
+
+
+        /**
+         * Make these borders available to units
+         */
+        $borders_available_on = [
+            0 => [
+                "pizza_border_type_id" => 1,
+                "restaurant_id" => 1,
+                "tenant_id" => 1
+            ],
+
+            1 => [
+                "pizza_border_type_id" => 2,
+                "restaurant_id" => 1,
+                "tenant_id" => 1
+            ],
+
+            2 => [
+                "pizza_border_type_id" => 3,
+                "restaurant_id" => 1,
+                "tenant_id" => 1
+            ]
+        ];
+
+        foreach($borders_available_on as $border_available_on) {
+            BorderAvailableOn::create($border_available_on);
+        }
+        echo "\rSeeded Pizza Border Types Available On\n";
 
         /**
          * Create new labels

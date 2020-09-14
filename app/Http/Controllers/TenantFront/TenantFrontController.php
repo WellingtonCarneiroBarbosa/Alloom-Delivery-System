@@ -7,14 +7,15 @@ use Exception;
 use Illuminate\Http\Request;
 use App\Models\Alloom\Tenant;
 use App\Models\Tenant\Pizza\Size;
+use App\Models\Tenant\Order\Order;
+use App\Models\Tenant\Order\Pizza;
+use App\Models\Tenant\Pizza\Border;
 use App\Models\Tenant\Pizza\Flavor;
 use App\Carts\PizzaCartPricePerSize;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
 use App\Http\Requests\Tenant\Order\AddBilingData;
 use App\Http\Requests\Tenant\Pizza\AddPizzaToCart;
-use App\Models\Tenant\Order\Order;
-use App\Models\Tenant\Order\Pizza;
 
 class TenantFrontController extends Controller
 {
@@ -53,9 +54,11 @@ class TenantFrontController extends Controller
 
         $pizzaSize = Size::find($data["pizza_size_id"]);
 
+        $pizzaBorder = Border::find($data["pizza_border_type_id"]);
+
         $flavors = Flavor::whereIn('id', $data["pizza_flavors"])->get();
 
-        $cart->add($pizzaSize, $flavors, $data["pizza_order_qty"], $data["unit_id"]);
+        $cart->add($pizzaSize, $pizzaBorder, $flavors, $data["pizza_order_qty"], $data["unit_id"]);
 
         $request->session()->put('pizza_cart', $cart);
 
@@ -116,6 +119,7 @@ class TenantFrontController extends Controller
                 $pizzaTemp = [
                     "order_id" => $order->id,
                     "pizza_size_id" => $pizza["pizza_size"]->id,
+                    "pizza_border_type_id" => $pizza["pizza_border"]->id,
                     "qty" => $pizza["qty"],
                     "flavors" => $flavors,
                     "unit_price" => $pizza["unit_price"],

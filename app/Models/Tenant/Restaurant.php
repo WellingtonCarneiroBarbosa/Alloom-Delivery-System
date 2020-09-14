@@ -3,6 +3,7 @@
 namespace App\Models\Tenant;
 
 use App\Models\Alloom\Tenant;
+use App\Models\Tenant\Pizza\BorderAvailableOn;
 use App\Models\Tenant\Pizza\FlavorAvailableOn;
 use App\Models\Tenant\Pizza\SizeAvailableOn;
 use App\Traits\MultiTenantTable;
@@ -52,5 +53,9 @@ class Restaurant extends Model
 
     public function pizzaSizes() {
         return $this->hasMany(SizeAvailableOn::class);
+    }
+
+    public function pizzaBorders() {
+        return $this->hasMany(BorderAvailableOn::class);
     }
 }

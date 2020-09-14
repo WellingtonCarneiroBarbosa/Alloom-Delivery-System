@@ -101,6 +101,46 @@ class DeliverySchema extends Migration
         echo "\rMigrated pizza_flavor_available_on\n";
 
         /**
+         * Pizza borders table
+         *
+         */
+        Schema::create('pizza_border_types', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->boolean("is_traditional")->default(false);
+            $table->foreignId('tenant_id')->onUpdate('cascade')->onDelete('cascade');
+            $table->timestamps();
+        });
+
+        echo "\rMigrated pizza_boder_types\n";
+
+        /**
+         * Pizza border prices
+         */
+        Schema::create("pizza_border_prices", function (Blueprint $table) {
+            $table->id();
+            $table->foreignId("pizza_border_type_id")->onUpdate("cascade")->onDelete("cascade");
+            $table->foreignId("pizza_size_id")->onUpdate("cascade")->onDelete("cascade");
+            $table->float("price")->nullable();
+            $table->timestamps();
+        });
+
+         /**
+         * Pizza border available on table
+         *
+         */
+        Schema::create('pizza_border_type_available_on', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('pizza_border_type_id')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('restaurant_id')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('tenant_id')->onUpdate('cascade')->onDelete('cascade');
+            $table->timestamps();
+        });
+
+        echo "\rMigrated pizza_border_type_available_on\n";
+
+
+        /**
          * Pizza sizes table
          *
          */
@@ -219,7 +259,7 @@ class DeliverySchema extends Migration
         Schema::create('order_pizzas', function (Blueprint $table) {
             $table->id();
             $table->foreignId("pizza_size_id")->onUpdate("cascade")->onDelete('cascade');
-            //$table->foreingId("pizza_border_id")->onUpdate("cascade")->onDelete("cascade");
+            $table->foreignId("pizza_border_type_id")->onUpdate("cascade")->onDelete("cascade");
             $table->string("flavors");
             $table->float("unit_price");
             $table->float("total_price");
@@ -244,6 +284,8 @@ class DeliverySchema extends Migration
         Schema::dropIfExists('product_available_on');
         Schema::dropIfExists('pizza_flavors');
         Schema::dropIfExists('pizza_flavor_available_on');
+        Schema::dropIfExists('pizza_border_types');
+        Schema::dropIfExists('pizza_border_type_available_on');
         Schema::dropIfExists('pizza_sizes');
         Schema::dropIfExists('pizza_size_available_on');
         Schema::dropIfExists('billings');
