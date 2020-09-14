@@ -18,13 +18,14 @@ class PizzaCartPricePerSize {
         }
     }
 
-    public function add($pizza_size, $flavors, $pizza_order_qty, $unit_id) {
+    public function add($pizza_size, $pizza_border, $flavors, $pizza_order_qty, $unit_id) {
 
         $storedPizzaSize = [
             "qty" => $pizza_order_qty,
             "unit_price" => $pizza_size->price,
             "total_price" => 0,
             "pizza_size" => $pizza_size,
+            "pizza_border" => $pizza_border,
             "pizza_flavors" => $flavors,
         ];
 

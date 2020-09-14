@@ -2,6 +2,20 @@
 
 @section('content')
     <div class="container">
+        @foreach ($unit->pizzaBorders as $border)
+            @if(! $border->borders->is_traditional)
+
+                <strong>Borda de {{ $border->borders->name }}</strong>
+                <br>
+                @foreach ($border->borders->prices as $price)
+                    <strong>Tamanho: {{ $price->sizes->name }}</strong> |
+                    <strong>Preço: R$ {{ $price->price }}</strong>
+                    <br>
+                @endforeach
+                <hr>
+                <br>
+            @endif
+        @endforeach
         <h1>Restaurante: {{ $unit->tenant->url_prefix }}</h1>
         <h1>Unidade: {{ $unit->unit_name }}</h1>
         <div class="row">
