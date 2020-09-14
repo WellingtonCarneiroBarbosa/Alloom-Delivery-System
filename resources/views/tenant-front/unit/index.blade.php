@@ -79,26 +79,25 @@
                             <br>
                             <hr>
 
-                            <strong>Tipo de Borda</strong>
+                            <strong>Borda Especial</strong>
                             <br>
                                 @foreach ($unit->pizzaBorders as $border)
 
                                     @if(! $border->borders->is_traditional)
-                                        <label for="pizza_border_type_id[{{ $border->borders->id }}]">
-                                            <strong>Borda de {{ $border->borders->name }}</strong>
-                                        </label>
+                                        <strong>Borda de {{ $border->borders->name }}</strong>
 
                                         @foreach ($border->borders->prices as $price)
-                                            <strong>Preço para pizza {{ $price->sizes->name }}: R$ {{ $price->price }}</strong> |
-                                            <input type="checkbox" id="pizza_border_type_id[{{ $price->pizza_border_type_id }}]" name="pizza_border_type_id[{{ $price->pizza_border_type_id }}]" value="{{ $price->id }}">
+                                            <label>
+                                                <strong>Preço para pizza {{ $price->sizes->name }}: R$ {{ $price->price }}</strong> |
+                                            </label>
+                                            <input type="checkbox" name="pizza_border_type_id[{{ $price->pizza_border_type_id }}]" value="{{ $price->id }}">
                                         @endforeach
                                         <hr>
-                                        <br>
                                     @endif
                                 @endforeach
 
-                            <br>
-                            <hr>
+                            <label for="traditional_border">Borda Tradicional</label>
+                            <input type="checkbox" name="traditional_border" id="traditional_border" value="1">
 
                             <hr>
                             <button type="submit" class="btn btn-primary">Adicionar ao Carrinho</button>
