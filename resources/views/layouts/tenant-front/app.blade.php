@@ -1,66 +1,79 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>@yield('title')</title>
-        <!-- Vendor Stylesheets -->
-        <link rel="stylesheet" href="{{asset('tenant-front/css/plugins/bootstrap.min.css')}}">
-        <link rel="stylesheet" href="{{asset('tenant-front/css/plugins/animate.min.css')}}">
-        <link rel="stylesheet" href="{{asset('tenant-front/css/plugins/magnific-popup.css')}}">
-        <link rel="stylesheet" href="{{asset('tenant-front/css/plugins/slick.css')}}">
-        <link rel="stylesheet" href="{{asset('tenant-front/css/plugins/slick-theme.css')}}">
-        <!-- Icon Fonts -->
-        <link rel="stylesheet" href="{{asset('tenant-front/fonts/flaticon/flaticon.css')}}">
-        <link rel="stylesheet" href="{{asset('tenant-front/fonts/font-awesome/css/all.min.css')}}">
-        <!-- Slices Style sheet -->
-        <link rel="stylesheet" href="{{asset('tenant-front/css/style.css')}}">
-        <!-- Favicon -->
-        <link rel="icon" type="image/png" sizes="32x32" href="{{asset('tenant-front/img/favicon.ico')}}">
+<!doctype html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <!-- Page Specific Styles -->
-        <link rel="stylesheet" href="{{asset('tenant-front/css/plugins/leaflet.css')}}">
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        @yield('head-links')
-     </head>
+    <title>{{ config('app.name', 'Laravel') }}</title>
+
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}" defer></script>
+
+    <!-- Fonts -->
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+
+    <!-- Styles -->
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+</head>
 <body>
-    <!-- Preloader Start -->
-    <div class="ct-preloader">
-        <div class="ct-preloader-inner">
-           <div class="lds-ripple">
-              <div></div>
-              <div></div>
-           </div>
-        </div>
+    <div id="app">
+        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+            <div class="container">
+                <a class="navbar-brand" href="{{ url('/') }}">
+                    {{ config('app.name', 'Laravel') }}
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <!-- Left Side Of Navbar -->
+                    <ul class="navbar-nav mr-auto">
+
+                    </ul>
+
+                    <!-- Right Side Of Navbar -->
+                    <ul class="navbar-nav ml-auto">
+                        <!-- Authentication Links -->
+                        @guest()
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url($url ?? '' . "/login") }}">{{ __('Login') }}</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url($url ?? '' . '/cadastro') }}">{{ __('Register') }}</a>
+                            </li>
+                        @else
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    {{ Auth::user()->name }}
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+                                </div>
+                            </li>
+                        @endguest
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <main class="py-4">
+            @yield('content')
+        </main>
     </div>
-
-    @yield('nav-content')
-
-    @yield('main-content')
-
-    @yield('footer-content')
-
-     <!-- Vendor Scripts -->
-     <script src="{{asset('tenant-front/js/plugins/isotope.pkgd.min.js')}}"></script>
-     <script src="{{asset('tenant-front/js/plugins/jquery-3.4.1.min.js')}}"></script>
-     <script src="{{asset('tenant-front/js/plugins/popper.min.js')}}"></script>
-     <script src="{{asset('tenant-front/js/plugins/waypoint.js')}}"></script>
-     <script src="{{asset('tenant-front/js/plugins/bootstrap.min.js')}}"></script>
-     <script src="{{asset('tenant-front/js/plugins/jquery.magnific-popup.min.js')}}"></script>
-     <script src="{{asset('tenant-front/js/plugins/jquery.slimScroll.min.js')}}"></script>
-     <script src="{{asset('tenant-front/js/plugins/imagesloaded.min.js')}}"></script>
-     <script src="{{asset('tenant-front/js/plugins/jquery.steps.min.js')}}"></script>
-     <script src="{{asset('tenant-front/js/plugins/jquery.countdown.min.js')}}"></script>
-     <script src="{{asset('tenant-front/js/plugins/slick.min.js')}}"></script>
-
-     <!-- Slices Scripts -->
-     <script src="{{asset('tenant-front/js/main.js')}}"></script>
-
-    <!-- Page Specific Scripts -->
-    <script src="{{asset('tenant-front/js/plugins/leaflet.js')}}"></script>
-    <script src="{{asset('tenant-front/js/map.js')}}"></script>
-
-
-    @yield('scripts-content')
 </body>
 </html>
