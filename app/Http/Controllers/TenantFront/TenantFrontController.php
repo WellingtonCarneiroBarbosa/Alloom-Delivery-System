@@ -5,26 +5,20 @@ namespace App\Http\Controllers\TenantFront;
 use Session;
 use Exception;
 use Illuminate\Http\Request;
-use App\Models\Alloom\Tenant;
 use App\Models\Tenant\Pizza\Size;
 use App\Models\Tenant\Order\Order;
 use App\Models\Tenant\Order\Pizza;
 use App\Models\Tenant\Pizza\Border;
 use App\Models\Tenant\Pizza\Flavor;
+use App\Traits\FrancheseController;
 use App\Carts\PizzaCartPricePerSize;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Route;
 use App\Http\Requests\Tenant\Order\AddBilingData;
 use App\Http\Requests\Tenant\Pizza\AddPizzaToCart;
 
 class TenantFrontController extends Controller
 {
-    protected $tenant;
-
-    public function __construct()
-    {
-        $this->tenant = Tenant::getTenantByUrlPrefixOrFail(Route::current()->tenant_url_prefix);
-    }
+    use FrancheseController;
 
     public function chooseUnit() {
         try {
@@ -65,6 +59,10 @@ class TenantFrontController extends Controller
         return redirect()->back()->with([
             "success" => "Pizza adicionada ao carrinho"
         ]);
+    }
+
+    public function pizzaCartData() {
+        return response()->json(Session::has('pizza_cart') ? Session::get('pizza_cart') : null);
     }
 
     public function viewPizzaCart() {
@@ -143,7 +141,9 @@ class TenantFrontController extends Controller
         }
     }
 
-    protected function getTenantUnitOrFail() {
-        return $this->tenant->restaurants()->where('unit_url_prefix', Route::current()->unit_url_prefix)->firstOrFail();
+    public function requestExample() {
+        return view("tenant-front.unit.example-js", [
+            "unit" => $this->getTenantUnitOrFail()
+        ]);
     }
 }

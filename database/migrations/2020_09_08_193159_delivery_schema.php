@@ -259,7 +259,8 @@ class DeliverySchema extends Migration
         Schema::create('order_pizzas', function (Blueprint $table) {
             $table->id();
             $table->foreignId("pizza_size_id")->onUpdate("cascade")->onDelete('cascade');
-            $table->foreignId("pizza_border_type_id")->onUpdate("cascade")->onDelete("cascade");
+            $table->boolean("traditional_border")->default(false);
+            $table->foreignId("pizza_border_type_id")->nullable()->onUpdate("cascade")->onDelete("cascade");
             $table->string("flavors");
             $table->float("unit_price");
             $table->float("total_price");

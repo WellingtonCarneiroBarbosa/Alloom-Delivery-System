@@ -35,7 +35,15 @@ Route::namespace('TenantFront')->prefix('estabelecimentos')->name('tenant-front.
          */
         Route::prefix('/{unit_url_prefix}')->name('unit.')->group(function () {
 
+            Route::prefix("/dados")->name("api.")->group(function () {
+                Route::get("/sabores", "APIController@flavors")->name("flavors");
+            });
+
+            Route::get("request-example", "TenantFrontController@requestExample");
+
             Route::get('/', 'TenantFrontController@index')->name('index');
+
+            Route::get('/dados/carrinho-de-pizzas', "TenantFrontController@pizzaCartData")->name("pizza-cart-data");
 
             Route::get('/visualizar-carrinho-de-pizzas', "TenantFrontController@viewPizzaCart")->name('view-pizza-cart');
 
