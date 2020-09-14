@@ -16,7 +16,7 @@
     <div class="modal fade" id="customizeModal" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
         <div class="modal-content">
-        <div class="modal-header modal-bg" style="background-image: url('{{asset('pizza-slices/assets/img/blog/11.jpg')}})">
+        <div class="">
             <button type="button" class="close-btn" data-dismiss="modal" aria-label="Close">
             <span></span>
             <span></span>
