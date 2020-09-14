@@ -74,7 +74,7 @@
                             <hr>
 
                             <label for="pizza_order_qty">Quantidade</label>
-                            <input type="number" name="pizza_order_qty" id="pizza_order_qty" value="1">
+                            <input type="number" name="pizza_order_qty" id="pizza_order_qty">
 
                             <br>
                             <hr>
