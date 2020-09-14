@@ -13,8 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::namespace("Welcome")->prefix("/")->name("welcome.")->group(function (){
+    Route::get("/", "HomeController@index")->name("index");
 });
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -46,7 +46,6 @@ Route::namespace('TenantFront')->prefix('estabelecimentos')->name('tenant-front.
                 Route::get('/detalhes-do-remetente', "TenantFrontController@viewAddBillingData")->name('view.add-billing-data');
 
                 Route::post("/", "TenantFrontController@addBillingDataAndMakeOrder")->name("add-billing-data-and-make-order");
-
             });
         });
     });
