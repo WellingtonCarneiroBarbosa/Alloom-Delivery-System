@@ -12,7 +12,6 @@
 
 @section('main-content')
 
-
 <!-- Icons Start -->
 <div class="section">
   <div class="container">
