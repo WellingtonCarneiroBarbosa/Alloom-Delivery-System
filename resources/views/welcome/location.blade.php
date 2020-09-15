@@ -3,17 +3,11 @@
 @section('title', 'localização')
 
 @section('nav-content')
-    <!-- Page Specific Styles -->
-
     <x-pizza.nav-black />
-
 @endsection
 
 @section('footer-content')
-
     <x-pizza.footer />
-
-
 @endsection
 
 @section('main-content')
@@ -66,7 +60,6 @@
 
         </div>
       </div>
-
       <div class="section pt-0">
         <div class="container">
         </div>
@@ -77,8 +70,5 @@
   <!-- Contact End -->
     </div>
   </section>  <!-- Cart End -->
-
-
 <!-- Header Start -->
-
 @endsection

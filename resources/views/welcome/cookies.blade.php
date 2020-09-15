@@ -1,5 +1,3 @@
-
-
   @extends('layouts.pizza')
 
   @section('title', 'Politica de Cookies')

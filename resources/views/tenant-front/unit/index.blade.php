@@ -120,7 +120,6 @@
     </div>
     </div>
     <!-- Customize Modal End -->
-
     <!-- Header End -->
     <!-- Subheader Start -->
     <div class="subheader dark-overlay dark-overlay-2" style="background-image: url('{{asset('pizza-slices/assets/img/subheader.jpg')}}')">
