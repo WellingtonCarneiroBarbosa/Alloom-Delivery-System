@@ -29,6 +29,7 @@ class PizzaCart
 
         $piza["total_price"] = $pizza["unit_price"] * $pizza["quantity"];
 
+        array_push($this->pizzas, $pizza);
         $this->totalQuantity += $pizza["quantity"];
         $this->totalPrice += $pizza["total_price"];
     }
