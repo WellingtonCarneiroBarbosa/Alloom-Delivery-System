@@ -33,7 +33,7 @@ Route::namespace('TenantFront')->prefix('estabelecimentos')->name('tenant-front.
          * Tenant Unit Routes.
          *
          */
-        Route::prefix('/{unit_url_prefix}')->name('unit.')->group(function () {
+        Route::prefix('/{franchise_url_prefix}')->name('unit.')->group(function () {
 
             Route::prefix("/dados")->name("api.")->group(function () {
                 Route::get("/sabores", "APIController@flavors")->name("flavors");
@@ -65,7 +65,7 @@ Route::namespace('TenantFront')->prefix('estabelecimentos')->name('tenant-front.
  * Tenant Management Routes.
  *
  */
-Route::group(['guard' => 'tenant'], function () {
+Route::group(['guard' => 'franchise'], function () {
     Route::name('tenant.')->prefix('cliente')->group(function() {
         Route::get('/login', 'Auth\LoginController@showTenantUserLoginForm')->name('login');
         //Route::get('/cadastro', 'Auth\RegisterController@showTenantUserRegisterForm')->name('register');

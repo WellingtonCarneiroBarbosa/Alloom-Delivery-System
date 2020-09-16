@@ -18,7 +18,7 @@ class SystemSchema extends Migration
          *
          */
         Schema::create('users', function (Blueprint $table) {
-            $table->id();
+            $table->tinyIncrements("id");
             $table->string('name');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
@@ -37,7 +37,6 @@ class SystemSchema extends Migration
             $table->string('token');
             $table->timestamp('created_at')->nullable();
         });
-
         echo "\rMigrated password_resets\n";
 
         /**
@@ -52,7 +51,6 @@ class SystemSchema extends Migration
             $table->longText('exception');
             $table->timestamp('failed_at')->useCurrent();
         });
-
         echo "\rMigrated failed_jobs\n";
 
         /**
@@ -60,62 +58,86 @@ class SystemSchema extends Migration
          *
          */
         Schema::create('tenants', function (Blueprint $table) {
-            $table->id();
+            $table->smallIncrements("id");
             $table->string('url_prefix')->unique();
             $table->timestamps();
         });
-
         echo "\rMigrated tenants\n";
 
         /**
-         * Tenants Users table
+         * Franchises Table
+         */
+        Schema::create("franchises", function (Blueprint $table) {
+            $table->increments("id");
+            $table->string("name");
+            $table->string("url_prefix");
+            $table->unsignedSmallInteger("tenant_id");
+            $table->foreign("tenant_id")->references("id")->on("tenants")->onUpdate("cascade")->onDelete("cascade");
+            $table->timestamps();
+        });
+        echo "\rMigrated franchises\n";
+
+        /**
+         * Franchieses Users table
          *
          */
-        Schema::create('tenant_users', function (Blueprint $table) {
-            $table->id();
+        Schema::create('franchise_users', function (Blueprint $table) {
+            $table->increments("id");
             $table->string('name');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->boolean('is_master')->default(false);
-            $table->foreignId('tenant_id')->onUpdate('cascade')->onDelete('cascade');
+            $table->unsignedInteger("franchise_id");
+            $table->foreign("franchise_id")->references("id")->on("franchises")->onUpdate("cascade")->onDelete("cascade");
             $table->rememberToken();
             $table->timestamps();
         });
-
-        echo "\rMigrated tenant_users\n";
+        echo "\rMigrated franchise_users\n";
 
         /**
          * Tenant Configurations table
          *
          */
-        Schema::create('tenant_configurations', function (Blueprint $table) {
-            $table->id();
-            $table->boolean('price_per_pizza_size')->default(false);
-            $table->foreignId('tenant_id')->onUpdate('cascade')->onDelete('cascade');
+        Schema::create('franchise_configurations', function (Blueprint $table) {
+            $table->increments("id");
+            $table->unsignedInteger("franchise_id");
+            $table->foreign("franchise_id")->references("id")->on("franchises")->onUpdate("cascade")->onDelete("cascade");
             $table->timestamps();
         });
+        echo "\rMigrated franchise_configurations\n";
 
 
         /**
          * Status table
          *
          */
-        Schema::create('status', function (Blueprint $table) {
-            $table->id();
+        Schema::create('order_status', function (Blueprint $table) {
+            $table->tinyIncrements("id");
             $table->string('name');
             $table->float('progress');
             $table->timestamps();
         });
+        echo "\rMigrated order_status\n";
 
-        echo "\rMigrated status\n";
+        /**
+         * Labels table
+         *
+         */
+        Schema::create('labels', function (Blueprint $table) {
+            $table->increments("id");
+            $table->string('name');
+            $table->unsignedInteger("franchise_id");
+            $table->foreign("franchise_id")->references("id")->on("franchises")->onUpdate("cascade")->onDelete("cascade");
+            $table->timestamps();
+        });
+        echo "\rMigrated labels\n";
+
 
         //Status::create([
         //    'name' => '',
         //    'progress' => '',
         //]);
-
-        echo "\rMigrated status\n";
     }
 
     /**
@@ -128,8 +150,11 @@ class SystemSchema extends Migration
         Schema::dropIfExists('users');
         Schema::dropIfExists('password_resets');
         Schema::dropIfExists('failed_jobs');
-        Schema::dropIfExists('status');
         Schema::dropIfExists('tenants');
-        Schema::dropIfExists('tenant_users');
+        Schema::dropIfExists('franchises');
+        Schema::dropIfExists('franchise_users');
+        Schema::dropIfExists('franchise_configurations');
+        Schema::dropIfExists('order_status');
+        Schema::dropIfExists('labels');
     }
 }

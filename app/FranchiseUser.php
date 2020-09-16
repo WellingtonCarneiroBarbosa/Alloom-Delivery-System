@@ -7,7 +7,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 /**
- * App\TenantUser
+ * App\FranchiseUser
  *
  * @property int $id
  * @property string $name
@@ -21,22 +21,22 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
  * @property-read int|null $notifications_count
- * @method static \Illuminate\Database\Eloquent\Builder|TenantUser newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|TenantUser newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|TenantUser query()
- * @method static \Illuminate\Database\Eloquent\Builder|TenantUser whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|TenantUser whereEmail($value)
- * @method static \Illuminate\Database\Eloquent\Builder|TenantUser whereEmailVerifiedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|TenantUser whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|TenantUser whereIsMaster($value)
- * @method static \Illuminate\Database\Eloquent\Builder|TenantUser whereName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|TenantUser wherePassword($value)
- * @method static \Illuminate\Database\Eloquent\Builder|TenantUser whereRememberToken($value)
- * @method static \Illuminate\Database\Eloquent\Builder|TenantUser whereTenantId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|TenantUser whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|FranchiseUser newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|FranchiseUser newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|FranchiseUser query()
+ * @method static \Illuminate\Database\Eloquent\Builder|FranchiseUser whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|FranchiseUser whereEmail($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|FranchiseUser whereEmailVerifiedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|FranchiseUser whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|FranchiseUser whereIsMaster($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|FranchiseUser whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|FranchiseUser wherePassword($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|FranchiseUser whereRememberToken($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|FranchiseUser whereTenantId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|FranchiseUser whereUpdatedAt($value)
  * @mixin \Eloquent
  */
-class TenantUser extends Authenticatable
+class FranchiseUser extends Authenticatable
 {
     use Notifiable;
 

@@ -41,9 +41,9 @@ return [
             'provider' => 'users',
         ],
 
-        'tenant' => [
+        'franchise' => [
             'driver' => 'session',
-            'provider' => 'tenants'
+            'provider' => 'franchises'
         ],
 
         'api' => [
@@ -76,9 +76,9 @@ return [
             'model' => App\User::class,
         ],
 
-        'tenants' => [
+        'franchises' => [
             'driver' => 'eloquent',
-            'model' => App\TenantUser::class,
+            'model' => App\FranchiseUser::class,
         ],
 
         // 'users' => [
@@ -110,8 +110,8 @@ return [
             'throttle' => 60,
         ],
 
-        'tenants' => [
-            'provider' => 'tenants',
+        'franchises' => [
+            'provider' => 'franchises',
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,
