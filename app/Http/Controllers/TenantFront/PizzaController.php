@@ -35,8 +35,6 @@ class PizzaController extends Controller
 
         $cart->add($border, $flavors, $size, $data["quantity"]);
 
-        dd($cart);
-
         $request->session()->put('pizza-cart', $cart);
 
         return redirect()->back()->with([
