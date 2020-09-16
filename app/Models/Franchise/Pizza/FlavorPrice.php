@@ -14,4 +14,8 @@ class FlavorPrice extends Model
     protected $fillable = [
         "pizza_flavor_id", "pizza_size_id", "price", "franchise_id"
     ];
+
+    public function flavor() {
+        return $this->belongsTo(Flavor::class, "pizza_flavor_id", "id");
+    }
 }

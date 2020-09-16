@@ -151,11 +151,13 @@
                     <div class="product-desc">
                     <h4> <a href="menu-item-v1.html">{{ $size->name }}</a> </h4>
                     <p>{{ $size->description }}</p>
+                    <p>Até {{ $size->max_flavors }} sabores</p>
                     <p>{{ $size->slices }} fatias</p>
                     </div>
                     <div class="product-controls">
                     <p class="product-price">A partir de R$ {{ $size->price }}</p>
-                    <a href="#customizeModal" data-toggle="modal"  class="Adicionar ao carrinho-item btn-custom btn-sm shadow-none">Adicionar ao carrinho<i class="fas fa-shopping-cart"></i> </a>
+                    <input type="text" onclick="test(this)" value="{{ $size->id }}">
+                    <a href="#customizeModal" data-toggle="modal"  class="add-pizza-to-cart btn-custom btn-sm shadow-none">Adicionar ao carrinho<i class="fas fa-shopping-cart"></i> </a>
                     </div>
                 </div>
             </div>
@@ -298,5 +300,27 @@
     </div>
     </div>
 
-
 @endsection
+
+@section('scripts-content')
+<script>
+    function test(pizza_size_id) {
+        let url = "{{ route('api.tenant-front.franchise.pizzas.get-pizza-flavors-and-borders-from-pizza-size', [$franchise->tenant->url_prefix, $franchise->url_prefix]) }}";
+        $.ajax({
+            url: url,
+            type: 'post',
+            data: {pizza_size_id: pizza_size_id.value},
+            dataType: 'json',
+
+            success: function (response) {
+                console.log(response)
+            },
+
+            error: function (e) {
+                console.log(e)
+            }
+        });
+    }
+</script>
+@endsection
+

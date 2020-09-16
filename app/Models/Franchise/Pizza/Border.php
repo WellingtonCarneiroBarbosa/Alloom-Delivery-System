@@ -14,4 +14,8 @@ class Border extends Model
     protected $fillable = [
         "name", "description", "franchise_id"
     ];
+
+    public function prices() {
+        $this->hasMany(BorderPrice::class, "pizza_border_id", "id");
+    }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Carts;
+namespace App\Carts;
 
 class PizzaCart
 {

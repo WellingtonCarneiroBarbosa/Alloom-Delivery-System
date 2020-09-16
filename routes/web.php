@@ -35,6 +35,14 @@ Route::namespace('TenantFront')->prefix('estabelecimentos')->name('tenant-front.
          */
         Route::prefix('/{franchise_url_prefix}')->name('franchise.')->group(function () {
 
+            /**
+             * Pizza Routes
+             *
+             */
+            Route::prefix("/pizza")->name("pizza.")->group(function () {
+                Route::post("/adicionar-ao-carrinho", "PizzaController@addPizzaToCart")->name("add-to-cart");
+            });
+
             Route::prefix("/dados")->name("api.")->group(function () {
                 Route::get("/sabores", "APIController@flavors")->name("flavors");
             });

@@ -14,6 +14,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::namespace('API\TenantFront')->prefix('estabelecimentos')->name('api.tenant-front.')->group(function () {
+    Route::prefix('/{tenant_url_prefix}')->group(function () {
+        Route::prefix('/{franchise_url_prefix}')->name('franchise.')->group(function () {
+            Route::prefix("pizzas")->name("pizzas.")->group(function () {
+                Route::post("/sabor-e-tamanho", "PizzaController@getPizzaFlavorsAndBorderFromPizzaSize")->name("get-pizza-flavors-and-borders-from-pizza-size");
+            });
+        });
+    });
 });

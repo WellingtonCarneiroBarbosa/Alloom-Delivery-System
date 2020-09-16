@@ -14,4 +14,8 @@ class BorderPrice extends Model
     protected $fillable = [
         "pizza_border_id", "pizza_size_id", "price", "franchise_id"
     ];
+
+    public function border() {
+        return $this->belongsTo(Border::class, "pizza_border_id", "id");
+    }
 }

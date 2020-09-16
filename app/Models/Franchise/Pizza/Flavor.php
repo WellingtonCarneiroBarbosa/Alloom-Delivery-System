@@ -14,4 +14,8 @@ class Flavor extends Model
     protected $fillable = [
         "name", "label_id", "description", "franchise_id"
     ];
+
+    public function prices() {
+        $this->hasMany(FlavorPrice::class, "pizza_flavor_id", "id");
+    }
 }

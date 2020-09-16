@@ -59,6 +59,7 @@
     <script src="{{asset('pizza-slices/assets/js/plugins/leaflet.js')}}"></script>
     <script src="{{asset('pizza-slices/assets/js/map.js')}}"></script>
 
+    @yield("scripts-content")
 
 </body>
 </html>

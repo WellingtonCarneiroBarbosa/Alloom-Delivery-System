@@ -4,9 +4,8 @@ namespace App\Models\Tenant;
 
 use App\Models\Alloom\Tenant;
 use App\Models\Franchise\Pizza\Size;
-use App\Models\Tenant\Pizza\BorderAvailableOn;
-use App\Models\Tenant\Pizza\FlavorAvailableOn;
-use App\Models\Tenant\Pizza\SizeAvailableOn;
+use App\Models\Franchise\Pizza\Border;
+use App\Models\Franchise\Pizza\Flavor;
 use App\Traits\MultiTenantTable;
 use Illuminate\Database\Eloquent\Model;
 
