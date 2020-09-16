@@ -24,11 +24,16 @@ class AddPizzaToCart extends FormRequest
      */
     public function rules()
     {
-        return [
+        $rules = [
             "pizza_size_id" => ['required', 'exists:pizza_sizes,id'],
             "pizza_flavors_id" => ['required', 'array', new AddPizzaToCartRule($this->get("pizza_size_id"))],
-            "pizza_border_id" => ["sometimes", "exists:pizza_borders,id"],
             "quantity" => ['required']
         ];
+
+        if($this->get("pizza_border_id")) {
+            $rules["pizza_border_id"] = ["sometimes", "exists:pizza_borders,id"];
+        }
+
+        return $rules;
     }
 }

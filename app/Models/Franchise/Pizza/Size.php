@@ -14,4 +14,12 @@ class Size extends Model
     protected $fillable = [
         "name", "price", "max_flavors", "slices", "description", "franchise_id"
     ];
+
+    public function flavors() {
+        return $this->hasMany(FlavorPrice::class, "pizza_size_id", "id");
+    }
+
+    public function borders() {
+        return $this->hasMany(BorderPrice::class, "pizza_size_id", "id");
+    }
 }

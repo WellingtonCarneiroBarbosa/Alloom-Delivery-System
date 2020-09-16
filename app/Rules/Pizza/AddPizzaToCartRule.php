@@ -2,7 +2,7 @@
 
 namespace App\Rules\Pizza;
 
-use App\Models\Tenant\Pizza\Size;
+use App\Models\Franchise\Pizza\Size;
 use Illuminate\Contracts\Validation\Rule;
 
 class AddPizzaToCartRule implements Rule

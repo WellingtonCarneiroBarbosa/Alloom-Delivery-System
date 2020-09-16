@@ -21,6 +21,8 @@
             <!-- Page Specific Styles -->
         <link rel="stylesheet" href="{{asset('pizza-slices/assets/css/plugins/leaflet.css')}}">
 
+        <script src="{{ asset('js/app.js') }}" defer></script>
+
      </head>
 <body>
       <!-- Preloader Start -->
@@ -36,7 +38,9 @@
      @yield('nav-content')
 
 
-    @yield('main-content')
+     <div id="app">
+        @yield('main-content')
+     </div>
 
 
      @yield('footer-content')

@@ -10,117 +10,14 @@
 
 
 @section('main-content')
-
-    <!-- Preloader End -->
-    <!-- Customize Modal Start -->
     <div class="modal fade" id="customizeModal" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
-        <div class="modal-content">
-        <div class="">
-            <button type="button" class="close-btn" data-dismiss="modal" aria-label="Close">
-            <span></span>
-            <span></span>
-            </button>
-        </div>
-        <div class="modal-body">
-            <div class="customize-meta">
-                <h4 class="customize-title">Pizza Pequena <span class="custom-primary">R$ 13,99</span> </h4>
-                <p>
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy
-                </p>
+        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+            <div class="modal-content" id="order-pizza">
+
             </div>
-            <div class="customize-variations">
-                <div class="customize-size-wrapper">
-                    <h5>Quantidade de sabores: </h5>
-                    <div class="customize-size active">
-                    1
-                    </div>
-                    <div class="customize-size">
-                    2
-                    </div>
-                    <div class="customize-size">
-                    3
-                    </div>
-                </div>
-                <div class="row">
-                    <!-- Variation End -->
-                    <!-- Variation Start -->
-                    <div class="col-lg-4 col-12">
-                    <div class="customize-variation-wrapper">
-                        <i class="flaticon-pizza-slice"></i>
-                        <h5>Borda</h5>
-                        <div class="customize-variation-item" data-price="4.00">
-                            <div class="custom-control custom-radio">
-                                <input type="radio" id="cheeseCrust" name="crust" class="custom-control-input">
-                                <label class="custom-control-label" for="cheeseCrust">Cheddar</label>
-                            </div>
-                            <span>+4.00$</span>
-                        </div>
-                        <div class="customize-variation-item" data-price="3.25">
-                            <div class="custom-control custom-radio">
-                                <input type="radio" id="butterCrust" name="crust" class="custom-control-input">
-                                <label class="custom-control-label" for="butterCrust">Catupiry</label>
-                            </div>
-                            <span>+3.25$</span>
-                        </div>
-                    </div>
-                    </div>
-                    <!-- Variation End -->
-                    <!-- Variation Start -->
-                    <div class="col-lg-4 col-12">
-                    <div class="customize-variation-wrapper">
-                        <i class="flaticon-pizza-and-cutted-slice"></i>
-                        <h5>Sabores</h5>
-                        <div class="customize-variation-item" data-price="2.00">
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="addChicken">
-                                <label class="custom-control-label" for="addChicken">Frango com catupiry</label>
-                            </div>
-                            <span>+2.00$</span>
-                        </div>
-                        <div class="customize-variation-item" data-price="1.20">
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="addFourCheese">
-                                <label class="custom-control-label" for="addFourCheese">Quatro Queijos</label>
-                            </div>
-                            <span>+1.20$</span>
-                        </div>
-                        <div class="customize-variation-item" data-price="0.75">
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="addFreshMushroom">
-                                <label class="custom-control-label" for="addFreshMushroom">Calabresa</label>
-                            </div>
-                            <span>+0.75$</span>
-                        </div>
-                        <div class="customize-variation-item" data-price="0.25">
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="addBellPepper">
-                                <label class="custom-control-label" for="addBellPepper">Alho e óleo</label>
-                            </div>
-                            <span>+0.25$</span>
-                        </div>
-                    </div>
-                    </div>
-                    <!-- Variation End -->
-                </div>
-            </div>
-            <div class="customize-controls">
-                <div class="qty">
-                    <span class="qty-subtract"><i class="fas fa-minus"></i></span>
-                    <input type="text" name="qty" value="1">
-                    <span class="qty-add"><i class="fas fa-plus"></i></span>
-                </div>
-                <div class="customize-total" data-price="13.99">
-                    <h5>Preço Total: <span class="final-price custom-primary"><span>R$</span> 13,99 </span> </h5>
-                </div>
-            </div>
-            <button type="button" class="btn-custom btn-block">Adicionar ao carrinho</button>
-        </div>
         </div>
     </div>
-    </div>
-    <!-- Customize Modal End -->
-    <!-- Header End -->
+
     <!-- Subheader Start -->
     <div class="subheader dark-overlay dark-overlay-2" style="background-image: url('{{asset('pizza-slices/assets/img/subheader.jpg')}}')">
     <div class="container">
@@ -136,6 +33,8 @@
     </div>
     </div>
     <!-- Subheader End -->
+
+    <x-tenant-front.alert />
     <!-- Menu Wrapper Start -->
     <div class="section section-padding">
     <div class="container">
@@ -156,8 +55,7 @@
                     </div>
                     <div class="product-controls">
                     <p class="product-price">A partir de R$ {{ $size->price }}</p>
-                    <input type="text" onclick="test(this)" value="{{ $size->id }}">
-                    <a href="#customizeModal" data-toggle="modal"  class="add-pizza-to-cart btn-custom btn-sm shadow-none">Adicionar ao carrinho<i class="fas fa-shopping-cart"></i> </a>
+                    <button class="add-pizza-to-cart btn-custom btn-sm shadow-none" onclick="selectPizzaFlavorsAndBorder(this)" value="{{ $size->id }}">Adicionar ao carrinho<i class="fas fa-shopping-cart"></i></button>
                     </div>
                 </div>
             </div>
@@ -300,24 +198,32 @@
     </div>
     </div>
 
+    <div id="demo"></div>
 @endsection
 
 @section('scripts-content')
 <script>
-    function test(pizza_size_id) {
-        let url = "{{ route('api.tenant-front.franchise.pizzas.get-pizza-flavors-and-borders-from-pizza-size', [$franchise->tenant->url_prefix, $franchise->url_prefix]) }}";
+    function selectPizzaFlavorsAndBorder(pizza_size_id) {
+        let url = "{{ route('tenant-front.franchise.pizza.get-flavors-and-borders', [$franchise->tenant->url_prefix, $franchise->url_prefix]) }}";
         $.ajax({
             url: url,
             type: 'post',
-            data: {pizza_size_id: pizza_size_id.value},
+            data: {
+                "_token": "{{ csrf_token() }}",
+                "pizza_size_id": pizza_size_id.value,
+            },
             dataType: 'json',
 
             success: function (response) {
-                console.log(response)
+                //console.log(response);
             },
 
+            //a parada é tao gambiarra, mas tao gambiarra
+            //que só funciona no evento error do ajax, mas importante
+            //é que ta funcionando
             error: function (e) {
-                console.log(e)
+                $("#order-pizza").html(e.responseText)
+                $("#customizeModal").modal("show");
             }
         });
     }

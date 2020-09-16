@@ -4,9 +4,9 @@ namespace App\Carts;
 
 class PizzaCart
 {
-    protected array $pizzas;
-    protected string $totalQuantity;
-    protected string $totalPrice;
+    protected $pizzas = [];
+    protected $totalQuantity;
+    protected $totalPrice;
 
     public function __construct($oldCart)
     {
@@ -27,7 +27,7 @@ class PizzaCart
             "total_price" => 0,
         ];
 
-        $piza["total_price"] = $pizza["unit_price"] * $pizza["quantity"];
+        $pizza["total_price"] = $pizza["unit_price"] * $pizza["quantity"];
 
         array_push($this->pizzas, $pizza);
         $this->totalQuantity += $pizza["quantity"];
@@ -35,7 +35,6 @@ class PizzaCart
     }
 
     protected function getPizzaPrice($flavors, $border) {
-
         $quantity_flavors = count($flavors);
 
         $flavor_price_sum = 0;
