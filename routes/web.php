@@ -27,13 +27,13 @@ Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
  */
 Route::namespace('TenantFront')->prefix('estabelecimentos')->name('tenant-front.')->group(function () {
     Route::prefix('/{tenant_url_prefix}')->group(function () {
-        Route::get('/', 'TenantFrontController@chooseUnit')->name('choose-unit');
+        Route::get('/', 'TenantFrontController@choosefranchise')->name('choose-franchise');
 
         /**
-         * Tenant Unit Routes.
+         * Tenant Franchise Routes.
          *
          */
-        Route::prefix('/{franchise_url_prefix}')->name('unit.')->group(function () {
+        Route::prefix('/{franchise_url_prefix}')->name('franchise.')->group(function () {
 
             Route::prefix("/dados")->name("api.")->group(function () {
                 Route::get("/sabores", "APIController@flavors")->name("flavors");

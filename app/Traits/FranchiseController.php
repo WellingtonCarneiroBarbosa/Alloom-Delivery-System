@@ -5,7 +5,7 @@ namespace App\Traits;
 use App\Models\Alloom\Tenant;
 use Illuminate\Support\Facades\Route;
 
-trait FrancheseController
+trait FranchiseController
 {
     protected $tenant;
 
@@ -14,7 +14,7 @@ trait FrancheseController
         $this->tenant = Tenant::getTenantByUrlPrefixOrFail(Route::current()->tenant_url_prefix);
     }
 
-    protected function getTenantUnitOrFail() {
-        return $this->tenant->restaurants()->where('unit_url_prefix', Route::current()->unit_url_prefix)->firstOrFail();
+    protected function getTenantFranchiseOrFail() {
+        return $this->tenant->franchises()->where('url_prefix', Route::current()->franchise_url_prefix)->firstOrFail();
     }
 }

@@ -128,8 +128,8 @@
         <h1></h1>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="#">{{ $unit->tenant->url_prefix }}</a></li>
-                <li class="breadcrumb-item active" aria-current="page">{{ $unit->unit_name }}</li>
+                <li class="breadcrumb-item"><a href="#">{{ $franchise->tenant->url_prefix }}</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{{ $franchise->name }}</li>
             </ol>
         </nav>
         </div>
@@ -143,20 +143,18 @@
         <div class="menu-container row menu-v2">
 
         <!-- Product Start -->
-        @foreach ($unit->pizzaSizes as $size)
+        @foreach ($franchise->pizzaSizes as $size)
         <div class="col-lg-4 col-md-6 pizzas offers">
             <div class="product">
                 <a class="product-thumb" href="menu-item-v1.html"> <img src="{{asset('pizza-slices/assets/img/prods-sm/2.png')}}" alt="menu item" /> </a>
                 <div class="product-body">
                     <div class="product-desc">
-                    <h4> <a href="menu-item-v1.html">{{ $size->sizes->name }}</a> </h4>
-                    <p>{{ $size->sizes->name }} de {{ $size->sizes->pieces }} pedaços</p>
+                    <h4> <a href="menu-item-v1.html">{{ $size->name }}</a> </h4>
+                    <p>{{ $size->description }}</p>
+                    <p>{{ $size->slices }} fatias</p>
                     </div>
                     <div class="product-controls">
-                    <p class="product-price">R$
-                        @if($unit->tenant->configurations->price_per_pizza_size)
-                            {{ $size->sizes->price }}
-                        @endif</p>
+                    <p class="product-price">A partir de R$ {{ $size->price }}</p>
                     <a href="#customizeModal" data-toggle="modal"  class="Adicionar ao carrinho-item btn-custom btn-sm shadow-none">Adicionar ao carrinho<i class="fas fa-shopping-cart"></i> </a>
                     </div>
                 </div>

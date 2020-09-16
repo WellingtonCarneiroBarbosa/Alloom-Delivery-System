@@ -10,7 +10,7 @@ use App\Models\Tenant\Order\Order;
 use App\Models\Tenant\Order\Pizza;
 use App\Models\Tenant\Pizza\Border;
 use App\Models\Tenant\Pizza\Flavor;
-use App\Traits\FrancheseController;
+use App\Traits\FranchiseController;
 use App\Carts\PizzaCartPricePerSize;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Tenant\Order\AddBilingData;
@@ -18,11 +18,11 @@ use App\Http\Requests\Tenant\Pizza\AddPizzaToCart;
 
 class TenantFrontController extends Controller
 {
-    use FrancheseController;
+    use FranchiseController;
 
-    public function chooseUnit() {
+    public function chooseFranchise() {
         try {
-            return view('tenant-front.choose-unit', [
+            return view('tenant-front.choose-franchise', [
                 "tenant" => $this->tenant
             ]);
         } catch (Exception $e) {
@@ -34,8 +34,8 @@ class TenantFrontController extends Controller
     }
 
     public function index() {
-        return view('tenant-front.unit.index', [
-            "unit" => $this->getTenantUnitOrFail(),
+        return view('tenant-front.franchise.index', [
+            "franchise" => $this->getTenantFranchiseOrFail(),
         ]);
     }
 
@@ -52,7 +52,7 @@ class TenantFrontController extends Controller
 
         $flavors = Flavor::whereIn('id', $data["pizza_flavors"])->get();
 
-        $cart->add($pizzaSize, $pizzaBorder, $flavors, $data["pizza_order_qty"], $data["unit_id"]);
+        $cart->add($pizzaSize, $pizzaBorder, $flavors, $data["pizza_order_qty"], $data["franchise_id"]);
 
         $request->session()->put('pizza_cart', $cart);
 
@@ -66,20 +66,20 @@ class TenantFrontController extends Controller
     }
 
     public function viewPizzaCart() {
-        return view("tenant-front.unit.view-cart", [
-            "unit" => $this->getTenantUnitOrFail()
+        return view("tenant-front.franchise.view-cart", [
+            "franchise" => $this->getTenantFranchiseOrFail()
         ]);
     }
 
     public function deletePizzaCart(Request $request) {
         $request->session()->flush("pizza_cart");
 
-        return redirect()->route('tenant-front.unit.index', [$this->tenant->url_prefix, $this->getTenantUnitOrFail()->unit_url_prefix]);
+        return redirect()->route('tenant-front.franchise.index', [$this->tenant->url_prefix, $this->getTenantFranchiseOrFail()->franchise_url_prefix]);
     }
 
     public function viewAddBillingData() {
-        return view("tenant-front.unit.order.add-billing-data", [
-            "unit" => $this->getTenantUnitOrFail()
+        return view("tenant-front.franchise.order.add-billing-data", [
+            "franchise" => $this->getTenantFranchiseOrFail()
         ]);
     }
 
@@ -98,7 +98,7 @@ class TenantFrontController extends Controller
              */
             $order["sub_total"] = $pizzaCart->totalPrice;
             $order["tenant_id"] = $this->tenant->id;
-            $order["restaurant_id"] = $this->getTenantUnitOrFail()->id;
+            $order["restaurant_id"] = $this->getTenantFranchiseOrFail()->id;
             $order = Order::create($order);
 
             /**
@@ -120,7 +120,7 @@ class TenantFrontController extends Controller
                     "pizza_border_type_id" => $pizza["pizza_border"]->id,
                     "qty" => $pizza["qty"],
                     "flavors" => $flavors,
-                    "unit_price" => $pizza["unit_price"],
+                    "franchise_price" => $pizza["franchise_price"],
                     "total_price" => $pizza["total_price"],
                 ];
 
@@ -142,8 +142,8 @@ class TenantFrontController extends Controller
     }
 
     public function requestExample() {
-        return view("tenant-front.unit.example-js", [
-            "unit" => $this->getTenantUnitOrFail()
+        return view("tenant-front.franchise.example-js", [
+            "franchise" => $this->getTenantFranchiseOrFail()
         ]);
     }
 }

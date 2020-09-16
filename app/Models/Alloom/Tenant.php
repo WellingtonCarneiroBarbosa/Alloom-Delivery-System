@@ -3,6 +3,7 @@
 namespace App\Models\Alloom;
 
 use App\Models\Tenant\Configuration;
+use App\Models\Tenant\Franchise;
 use App\Models\Tenant\Restaurant;
 use Exception;
 use Illuminate\Database\Eloquent\Model;
@@ -37,11 +38,7 @@ class Tenant extends Model
         return $tenant;
     }
 
-    public function restaurants() {
-        return $this->hasMany(Restaurant::class);
-    }
-
-    public function configurations() {
-        return $this->hasOne(Configuration::class);
+    public function franchises() {
+        return $this->hasMany(Franchise::class);
     }
 }

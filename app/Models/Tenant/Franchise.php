@@ -3,6 +3,7 @@
 namespace App\Models\Tenant;
 
 use App\Models\Alloom\Tenant;
+use App\Models\Franchise\Pizza\Size;
 use App\Models\Tenant\Pizza\BorderAvailableOn;
 use App\Models\Tenant\Pizza\FlavorAvailableOn;
 use App\Models\Tenant\Pizza\SizeAvailableOn;
@@ -41,5 +42,21 @@ class Franchise extends Model
 
     public function setUnitUrlPrefixAttribute($url) {
         $this->attributes['url_prefix'] = utf8_encode(strtolower(preg_replace('/[^A-Za-z0-9\-]/', '', str_replace(" ", "-", $url))));
+    }
+
+    public function tenant() {
+        return $this->belongsTo(Tenant::class);
+    }
+
+    public function pizzaSizes() {
+        return $this->hasMany(Size::class, "franchise_id", "id");
+    }
+
+    public function pizzaFlavors() {
+        return $this->hasMany(Flavor::class);
+    }
+
+    public function pizzaBorders() {
+        return $this->hasMany(Border::class);
     }
 }
