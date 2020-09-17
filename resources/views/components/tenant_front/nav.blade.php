@@ -1,5 +1,9 @@
  <!-- Cart Sidebar End -->
  <!-- Search Form Start-->
+@php
+    $order_session_cart = session()->get("order-cart-" . $franchise->id);
+@endphp
+
  <div class="search-form-wrapper">
     <div class="search-trigger close-btn">
        <span></span>
@@ -54,9 +58,9 @@
           </ul>
           <div class="header-controls">
              <ul class="header-controls-inner">
-                <li class="cart-dropdown-wrapper cart-trigger" id="cart-toggle">
-                   <span class="cart-item-count">4</span>
-                   <i class="flaticon-shopping-bag"></i>
+                <li class="cart-dropdown-wrapper cart-trigger">
+                    <span class="cart-item-count">{{ $order_session_cart == null ? "0" : $order_session_cart->totalQuantity }}</span>
+                    <i class="flaticon-shopping-bag"></i>
                 </li>
                 <li class="search-dropdown-wrapper search-trigger">
                    <i class="flaticon-search"></i>
