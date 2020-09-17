@@ -17,7 +17,7 @@ class CartController extends Controller
 {
     use FranchiseController;
 
-    public function index() {
+    public function getCartModalView() {
         return view("components.order.modal-content", [
             "franchise" => $this->getTenantFranchiseOrFail(),
             "order_cart" => $this->getFranchiseCart(),
@@ -61,8 +61,12 @@ class CartController extends Controller
             $this->updateSessionCart($cart);
         }
 
-        return redirect()->route("tenant-front.franchise.index", [$this->tenant->url_prefix, $this->getTenantFranchiseOrFail()->url_prefix])->with([
-            "success" => "Pizza removida do carrinho"
+        //return all cart updated
+
+        return view("components.order.modal-content", [
+            "franchise" => $this->getTenantFranchiseOrFail(),
+            "order_cart" => $this->getFranchiseCart(),
+            "success_message" => "Pizza removida do carrinho"
         ]);
     }
 

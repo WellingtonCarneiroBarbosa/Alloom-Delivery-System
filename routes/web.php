@@ -41,7 +41,7 @@ Route::namespace('TenantFront')->prefix('estabelecimentos')->name('tenant-front.
              *
              */
             Route::prefix("/meu-carrinho")->name("cart.")->group(function () {
-                Route::post("/", "CartController@index")->name("index");
+                Route::post("/", "CartController@getCartModalView")->name("index");
                 Route::post("/deletar", "CartController@destroy")->name("destroy");
 
                 /**

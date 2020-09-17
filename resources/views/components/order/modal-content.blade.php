@@ -1,3 +1,9 @@
+@if(isset($success_message))
+<div class="alert alert-success">
+    <p>{{ $success_message }}</p>
+</div>
+@endif
+
 @if($order_cart)
 <div class="cart-sidebar-body"  >
     <div class="cart-sidebar-scroll">
