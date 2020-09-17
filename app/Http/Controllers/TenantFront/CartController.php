@@ -16,37 +16,6 @@ class CartController extends Controller
 {
     use FranchiseController;
 
-    protected function getCurrentCartOrCreateOne() {
-        $order_cart = $this->getFranchiseCart();
-
-        //if has any cart, create a new empty cart
-        return $order_cart != null ? $order_cart : new OrderCart(null);
-    }
-
-    protected function getFranchiseCart() {
-        $franchise_id = $this->getTenantFranchiseOrFail()->id;
-        if(Session::has("order-cart-" . $franchise_id))
-            return new OrderCart(Session::get("order-cart-" . $franchise_id));
-
-        return null;
-    }
-
-    protected function getPizzaData($request) {
-        $size = Size::find($request["pizza_size_id"]);
-        $flavors = FlavorPrice::whereIn("pizza_flavor_id", $request["pizza_flavors_id"])->where("pizza_size_id", $request["pizza_size_id"])->get();
-
-        if(isset($request["pizza_border_id"]))
-            $border = BorderPrice::where("pizza_border_id", $request["pizza_border_id"])->where("pizza_size_id", $request["pizza_size_id"])->first();
-        else
-            $border = null;
-
-        return [
-            "size" => $size,
-            "flavors" => $flavors,
-            "border" => $border
-        ];
-    }
-
     public function index() {
         return view("components.order.modal-content", [
             "franchise" => $this->getTenantFranchiseOrFail(),
@@ -78,5 +47,36 @@ class CartController extends Controller
         return redirect()->route("tenant-front.franchise.index", [$this->tenant->url_prefix, $franchise->url_prefix])->with([
             "success" => "Carrinho reiniciado"
         ]);
+    }
+
+    protected function getCurrentCartOrCreateOne() {
+        $order_cart = $this->getFranchiseCart();
+
+        //if has any cart, create a new empty cart
+        return $order_cart != null ? $order_cart : new OrderCart(null);
+    }
+
+    protected function getFranchiseCart() {
+        $franchise_id = $this->getTenantFranchiseOrFail()->id;
+        if(Session::has("order-cart-" . $franchise_id))
+            return new OrderCart(Session::get("order-cart-" . $franchise_id));
+
+        return null;
+    }
+
+    protected function getPizzaData($request) {
+        $size = Size::find($request["pizza_size_id"]);
+        $flavors = FlavorPrice::whereIn("pizza_flavor_id", $request["pizza_flavors_id"])->where("pizza_size_id", $request["pizza_size_id"])->get();
+
+        if(isset($request["pizza_border_id"]))
+            $border = BorderPrice::where("pizza_border_id", $request["pizza_border_id"])->where("pizza_size_id", $request["pizza_size_id"])->first();
+        else
+            $border = null;
+
+        return [
+            "size" => $size,
+            "flavors" => $flavors,
+            "border" => $border
+        ];
     }
 }
