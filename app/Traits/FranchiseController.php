@@ -11,6 +11,7 @@ trait FranchiseController
 
     protected function getTenantFranchiseOrFail() {
         $this->tenant = \Request::get("tenant");
-        return $this->tenant->franchises()->where('url_prefix', Route::current()->franchise_url_prefix)->firstOrFail();
+
+        return \Request::get("franchise");
     }
 }

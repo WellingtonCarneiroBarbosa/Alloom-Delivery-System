@@ -34,7 +34,7 @@ Route::namespace('TenantFront')->prefix('estabelecimentos')->name('tenant-front.
          * Tenant Franchise Routes.
          *
          */
-        Route::prefix('/{franchise_url_prefix}')->name('franchise.')->group(function () {
+        Route::middleware("franchise")->prefix('/{franchise_url_prefix}')->name('franchise.')->group(function () {
 
             /**
              * Cart Routes **consumed by ajax

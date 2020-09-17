@@ -16,18 +16,17 @@ class CartController extends Controller
 {
     use FranchiseController;
 
-    protected $order_session_cart = "order-cart";
-
     protected function getCurrentCartOrCreateOne() {
-        $order_cart = $this->getCart();
+        $order_cart = $this->getFranchiseCart();
 
         //if has any cart, create a new empty cart
         return $order_cart != null ? $order_cart : new OrderCart(null);
     }
 
-    protected function getCart()  {
-        if(Session::has("order-cart"))
-            return new OrderCart(Session::get("order-cart"));
+    protected function getFranchiseCart() {
+        $franchise_id = $this->getTenantFranchiseOrFail()->id;
+        if(Session::has("order-cart-" . $franchise_id))
+            return new OrderCart(Session::get("order-cart-" . $franchise_id));
 
         return null;
     }
@@ -51,7 +50,7 @@ class CartController extends Controller
     public function index() {
         return view("components.order.modal-content", [
             "franchise" => $this->getTenantFranchiseOrFail(),
-            "order_cart" => $this->getCart()
+            "order_cart" => $this->getFranchiseCart(),
         ]);
     }
 
@@ -60,9 +59,11 @@ class CartController extends Controller
 
         $order_cart = $this->getCurrentCartOrCreateOne();
 
-        $order_cart->addPizzaToCart($pizza_data["border"], $pizza_data["flavors"], $pizza_data["size"], $request["quantity"]);
+        $franchise_id = $this->getTenantFranchiseOrFail()->id;
 
-        $request->session()->put($this->order_session_cart, $order_cart);
+        $order_cart->addPizzaToCart($pizza_data["border"], $pizza_data["flavors"], $pizza_data["size"], $request["quantity"], $franchise_id);
+
+        $request->session()->put("order-cart-" . $this->getTenantFranchiseOrFail()->id, $order_cart);
 
         return redirect()->back()->with([
             "success" => "Pizza adicionada ao carrinho"
@@ -70,7 +71,7 @@ class CartController extends Controller
     }
 
     public function destroy(Request $request) {
-        $request->session()->flush($this->order_session_cart);
+        $request->session()->flush("order-cart-" . $this->getTenantFranchiseOrFail()->id);
 
         $franchise = $this->getTenantFranchiseOrFail();
 
