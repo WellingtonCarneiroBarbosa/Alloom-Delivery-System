@@ -1,7 +1,6 @@
  <!-- Cart Sidebar End -->
  <!-- Search Form Start-->
 
- {{ dd($franchise->id) }}
  <div class="search-form-wrapper">
     <div class="search-trigger close-btn">
        <span></span>
