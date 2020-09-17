@@ -70,12 +70,10 @@
                     <div class="product-desc">
                     <h4> <a href="menu-item-v1.html">{{ $size->name }}</a> </h4>
                     <p>{{ $size->description }}</p>
-                    <p>Até {{ $size->max_flavors }} sabores</p>
-                    <p>{{ $size->slices }} fatias</p>
                     </div>
                     <div class="product-controls">
-                    <p class="product-price">A partir de R$ {{ $size->price }}</p>
-                    <button class="add-pizza-to-cart btn-custom btn-sm shadow-none" onclick="selectPizzaFlavorsAndBorder(this)" value="{{ $size->id }}">Adicionar ao carrinho<i class="fas fa-shopping-cart"></i></button>
+                    <p class="product-price">R$ {{ $size->price }} *</p>
+                    <button class="add-pizza-to-cart btn-custom btn-sm shadow-none" onclick="selectPizzaFlavorsAndBorder(this)" value="{{ $size->id }}">Adicionar ao carrinho</button>
                     </div>
                 </div>
             </div>
@@ -214,6 +212,9 @@
             </div>
         </div>
         <!-- Product End -->
+        <div class="col-lg-12 col-md-12 sides">
+            <p>* Valor mínimo do produto, poderá ter valores diferenciados para os sabores.</p>
+        </div>
         </div>
     </div>
     </div>
