@@ -1,5 +1,5 @@
 
-    @php
+@php
     $flavors = [];
 
     foreach ($size->flavors as $flavorPrice) {

@@ -36,6 +36,28 @@ class OrderCart
         $this->totalPrice += $pizza["total_price"];
     }
 
+    public function removePizzaFromCart($pizza_id) {
+        $pizza_index = $this->getPizzaIndexFromPizzaCart($pizza_id);
+        $current_pizza_data = $this->pizza_cart[$pizza_index];
+
+        $this->totalQuantity -= $current_pizza_data["quantity"];
+        $this->totalPrice -= $current_pizza_data["total_price"];
+        unset($this->pizza_cart[$pizza_index]);
+    }
+
+    protected function getPizzaIndexFromPizzaCart($pizza_id) {
+        $i = -1;
+
+        foreach($this->pizza_cart as $pizza) {
+            $i++;
+            if($pizza["id"] === $pizza_id)
+                return $i;
+        }
+
+        //not found
+        return null;
+    }
+
     protected function getPizzaPrice($flavors, $border) {
         $quantity_flavors = count($flavors);
 
