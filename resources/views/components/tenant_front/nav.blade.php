@@ -1,8 +1,8 @@
  <!-- Cart Sidebar End -->
- <!-- Search Form Start-->
-@php
-    $order_session_cart = session()->get("order-cart-" . $franchise->id);
-@endphp
+    <!-- Search Form Start-->
+    @php
+        $order_session_cart = session()->get("order-cart-" . $franchise->id);
+    @endphp
 
  <div class="search-form-wrapper">
     <div class="search-trigger close-btn">
