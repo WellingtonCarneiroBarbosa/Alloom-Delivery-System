@@ -3,15 +3,6 @@
     @php
          $order_session_cart = session()->get("order-cart-" . $franchise->id);
     @endphp
-
-<<<<<<< Updated upstream
-=======
-
- @php
-                $order_session_cart = session()->get("order-cart-" . $franchise->id);
-
-            @endphp
->>>>>>> Stashed changes
  <div class="search-form-wrapper">
     <div class="search-trigger close-btn">
        <span></span>
