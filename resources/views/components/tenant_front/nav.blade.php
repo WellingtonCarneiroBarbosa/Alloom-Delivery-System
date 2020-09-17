@@ -4,6 +4,14 @@
          $order_session_cart = session()->get("order-cart-" . $franchise->id);
     @endphp
 
+<<<<<<< Updated upstream
+=======
+
+ @php
+                $order_session_cart = session()->get("order-cart-" . $franchise->id);
+
+            @endphp
+>>>>>>> Stashed changes
  <div class="search-form-wrapper">
     <div class="search-trigger close-btn">
        <span></span>
@@ -59,8 +67,13 @@
           <div class="header-controls">
              <ul class="header-controls-inner">
                 <li class="cart-dropdown-wrapper cart-trigger">
+<<<<<<< Updated upstream
                     <span class="cart-item-count">{{ $order_session_cart == null ? "0" : $order_session_cart->totalQuantity }}</span>
                     <i class="flaticon-shopping-bag"></i>
+=======
+                   <span class="cart-item-count">{{ $order_session_cart }}</span>
+                   <i class="flaticon-shopping-bag"></i>
+>>>>>>> Stashed changes
                 </li>
                 <li class="search-dropdown-wrapper search-trigger">
                    <i class="flaticon-search"></i>
