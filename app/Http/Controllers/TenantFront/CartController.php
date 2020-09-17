@@ -29,7 +29,7 @@ class CartController extends Controller
 
         $franchise = $this->getTenantFranchiseOrFail();
 
-        return redirect()->route("tenant-front.franchise.index", [$this->tenant->url_prefix, $franchise->url_prefix])->with([
+        return redirect()->back()->with([
             "success" => "Carrinho reiniciado"
         ]);
     }
@@ -61,12 +61,8 @@ class CartController extends Controller
             $this->updateSessionCart($cart);
         }
 
-        //return all cart updated
-
-        return view("components.order.modal-content", [
-            "franchise" => $this->getTenantFranchiseOrFail(),
-            "order_cart" => $this->getFranchiseCart(),
-            "success_message" => "Pizza removida do carrinho"
+        return redirect()->back()->with([
+            "success" => "Pizza removida do carrinho"
         ]);
     }
 

@@ -17,6 +17,10 @@ Route::namespace("Welcome")->prefix("/")->name("welcome.")->group(function (){
     Route::get("/", "HomeController@index")->name("index");
 });
 
+Route::get('/refresh_csrf', function () {
+    return response()->json(csrf_token());
+})->name('csrf.renew');
+
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::post('/logout', 'Auth\LoginController@logout')->name('logout');

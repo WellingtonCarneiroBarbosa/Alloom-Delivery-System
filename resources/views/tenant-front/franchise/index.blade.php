@@ -81,7 +81,6 @@
         @endforeach
 
 
-
         <!-- Product End -->
         <!-- Product Start --
         <div class="col-lg-4 col-md-6 pizzas">
@@ -224,13 +223,17 @@
 
 @section('scripts-content')
 <script>
+    function getCSRFToken() {
+        return "{{ csrf_token() }}";
+    }
+
     function getOrderCartData() {
         let url = "{{ route('tenant-front.franchise.cart.index', [$franchise->tenant->url_prefix, $franchise->url_prefix]) }}";
         $.ajax({
             url: url,
             type: 'post',
             data: {
-                "_token": "{{ csrf_token() }}",
+                "_token": getCSRFToken(),
             },
 
             success: function (response) {
@@ -254,12 +257,12 @@
             url: url,
             type: 'post',
             data: {
-                "_token": "{{ csrf_token() }}",
+                "_token": getCSRFToken(),
                 "pizza_size_id": pizza_size_id.value,
             },
 
             success: function (response) {
-                $("#order-pizza").html(response)
+                $("#order-pizza").html(response);
                 $("#order-pizza-modal").modal("show");
             },
 
@@ -276,7 +279,7 @@
             url: url,
             type: 'post',
             data: {
-                "_token": "{{ csrf_token() }}",
+                "_token": getCSRFToken(),
                 "pizza_index": pizza_index.value,
             },
 
