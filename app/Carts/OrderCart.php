@@ -19,8 +19,10 @@ class OrderCart
     }
 
     public function addPizzaToCart($border=null, $flavors, $size, $quantity) {
+        $unique_id = md5(uniqid());
+
         $pizza = [
-            "id" => md5(uniqid()),
+            "id" => $unique_id,
             "border" => $border,
             "flavors" => $flavors,
             "size" => $size,
@@ -31,31 +33,17 @@ class OrderCart
 
         $pizza["total_price"] = $pizza["unit_price"] * $pizza["quantity"];
 
-        array_push($this->pizza_cart, $pizza);
+        $this->pizza_cart[$unique_id] = $pizza;
         $this->totalQuantity += $pizza["quantity"];
         $this->totalPrice += $pizza["total_price"];
     }
 
     public function removePizzaFromCart($pizza_id) {
-        $pizza_index = $this->getPizzaIndexFromPizzaCart($pizza_id);
-        $current_pizza_data = $this->pizza_cart[$pizza_index];
+        $pizza_item = $this->pizza_cart[$pizza_id];
 
-        $this->totalQuantity -= $current_pizza_data["quantity"];
-        $this->totalPrice -= $current_pizza_data["total_price"];
-        unset($this->pizza_cart[$pizza_index]);
-    }
-
-    protected function getPizzaIndexFromPizzaCart($pizza_id) {
-        $i = -1;
-
-        foreach($this->pizza_cart as $pizza) {
-            $i++;
-            if($pizza["id"] === $pizza_id)
-                return $i;
-        }
-
-        //not found
-        return null;
+        $this->totalQuantity -= $pizza_item["quantity"];
+        $this->totalPrice -= $pizza_item["total_price"];
+        unset($this->pizza_cart[$pizza_item["id"]]);
     }
 
     protected function getPizzaPrice($flavors, $border) {
