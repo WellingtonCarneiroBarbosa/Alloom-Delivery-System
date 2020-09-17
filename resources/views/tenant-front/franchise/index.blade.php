@@ -4,7 +4,7 @@
     <x-tenant_front.nav :franchise="$franchise" />
 
 <!-- Cart Sidebar Start -->
- <div class="cart-sidebar-wrapper" id="order-cart-1">
+ <div class="cart-sidebar-wrapper">
     <aside class="cart-sidebar">
         <div class="cart-sidebar-header">
            <h3>Seu Carrinho</h3>
@@ -285,7 +285,6 @@
 
             success: function (response) {
                 $("#order-cart").html(response);
-                $("#order-cart-1").show();
             },
 
             error: function (e) {

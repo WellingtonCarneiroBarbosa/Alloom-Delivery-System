@@ -1,6 +1,5 @@
  <!-- Cart Sidebar End -->
  <!-- Search Form Start-->
-
  <div class="search-form-wrapper">
     <div class="search-trigger close-btn">
        <span></span>
@@ -55,7 +54,7 @@
           </ul>
           <div class="header-controls">
              <ul class="header-controls-inner">
-                <li class="cart-dropdown-wrapper cart-trigger">
+                <li class="cart-dropdown-wrapper cart-trigger" id="cart-toggle">
                    <span class="cart-item-count">4</span>
                    <i class="flaticon-shopping-bag"></i>
                 </li>
