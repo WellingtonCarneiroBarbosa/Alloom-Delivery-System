@@ -28,9 +28,7 @@ class CartController extends Controller
 
         $order_cart = $this->getCurrentCartOrCreateOne();
 
-        $franchise_id = $this->getTenantFranchiseOrFail()->id;
-
-        $order_cart->addPizzaToCart($pizza_data["border"], $pizza_data["flavors"], $pizza_data["size"], $request["quantity"], $franchise_id);
+        $order_cart->addPizzaToCart($pizza_data["border"], $pizza_data["flavors"], $pizza_data["size"], $request["quantity"]);
 
         $request->session()->put("order-cart-" . $this->getTenantFranchiseOrFail()->id, $order_cart);
 
