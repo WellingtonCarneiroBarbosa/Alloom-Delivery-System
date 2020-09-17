@@ -2,6 +2,26 @@
 
 @section('nav-content')
     <x-tenant-front.nav />
+
+<!-- Cart Sidebar Start -->
+ <div class="cart-sidebar-wrapper" id="order-cart-1">
+    <aside class="cart-sidebar">
+        <div class="cart-sidebar-header">
+           <h3>Seu Carrinho</h3>
+           <div class="close-btn cart-trigger close-dark">
+              <span></span>
+              <span></span>
+           </div>
+        </div>
+        <div id="order-cart">
+
+        </div>
+     </aside>
+     <div class="cart-sidebar-overlay cart-trigger">
+     </div>
+
+ </div>
+
 @endsection
 
 @section('footer-content')
@@ -10,7 +30,7 @@
 
 
 @section('main-content')
-    <div class="modal fade" id="customizeModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal fade" id="order-pizza-modal" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
             <div class="modal-content" id="order-pizza">
 
@@ -203,6 +223,30 @@
 
 @section('scripts-content')
 <script>
+    function getOrderCartData() {
+        let url = "{{ route('tenant-front.franchise.cart.index', [$franchise->tenant->url_prefix, $franchise->url_prefix]) }}";
+        $.ajax({
+            url: url,
+            type: 'post',
+            data: {
+                "_token": "{{ csrf_token() }}",
+            },
+
+            success: function (response) {
+                $("#order-cart").html(response);
+            },
+
+            error: function (e) {
+                alert("Something went wrong.")
+                console.log(e)
+            }
+        });
+    }
+
+    $(document).ready(function () {
+        getOrderCartData()
+    });
+
     function selectPizzaFlavorsAndBorder(pizza_size_id) {
         let url = "{{ route('tenant-front.franchise.pizza.get-flavors-and-borders', [$franchise->tenant->url_prefix, $franchise->url_prefix]) }}";
         $.ajax({
@@ -212,21 +256,41 @@
                 "_token": "{{ csrf_token() }}",
                 "pizza_size_id": pizza_size_id.value,
             },
-            dataType: 'json',
 
             success: function (response) {
-                //console.log(response);
+                $("#order-pizza").html(response)
+                $("#order-pizza-modal").modal("show");
             },
 
-            //a parada é tao gambiarra, mas tao gambiarra
-            //que só funciona no evento error do ajax, mas importante
-            //é que ta funcionando
             error: function (e) {
-                $("#order-pizza").html(e.responseText)
-                $("#customizeModal").modal("show");
+                alert("Something went wrong.")
+                console.log(e)
             }
         });
     }
+
+    /**function deletePizzaFromCart(pizza_index)  {
+        let url = "{{-- route('tenant-front.franchise.pizza.delete-from-cart',[$franchise->tenant->url_prefix,$franchise->url_prefix]) --}}";
+        $.ajax({
+            url: url,
+            type: 'post',
+            data: {
+                "_token": "{{ csrf_token() }}",
+                "pizza_index": pizza_index.value,
+            },
+
+            success: function (response) {
+                $("#order-cart-1").html(response);
+                getOrderCartData();
+                $("#order-cart-1").show();
+            },
+
+            error: function (e) {
+                alert("Something went wrong.")
+                console.log(e)
+            }
+        });
+    }*/
 </script>
 @endsection
 

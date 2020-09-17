@@ -2,22 +2,23 @@
 
 namespace App\Carts;
 
-class PizzaCart
+class OrderCart
 {
-    public $pizzas = [];
+    public $pizza_cart = [];
     public $totalQuantity;
     public $totalPrice;
+
 
     public function __construct($oldCart)
     {
         if($oldCart) {
-            $this->pizzas = $oldCart->pizzas;
+            $this->pizza_cart = $oldCart->pizza_cart;
             $this->totalQuantity = $oldCart->totalQuantity;
             $this->totalPrice = $oldCart->totalPrice;
         }
     }
 
-    public function add($border=null, $flavors, $size, $quantity) {
+    public function addPizzaToCart($border=null, $flavors, $size, $quantity) {
         $pizza = [
             "border" => $border,
             "flavors" => $flavors,
@@ -29,7 +30,7 @@ class PizzaCart
 
         $pizza["total_price"] = $pizza["unit_price"] * $pizza["quantity"];
 
-        array_push($this->pizzas, $pizza);
+        array_push($this->pizza_cart, $pizza);
         $this->totalQuantity += $pizza["quantity"];
         $this->totalPrice += $pizza["total_price"];
     }

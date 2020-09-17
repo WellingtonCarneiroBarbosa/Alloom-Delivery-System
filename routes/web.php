@@ -26,7 +26,7 @@ Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
  *
  */
 Route::namespace('TenantFront')->prefix('estabelecimentos')->name('tenant-front.')->group(function () {
-    Route::prefix('/{tenant_url_prefix}')->group(function () {
+    Route::prefix('/{tenant_url_prefix}')->middleware("tenant")->group(function () {
         Route::get('/', 'TenantFrontController@choosefranchise')->name('choose-franchise');
 
         /**
@@ -36,16 +36,29 @@ Route::namespace('TenantFront')->prefix('estabelecimentos')->name('tenant-front.
         Route::prefix('/{franchise_url_prefix}')->name('franchise.')->group(function () {
 
             /**
+             * Cart Routes **consumed by ajax
+             *
+             */
+            Route::prefix("/meu-carrinho")->name("cart.")->group(function () {
+                Route::post("/", "CartController@index")->name("index");
+                Route::post("/deletar", "CartController@destroy")->name("destroy");
+
+                /**
+                 * Pizzas
+                 *
+                 */
+                Route::prefix("/pizzas")->name("pizza.")->group(function () {
+                    Route::post("/adicionar", "CartController@addPizzaToCart")->name("add");
+                });
+
+            });
+
+            /**
              * Pizza Routes
              *
              */
             Route::prefix("/pizza")->name("pizza.")->group(function () {
-                Route::post("/adicionar-ao-carrinho", "PizzaController@addPizzaToCart")->name("add-to-cart");
                 Route::post("/view/sabores-e-bordas", "PizzaController@getFlavorsAndBorders")->name("get-flavors-and-borders");
-            });
-
-            Route::prefix("/dados")->name("api.")->group(function () {
-                Route::get("/sabores", "APIController@flavors")->name("flavors");
             });
 
             Route::get("request-example", "TenantFrontController@requestExample");

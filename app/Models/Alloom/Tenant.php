@@ -32,8 +32,8 @@ class Tenant extends Model
         $this->attributes['url_prefix'] = utf8_encode(strtolower(preg_replace('/[^A-Za-z0-9\-]/', '', str_replace(" ", "-", $url))));
     }
 
-    public static function getTenantByUrlPrefixOrFail($tenant_url_prefix) {
-        $tenant = static::where("url_prefix", $tenant_url_prefix)->firstOrFail();
+    public static function getTenantByUrlPrefix($tenant_url_prefix) {
+        $tenant = static::where("url_prefix", $tenant_url_prefix)->first();
 
         return $tenant;
     }
