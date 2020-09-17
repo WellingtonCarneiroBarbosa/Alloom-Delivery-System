@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Session;
 use App\Models\Franchise\Pizza\BorderPrice;
 use App\Models\Franchise\Pizza\FlavorPrice;
 use App\Http\Requests\Tenant\Pizza\AddPizzaToCart;
+use App\Models\AlloomCustomers\Orders\Order;
 
 class CartController extends Controller
 {
@@ -20,6 +21,16 @@ class CartController extends Controller
         return view("components.order.modal-content", [
             "franchise" => $this->getTenantFranchiseOrFail(),
             "order_cart" => $this->getFranchiseCart(),
+        ]);
+    }
+
+    public function destroy(Request $request) {
+        $request->session()->flush("order-cart-" . $this->getTenantFranchiseOrFail()->id);
+
+        $franchise = $this->getTenantFranchiseOrFail();
+
+        return redirect()->route("tenant-front.franchise.index", [$this->tenant->url_prefix, $franchise->url_prefix])->with([
+            "success" => "Carrinho reiniciado"
         ]);
     }
 
@@ -37,14 +48,30 @@ class CartController extends Controller
         ]);
     }
 
-    public function destroy(Request $request) {
-        $request->session()->flush("order-cart-" . $this->getTenantFranchiseOrFail()->id);
+    public function removePizzaFromCart(Request $request) {
+        $cart = $this->getCurrentCartOrCreateOne();
 
-        $franchise = $this->getTenantFranchiseOrFail();
+        $cart->removePizzaFromCart($request["pizza_index"]);
 
-        return redirect()->route("tenant-front.franchise.index", [$this->tenant->url_prefix, $franchise->url_prefix])->with([
-            "success" => "Carrinho reiniciado"
+        //if there is any product in order, flush this session
+        //for server memory optimization
+        if($cart->totalQuantity <= 0) {
+            Session::flush("order-cart-" . $this->getTenantFranchiseOrFail()->id);
+        } else {
+            $this->updateSessionCart($cart);
+        }
+
+        return redirect()->route("tenant-front.franchise.index", [$this->tenant->url_prefix, $this->getTenantFranchiseOrFail()->url_prefix])->with([
+            "success" => "Pizza removida do carrinho"
         ]);
+    }
+
+    protected function updateSessionCart($data) {
+        $cart = new OrderCart($data);
+        $franchise_id = $this->getTenantFranchiseOrFail()->id;
+
+        Session::flush("order-cart-" . $franchise_id);
+        Session::put("order-cart-" . $franchise_id, $cart);
     }
 
     protected function getCurrentCartOrCreateOne() {

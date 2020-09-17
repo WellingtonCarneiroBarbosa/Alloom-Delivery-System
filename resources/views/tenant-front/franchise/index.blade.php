@@ -270,8 +270,8 @@
         });
     }
 
-    /**function deletePizzaFromCart(pizza_index)  {
-        let url = "{{-- route('tenant-front.franchise.pizza.delete-from-cart',[$franchise->tenant->url_prefix,$franchise->url_prefix]) --}}";
+    function deletePizzaFromCart(pizza_index)  {
+        let url = "{{ route('tenant-front.franchise.cart.pizza.delete',[$franchise->tenant->url_prefix,$franchise->url_prefix]) }}";
         $.ajax({
             url: url,
             type: 'post',
@@ -281,8 +281,7 @@
             },
 
             success: function (response) {
-                $("#order-cart-1").html(response);
-                getOrderCartData();
+                $("#order-cart").html(response);
                 $("#order-cart-1").show();
             },
 
@@ -291,7 +290,7 @@
                 console.log(e)
             }
         });
-    }*/
+    }
 </script>
 @endsection
 

@@ -50,6 +50,7 @@ Route::namespace('TenantFront')->prefix('estabelecimentos')->name('tenant-front.
                  */
                 Route::prefix("/pizzas")->name("pizza.")->group(function () {
                     Route::post("/adicionar", "CartController@addPizzaToCart")->name("add");
+                    Route::post("/deletar", "CartController@removePizzaFromCart")->name("delete");
                 });
 
             });

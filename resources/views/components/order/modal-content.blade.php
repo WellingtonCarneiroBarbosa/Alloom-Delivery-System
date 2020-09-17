@@ -23,7 +23,7 @@
                     R$ {{ $pizza["total_price"] }}
                 </div>
 
-                <button class="close-btn">
+                <button class="close-btn" onclick="deletePizzaFromCart(this)" value="{{ $pizza["id"] }}">
                     <span></span>
                     <span></span>
                 </button>
