@@ -47,6 +47,7 @@
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="#">{{ $franchise->tenant->url_prefix }}</a></li>
                 <li class="breadcrumb-item active" aria-current="page">{{ $franchise->name }}</li>
+                <li class="openOrClosedFranchiseHome openedfranchiseHome">Aberto</li>
             </ol>
         </nav>
         </div>
