@@ -19,8 +19,7 @@
         <link rel="stylesheet" href="{{asset('pizza-slices/assets/css/style.css')}}">
         <!-- Favicon -->
         <link rel="icon" type="image/png" sizes="32x32" href="{{asset('pizza-slices/assets/img/favicon.ico')}}">
-
-            <!-- Page Specific Styles -->
+        <!-- Page Specific Styles -->
         <link rel="stylesheet" href="{{asset('pizza-slices/assets/css/plugins/leaflet.css')}}">
 
         <script src="{{ asset('js/app.js') }}" defer></script>

@@ -1,7 +1,7 @@
 @extends('layouts.tenant-front.pizza')
 
 @section('nav-content')
-    <x-tenant_front.nav :franchise="$franchise" />
+    <x-tenant_front.nav :franchise="$franchise" type="light"/>
 
 <!-- Cart Sidebar Start -->
  <div class="cart-sidebar-wrapper">

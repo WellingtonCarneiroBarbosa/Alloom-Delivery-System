@@ -4,23 +4,16 @@ namespace App\View\Components\tenant_front;
 
 use Illuminate\View\Component;
 
-class nav extends Component
+class nav_black extends Component
 {
-    public $type;
-
-
-    public $franchise;
-
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($franchise, $type)
+    public function __construct()
     {
-        $this->franchise = $franchise;
-        $this->type = $type;
-
+        //
     }
 
     /**
@@ -30,6 +23,6 @@ class nav extends Component
      */
     public function render()
     {
-        return view('components.tenant_front.nav');
+        return view('components.tenant_front.nav_black');
     }
 }
