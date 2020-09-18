@@ -5,7 +5,7 @@ namespace App\Http\Requests\Tenant\Order;
 use App\Rules\FullName;
 use Illuminate\Foundation\Http\FormRequest;
 
-class AddBilingData extends FormRequest
+class AddReceiverData extends FormRequest
 {
     protected function sanitizeNumber($phone) {
         if($phone) //different null
@@ -16,8 +16,8 @@ class AddBilingData extends FormRequest
 
     public function prepareForValidation() {
         $this->merge([
-            "billing_phone" => $this->sanitizeNumber($this->get("billing_phone")),
-            "billing_cep" => $this->sanitizeNumber($this->get("billing_cep")),
+            "receiver_phone" => $this->sanitizeNumber($this->get("receiver_phone")),
+            "receiver_cep" => $this->sanitizeNumber($this->get("receiver_cep")),
         ]);
     }
 
@@ -44,11 +44,11 @@ class AddBilingData extends FormRequest
         }
 
         $rules = [
-            "billing_name" => ["required", "min:3", "max:200", new FullName],
-            "billing_phone" => ["required", "min:10", "max:11"],
+            "receiver_name" => ["required", "min:3", "max:200", new FullName],
+            "receiver_phone" => ["required", "min:10", "max:11"],
             "pick_up_at_the_count" => ["required", "boolean"],
-            "billing_cep" => $cepRule ?? ["required_if:pick_up_at_the_count,false"],
-            "billing_complement" => $complementRule ?? ["required_if:pick_up_at_the_count,false"]
+            "receiver_cep" => $cepRule ?? ["required_if:pick_up_at_the_count,false"],
+            "receiver_complement" => $complementRule ?? ["required_if:pick_up_at_the_count,false"]
         ];
 
         return $rules;

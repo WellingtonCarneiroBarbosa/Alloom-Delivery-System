@@ -17,7 +17,7 @@ class DeliverySchema extends Migration
          * Billings table
          *
          */
-        Schema::create('billings', function (Blueprint $table) {
+        Schema::create('receivers', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
@@ -27,7 +27,7 @@ class DeliverySchema extends Migration
             $table->string('password');
             $table->timestamps();
         });
-        echo "\rMigrated billings\n";
+        echo "\rMigrated receivers\n";
 
         /**
          * Discount Codes table
@@ -63,11 +63,11 @@ class DeliverySchema extends Migration
          */
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('billing_id')->nullable()->onUpdate('cascade')->onDelete('cascade');
-            $table->string('billing_name')->nullable();
-            $table->string('billing_phone')->nullable();
-            $table->string('billing_cep')->nullable();
-            $table->string('billing_complement')->nullable();
+            $table->foreignId('receiver_id')->nullable()->onUpdate('cascade')->onDelete('cascade');
+            $table->string('receiver_name')->nullable();
+            $table->string('receiver_phone')->nullable();
+            $table->string('receiver_cep')->nullable();
+            $table->string('receiver_complement')->nullable();
             $table->unsignedInteger("discount_code_id")->nullable();
             $table->foreign("discount_code_id")->references("id")->on("discount_codes")->onUpdate("cascade")->onDelete("set null");
             $table->boolean('pick_up_at_the_counter')->default(false);
@@ -90,7 +90,7 @@ class DeliverySchema extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('billings');
+        Schema::dropIfExists('receivers');
         Schema::dropIfExists('discount_codes');
         Schema::dropIfExists('delivery_fee');
         Schema::dropIfExists('orders');
