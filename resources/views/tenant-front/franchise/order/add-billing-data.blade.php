@@ -8,25 +8,9 @@
                     <div class="card-header">Concluir Pedido</div>
 
                     <div class="card-body">
-                        @if ($errors->any())
-                            <div class="alert alert-danger">
-                                <ul>
-                                    @foreach ($errors->all() as $error)
-                                        <li>{{ $error }}</li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                        @endif
+                        <x-tenant-front.alert />
 
-                        @if (session("success"))
-                            <div class="alert alert-success">
-                                <ul>
-                                    <li>{{ session("success") }}</li>
-                                </ul>
-                            </div>
-                        @endif
-
-                        <form action="{{ route("tenant-front.unit.order.add-billing-data-and-make-order", [$unit->tenant->url_prefix, $unit->unit_url_prefix]) }}" method="POST">
+                        <form action="{{ route("tenant-front.franchise.order.make.step-store-1", [$franchise->tenant->url_prefix, $franchise->url_prefix]) }}" method="POST">
                             @csrf
 
                             <div class="row">

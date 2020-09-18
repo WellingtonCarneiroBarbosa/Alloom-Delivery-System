@@ -34,7 +34,7 @@ class DeliverySchema extends Migration
          *
          */
         Schema::create('discount_codes', function (Blueprint $table) {
-            $table->id();
+            $table->increments("id");
             $table->string('code');
             $table->float('discount_tax');
             $table->unsignedInteger("franchise_id");
@@ -68,11 +68,14 @@ class DeliverySchema extends Migration
             $table->string('billing_phone')->nullable();
             $table->string('billing_cep')->nullable();
             $table->string('billing_complement')->nullable();
-            $table->string('discount_code')->nullable();
+            $table->unsignedInteger("discount_code_id")->nullable();
+            $table->foreign("discount_code_id")->references("id")->on("discount_codes")->onUpdate("cascade")->onDelete("set null");
             $table->boolean('pick_up_at_the_counter')->default(false);
-            $table->foreignId('status_id')->nullable()->onUpdate('cascade')->onDelete('set null');
-            $table->float('delivery_fee')->nullable();
-            $table->float('sub_total');
+            $table->unsignedTinyInteger("order_status_id")->nullable();
+            $table->foreign("order_status_id")->references("id")->on("order_status")->onUpdate("cascade")->onDelete("set null");
+            $table->string('delivery_fee')->nullable();
+            $table->string("totalQuantity");
+            $table->string('totalPrice');
             $table->unsignedInteger("franchise_id");
             $table->foreign("franchise_id")->references("id")->on("franchises")->onUpdate("cascade")->onDelete("cascade");
             $table->timestamps();
