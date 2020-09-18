@@ -1,0 +1,26 @@
+.franchiseAdressCard, .franchiseNameCard{
+    margin-bottom: 0px !important;
+    padding:0px;
+    line-height: 20px;
+}
+
+.franchiseAdressCard{
+    font-size: 0.78em;
+    padding-bottom: 1.5em;
+}
+
+.franchiseOpenCard{
+    text-align: center;
+}
+
+.openFranchise{
+    margin-top: 1px;
+    color:green;
+    border: 1px solid green;
+}
+
+.closedFranchise{
+    margin-top: 1px;
+    color:red;
+    border: 1px solid red;
+}
