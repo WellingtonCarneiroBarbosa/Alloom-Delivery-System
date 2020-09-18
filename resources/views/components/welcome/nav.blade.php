@@ -1,11 +1,11 @@
   <!-- Aside (Mobile Navigation) -->
   <aside class="main-aside">
-    <a class="navbar-brand" href="index.html"> <img src="{{asset('pizza-slices/assets/img/logo.png')}}" alt="logo"> </a>
+    <a class="navbar-brand" href="{{  route("welcome.index")  }}"> <img src="{{asset('pizza-slices/assets/img/logo.png')}}" alt="logo"> </a>
 
     <div class="aside-scroll">
       <ul>
         <li class="menu-item">
-          <a href="contact-us.html">Página inicial</a>
+          <a href="{{ route("welcome.index") }}">Página inicial</a>
         </li>
         <li class="menu-item">
           <a href="contact-us.html">Sobre</a>
@@ -37,11 +37,11 @@
 
     <nav class="navbar">
       <!-- Logo -->
-      <a class="navbar-brand" href="index.html"> <img src="{{asset('pizza-slices/assets/img/logo.png')}}" alt="logo"> </a>
+      <a class="navbar-brand" href="{{ route("welcome.index") }}"> <img src="{{asset('pizza-slices/assets/img/logo.png')}}" alt="logo"> </a>
       <!-- Menu -->
       <ul class="navbar-nav">
         <li class="menu-item">
-          <a href="contact-us.html">Página inicial</a>
+          <a href="{{ route("welcome.index") }}">Página inicial</a>
         </li>
         <li class="menu-item">
           <a href="contact-us.html">Sobre</a>
@@ -57,7 +57,7 @@
         </li>
       </ul>
 
-      <a href="menu-v1.html" class="header-cta">Entrar</a>
+      <a href="{{ route("tenant.login") }}" class="header-cta">Entrar</a>
       <a href="menu-v1.html" class="header-cta" style="background-color: #4e4e4e">Suporte Online</a>
       <div class="header-controls">
         <!-- Toggler -->

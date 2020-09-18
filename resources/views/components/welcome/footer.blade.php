@@ -4,7 +4,7 @@
 <div class="container">
     <div class="footer-top">
         <div class="footer-logo">
-            <img src="{{asset('pizza-slices/assets/img/logo.png')}}" alt="logo">
+            <img src="{{asset('pizza-slices/assets/img/logo.png')}}" alt="Alloom Logo">
         </div>
     </div>
 </div>
@@ -13,8 +13,8 @@
 <div class="footer-bottom">
     <div class="container">
         <ul>
-            <li> <a href="#">Politica de privacidade</a> </li>
-            <li> <a href="#">Politica de Cookies</a> </li>
+            <li> <a href="{{ route("welcome.privacy-policy") }}">Politica de privacidade</a> </li>
+            <li> <a href="{{ route("welcome.privacy-policy") }}">Politica de Cookies</a> </li>
             <li> <a href="#">Termos e condições</a> </li>
         </ul>
         <div class="footer-copyright">

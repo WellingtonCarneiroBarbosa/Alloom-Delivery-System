@@ -10,4 +10,8 @@ class HomeController extends Controller
     public function index() {
         return view('welcome.index');
     }
+
+    public function privacyPolicy() {
+        return view('welcome.cookies');
+    }
 }

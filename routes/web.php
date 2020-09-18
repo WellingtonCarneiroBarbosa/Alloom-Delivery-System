@@ -15,10 +15,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::namespace("Welcome")->prefix("/")->name("welcome.")->group(function (){
     Route::get("/", "HomeController@index")->name("index");
-});
 
-Route::get("/politica-de-privacidade", function () {
-    return view("welcome.cookies");
+    Route::get("/politica-de-privacidade", "HomeController@privacyPolicy")->name("privacy-policy");
 });
 
 Route::get('/refresh_csrf', function () {

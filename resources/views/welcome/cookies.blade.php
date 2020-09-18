@@ -1,14 +1,15 @@
-  @extends('layouts.tenant-front.pizza')
+    @extends('layouts.welcome.app')
 
-  @section('title', 'Politica de Cookies')
+    @section('title', 'Politica de Cookies')
 
-  @section('nav-content')
-    <x-tenant_front.nav type="black" />
-  @endsection
+    @section('nav-content')
+        <x-welcome.nav />
+    @endsection
 
-  @section('footer-content')
-    <x-tenant-front.footer />
-  @endsection
+    @section('footer-content')
+        <x-welcome.footer />
+    @endsection
+
 
   @section('main-content')
     <!-- Legal Wrapper Start -->
@@ -18,7 +19,7 @@
             <div class="col-lg-8">
                 <div class="post-content">
                   <h3>Quem nós somos</h3>
-                  <p>O nosso site é o: <a href="http://alloom.com.br">http://alloom.com.br</a></p>
+                  <p>O nosso site é o: <a href="https://alloom.com.br" target="blank">http://alloom.com.br</a></p>
                   <h2>Política Privacidade</h2>
                   <p>A sua privacidade é importante para nós. É política do Alloom respeitar a sua privacidade em relação a qualquer informação sua que possamos coletar no site <a href=http://alloom.com.br>Alloom</a>, e outros sites que possuímos e operamos.</p>
                   <p>Solicitamos informações pessoais apenas quando realmente precisamos delas para lhe fornecer um serviço. Fazemo-lo por meios justos e legais, com o seu conhecimento e consentimento. Também informamos por que estamos coletando e como será usado. </p>

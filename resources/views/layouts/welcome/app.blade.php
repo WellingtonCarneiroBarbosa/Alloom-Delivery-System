@@ -33,7 +33,7 @@
         </div>
      </div>
 
-     @yield('nav-content')
+    @yield('nav-content')
 
 
     @yield('main-content')
