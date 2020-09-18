@@ -84,7 +84,7 @@
     <div class="row align-items-center">
 
       <div class="col-lg-6 mb-lg-30">
-        <img src="{{asset('pizza-slices/assets/img/misc/delivery.svg')}}" alt="img">
+        <img class="homeImageSection" src="{{asset('pizza-slices/assets/img/misc/delivery.svg')}}" alt="img">
       </div>
       <div class="col-lg-6">
         <div class="banner-inner">
@@ -118,7 +118,7 @@
         </div>
       </div>
       <div class="col-lg-6 mb-lg-30">
-        <img src="{{asset('pizza-slices/assets/img/misc/growup.svg')}}" alt="img">
+        <img class="homeImageSection" src="{{asset('pizza-slices/assets/img/misc/growup.svg')}}" alt="img">
       </div>
 
 
@@ -134,7 +134,7 @@
       <div class="row align-items-center">
 
         <div class="col-lg-6 mb-lg-30">
-          <img src="{{asset('pizza-slices/assets/img/misc/design.svg')}}" alt="img">
+          <img class="homeImageSection" src="{{asset('pizza-slices/assets/img/misc/design.svg')}}" alt="img">
         </div>
         <div class="col-lg-6">
           <div class="banner-inner">
@@ -161,7 +161,7 @@
     <div class="ct-newsletter">
 
       <div class="section-title-wrap section-header">
-        <h2 class="title">Podemos entrar em contato?</h2>
+        <h2 class="title">Solicitar teste gratuito</h2>
       </div>
       <form method="post">
         <input type="text" class="form-control" placeholder="Seu Nome Completo" value=""><br>
