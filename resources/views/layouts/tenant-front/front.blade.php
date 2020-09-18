@@ -66,7 +66,7 @@
 </head>
 
 <body>
-    <x-front.loader />
+    <x-welcome.loader />
 
     <header class="header-global">
         @yield('nav-content')
