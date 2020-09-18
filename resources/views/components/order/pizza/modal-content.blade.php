@@ -8,7 +8,7 @@
 @endphp
 
 <div class="">
-    <button type="button" class="close-btn" data-dismiss="modal" aria-label="Close">
+    <button type="button" class="close-btn close-btnWithoutBGImg-btn" data-dismiss="modal" aria-label="Close">
         <span></span>
         <span></span>
       </button>
