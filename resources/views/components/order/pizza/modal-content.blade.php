@@ -54,6 +54,7 @@
                                 <label class="custom-control-label" title="{{ $borderPrice->border->description }}" for="pizzaBorder[{{ $borderPrice->id }}]">{{ $borderPrice->border->name }}</label>
                             </div>
                             <span>R$ {{ $borderPrice->price }}</span>
+
                         </div>
                     @endforeach
                     <div class="customize-variation-item" data-price="4.00">
@@ -81,13 +82,16 @@
                                     </div>
                                     <span>R$ {{ $flavorPrice->price }}</span>
                                 </div>
+                                <p class="descriptionTaste">Mussarela, molho de tomate, frango, catupiry, batata palha.</p>
                             @endif
                         @endforeach
                     </div>
                 </div>
                 @endforeach
+
                 <!-- Variation End -->
             </div>
+            <textarea class='textAreaStyled' placeholder='Observações'></textarea>
         </div>
         <div class="customize-controls">
             <div class="qty">
