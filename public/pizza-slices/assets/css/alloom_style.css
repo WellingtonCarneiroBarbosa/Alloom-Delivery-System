@@ -55,3 +55,8 @@
     color:white;
     font-weight: bold;
 }
+
+.close-btn{
+    background-color: black;
+    float: right;
+}

@@ -6,6 +6,7 @@
 
 @if($order_cart)
 <div class="cart-sidebar-body"  >
+
     <div class="cart-sidebar-scroll">
         @foreach ($order_cart->pizza_cart as $pizza)
             <div class="cart-sidebar-item">
@@ -51,6 +52,6 @@
 
 @else
 <div class="container">
-    <h1>Seu carrinho está vazio \o/</h1>
+    <h4>Seu carrinho está vazio</h4>
 </div>
 @endif

@@ -9,9 +9,9 @@
 
 <div class="">
     <button type="button" class="close-btn" data-dismiss="modal" aria-label="Close">
-    <span></span>
-    <span></span>
-    </button>
+        <span></span>
+        <span></span>
+      </button>
 </div>
 <form action="{{ route("tenant-front.franchise.cart.pizza.add", [$franchise->tenant->url_prefix, $franchise->url_prefix]) }}" method="POST">
     @csrf
