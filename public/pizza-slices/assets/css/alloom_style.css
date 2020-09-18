@@ -60,3 +60,29 @@
     background-color: transparent;
     float: right;
 }
+
+ /* width */
+ ::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #da464a;
+  }
+
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #da464a;
+  }
+
+.homeImageSection{
+    width: 80%;
+    align:center;
+
+}

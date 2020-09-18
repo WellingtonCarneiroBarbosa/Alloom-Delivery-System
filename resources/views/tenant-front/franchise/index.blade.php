@@ -66,10 +66,10 @@
         @foreach ($franchise->pizzaSizes as $size)
         <div class="col-lg-4 col-md-6 pizzas offers">
             <div class="product">
-                <a class="product-thumb" href="menu-item-v1.html"> <img src="{{asset('pizza-slices/assets/img/prods-sm/2.png')}}" alt="menu item" /> </a>
+                <div class="product-thumb" > <img src="{{asset('pizza-slices/assets/img/prods-sm/2.png')}}" alt="menu item" /> </div>
                 <div class="product-body">
                     <div class="product-desc">
-                    <h4> <a href="menu-item-v1.html">{{ $size->name }}</a> </h4>
+                    <h4> <div>{{ $size->name }}</div> </h4>
                     <p>{{ $size->description }}</p>
                     </div>
                     <div class="product-controls">
