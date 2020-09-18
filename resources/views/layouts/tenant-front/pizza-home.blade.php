@@ -20,6 +20,8 @@
 
             <!-- Page Specific Styles -->
         <link rel="stylesheet" href="{{asset('pizza/assets/css/plugins/leaflet.css')}}">
+        <link rel="stylesheet" href="{{asset('pizza-slices/assets/css/alloom_style.css')}}">
+
 
      </head>
 <body>
