@@ -24,7 +24,7 @@ class RedirectIfAuthenticated
                     $route = RouteServiceProvider::HOME;
                     break;
 
-                case 'tenant':
+                case 'franchise':
                     $route = RouteServiceProvider::TENANT_HOME;
                     break;
 
