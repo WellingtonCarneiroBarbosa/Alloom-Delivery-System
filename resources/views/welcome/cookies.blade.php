@@ -1,13 +1,13 @@
-  @extends('layouts.pizza')
+  @extends('layouts.tenant-front.pizza')
 
   @section('title', 'Politica de Cookies')
 
   @section('nav-content')
-    <x-pizza.nav-black />
+    <x-tenant_front.nav type="black" />
   @endsection
 
   @section('footer-content')
-    <x-pizza.footer />
+    <x-tenant-front.footer />
   @endsection
 
   @section('main-content')

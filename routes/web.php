@@ -17,6 +17,10 @@ Route::namespace("Welcome")->prefix("/")->name("welcome.")->group(function (){
     Route::get("/", "HomeController@index")->name("index");
 });
 
+Route::get("/politica-de-privacidade", function () {
+    return view("welcome.cookies");
+});
+
 Route::get('/refresh_csrf', function () {
     return response()->json(csrf_token());
 })->name('csrf.renew');

@@ -1,7 +1,9 @@
  <!-- Cart Sidebar End -->
-    <!-- Search Form Start-->
     @php
-        $order_session_cart = session()->get("order-cart-" . $franchise->id);
+        if(isset($franchise))
+            $order_session_cart = session()->get("order-cart-" . $franchise->id);
+        else
+            $order_session_cart = null;
     @endphp
 
  <div class="search-form-wrapper">
