@@ -1,10 +1,10 @@
 <?php
 
-namespace App\View\Components\order;
+namespace App\View\Components\tenant_front;
 
 use Illuminate\View\Component;
 
-class modal-content extends Component
+class order_data extends Component
 {
     /**
      * Create a new component instance.
@@ -23,6 +23,6 @@ class modal-content extends Component
      */
     public function render()
     {
-        return view('components.order.modal-content');
+        return view('components.tenant_front.order_data');
     }
 }

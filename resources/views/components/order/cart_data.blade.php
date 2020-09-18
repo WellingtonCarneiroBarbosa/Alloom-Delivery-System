@@ -4,11 +4,11 @@
 </div>
 @endif
 
-@if($order_cart)
+@if($cart)
 <div class="cart-sidebar-body"  >
 
     <div class="cart-sidebar-scroll">
-        @foreach ($order_cart->pizza_cart as $pizza)
+        @foreach ($cart->pizza_cart as $pizza)
             <div class="cart-sidebar-item">
                 <div class="media">
                     <!--<a href="#">Pizza</a>-->
@@ -39,7 +39,7 @@
     </div>
 </div>
 <div class="cart-sidebar-footer">
-    <h4>Sub-Total: <span>R$ {{ $order_cart->totalPrice }}</span> </h4>
+    <h4>Sub-Total: <span>R$ {{ $cart->totalPrice }}</span> </h4>
 
     <form method="POST" action="{{ route("tenant-front.franchise.cart.destroy", [$franchise->tenant->url_prefix, $franchise->url_prefix]) }}">
         @csrf

@@ -71,3 +71,20 @@
        </nav>
     </div>
  </header>
+
+ <!-- Subheader Start -->
+ <div class="subheader dark-overlay dark-overlay-2" style="background-image: url('{{asset('pizza-slices/assets/img/subheader.jpg')}}')">
+    <div class="container">
+        <div class="subheader-inner">
+        <h1></h1>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#">{{ $franchise->tenant->url_prefix }}</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{{ $franchise->name }}</li>
+                <li class="openOrClosedFranchiseHome openedfranchiseHome">Aberto</li>
+            </ol>
+        </nav>
+        </div>
+    </div>
+</div>
+<!-- Subheader End -->

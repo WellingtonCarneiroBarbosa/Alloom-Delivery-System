@@ -15,12 +15,12 @@
 
                             <div class="row">
                                 <div class="col-md-6">
-                                    <label for="billing_name">Nome Completo</label>
-                                    <input required type="text" name="billing_name" id="billing_name" class="form-control" value="{{ $billing_name ?? old("billing_name") }}">
+                                    <label for="receiver_name">Nome Completo</label>
+                                    <input required type="text" name="receiver_name" id="receiver_name" class="form-control" value="{{ $receiver_name ?? old("receiver_name") }}">
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="billing_phone">Telefone</label>
-                                    <input required type="text" name="billing_phone" id="billing_phone" class="form-control" value="{{ $billing_phone ?? old("billing_phone") }}">
+                                    <label for="receiver_phone">Telefone</label>
+                                    <input required type="text" name="receiver_phone" id="receiver_phone" class="form-control" value="{{ $receiver_phone ?? old("receiver_phone") }}">
                                 </div>
                             </div>
 
@@ -31,14 +31,14 @@
                                 </div>
                             </div>
 
-                            <div class="row" id="billing_address_form">
+                            <div class="row" id="receiver_address_form">
                                 <div class="col-md-6 mt-2">
-                                    <label for="billing_cep">CEP</label>
-                                    <input required type="text" name="billing_cep" id="billing_cep" class="form-control" value="{{ $billing_cep ?? old("billing_cep") }}">
+                                    <label for="receiver_cep">CEP</label>
+                                    <input required type="text" name="receiver_cep" id="receiver_cep" class="form-control" value="{{ $receiver_cep ?? old("receiver_cep") }}">
                                 </div>
                                 <div class="col-md-6 mt-2">
-                                    <label for="billing_complement">Complemento</label>
-                                    <input required type="text" name="billing_complement" id="billing_complement" class="form-control" value="{{ $billing_complement ?? old("billing_complement") }}">
+                                    <label for="receiver_complement">Complemento</label>
+                                    <input required type="text" name="receiver_complement" id="receiver_complement" class="form-control" value="{{ $receiver_complement ?? old("receiver_complement") }}">
                                 </div>
                             </div>
 
@@ -64,28 +64,28 @@
 
             if(Number(pickUpAtTheCount) === 1) {
                 document.getElementById("pick_up_at_the_count").value = 1;
-                billing_cep.removeAttribute("required", "required");
-                billing_complement.removeAttribute("required", "required")
-                return document.getElementById("billing_address_form").style.display = "none";
+                receiver_cep.removeAttribute("required", "required");
+                receiver_complement.removeAttribute("required", "required")
+                return document.getElementById("receiver_address_form").style.display = "none";
             }
        });
 
         function ocultAddressInputs() {
-            let formInputs = document.getElementById("billing_address_form");
+            let formInputs = document.getElementById("receiver_address_form");
 
-            let billing_cep = document.getElementById("billing_cep");
-            let billing_complement = document.getElementById("billing_complement");
+            let receiver_cep = document.getElementById("receiver_cep");
+            let receiver_complement = document.getElementById("receiver_complement");
 
             if(formInputs.style.display === "none") {
                 document.getElementById("pick_up_at_the_count").value = 0;
-                billing_cep.setAttribute("required", "required");
-                billing_complement.setAttribute("required", "required");
+                receiver_cep.setAttribute("required", "required");
+                receiver_complement.setAttribute("required", "required");
                 return formInputs.style.display = "";
             }
 
             document.getElementById("pick_up_at_the_count").value = 1;
-            billing_cep.removeAttribute("required", "required");
-            billing_complement.removeAttribute("required", "required")
+            receiver_cep.removeAttribute("required", "required");
+            receiver_complement.removeAttribute("required", "required")
             return formInputs.style.display = "none";
         }
     </script>

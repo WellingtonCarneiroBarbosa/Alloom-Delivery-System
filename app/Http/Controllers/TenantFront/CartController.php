@@ -11,16 +11,15 @@ use Illuminate\Support\Facades\Session;
 use App\Models\Franchise\Pizza\BorderPrice;
 use App\Models\Franchise\Pizza\FlavorPrice;
 use App\Http\Requests\Tenant\Pizza\AddPizzaToCart;
-use App\Models\AlloomCustomers\Orders\Order;
 
 class CartController extends Controller
 {
     use FranchiseController;
 
     public function getCartModalView() {
-        return view("components.order.modal-content", [
+        return view("components.order.cart_data", [
             "franchise" => $this->getTenantFranchiseOrFail(),
-            "order_cart" => $this->getFranchiseCart(),
+            "cart" => $this->getFranchiseCart(),
         ]);
     }
 
@@ -63,6 +62,15 @@ class CartController extends Controller
 
         return redirect()->back()->with([
             "success" => "Pizza removida do carrinho"
+        ]);
+    }
+
+    public function viewCartDetailsAndConfirmOrder() {
+        $cart = $this->getFranchiseCart();
+
+        return view("tenant-front.franchise.order.steps.two", [
+            "cart" => $cart,
+            "franchise" => $this->getTenantFranchiseOrFail(),
         ]);
     }
 

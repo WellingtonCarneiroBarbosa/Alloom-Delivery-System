@@ -79,7 +79,7 @@ Route::namespace('TenantFront')->prefix('estabelecimentos')->name('tenant-front.
 
                     Route::post("/1", "OrderController@storeReceiverData")->name("store-1");
 
-                    //Route::get("/2/{order}", "OrderController@someMethod")->name("get-2");
+                    Route::get("/2/{order}", "CartController@viewCartDetailsAndConfirmOrder")->name("get-2");
 
                 });
             });

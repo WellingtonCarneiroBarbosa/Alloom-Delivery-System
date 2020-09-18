@@ -26,7 +26,7 @@ class OrderController extends Controller
     }
 
     public function viewAddReceiverData() {
-        return view("tenant-front.franchise.order.add-billing-data", [
+        return view("tenant-front.franchise.order.steps.one", [
             "franchise" => $this->getTenantFranchiseOrFail()
         ]);
     }
@@ -41,7 +41,10 @@ class OrderController extends Controller
 
         $order = Order::create($data);
 
-        return redirect()->route("tenant-front.franchise.order.step-get-2", [$franchise->tenant->url_prefix, $franchise->url_prefix, $order]);
+        return redirect()->route("tenant-front.franchise.order.make.step-get-2", [$franchise->tenant->url_prefix, $franchise->url_prefix, $order]);
     }
 
+    public function confirmOrder($cart_data) {
+        //do something interesting here
+    }
 }
