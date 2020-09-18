@@ -74,13 +74,9 @@
         </div>
       </div>
     </div>
-
-
   </div>
 </div>
 <!-- Icons End -->
-
-
 
 <!-- Offer start -->
 <div class="section light-bg">
@@ -93,7 +89,6 @@
       <div class="col-lg-6">
         <div class="banner-inner">
           <div class="banner-text">
-
             <h2>O MELHOR SISTEMA DE DELIVERY!</h2>
             <p class="subtitle">
               Muito mais que um design bonito, um sistema inteligente pensado totalmente para nossos clientes.

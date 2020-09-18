@@ -38,4 +38,11 @@ class TenantFrontController extends Controller
             "franchise" => $this->getTenantFranchiseOrFail(),
         ]);
     }
+
+
+    public function location() {
+        return view('tenant-front.franchise.location', [
+            "franchise" => $this->getTenantFranchiseOrFail(),
+        ]);
+    }
 }

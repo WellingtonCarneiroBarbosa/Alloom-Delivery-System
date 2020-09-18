@@ -1,14 +1,15 @@
-@extends('layouts.pizza')
+@extends('layouts.tenant-front.pizza')
 
 @section('title', 'localização')
 
 @section('nav-content')
-    <x-pizza.nav-black />
+    <x-tenant_front.nav type='black' :franchise='$franchise'/>
 @endsection
 
 @section('footer-content')
-    <x-pizza.footer />
+    <x-tenant-front.footer />
 @endsection
+
 
 @section('main-content')
 

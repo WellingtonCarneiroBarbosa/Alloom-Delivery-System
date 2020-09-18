@@ -19,9 +19,6 @@ Route::namespace("Welcome")->prefix("/")->name("welcome.")->group(function (){
     Route::get("/politica-de-privacidade", "HomeController@privacyPolicy")->name("privacy-policy");
 });
 
-Route::get('/refresh_csrf', function () {
-    return response()->json(csrf_token());
-})->name('csrf.renew');
 
 Route::get('/home', 'HomeController@index')->name('home');
 
@@ -41,6 +38,8 @@ Route::namespace('TenantFront')->prefix('estabelecimentos')->name('tenant-front.
          *
          */
         Route::middleware("franchise")->prefix('/{franchise_url_prefix}')->name('franchise.')->group(function () {
+
+            Route::get("/localizacao", "TenantFrontController@location")->name("location");
 
             /**
              * Cart Routes **consumed by ajax

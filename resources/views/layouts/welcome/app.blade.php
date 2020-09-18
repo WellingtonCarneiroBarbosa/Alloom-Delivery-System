@@ -41,7 +41,6 @@
 
      @yield('footer-content')
      <!-- Vendor Scripts -->
-
      <script src="{{asset('pizza-slices/assets/js/plugins/isotope.pkgd.min.js')}}"></script>
      <script src="{{asset('pizza-slices/assets/js/plugins/jquery-3.4.1.min.js')}}"></script>
      <script src="{{asset('pizza-slices/assets/js/plugins/popper.min.js')}}"></script>
@@ -55,10 +54,8 @@
      <script src="{{asset('pizza-slices/assets/js/plugins/slick.min.js')}}"></script>
      <!-- Slices Scripts -->
      <script src="{{asset('pizza-slices/assets/js/main.js')}}"></script>
-         <!-- Page Specific Scripts -->
+     <!-- Page Specific Scripts -->
     <script src="{{asset('pizza-slices/assets/js/plugins/leaflet.js')}}"></script>
     <script src="{{asset('pizza-slices/assets/js/map.js')}}"></script>
-
-
 </body>
 </html>
