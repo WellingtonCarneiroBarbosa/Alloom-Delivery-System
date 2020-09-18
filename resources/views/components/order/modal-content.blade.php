@@ -46,7 +46,7 @@
         <button type="submit" class="btn-custom">Reiniciar Carrinho</button>
     </form>
 
-    <a href="#" class="btn-custom">Finalizar Pedido</a>
+    <a href="{{ route("tenant-front.franchise.order.make.step-get-1", [$franchise->tenant->url_prefix, $franchise->url_prefix]) }}" class="btn-custom">Finalizar Pedido</a>
 </div>
 
 @else

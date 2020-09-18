@@ -3,7 +3,7 @@
 @section('title', 'Alloom')
 
 @section('nav-content')
-  <x-tenant-front.nav-black />
+  <x-tenant_front.nav type="black" />
 @endsection
 
 @section('footer-content')

@@ -3,17 +3,15 @@
 @section('title', 'Alloom')
 
 @section('nav-content')
-  <x-pizza.nav-home />
+  <x-tenant_front.nav type="light" />
 @endsection
 
 @section('footer-content')
-  <x-pizza.footer-white-home />
+  <x-tenant-front.footer />
 @endsection
 
 @section('main-content')
 
-
-@section('main-content')
     <h1>Selecione uma unidade...</h1>
 
     @foreach($tenant->restaurants as $restaurant)

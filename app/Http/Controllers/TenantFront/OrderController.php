@@ -31,6 +31,22 @@ class OrderController extends Controller
         ]);
     }
 
+    public function storeBillingData(AddBilingData $request) {
+        $data = $request->validated();
+        $franchise = $this->getTenantFranchiseOrFail();
+
+        $data["totalPrice"] = "0";
+        $data["totalQuantity"] = "0";
+        $data["franchise_id"] = $franchise->id;
+
+        $order = Order::create($data);
+
+        dd($order);
+
+
+        return redirect()->route("tenant-front.franchise.order.step-get-2", [$franchise->tenant->url_prefix, $franchise->url_prefix, $order]);
+    }
+
     public function addBillingDataAndMakeOrder(AddBilingData $request) {
         try {
             $order = $request->validated();

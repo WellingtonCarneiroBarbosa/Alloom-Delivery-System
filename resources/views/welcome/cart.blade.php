@@ -1,11 +1,11 @@
 @extends('layouts.pizza')
 @section('title', $tenant->company_name)
 @section('nav-content')
-    <x-pizza.nav-black />
+    <x-tenant_front.nav type="black" />
 @endsection
 
 @section('footer-content')
-    <x-pizza.footer />
+    <x-tenant-front.footer />
 @endsection
 @section('main-content')
     @foreach($tenant->products as $product)

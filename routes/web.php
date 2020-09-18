@@ -73,7 +73,13 @@ Route::namespace('TenantFront')->prefix('estabelecimentos')->name('tenant-front.
              * Pedido
              */
             Route::prefix('/pedido')->name("order.")->group(function () {
-                Route::prefix("/pedir")->name("make.")->group(function() {
+                Route::prefix("/pedir/etapa")->name("make.step-")->group(function() {
+
+                    Route::get("/1", "OrderController@viewAddBillingData")->name('get-1');
+
+                    Route::post("/1", "OrderController@storeBillingData")->name("store-1");
+
+                    //Route::get("/2/{order}", "OrderController@someMethod")->name("get-2");
 
                 });
                 Route::get('/detalhes-do-remetente', "TenantFrontController@viewAddBillingData")->name('view.add-billing-data');
