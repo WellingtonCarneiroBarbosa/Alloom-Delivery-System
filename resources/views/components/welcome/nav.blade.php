@@ -8,22 +8,22 @@
           <a href="{{ route("welcome.index") }}">Página inicial</a>
         </li>
         <li class="menu-item">
-          <a href="contact-us.html">Sobre</a>
+          <a href="">Sobre</a>
         </li>
         <li class="menu-item">
-          <a href="contact-us.html">Informações</a>
+          <a href="">Informações</a>
         </li>
         <li class="menu-item">
-          <a href="locations.html">Preços</a>
+          <a href="">Preços</a>
         </li>
         <li class="menu-item">
-          <a href="contact-us.html">Contato</a>
+          <a href="">Contato</a>
         </li>
         <li class="menu-item">
-          <a href="contact-us.html">Entrar</a>
+          <a href="">Entrar</a>
         </li>
         <li class="menu-item">
-          <a href="contact-us.html">Suporte online</a>
+          <a href="">Suporte online</a>
         </li>
       </ul>
 
@@ -44,21 +44,21 @@
           <a href="{{ route("welcome.index") }}">Página inicial</a>
         </li>
         <li class="menu-item">
-          <a href="contact-us.html">Sobre</a>
+          <a href="">Sobre</a>
         </li>
         <li class="menu-item">
-          <a href="contact-us.html">Informações</a>
+          <a href="">Informações</a>
         </li>
         <li class="menu-item">
-          <a href="locations.html">Preços</a>
+          <a href="">Preços</a>
         </li>
         <li class="menu-item">
-          <a href="contact-us.html">Contato</a>
+          <a href="">Contato</a>
         </li>
       </ul>
 
       <a href="{{ route("tenant.login") }}" class="header-cta">Entrar</a>
-      <a href="menu-v1.html" class="header-cta" style="background-color: #4e4e4e">Suporte Online</a>
+      <a href="" class="header-cta" style="background-color: #4e4e4e">Suporte Online</a>
       <div class="header-controls">
         <!-- Toggler -->
         <div class="aside-toggler aside-trigger">
