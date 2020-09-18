@@ -10,7 +10,7 @@
         @foreach ($order_cart->pizza_cart as $pizza)
             <div class="cart-sidebar-item">
                 <div class="media">
-                    <a href="#">Pizza</a>
+                    <!--<a href="#">Pizza</a>-->
                     <div class="media-body">
                     <h5> <a href="#" title="{{ $pizza["size"]->description }}">{{ $pizza["size"]->name }}</a> </h5>
                     <span>{{ $pizza["quantity"] }}x R$ {{ $pizza["unit_price"] }}</span>

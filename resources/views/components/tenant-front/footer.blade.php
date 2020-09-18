@@ -13,9 +13,9 @@
         <div class="footer-bottom">
            <div class="container">
               <ul>
-                 <li> <a href="#">Politica de privacidade</a> </li>
-                 <li> <a href="#">Politica de Cookies</a> </li>
-                 <li> <a href="#">Termos e condições</a> </li>
+                 <li> <a href="#">{{ __('system.commom.privacyPolicy') }}</a> </li>
+                 <li> <a href="#">{{  __('system.commom.cookiesPolicy') }}</a> </li>
+                 <li> <a href="#">{{ __('system.commom.termsAndConditions') }}</a> </li>
               </ul>
               <div class="footer-copyright">
                  <p> Copyright &copy; 2020 <a href="http://alloom.com.br">Alloom</a> Todos os direitos reservados. </p>

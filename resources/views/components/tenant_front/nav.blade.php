@@ -5,7 +5,6 @@
         else
             $order_session_cart = null;
     @endphp
-
  <div class="search-form-wrapper">
     <div class="search-trigger close-btn">
        <span></span>
@@ -25,26 +24,20 @@
     <div class="aside-scroll">
        <ul>
           <li class="menu-item">
-             <a href="contact-us.html">Contact Us</a>
+             <a href="contact-us.html">{{ __('system.commom.home') }}</a>
           </li>
           <li class="menu-item">
-             <a href="contact-us.html">Contact Us</a>
+             <a href="contact-us.html">{{ __('system.commom.location') }}</a>
           </li>
-          <li class="menu-item">
-             <a href="contact-us.html">Contact Us</a>
-          </li>
-          menu-item">
-          <a href="contact-us.html">Contact Us</a>
-          </li>
-          <li class="menu-item">
-             <a href="contact-us.html">Contact Us</a>
-          </li>
+
        </ul>
     </div>
  </aside>
  <div class="aside-overlay aside-trigger"></div>
  <!-- Header Start -->
- <header class="main-header header-1 header-absolute header-light">
+
+
+ <header class="main-header header-1 header-absolute {{ $type == 'black'? 'header-black' : 'header-light'}}">
     <div class="container">
        <nav class="navbar">
           <!-- Logo -->
@@ -52,10 +45,10 @@
           <!-- Menu -->
           <ul class="navbar-nav">
              <li class="menu-item">
-                <a href="">Página Inicial</a>
+                <a href="">{{ __('system.commom.home') }}</a>
              </li>
              <li class="menu-item">
-                <a href="localizacao">Localização</a>
+                <a href="localizacao">{{ __('system.commom.location') }}</a>
              </li>
           </ul>
           <div class="header-controls">
