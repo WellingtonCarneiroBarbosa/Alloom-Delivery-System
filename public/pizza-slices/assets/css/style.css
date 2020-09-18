@@ -4735,10 +4735,11 @@ td.quantity{
 
 }
 
+
 @media (max-width: 991px) {
   body, p, label, .breadcrumb li, .form-control,
   .infographics-2 .ct-infographic-item p{
-    font-size: 14px;
+    font-size: 19px;
   }
   .mb-lg-30{
     margin-bottom: 30px;
