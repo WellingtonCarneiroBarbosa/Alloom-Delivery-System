@@ -13,8 +13,7 @@
 
 @section('main-content')
 
- <!--Cart Start -->
- <section class="section">
+<section class="section">
     <div class="container">
 
   <!-- Contact Start -->
