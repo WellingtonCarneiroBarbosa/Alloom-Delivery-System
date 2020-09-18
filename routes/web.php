@@ -38,6 +38,7 @@ Route::namespace('TenantFront')->prefix('estabelecimentos')->name('tenant-front.
          *
          */
         Route::middleware("franchise")->prefix('/{franchise_url_prefix}')->name('franchise.')->group(function () {
+            Route::get("/", "TenantFrontController@index")->name("index");
 
             Route::get("/localizacao", "TenantFrontController@location")->name("location");
 
@@ -68,19 +69,13 @@ Route::namespace('TenantFront')->prefix('estabelecimentos')->name('tenant-front.
                 Route::post("/view/sabores-e-bordas", "PizzaController@getFlavorsAndBorders")->name("get-flavors-and-borders");
             });
 
-            Route::get("request-example", "TenantFrontController@requestExample");
+            /**
+             * Pedido
+             */
+            Route::prefix('/pedido')->name("order.")->group(function () {
+                Route::prefix("/pedir")->name("make.")->group(function() {
 
-            Route::get('/', 'TenantFrontController@index')->name('index');
-
-            Route::get('/dados/carrinho-de-pizzas', "TenantFrontController@pizzaCartData")->name("pizza-cart-data");
-
-            Route::get('/visualizar-carrinho-de-pizzas', "TenantFrontController@viewPizzaCart")->name('view-pizza-cart');
-
-            Route::get('/deletar-carrinho-de-pizza', "TenantFrontController@deletePizzaCart")->name('delete-pizza-cart');
-
-            Route::post("/adicionar-pizza-ao-carrinho", "TenantFrontController@addPizzaToCart")->name('add-pizza-to-cart');
-
-            Route::prefix('/pedir')->name("order.")->group(function () {
+                });
                 Route::get('/detalhes-do-remetente', "TenantFrontController@viewAddBillingData")->name('view.add-billing-data');
 
                 Route::post("/", "TenantFrontController@addBillingDataAndMakeOrder")->name("add-billing-data-and-make-order");
