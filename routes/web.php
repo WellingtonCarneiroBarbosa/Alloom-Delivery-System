@@ -29,7 +29,7 @@ Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
  * TenantFront Routes.
  *
  */
-Route::namespace('TenantFront')->prefix('estabelecimentos')->name('tenant-front.')->group(function () {
+Route::namespace('TenantFront')->prefix('/e')->name('tenant-front.')->group(function () {
     Route::prefix('/{tenant_url_prefix}')->middleware("tenant")->group(function () {
         Route::get('/', 'TenantFrontController@choosefranchise')->name('choose-franchise');
 
