@@ -27,7 +27,7 @@
                             <div class="row">
                                 <div class="col-md-12 mt-2">
                                     <label for="pick_up_at_the_counter">Retirada no Balcão?</label>
-                                    <input type="checkbox" onclick="ocultAddressInputs();" name="pick_up_at_the_counter" id="pick_up_at_the_count" @if((int) old("pick_up_at_the_count") === 1) checked @endif value="{{ old("pick_up_at_the_count" ?? 0) }}">
+                                    <input type="checkbox" onclick="ocultAddressInputs();" name="pick_up_at_the_counter" id="pick_up_at_the_counter" @if((int) old("pick_up_at_the_count") === 1) checked @endif value="{{ old("pick_up_at_the_count" ?? 0) }}">
                                 </div>
                             </div>
 
