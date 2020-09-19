@@ -7,6 +7,7 @@ class OrderCart
     public $pizza_cart = [];
     public $totalQuantity;
     public $totalPrice;
+    public $details;
 
 
     public function __construct($oldCart)
@@ -15,10 +16,11 @@ class OrderCart
             $this->pizza_cart = $oldCart->pizza_cart;
             $this->totalQuantity = $oldCart->totalQuantity;
             $this->totalPrice = $oldCart->totalPrice;
+            $this->details = $oldCart->details;
         }
     }
 
-    public function addPizzaToCart($border=null, $flavors, $size, $quantity) {
+    public function addPizzaToCart($border=null, $flavors, $size, $quantity, $details) {
         $unique_id = md5(uniqid());
 
         $pizza = [
@@ -27,6 +29,7 @@ class OrderCart
             "flavors" => $flavors,
             "size" => $size,
             "quantity" => $quantity,
+            "details" => $details,
             "unit_price" => $this->getPizzaPrice($flavors, $border),
             "total_price" => 0,
         ];

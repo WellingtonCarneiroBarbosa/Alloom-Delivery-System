@@ -27,6 +27,7 @@ class AddPizzaToCart extends FormRequest
         $rules = [
             "pizza_size_id" => ['required', 'exists:pizza_sizes,id'],
             "pizza_flavors_id" => ['required', 'array', new AddPizzaToCartRule($this->get("pizza_size_id"))],
+            "details" => ["sometimes", "nullable", "max: 200"],
             "quantity" => ['required']
         ];
 

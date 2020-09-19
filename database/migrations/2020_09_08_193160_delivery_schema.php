@@ -68,6 +68,7 @@ class DeliverySchema extends Migration
             $table->string('receiver_phone')->nullable();
             $table->string('receiver_cep')->nullable();
             $table->string('receiver_complement')->nullable();
+            $table->text("details")->nullable();
             $table->unsignedInteger("discount_code_id")->nullable();
             $table->foreign("discount_code_id")->references("id")->on("discount_codes")->onUpdate("cascade")->onDelete("set null");
             $table->boolean('pick_up_at_the_counter')->default(false);
@@ -81,6 +82,25 @@ class DeliverySchema extends Migration
             $table->timestamps();
         });
         echo "\rMigrated orders\n";
+
+         /**
+         * Order Pizza
+         */
+        Schema::create("pizza_order", function (Blueprint $table) {
+            $table->id();
+            $table->unsignedInteger("pizza_size_id")->nullable();
+            $table->foreign("pizza_size_id")->references("id")->on("pizza_sizes")->onUpdate("cascade")->onDelete("set null");
+            $table->unsignedInteger("pizza_border_id")->nullable();
+            $table->foreign("pizza_border_id")->references("id")->on("pizza_border_prices")->onUpdate("cascade")->onDelete("set null");
+            $table->string("pizza_flavors_id"); //array
+            $table->string("quantity")->default("1");
+            $table->text("details")->nullable();
+            $table->string("total_price");
+            $table->unsignedBigInteger("order_id")->nullable();
+            $table->foreign("order_id")->references("id")->on("orders")->onUpdate("cascade")->onDelete("cascade");
+            $table->timestamps();
+        });
+        echo "\rMigrated pizza_order\n";
     }
 
     /**
@@ -94,5 +114,6 @@ class DeliverySchema extends Migration
         Schema::dropIfExists('discount_codes');
         Schema::dropIfExists('delivery_fee');
         Schema::dropIfExists('orders');
+        Schema::dropIfExists('pizza_order');
     }
 }

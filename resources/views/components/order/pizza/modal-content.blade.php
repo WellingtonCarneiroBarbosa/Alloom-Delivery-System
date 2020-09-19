@@ -78,11 +78,11 @@
                                 <div class="customize-variation-item" data-price="2.00">
                                     <div class="custom-control custom-checkbox">
                                         <input type="checkbox" class="custom-control-input" name="pizza_flavors_id[]" id="pizzaFlavor[{{ $flavorPrice->id }}]" value="{{ $flavorPrice->pizza_flavor_id }}">
-                                        <label class="custom-control-label" title="{{ $flavorPrice->flavor->description }}" for="pizzaFlavor[{{ $flavorPrice->id }}]">{{ $flavorPrice->flavor->name }}</label>
+                                        <label class="custom-control-label" for="pizzaFlavor[{{ $flavorPrice->id }}]">{{ $flavorPrice->flavor->name }}</label>
                                     </div>
                                     <span>R$ {{ $flavorPrice->price }}</span>
                                 </div>
-                                <p class="descriptionTaste">Mussarela, molho de tomate, frango, catupiry, batata palha.</p>
+                                <p class="descriptionTaste">{{ $flavorPrice->flavor->description }}</p>
                             @endif
                         @endforeach
                     </div>
@@ -91,7 +91,7 @@
 
                 <!-- Variation End -->
             </div>
-            <textarea class='textAreaStyled' placeholder='Observações'></textarea>
+            <textarea class='textAreaStyled' name="details" placeholder='Observações'></textarea>
         </div>
         <div class="customize-controls">
             <div class="qty">

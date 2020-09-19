@@ -38,7 +38,7 @@ class CartController extends Controller
 
         $order_cart = $this->getCurrentCartOrCreateOne();
 
-        $order_cart->addPizzaToCart($pizza_data["border"], $pizza_data["flavors"], $pizza_data["size"], $request["quantity"]);
+        $order_cart->addPizzaToCart($pizza_data["border"], $pizza_data["flavors"], $pizza_data["size"], $request["quantity"], $request["details"]);
 
         $request->session()->put("order-cart-" . $this->getTenantFranchiseOrFail()->id, $order_cart);
 
@@ -62,15 +62,6 @@ class CartController extends Controller
 
         return redirect()->back()->with([
             "success" => "Pizza removida do carrinho"
-        ]);
-    }
-
-    public function viewCartDetailsAndConfirmOrder() {
-        $cart = $this->getFranchiseCart();
-
-        return view("tenant-front.franchise.order.steps.two", [
-            "cart" => $cart,
-            "franchise" => $this->getTenantFranchiseOrFail(),
         ]);
     }
 

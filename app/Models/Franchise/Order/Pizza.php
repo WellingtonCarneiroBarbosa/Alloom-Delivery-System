@@ -3,19 +3,36 @@
 namespace App\Models\Tenant\Order;
 
 use App\Traits\MultiTenantTable;
+use App\Models\Franchise\Pizza\Size;
+use App\Models\Franchise\Pizza\Flavor;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Franchise\Pizza\BorderPrice;
+use App\Models\Franchise\Pizza\FlavorPrice;
 
 class Pizza extends Model
 {
     use MultiTenantTable;
 
-    protected $table = "order_pizzas";
+    protected $table = "pizza_order";
 
     protected $fillable = [
-        "pizza_size_id", "flavors", "unit_price", "total_price", "qty", "order_id"
+        "pizza_size_id", "pizza_border_id", "pizza_flavors_id", "quantity", "details", "total_price",
+        "order_id"
     ];
 
     protected $casts = [
-        "flavors" => "array"
+        "pizza_flavors_id" => "array"
     ];
+
+    public function borderPrice() {
+        return $this->hasOne(BorderPrice::class, "id", "pizza_border_id");
+    }
+
+    public function size() {
+        return $this->hasOne(Size::class, "id", "pizza_size_id");
+    }
+
+    public function getFlavors() {
+        return Flavor::whereIn("id", $this->pizza_flavors_id)->get();
+    }
 }

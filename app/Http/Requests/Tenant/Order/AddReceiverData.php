@@ -38,17 +38,17 @@ class AddReceiverData extends FormRequest
      */
     public function rules()
     {
-        if($this->get("pick_up_at_the_count") === 1) {
-            $cepRule = ["required_if:pick_up_at_the_count,false", "min:8", "max:8"];
-            $complementRule = ["required_if:pick_up_at_the_count,false", "min:3", "max:100"];
+        if($this->get("pick_up_at_the_counter") === 1) {
+            $cepRule = ["required_if:pick_up_at_the_counter,false", "min:8", "max:8"];
+            $complementRule = ["required_if:pick_up_at_the_counter,false", "min:3", "max:100"];
         }
 
         $rules = [
             "receiver_name" => ["required", "min:3", "max:200", new FullName],
             "receiver_phone" => ["required", "min:10", "max:11"],
-            "pick_up_at_the_count" => ["required", "boolean"],
-            "receiver_cep" => $cepRule ?? ["required_if:pick_up_at_the_count,false"],
-            "receiver_complement" => $complementRule ?? ["required_if:pick_up_at_the_count,false"]
+            "pick_up_at_the_counter" => ["required", "boolean"],
+            "receiver_cep" => $cepRule ?? ["required_if:pick_up_at_the_counter,false"],
+            "receiver_complement" => $complementRule ?? ["required_if:pick_up_at_the_counter,false"]
         ];
 
         return $rules;

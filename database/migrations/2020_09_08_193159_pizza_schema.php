@@ -89,25 +89,6 @@ class PizzaSchema extends Migration
             $table->timestamps();
         });
         echo "\rMigrated pizza_border_prices\n";
-
-        /**
-         * Order Pizza
-         */
-        Schema::create("pizza_order", function (Blueprint $table) {
-            $table->id();
-            $table->unsignedInteger("pizza_size_id");
-            $table->foreign("pizza_size_id")->references("id")->on("pizza_sizes")->onUpdate("cascade")->onDelete("cascade");
-            $table->unsignedInteger("pizza_border_id")->nullable();
-            $table->foreign("pizza_border_id")->references("id")->on("pizza_sizes")->onUpdate("cascade")->onDelete("cascade");
-            $table->string("pizza_flavors_id"); //array
-            $table->string("quantity")->default("1");
-            $table->text("details")->nullable();
-            $table->string("total_price");
-            $table->unsignedInteger("franchise_id");
-            $table->foreign("franchise_id")->references("id")->on("franchises")->onUpdate("cascade")->onDelete("cascade");
-            $table->timestamps();
-        });
-        echo "\rMigrated pizza_order\n";
     }
 
     /**
@@ -122,6 +103,5 @@ class PizzaSchema extends Migration
         Schema::dropIfExists('pizza_flavor_prices');
         Schema::dropIfExists('pizza_borders');
         Schema::dropIfExists('pizza_border_prices');
-        Schema::dropIfExists('pizza_order');
     }
 }

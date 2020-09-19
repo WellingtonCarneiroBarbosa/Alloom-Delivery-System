@@ -16,4 +16,8 @@ class Order extends Model
         "discount_code_id", "pick_up_at_the_counter", "order_status_id", "delivery_fee",
         "totalPrice", "totalQuantity", "franchise_id"
     ];
+
+    public function pizzas() {
+        return $this->hasMany(Pizza::class, "order_id", "id");
+    }
 }

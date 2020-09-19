@@ -74,14 +74,12 @@ Route::namespace('TenantFront')->prefix('/e')->name('tenant-front.')->group(func
              */
             Route::prefix('/pedido')->name("order.")->group(function () {
                 Route::prefix("/pedir/etapa")->name("make.step-")->group(function() {
-
                     Route::get("/1", "OrderController@viewAddReceiverData")->name('get-1');
 
-                    Route::post("/1", "OrderController@storeReceiverData")->name("store-1");
-
-                    Route::get("/2/{order}", "CartController@viewCartDetailsAndConfirmOrder")->name("get-2");
-
+                    Route::post("/1", "OrderController@storeReceiverDataAndMakeOrder")->name("store-1");
                 });
+
+                Route::get("/detalhes/{order_id}/{recent?}", "OrderController@orderDetails")->name("order-details");
             });
 
         });
