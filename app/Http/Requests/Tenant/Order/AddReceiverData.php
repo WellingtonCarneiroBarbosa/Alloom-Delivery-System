@@ -47,6 +47,7 @@ class AddReceiverData extends FormRequest
             "receiver_name" => ["required", "min:3", "max:200", new FullName],
             "receiver_phone" => ["required", "min:10", "max:11"],
             "pick_up_at_the_counter" => ["required", "boolean"],
+            "access_key" => ["required", "min:11", "max:11"],
             "receiver_cep" => $cepRule ?? ["required_if:pick_up_at_the_counter,false"],
             "receiver_complement" => $complementRule ?? ["required_if:pick_up_at_the_counter,false"]
         ];

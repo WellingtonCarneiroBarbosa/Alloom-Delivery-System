@@ -25,9 +25,14 @@
                             </div>
 
                             <div class="row">
-                                <div class="col-md-12 mt-2">
+                                <div class="col-md-6 mt-2">
                                     <label for="pick_up_at_the_counter">Retirada no Balcão?</label>
-                                    <input type="checkbox" onclick="ocultAddressInputs();" name="pick_up_at_the_counter" id="pick_up_at_the_counter" @if((int) old("pick_up_at_the_count") === 1) checked @endif value="{{ old("pick_up_at_the_count" ?? 0) }}">
+                                    <input type="checkbox" onclick="ocultAddressInputs();" name="pick_up_at_the_counter" id="pick_up_at_the_counter" @if((int) old("pick_up_at_the_count") === 1) checked @endif value="{{ old("pick_up_at_the_counter" ?? 0) }}">
+                                </div>
+
+                                <div class="col-md-6 mt-2">
+                                    <label for="access_key">CPF - ATENÇÃO! Não armazenamos seu CPF. Ele é necessário apenas para validarmos sua identidade.</label>
+                                    <input type="text" class="form-control" id="access_key" name="access_key" value="{{ old("access_key")  }}" required>
                                 </div>
                             </div>
 
@@ -58,12 +63,12 @@
 @section('scripts-content')
     <script>
        window.addEventListener("load", function() {
-            let pickUpAtTheCount = "{{ old('pick_up_at_the_count') }}";
+            let pickUpAtTheCount = "{{ old('pick_up_at_the_counter') }}";
 
             console.log(pickUpAtTheCount);
 
             if(Number(pickUpAtTheCount) === 1) {
-                document.getElementById("pick_up_at_the_count").value = 1;
+                document.getElementById("pick_up_at_the_counter").value = 1;
                 receiver_cep.removeAttribute("required", "required");
                 receiver_complement.removeAttribute("required", "required")
                 return document.getElementById("receiver_address_form").style.display = "none";
@@ -77,13 +82,13 @@
             let receiver_complement = document.getElementById("receiver_complement");
 
             if(formInputs.style.display === "none") {
-                document.getElementById("pick_up_at_the_count").value = 0;
+                document.getElementById("pick_up_at_the_counter").value = 0;
                 receiver_cep.setAttribute("required", "required");
                 receiver_complement.setAttribute("required", "required");
                 return formInputs.style.display = "";
             }
 
-            document.getElementById("pick_up_at_the_count").value = 1;
+            document.getElementById("pick_up_at_the_counter").value = 1;
             receiver_cep.removeAttribute("required", "required");
             receiver_complement.removeAttribute("required", "required")
             return formInputs.style.display = "none";

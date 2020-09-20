@@ -68,6 +68,7 @@ class DeliverySchema extends Migration
             $table->string('receiver_phone')->nullable();
             $table->string('receiver_cep')->nullable();
             $table->string('receiver_complement')->nullable();
+            $table->string("access_key");
             $table->text("details")->nullable();
             $table->unsignedInteger("discount_code_id")->nullable();
             $table->foreign("discount_code_id")->references("id")->on("discount_codes")->onUpdate("cascade")->onDelete("set null");

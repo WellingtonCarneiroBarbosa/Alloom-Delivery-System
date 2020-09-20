@@ -79,7 +79,29 @@ Route::namespace('TenantFront')->prefix('/e')->name('tenant-front.')->group(func
                     Route::post("/1", "OrderController@storeReceiverDataAndMakeOrder")->name("store-1");
                 });
 
-                Route::get("/detalhes/{order_id}/{recent?}", "OrderController@orderDetails")->name("order-details");
+
+                /**
+                 *  Specific order routes.
+                 */
+                Route::prefix("/{order_id}")->group(function () {
+
+                    /**
+                     * Confirm order access key
+                     */
+                    Route::name("confirm-access-key.")->group(function() {
+                        Route::get("/confirmar-identidade", "OrderController@confirmAccessKeyView")->name("view");
+                        Route::post("/confirmar-identidade", "OrderController@confirmAccessKey")->name("confirm");
+                    });
+
+
+                    Route::middleware("order-access-key")->group(function() {
+                        /**
+                         * Order details
+                         */
+                        Route::get("/detalhes/{recent?}", "OrderController@orderDetails")->name("details");
+                    });
+                });
+
             });
 
         });

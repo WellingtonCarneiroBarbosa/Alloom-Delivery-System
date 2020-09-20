@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\Tenant\Order;
+namespace App\Models\Franchise\Order;
 
 use App\Traits\MultiTenantTable;
 use Illuminate\Database\Eloquent\Model;
@@ -14,7 +14,7 @@ class Order extends Model
     protected $fillable = [
         "receiver_id", "receiver_name", "receiver_phone", "receiver_cep", "receiver_complement",
         "discount_code_id", "pick_up_at_the_counter", "order_status_id", "delivery_fee",
-        "totalPrice", "totalQuantity", "franchise_id"
+        "totalPrice", "totalQuantity", "franchise_id", "access_key"
     ];
 
     public function pizzas() {

@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\TenantFront;
 
 use Illuminate\Http\Request;
-use App\Models\Tenant\Order\Order;
-use App\Models\Tenant\Order\Pizza;
+use App\Models\Franchise\Order\Order;
+use App\Models\Franchise\Order\Pizza;
 use App\Traits\FranchiseController;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Session;
@@ -61,6 +61,11 @@ class OrderController extends Controller
             ])->withInput($data);
         }
 
+        if(Session::has("order-access-key-" . $franchise->id))
+            Session::flush("order-access-key-" . $franchise->id);
+
+        $request->session()->put('order-access-key-' . $franchise->id, $order->access_key);
+
         $pizzas = $this->savePizzas($cart->pizza_cart, $order->id);
 
         if($pizzas == false) {
@@ -74,9 +79,40 @@ class OrderController extends Controller
         //flush cart session
         Session::flush("order-cart-" . $franchise->id);
 
-        return redirect()->route("tenant-front.franchise.order.order-details", [
+        return redirect()->route("tenant-front.franchise.order.details", [
             "tenant_url_prefix" =>  $franchise->tenant->url_prefix, "franchise_url_prefix" => $franchise->url_prefix,
             "order_id" =>  $order->id, "recent" => true
+        ]);
+    }
+
+    public function confirmAccessKeyView($order_id) {
+        $order_id = Order::findOrFail(Route::current()->order_id)->id;
+
+        return view("tenant-front.franchise.order.confirm-access-key", [
+            "franchise" => $this->getTenantFranchiseOrFail(),
+            "order_id" => $order_id
+        ]);
+    }
+
+    public function confirmAccessKey(Request $request) {
+        $order = Order::findOrFail(Route::current()->order_id);
+
+        if($request["access-key"] != $order->access_key) {
+            return redirect()->back()->with([
+                "error" => "CPF incorreto para esse pedido"
+            ]);
+        }
+
+        $franchise = $this->getTenantFranchiseOrFail();
+
+        if(Session::has("order-access-key-" . $franchise->id))
+            Session::flush("order-access-key-" . $franchise->id);
+
+        $request->session()->put('order-access-key-' . $franchise->id, $order->access_key);
+
+        return redirect()->route("tenant-front.franchise.order.details", [
+            $franchise->tenant->url_prefix, $franchise->url_prefix,
+            $order->id
         ]);
     }
 

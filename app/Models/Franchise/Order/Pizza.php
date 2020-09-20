@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\Tenant\Order;
+namespace App\Models\Franchise\Order;
 
 use App\Traits\MultiTenantTable;
 use App\Models\Franchise\Pizza\Size;

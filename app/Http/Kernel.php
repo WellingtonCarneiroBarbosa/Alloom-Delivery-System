@@ -65,5 +65,6 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'tenant' => \App\Http\Middleware\TenantExists::class,
         'franchise' => \App\Http\Middleware\TenantFranchiseExists::class,
+        'order-access-key' => \App\Http\Middleware\OrderAccessKey::class,
     ];
 }
