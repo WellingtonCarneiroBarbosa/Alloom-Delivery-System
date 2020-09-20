@@ -2,14 +2,16 @@
 
 namespace App\Http\Controllers\TenantFront;
 
+use Route;
 use Illuminate\Http\Request;
-use App\Models\Franchise\Order\Order;
-use App\Models\Franchise\Order\Pizza;
 use App\Traits\FranchiseController;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
+use App\Models\Franchise\Order\Order;
+use App\Models\Franchise\Order\Pizza;
 use Illuminate\Support\Facades\Session;
 use App\Http\Requests\Tenant\Order\AddReceiverData;
-use Route;
+use Illuminate\Hashing\BcryptHasher;
 
 class OrderController extends Controller
 {
@@ -49,6 +51,7 @@ class OrderController extends Controller
         $cart = Session::get("order-cart-" . $franchise->id);
 
         //save order
+        $data["access_key"] = Hash::make($data["access_key"]);
         $data["totalPrice"] = $cart->totalPrice;
         $data["totalQuantity"] = $cart->totalQuantity;
         $data["details"] = $cart->details;
@@ -97,22 +100,23 @@ class OrderController extends Controller
     public function confirmAccessKey(Request $request) {
         $order = Order::findOrFail(Route::current()->order_id);
 
-        if($request["access-key"] != $order->access_key) {
-            return redirect()->back()->with([
-                "error" => "CPF incorreto para esse pedido"
+        if (Hash::check($request["access-key"], $order->access_key)) {
+            $franchise = $this->getTenantFranchiseOrFail();
+
+            if(Session::has("order-access-key-" . $franchise->id))
+                Session::flush("order-access-key-" . $franchise->id);
+
+            $request->session()->put('order-access-key-' . $franchise->id, $order->access_key);
+
+            return redirect()->route("tenant-front.franchise.order.details", [
+                $franchise->tenant->url_prefix, $franchise->url_prefix,
+                $order->id
             ]);
         }
 
-        $franchise = $this->getTenantFranchiseOrFail();
 
-        if(Session::has("order-access-key-" . $franchise->id))
-            Session::flush("order-access-key-" . $franchise->id);
-
-        $request->session()->put('order-access-key-' . $franchise->id, $order->access_key);
-
-        return redirect()->route("tenant-front.franchise.order.details", [
-            $franchise->tenant->url_prefix, $franchise->url_prefix,
-            $order->id
+        return redirect()->back()->with([
+            "error" => "CPF incorreto para esse pedido"
         ]);
     }
 

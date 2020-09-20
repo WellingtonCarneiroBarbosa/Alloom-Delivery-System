@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Support\Facades\Hash;
 use App\Models\Franchise\Order\Order;
 use Illuminate\Support\Facades\Session;
 
@@ -21,8 +22,9 @@ class OrderAccessKey
         $order = Order::findOrFail($request->route("order_id"));
 
         if(Session::has("order-access-key-" . $franchise->id)) {
-            if(Session::get("order-access-key-" . $franchise->id) === $order->access_key)
+            if (Session::get("order-access-key-" . $franchise->id) === $order->access_key) {
                 return $next($request);
+            }
         }
 
         return redirect()->route("tenant-front.franchise.order.confirm-access-key.view", [
