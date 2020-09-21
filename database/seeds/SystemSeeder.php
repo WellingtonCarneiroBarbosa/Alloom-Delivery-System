@@ -1,10 +1,11 @@
 <?php
 
-use App\Models\Alloom\Tenant;
-use App\Models\Tenant\Franchise;
-use App\Models\Franchise\Label;
 use App\User;
+use App\Models\Alloom\Tenant;
+use App\Models\Franchise\Label;
 use Illuminate\Database\Seeder;
+use App\Models\Tenant\Franchise;
+use App\Models\Franchise\Order\DeliveryFee;
 
 class SystemSeeder extends Seeder
 {
@@ -50,11 +51,23 @@ class SystemSeeder extends Seeder
         echo "\rSeeded Tenant\n";
 
         Franchise::create([
-            "name" => "Centro",
-            "url_prefix" => "centro",
+            "name" => "Afonso Pena",
+            "url_prefix" => "afonso-pena",
+            "country" => "Brazil",
+            "state" => "Paraná",
+            "city" => "São José dos Pinhais",
+            "neighborhood" => "Afonso Pena",
+            "address" => "Rua Senador Darci Ribeiro 3745",
             "tenant_id" => 1
         ]);
         echo "\rSeeded Franchise\n";
+
+        DeliveryFee::create([
+            "fee_per_km" => "5.00",
+            "maximum_delivery_distance_in_km" => "3",
+            "default_fee" => false,
+            "franchise_id" => 1
+        ]);
 
         $this->seedLabels();
     }

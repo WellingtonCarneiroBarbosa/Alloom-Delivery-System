@@ -121,6 +121,8 @@ return [
 
     'key' => env('APP_KEY'),
 
+    "mapquest_public_key" => env('MAPQUEST_PUBLIC_KEY'),
+
     'cipher' => 'AES-256-CBC',
 
     /*

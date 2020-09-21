@@ -42,7 +42,7 @@
     @if($order->pick_up_at_the_counter)
     <strong>Pedido para retirada</strong>
     @else
-    <strong>Entrega em: {{ $order->receiver_cep }} {{ $order->complement }}</strong>
+    <strong>Entrega em: {{ $order->receiver_address }} </strong>
     <br>
     <strong>Taxa de entrega: R$ @if(! $order->delivery_fee) 0,00 @else {{ $order->delivery_fee }} @endif</strong>
     @endif

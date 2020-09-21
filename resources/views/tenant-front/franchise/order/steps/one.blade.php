@@ -36,20 +36,34 @@
                                 </div>
                             </div>
 
-                            <div class="row" id="receiver_address_form">
-                                <div class="col-md-6 mt-2">
-                                    <label for="receiver_cep">CEP</label>
-                                    <input required type="text" name="receiver_cep" id="receiver_cep" class="form-control" value="{{ $receiver_cep ?? old("receiver_cep") }}">
-                                </div>
-                                <div class="col-md-6 mt-2">
-                                    <label for="receiver_complement">Complemento</label>
-                                    <input required type="text" name="receiver_complement" id="receiver_complement" class="form-control" value="{{ $receiver_complement ?? old("receiver_complement") }}">
-                                </div>
-                            </div>
 
-                            <div class="row">
-                                <div class="col-md-12 mt-2">
-                                    <button type="submit" class="btn btn-primary float-right">Pedir</button>
+                            <div id="receiver_address_form">
+                                <h3>Dados de Entrega</h3>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label for="state">Estado</label>
+                                        <input type="text" name="state" id="state" class="form-control" required value="{{ old("state") ?? $franchise->state }}">
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <label for="city">Cidade</label>
+                                        <input type="text" name="city" id="city" class="form-control" required value="{{ old("city") ?? $franchise->city }}">
+                                    </div>
+
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <label for="address">Endereço</label>
+                                        <input type="text" name="address" id="address" class="form-control" required placeholder="Nome da Rua + número do complemento" value={{ old('address') }}>
+                                    </div>
+
+                                </div>
+
+                                <div class="row mt-2">
+                                    <div class="col-md-12">
+                                        <button type="submit" class="btn btn-primary float-right">Pedir</button>
+                                    </div>
                                 </div>
                             </div>
                         </form>
@@ -78,19 +92,23 @@
         function ocultAddressInputs() {
             let formInputs = document.getElementById("receiver_address_form");
 
-            let receiver_cep = document.getElementById("receiver_cep");
-            let receiver_complement = document.getElementById("receiver_complement");
+            let state = document.getElementById("state");
+            let city = document.getElementById("city");
+            let address = document.getElementById("address");
+            let pick_up_at_the_counter = document.getElementById("pick_up_at_the_counter");
 
             if(formInputs.style.display === "none") {
-                document.getElementById("pick_up_at_the_counter").value = 0;
-                receiver_cep.setAttribute("required", "required");
-                receiver_complement.setAttribute("required", "required");
+                state.setAttribute("required", "required");
+                city.setAttribute("required", "required");
+                address.setAttribute("required", "required");
+                pick_up_at_the_counter.value = false;
                 return formInputs.style.display = "";
             }
 
-            document.getElementById("pick_up_at_the_counter").value = 1;
-            receiver_cep.removeAttribute("required", "required");
-            receiver_complement.removeAttribute("required", "required")
+            state.removeAttribute("required", "required");
+            city.removeAttribute("required", "required");
+            address.removeAttribute("required", "required")
+            pick_up_at_the_counter.value = true;
             return formInputs.style.display = "none";
         }
     </script>

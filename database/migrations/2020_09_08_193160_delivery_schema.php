@@ -49,7 +49,9 @@ class DeliverySchema extends Migration
          */
         Schema::create('delivery_fee', function (Blueprint $table) {
             $table->id();
-            $table->float('fee_per_km');
+            $table->string('fee_per_km');
+            $table->string("maximum_delivery_distance_in_km");
+            $table->boolean("default_fee")->default(false);
             $table->unsignedInteger("franchise_id");
             $table->foreign("franchise_id")->references("id")->on("franchises")->onUpdate("cascade")->onDelete("cascade");
             $table->timestamps();
@@ -66,8 +68,8 @@ class DeliverySchema extends Migration
             $table->foreignId('receiver_id')->nullable()->onUpdate('cascade')->onDelete('cascade');
             $table->string('receiver_name')->nullable();
             $table->string('receiver_phone')->nullable();
-            $table->string('receiver_cep')->nullable();
-            $table->string('receiver_complement')->nullable();
+            $table->string('receiver_address')->nullable();
+            $table->boolean('confirmed_by_receiver')->default(false);
             $table->string("access_key");
             $table->text("details")->nullable();
             $table->unsignedInteger("discount_code_id")->nullable();

@@ -80,10 +80,15 @@ Route::namespace('TenantFront')->prefix('/e')->name('tenant-front.')->group(func
                 });
 
 
+                Route::post("/calcular-entrega", "OrderController@calculateDeliveryFee")->name("delivery-fee");
+
                 /**
                  *  Specific order routes.
                  */
                 Route::prefix("/{order_id}")->group(function () {
+                    Route::get("/confirmar-pedido", "OrderController@confirmOrder")->name('confirm-order');
+
+                    Route::post("/confirmar-pedido", "OrderController@confirmOrderAndRedirectToOrderDetails")->name("store-order-confirmation");
 
                     /**
                      * Confirm order access key

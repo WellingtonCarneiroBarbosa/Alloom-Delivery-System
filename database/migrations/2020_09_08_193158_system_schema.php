@@ -71,6 +71,11 @@ class SystemSchema extends Migration
             $table->increments("id");
             $table->string("name");
             $table->string("url_prefix");
+            $table->string("country");
+            $table->string("state");
+            $table->string("city");
+            $table->string("neighborhood");
+            $table->string("address");
             $table->unsignedSmallInteger("tenant_id");
             $table->foreign("tenant_id")->references("id")->on("tenants")->onUpdate("cascade")->onDelete("cascade");
             $table->timestamps();

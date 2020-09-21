@@ -32,7 +32,8 @@ class Franchise extends Model
     use MultiTenantTable;
 
     protected $fillable = [
-        "name", "url_prefix", "tenant_id"
+        "name", "url_prefix", "country", "state", "city", "neighborhood",
+        "address", "tenant_id"
     ];
 
     public static function getUnitByUrlPrefixOrFail($url_prefix)  {

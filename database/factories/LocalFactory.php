@@ -22,6 +22,11 @@ $factory->define(Franchise::class, function (Faker $faker) {
     return [
         "name" => $faker->company,
         "url_prefix" => strtolower($faker->unique()->city),
+        "country" => "Brazil",
+        "state" => $faker->state,
+        "city" => $faker->city,
+        "address" => $faker->address,
+        "neighborhood" => "Afonso Pena",
         "tenant_id" => Tenant::class,
     ];
 });
