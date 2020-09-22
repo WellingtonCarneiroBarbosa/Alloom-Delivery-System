@@ -29,14 +29,11 @@
                                     <label for="pick_up_at_the_counter">Retirada no Balcão?</label>
                                     <input type="checkbox" onclick="ocultAddressInputs();" name="pick_up_at_the_counter" id="pick_up_at_the_counter" @if((int) old("pick_up_at_the_count") === 1) checked @endif value="{{ old("pick_up_at_the_counter" ?? 0) }}">
                                 </div>
-
                                 <div class="col-md-6 mt-2">
                                     <label for="access_key">CPF - ATENÇÃO! Não armazenamos seu CPF. Ele é necessário apenas para validarmos sua identidade.</label>
                                     <input type="text" class="form-control" id="access_key" name="access_key" value="{{ old("access_key")  }}" required>
                                 </div>
                             </div>
-
-
                             <div id="receiver_address_form">
                                 <h3>Dados de Entrega</h3>
                                 <div class="row">

@@ -75,6 +75,7 @@
  <!-- Subheader Start -->
  <div class="subheader dark-overlay dark-overlay-2" style="background-image: url('{{asset('pizza-slices/assets/img/subheader.jpg')}}')">
     <div class="container">
+        <h1>Pizzaria Alloom</h1>
         <div class="subheader-inner">
         <h1></h1>
         <nav aria-label="breadcrumb">
