@@ -52,6 +52,7 @@ class OrderController extends Controller
 
 
         if(! isset($data["pick_up_at_the_counter"])) {
+            $data["pick_up_at_the_counter"] = 0;
             $delivery_data = [
                 "address" => $data["address"],
                 "city" => $data["city"],
@@ -62,6 +63,7 @@ class OrderController extends Controller
             $delivery_fee = $delivery_calc_result["delivery_fee"];
             $receiver_address = $delivery_calc_result["receiver_address"];
         } else {
+            $data["pick_up_at_the_counter"] = 1;
             $delivery_fee = null;
             $receiver_address = null;
         }

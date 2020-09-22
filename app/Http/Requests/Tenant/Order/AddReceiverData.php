@@ -38,10 +38,14 @@ class AddReceiverData extends FormRequest
      */
     public function rules()
     {
-        if($this->get("pick_up_at_the_counter") === 1) {
+        if($this->get("pick_up_at_the_counter")) {
             $stateRule = ["nullable"];
             $cityRule = ["nullable"];
             $addressRule = ["nullable"];
+        } else {
+            $stateRule = ["required"];
+            $cityRule = ["required"];
+            $addressRule = ["required", "min:10", "max:100"];
         }
 
         $rules = [
@@ -49,9 +53,9 @@ class AddReceiverData extends FormRequest
             "receiver_phone" => ["required", "min:10", "max:11"],
             "access_key" => ["required", "min:11", "max:11"],
             "pick_up_at_the_counter" => ["nullable"],
-            "state" => $stateRule ?? ["required"],
-            "city" => $cityRule ?? ["required"],
-            "address" => $addressRule ?? ["required", "min:10", "max:100"]
+            "state" => $stateRule,
+            "city" => $cityRule,
+            "address" => $addressRule
         ];
 
         return $rules;
