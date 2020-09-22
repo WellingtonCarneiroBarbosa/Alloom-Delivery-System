@@ -24,7 +24,7 @@ class CartController extends Controller
     }
 
     public function destroy(Request $request) {
-        $request->session()->flush("order-cart-" . $this->getTenantFranchiseOrFail()->id);
+        $request->session()->forget("order-cart-" . $this->getTenantFranchiseOrFail()->id);
 
         $franchise = $this->getTenantFranchiseOrFail();
 
@@ -52,10 +52,10 @@ class CartController extends Controller
 
         $cart->removePizzaFromCart($request["pizza_index"]);
 
-        //if there is any product in order, flush this session
+        //if there is any product in order, forget this session
         //for server memory optimization
         if($cart->totalQuantity <= 0) {
-            Session::flush("order-cart-" . $this->getTenantFranchiseOrFail()->id);
+            Session::forget("order-cart-" . $this->getTenantFranchiseOrFail()->id);
         } else {
             $this->updateSessionCart($cart);
         }
@@ -69,7 +69,7 @@ class CartController extends Controller
         $cart = new OrderCart($data);
         $franchise_id = $this->getTenantFranchiseOrFail()->id;
 
-        Session::flush("order-cart-" . $franchise_id);
+        Session::forget("order-cart-" . $franchise_id);
         Session::put("order-cart-" . $franchise_id, $cart);
     }
 
