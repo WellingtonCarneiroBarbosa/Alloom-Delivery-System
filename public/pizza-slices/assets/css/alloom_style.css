@@ -104,3 +104,12 @@
     padding-left: 10px;
     font-size: 1em;
 }
+.minimumOrder{
+    font-size:11px;
+    color:white;
+    line-height: 10px;
+}
+
+.cpfWarning{
+    font-size:11px;
+}

@@ -1,11 +1,23 @@
-@extends('layouts.app')
+@extends('layouts.tenant-front.pizza')
 
-@section('content')
+@section('nav-content')
+    <x-welcome.nav />
+
+@endsection
+
+@section('footer-content')
+    <x-tenant-front.footer />
+@endsection
+
+
+@section('main-content')
+<div class="section section-padding">
     <div class="container">
         <div class="row">
+            <h1>Concluir Pedido</h1>
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header">Concluir Pedido</div>
+                    <!--<div class="card-header"></div>-->
 
                     <div class="card-body">
                         <x-tenant-front.alert />
@@ -30,12 +42,13 @@
                                     <input type="checkbox" onclick="ocultAddressInputs();" name="pick_up_at_the_counter" id="pick_up_at_the_counter" @if((int) old("pick_up_at_the_count") === 1) checked @endif value="{{ old("pick_up_at_the_counter" ?? 0) }}">
                                 </div>
                                 <div class="col-md-6 mt-2">
-                                    <label for="access_key">CPF - ATENÇÃO! Não armazenamos seu CPF. Ele é necessário apenas para validarmos sua identidade.</label>
+                                    <label for="access_key">CPF</label>
                                     <input type="text" class="form-control" id="access_key" name="access_key" value="{{ old("access_key")  }}" required>
+                                    <p class="cpfWarning">ATENÇÃO! Não armazenamos seu CPF. Ele é necessário apenas para validarmos sua identidade.</p>
                                 </div>
                             </div>
                             <div id="receiver_address_form">
-                                <h3>Dados de Entrega</h3>
+                                <h4>Dados de Entrega</h4>
                                 <div class="row">
                                     <div class="col-md-6">
                                         <label for="state">Estado</label>
@@ -60,7 +73,7 @@
 
                             <div class="row mt-2">
                                 <div class="col-md-12">
-                                    <button type="submit" class="btn btn-primary float-right">Pedir</button>
+                                    <button style="float: right" type="submit" class="btn-custom primary" name="button"> Pedir  </button>
                                 </div>
                             </div>
                         </form>
@@ -69,7 +82,9 @@
             </div>
         </div>
     </div>
+</div>
 @endsection
+
 
 @section('scripts-content')
     <script>
@@ -110,3 +125,4 @@
         }
     </script>
 @endsection
+

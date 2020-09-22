@@ -84,8 +84,10 @@
                 <li class="breadcrumb-item active" aria-current="page">{{ $franchise->name }}</li>
                 <li class="openOrClosedFranchiseHome openedfranchiseHome">Aberto</li>
             </ol>
+            <p class="minimumOrder">Pedido mínimo de R$ 20,00</p>
         </nav>
         </div>
+
     </div>
 </div>
 <!-- Subheader End -->
