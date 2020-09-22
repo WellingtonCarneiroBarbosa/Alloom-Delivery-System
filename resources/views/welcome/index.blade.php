@@ -83,7 +83,7 @@
   <div class="container">
     <div class="row align-items-center">
 
-      <div class="col-lg-6 mb-lg-30">
+      <div class="col-lg-6 mb-lg-30" align="center">
         <img class="homeImageSection" src="{{asset('pizza-slices/assets/img/misc/delivery.svg')}}" alt="img">
       </div>
       <div class="col-lg-6">
@@ -117,7 +117,7 @@
           </div>
         </div>
       </div>
-      <div class="col-lg-6 mb-lg-30">
+      <div class="col-lg-6 mb-lg-30" align="center">
         <img class="homeImageSection" src="{{asset('pizza-slices/assets/img/misc/growup.svg')}}" alt="img">
       </div>
 
@@ -133,7 +133,7 @@
     <div class="container">
       <div class="row align-items-center">
 
-        <div class="col-lg-6 mb-lg-30">
+        <div class="col-lg-6 mb-lg-30" align="center">
           <img class="homeImageSection" src="{{asset('pizza-slices/assets/img/misc/design.svg')}}" alt="img">
         </div>
         <div class="col-lg-6">
