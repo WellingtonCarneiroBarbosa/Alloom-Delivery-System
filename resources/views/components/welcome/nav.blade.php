@@ -22,9 +22,9 @@
         <li class="menu-item">
           <a href="">Entrar</a>
         </li>
-        <li class="menu-item">
+        <!--<li class="menu-item">
           <a href="">Suporte online</a>
-        </li>
+        </li>-->
       </ul>
 
     </div>
@@ -58,7 +58,7 @@
       </ul>
 
       <a href="{{ route("tenant.login") }}" class="header-cta">Entrar</a>
-      <a href="" class="header-cta" style="background-color: #4e4e4e">Suporte Online</a>
+      <!--<a href="" class="header-cta" style="background-color: #4e4e4e">Suporte Online</a>-->
       <div class="header-controls">
         <!-- Toggler -->
         <div class="aside-toggler aside-trigger">
