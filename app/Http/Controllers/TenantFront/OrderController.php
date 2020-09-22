@@ -41,15 +41,15 @@ class OrderController extends Controller
         $franchise = $this->getTenantFranchiseOrFail();
 
         //get cart
-        $cart = Session::has("order-cart-" . $franchise->id);
-        if(! $cart) {
+        $cart = Session::get("order-cart-" . $franchise->id);
+        if(! $cart || $cart === null) {
             return redirect()->route("tenant-front.franchise.index", [
                 $franchise->tenant->url_prefix, $franchise->url_prefix
             ])->with([
                 "error" => "Não foi possível localizar seu carrinho!"
             ]);
         }
-        $cart = Session::get("order-cart-" . $franchise->id);
+
 
         if(! isset($data["pick_up_at_the_counter"])) {
             $delivery_data = [
@@ -86,10 +86,11 @@ class OrderController extends Controller
             ])->withInput($data);
         }
 
-        if(Session::has("order-access-key-" . $franchise->id))
-            Session::flush("order-access-key-" . $franchise->id);
+        $order_session_key = "order-access-key-" . $franchise->id;
+        if(Session::has($order_session_key));
+            Session::forget($order_session_key);
 
-        $request->session()->put('order-access-key-' . $franchise->id, $order->access_key);
+        $request->session()->put($order_session_key, $order->access_key);
 
         $pizzas = $this->savePizzas($cart->pizza_cart, $order->id);
 
@@ -101,8 +102,8 @@ class OrderController extends Controller
             ])->withInput($data);
         }
 
-        //flush cart session
-        Session::flush("order-cart-" . $franchise->id);
+        //forget cart session
+        Session::forget('order-cart-' . $franchise->id);
 
         //redirect to confirm order
         return redirect()->route("tenant-front.franchise.order.confirm-order", [
@@ -114,6 +115,7 @@ class OrderController extends Controller
 
     public function confirmOrder() {
         $franchise = $this->getTenantFranchiseOrFail();
+
         $order_id = Route::current()->order_id;
 
         $order = Order::findOrFail($order_id);
@@ -155,7 +157,7 @@ class OrderController extends Controller
             $franchise = $this->getTenantFranchiseOrFail();
 
             if(Session::has("order-access-key-" . $franchise->id))
-                Session::flush("order-access-key-" . $franchise->id);
+                Session::forget("order-access-key-" . $franchise->id);
 
             $request->session()->put('order-access-key-' . $franchise->id, $order->access_key);
 

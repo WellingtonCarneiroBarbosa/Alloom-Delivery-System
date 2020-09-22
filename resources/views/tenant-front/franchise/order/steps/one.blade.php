@@ -59,11 +59,11 @@
                                     </div>
 
                                 </div>
+                            </div>
 
-                                <div class="row mt-2">
-                                    <div class="col-md-12">
-                                        <button type="submit" class="btn btn-primary float-right">Pedir</button>
-                                    </div>
+                            <div class="row mt-2">
+                                <div class="col-md-12">
+                                    <button type="submit" class="btn btn-primary float-right">Pedir</button>
                                 </div>
                             </div>
                         </form>

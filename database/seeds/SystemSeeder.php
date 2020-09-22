@@ -46,7 +46,7 @@ class SystemSeeder extends Seeder
         echo "\rSeeded Alloom Admin\n";
 
         Tenant::create([
-            "url_prefix" => "pizza-do-ze"
+            "url_prefix" => "pizzaria-alloom"
         ]);
         echo "\rSeeded Tenant\n";
 
@@ -63,8 +63,8 @@ class SystemSeeder extends Seeder
         echo "\rSeeded Franchise\n";
 
         DeliveryFee::create([
-            "fee_per_km" => "5.00",
-            "maximum_delivery_distance_in_km" => "3",
+            "fee_per_km" => "2.00",
+            "maximum_delivery_distance_in_km" => "5",
             "default_fee" => false,
             "franchise_id" => 1
         ]);
