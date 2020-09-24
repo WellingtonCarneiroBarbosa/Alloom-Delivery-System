@@ -59,6 +59,8 @@ class SystemSchema extends Migration
          */
         Schema::create('tenants', function (Blueprint $table) {
             $table->smallIncrements("id");
+            $table->string("name");
+            $table->string("corporative_name");
             $table->string('url_prefix')->unique();
             $table->timestamps();
         });

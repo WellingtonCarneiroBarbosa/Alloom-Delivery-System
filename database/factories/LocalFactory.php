@@ -14,6 +14,8 @@ use App\Models\Franchise\Pizza\FlavorPrice;
 
 $factory->define(Tenant::class, function (Faker $faker) {
     return [
+        "name" => $faker->name,
+        "corporative_name" => $faker->company,
         "url_prefix" => strtolower($faker->unique()->name)
     ];
 });

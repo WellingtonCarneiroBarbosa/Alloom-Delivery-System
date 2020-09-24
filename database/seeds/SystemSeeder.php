@@ -46,6 +46,8 @@ class SystemSeeder extends Seeder
         echo "\rSeeded Alloom Admin\n";
 
         Tenant::create([
+            "name" => "Wellington Barbosa",
+            "corporative_name" => "Pizzaria Alloom",
             "url_prefix" => "pizzaria-alloom"
         ]);
         echo "\rSeeded Tenant\n";
