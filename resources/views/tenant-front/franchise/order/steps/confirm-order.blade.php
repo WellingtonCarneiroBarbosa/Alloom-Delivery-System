@@ -150,10 +150,11 @@
           </table>
           <form action="{{ route("tenant-front.franchise.order.store-order-confirmation", [
             $franchise->tenant->url_prefix, $franchise->url_prefix, $order->id
-        ]) }}" method="POST">
+         ]) }}" method="POST">
 
             @csrf
-            <a href="#" class="btn-custom primary btn-block">Finalizar Compra</a>
+
+            <button type="submit" class="btn-custom primary btn-block">Finalizar Compra</button>
         </form>
 
         </div>
