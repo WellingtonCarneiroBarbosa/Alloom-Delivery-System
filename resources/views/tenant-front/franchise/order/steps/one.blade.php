@@ -44,7 +44,7 @@
                                 <div class="col-md-6 mt-2">
                                     <label for="access_key">CPF</label>
                                     <input type="text" class="form-control" id="access_key" name="access_key" value="{{ old("access_key")  }}" required>
-                                    <p class="cpfWarning">ATENÇÃO! Seus dados estão seguros conosco. Seu CPF é necessário para garantir que somente você tenha acesso aos seus dados. <a href="{{ route("welcome.privacy-policy") }}">Saiba mais.</a></p>
+                                    <p class="cpfWarning">ATENÇÃO! Seus dados estão seguros conosco. Seu CPF é necessário para garantir que somente você tenha acesso aos seus dados e é salvo com a mais alta tecnologia de criptografia disponível: bcrypt. <a target="blank" href="{{ route("welcome.privacy-policy") }}">Saiba mais.</a></p>
                                 </div>
                             </div>
                             <div id="receiver_address_form">
