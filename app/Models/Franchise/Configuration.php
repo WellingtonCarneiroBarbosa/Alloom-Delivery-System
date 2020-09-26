@@ -10,4 +10,8 @@ class Configuration extends Model
     use MultiFranchiseTable;
 
     protected $table = "franchise_configurations";
+
+    protected $fillable = [
+        "minimum_order", "franchise_id"
+    ];
 }

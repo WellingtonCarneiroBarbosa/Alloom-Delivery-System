@@ -108,6 +108,7 @@ class SystemSchema extends Migration
          */
         Schema::create('franchise_configurations', function (Blueprint $table) {
             $table->increments("id");
+            $table->string("minimum_order")->nullable()->default(null);
             $table->unsignedInteger("franchise_id");
             $table->foreign("franchise_id")->references("id")->on("franchises")->onUpdate("cascade")->onDelete("cascade");
             $table->timestamps();

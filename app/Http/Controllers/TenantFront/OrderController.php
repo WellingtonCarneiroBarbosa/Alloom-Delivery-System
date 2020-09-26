@@ -22,12 +22,22 @@ class OrderController extends Controller
         $franchise = $this->getTenantFranchiseOrFail();
 
         //get cart
-        $cart = Session::has("order-cart-" . $franchise->id);
-        if(! $cart) {
+        $cart = Session::get("order-cart-" . $franchise->id);
+        if(! $cart || $cart === null) {
             return redirect()->route("tenant-front.franchise.index", [
                 $franchise->tenant->url_prefix, $franchise->url_prefix
             ])->with([
                 "error" => "Não foi possível localizar seu carrinho!"
+            ]);
+        }
+
+        //checks minimun_order
+        $minimum_order = $franchise->configurations->minimum_order;
+        if((float) $cart->totalPrice < (float) $minimum_order) {
+            return redirect()->route("tenant-front.franchise.index", [
+                $franchise->tenant->url_prefix, $franchise->url_prefix
+            ])->with([
+                "error" => "Desculpe, mas nosso pedido mínimo é de R$ " .  $minimum_order
             ]);
         }
 
@@ -50,7 +60,6 @@ class OrderController extends Controller
             ]);
         }
 
-
         if(! isset($data["pick_up_at_the_counter"])) {
             $data["pick_up_at_the_counter"] = 0;
             $delivery_data = [
@@ -59,6 +68,12 @@ class OrderController extends Controller
                 "state" => $data["state"],
             ];
             $delivery_calc_result = $this->calculateDeliveryFee($delivery_data, $franchise);
+
+            if($delivery_calc_result["distance"] > $franchise->deliveryFee->maximum_delivery_distance_in_km) {
+                return redirect()->back()->with([
+                    "error" => "Desculpe, mas não realizamos entregas nessa região. Gostaria de marcar o pedido para retirada?"
+                ])->withInput($data);
+            }
 
             $delivery_fee = $delivery_calc_result["delivery_fee"];
             $receiver_address = $delivery_calc_result["receiver_address"];
@@ -195,7 +210,7 @@ class OrderController extends Controller
     }
 
     protected function calculateDeliveryFee($data, $franchise) {
-        $delivery_fee = DeliveryFee::where("franchise_id", $franchise->id)->firstOrFail();
+        $delivery_fee = $franchise->deliveryFee;
 
         #api url
         $urlBase = "http://www.mapquestapi.com/directions/v2/routematrix?key=" . config("app.mapquest_public_key");

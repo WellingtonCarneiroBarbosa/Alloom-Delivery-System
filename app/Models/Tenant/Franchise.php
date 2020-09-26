@@ -3,10 +3,12 @@
 namespace App\Models\Tenant;
 
 use App\Models\Alloom\Tenant;
+use App\Traits\MultiTenantTable;
 use App\Models\Franchise\Pizza\Size;
 use App\Models\Franchise\Pizza\Border;
 use App\Models\Franchise\Pizza\Flavor;
-use App\Traits\MultiTenantTable;
+use App\Models\Franchise\Configuration;
+use App\Models\Franchise\Order\DeliveryFee;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -46,6 +48,14 @@ class Franchise extends Model
 
     public function tenant() {
         return $this->belongsTo(Tenant::class);
+    }
+
+    public function configurations() {
+        return $this->hasOne(Configuration::class, "franchise_id", "id");
+    }
+
+    public function deliveryFee() {
+        return $this->hasOne(DeliveryFee::class, "franchise_id", "id");
     }
 
     public function pizzaSizes() {

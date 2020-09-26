@@ -2,6 +2,7 @@
 
 use App\User;
 use App\Models\Alloom\Tenant;
+use App\Models\Franchise\Configuration;
 use App\Models\Franchise\Label;
 use Illuminate\Database\Seeder;
 use App\Models\Tenant\Franchise;
@@ -63,6 +64,11 @@ class SystemSeeder extends Seeder
             "tenant_id" => 1
         ]);
         echo "\rSeeded Franchise\n";
+
+        Configuration::create([
+            "minimum_order" => "12.00",
+            "franchise_id" => 1
+        ]);
 
         DeliveryFee::create([
             "fee_per_km" => "2.00",
