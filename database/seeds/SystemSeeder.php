@@ -2,10 +2,11 @@
 
 use App\User;
 use App\Models\Alloom\Tenant;
-use App\Models\Franchise\Configuration;
 use App\Models\Franchise\Label;
 use Illuminate\Database\Seeder;
 use App\Models\Tenant\Franchise;
+use Spatie\Permission\Models\Role;
+use App\Models\Franchise\Configuration;
 use App\Models\Franchise\Order\DeliveryFee;
 
 class SystemSeeder extends Seeder
@@ -31,6 +32,29 @@ class SystemSeeder extends Seeder
         }
         echo "\rSeeded Labels\n";
     }
+
+    protected function seedRoles() {
+        Role::create([
+            'name' => 'manager',
+            'guard_name' => "franchise"
+        ]);
+
+        Role::create([
+            'name' => 'clerk',
+            'guard_name' => "franchise"
+        ]);
+
+        Role::create([
+            'name' => 'delivery_man',
+            'guard_name' => "franchise"
+        ]);
+
+        Role::create([
+            'name' => 'cooker',
+            'guard_name' => "franchise"
+        ]);
+    }
+
     /**
      * Run the database seeds.
      *
@@ -78,5 +102,7 @@ class SystemSeeder extends Seeder
         ]);
 
         $this->seedLabels();
+
+        $this->seedRoles();
     }
 }
