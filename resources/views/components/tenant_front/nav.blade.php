@@ -84,7 +84,7 @@
                 <li class="openOrClosedFranchiseHome openedfranchiseHome">Aberto</li>
             </ol>
             <p class="minimumOrder">{{ $franchise->state }}, {{ $franchise->city }}, {{ $franchise->neighborhood }}, {{ $franchise->address }}</p>
-            @if($franchise->configurations->minimum_order)
+            @if(isset($franchise->configurations->minimum_order))
                 <p class="minimumOrder">Pedido mínimo de R$ {{ $franchise->configurations->minimum_order }}</p>
             @endif
         </nav>

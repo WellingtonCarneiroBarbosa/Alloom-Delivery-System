@@ -32,13 +32,15 @@ class OrderController extends Controller
         }
 
         //checks minimun_order
-        $minimum_order = $franchise->configurations->minimum_order;
-        if((float) $cart->totalPrice < (float) $minimum_order) {
-            return redirect()->route("tenant-front.franchise.index", [
-                $franchise->tenant->url_prefix, $franchise->url_prefix
-            ])->with([
-                "error" => "Desculpe, mas nosso pedido mínimo é de R$ " .  $minimum_order
-            ]);
+        if(isset($franchise->configurations->minimum_order)) {
+            $minimum_order = $franchise->configurations->minimum_order;
+            if((float) $cart->totalPrice < (float) $minimum_order) {
+                return redirect()->route("tenant-front.franchise.index", [
+                    $franchise->tenant->url_prefix, $franchise->url_prefix
+                ])->with([
+                    "error" => "Desculpe, mas nosso pedido mínimo é de R$ " . $minimum_order
+                ]);
+            }
         }
 
         return view("tenant-front.franchise.order.steps.one", [
