@@ -1,4 +1,6 @@
-  <!-- Aside (Mobile Navigation) -->
+  {{--
+    Mobile Navigation
+    --}}
   <aside class="main-aside">
     <a class="navbar-brand" href="{{  route("welcome.index")  }}"> <img src="{{asset('pizza-slices/assets/img/logo.png')}}" alt="logo"> </a>
 
@@ -32,7 +34,9 @@
   </aside>
   <div class="aside-overlay aside-trigger"></div>
 
-  <!-- Header Start -->
+  {{--
+    Desktop nav
+    --}}
   <header class="main-header header-2">
 
     <nav class="navbar">
@@ -58,15 +62,6 @@
       </ul>
 
       <a href="{{ route("franchise.login") }}" class="header-cta">Entrar</a>
-      <!--<a href="" class="header-cta" style="background-color: #4e4e4e">Suporte Online</a>-->
-      <div class="header-controls">
-        <!-- Toggler -->
-        <div class="aside-toggler aside-trigger">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-      </div>
+      <a href="#" class="header-cta" style="background-color: #4e4e4e">Suporte Online</a>
     </nav>
   </header>
-  <!-- Header End -->
