@@ -57,7 +57,7 @@
         </li>
       </ul>
 
-      <a href="{{ route("tenant.login") }}" class="header-cta">Entrar</a>
+      <a href="{{ route("franchise.login") }}" class="header-cta">Entrar</a>
       <!--<a href="" class="header-cta" style="background-color: #4e4e4e">Suporte Online</a>-->
       <div class="header-controls">
         <!-- Toggler -->
