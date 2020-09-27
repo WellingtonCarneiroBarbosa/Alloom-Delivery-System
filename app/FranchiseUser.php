@@ -2,6 +2,9 @@
 
 namespace App;
 
+use App\Models\Tenant\Franchise;
+use App\Traits\MultiFranchiseTable;
+use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -38,7 +41,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  */
 class FranchiseUser extends Authenticatable
 {
-    use Notifiable;
+    use Notifiable, HasRoles, MultiFranchiseTable;
 
     /**
      * The attributes that are mass assignable.
@@ -66,4 +69,12 @@ class FranchiseUser extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function getRole() {
+        return __("roles.{$this->roles[0]->name}");
+    }
+
+    public function franchise() {
+        return $this->hasOne(Franchise::class, "id", "franchise_id");
+    }
 }

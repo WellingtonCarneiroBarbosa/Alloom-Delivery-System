@@ -118,17 +118,17 @@ Route::namespace('TenantFront')->prefix('/e')->name('tenant-front.')->group(func
  *
  */
 Route::group(['guard' => 'franchise'], function () {
-    Route::name('tenant.')->prefix('cliente')->group(function() {
-        Route::get('/login', 'Auth\LoginController@showTenantUserLoginForm')->name('login');
-        //Route::get('/cadastro', 'Auth\RegisterController@showTenantUserRegisterForm')->name('register');
+    Route::name('franchise.')->prefix('cliente')->group(function() {
+        Route::get('/login', 'Auth\LoginController@showFranchiseUserLoginForm')->name('login');
+        //Route::get('/cadastro', 'Auth\RegisterController@showFranchiseUserRegisterForm')->name('register');
 
-        Route::post('/login', 'Auth\LoginController@TenantUserLogin');
-        //Route::post('/cadastro', 'Auth\RegisterController@createTenantUser');
+        Route::post('/login', 'Auth\LoginController@franchiseUserLogin');
+        //Route::post('/cadastro', 'Auth\RegisterController@createFranchiseUser');
 
-        Route::namespace('Tenant')->middleware(['auth:tenant'])->prefix('dash')->group(function () {
+        Route::namespace('Franchise')->middleware(['auth:franchise'])->prefix('dash')->group(function () {
             Route::get('/', 'HomeController@index');
 
-            /**RESTAURANTS MANAGEMENT */
+            /**FRANCHISES MANAGEMENT
             Route::resource('restaurantes', 'RestaurantController', [
                 'except' => [
                     "store", "update"
@@ -142,6 +142,7 @@ Route::group(['guard' => 'franchise'], function () {
             ]);
 
             Route::post('/restaurantes', 'RestaurantController@storeRequest')->name('restaurants');
+            */
         });
     });
 });

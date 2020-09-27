@@ -1,5 +1,6 @@
 <?php
 
+use App\FranchiseUser;
 use App\User;
 use App\Models\Alloom\Tenant;
 use App\Models\Franchise\Label;
@@ -62,6 +63,8 @@ class SystemSeeder extends Seeder
      */
     public function run()
     {
+        $this->seedRoles();
+
         User::create([
             "name" => "Alloom Admin",
             "email" => "alloomadmin@example.org",
@@ -89,6 +92,16 @@ class SystemSeeder extends Seeder
         ]);
         echo "\rSeeded Franchise\n";
 
+        $FranchiseUser = FranchiseUser::create([
+            "name" => "Wellington Barbosa",
+            "email" => "wellingtonbarbosa@gmail.com",
+            "password" => bcrypt("password"),
+            "email_verified_at" => now(),
+            "franchise_id" => 1
+        ]);
+
+        $FranchiseUser->assignRole("manager")->guard(["franchise"]);
+
         Configuration::create([
             "minimum_order" => "12.00",
             "franchise_id" => 1
@@ -102,7 +115,5 @@ class SystemSeeder extends Seeder
         ]);
 
         $this->seedLabels();
-
-        $this->seedRoles();
     }
 }

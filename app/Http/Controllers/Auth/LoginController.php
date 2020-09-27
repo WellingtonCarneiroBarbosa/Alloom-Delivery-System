@@ -61,19 +61,19 @@ class LoginController extends Controller
         ]);
     }
 
-     public function showTenantUserLoginForm()
+     public function showFranchiseUserLoginForm()
     {
         return view('auth.login', ['url' => 'cliente']);
     }
 
-    public function tenantUserLogin(Request $request)
+    public function franchiseUserLogin(Request $request)
     {
         $this->validate($request, [
             'email'   => 'required|email',
             'password' => 'required|min:6'
         ]);
 
-        if (Auth::guard('tenant')->attempt(['email' => $request->email, 'password' => $request->password], $request->get('remember'))) {
+        if (Auth::guard('franchise')->attempt(['email' => $request->email, 'password' => $request->password], $request->get('remember'))) {
 
             return redirect()->intended(RouteServiceProvider::TENANT_HOME);
         }
