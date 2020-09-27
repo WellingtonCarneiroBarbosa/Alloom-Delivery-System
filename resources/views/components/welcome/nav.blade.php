@@ -1,10 +1,6 @@
-  {{--
-    Mobile Navigation
-    --}}
-  <aside class="main-aside">
-    <a class="navbar-brand" href="{{ route("welcome.index") }}">
-        <img src="{{asset('pizza-slices/assets/img/logo.png')}}" alt="logo">
-    </a>
+   <!-- Aside (Mobile Navigation) -->
+   <aside class="main-aside">
+    <a class="navbar-brand" href="{{  route("welcome.index")  }}"> <img src="{{asset('pizza-slices/assets/img/logo.png')}}" alt="logo"> </a>
 
     <div class="aside-scroll">
       <ul>
@@ -26,14 +22,16 @@
         <li class="menu-item">
           <a href="">Entrar</a>
         </li>
+        <!--<li class="menu-item">
+          <a href="">Suporte online</a>
+        </li>-->
       </ul>
+
     </div>
   </aside>
   <div class="aside-overlay aside-trigger"></div>
 
-  {{--
-    Desktop nav
-    --}}
+  <!-- Header Start -->
   <header class="main-header header-2">
 
     <nav class="navbar">
@@ -60,5 +58,18 @@
 
       <a href="{{ route("franchise.login") }}" class="header-cta">Entrar</a>
       <a href="#" class="header-cta" style="background-color: #4e4e4e">Suporte Online</a>
+
+        <div class="header-controls d-xl-none">
+        <!-- Toggler -->
+            <div class="aside-toggler aside-trigger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
     </nav>
   </header>
+  <!-- Header End -->
+
+
+
