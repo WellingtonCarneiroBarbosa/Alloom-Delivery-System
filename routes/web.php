@@ -125,8 +125,8 @@ Route::group(['guard' => 'franchise'], function () {
         Route::post('/login', 'Auth\LoginController@franchiseUserLogin');
         //Route::post('/cadastro', 'Auth\RegisterController@createFranchiseUser');
 
-        Route::namespace('Franchise')->middleware(['auth:franchise'])->prefix('dash')->group(function () {
-            Route::get('/', 'HomeController@index');
+        Route::namespace('Franchise')->name("dash.")->middleware(['auth:franchise'])->prefix('dash')->group(function () {
+            Route::get('/', 'HomeController@index')->name("home");
 
             /**FRANCHISES MANAGEMENT
             Route::resource('restaurantes', 'RestaurantController', [
