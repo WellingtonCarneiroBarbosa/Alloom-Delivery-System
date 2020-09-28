@@ -151,11 +151,12 @@ class OrderController extends Controller
         $franchise = $this->getTenantFranchiseOrFail();
 
         $order = Order::findOrFail($order_id);
+
         $order->update([
             "confirmed_by_receiver" => true
         ]);
 
-        //emmit event
+        //emmit new order event
         event(new NewOrder($order));
 
         return redirect()->route("tenant-front.franchise.order.details", [
