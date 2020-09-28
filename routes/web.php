@@ -151,6 +151,10 @@ Route::group(['guard' => 'franchise'], function () {
              */
             Route::prefix("pedido")->namespace("Order")->name("order.")->group(function () {
                 Route::get('/{order_id}', 'OrderController@show')->name("show");
+
+                Route::prefix("{order_id}/status")->name("change-status.")->group(function () {
+                    Route::patch("em-andamento", "OrderStatusController@inProgress")->name("in-progress");
+                });
             });
 
 

@@ -75,7 +75,14 @@
                                         @endif
                                     </td>
                                     <td>R$ {{ $order->totalPrice }}</td>
-                                    <td>Marcar como em andamento | <a target="blank" href="{{ route("franchise.dash.order.show", [$order->id]) }}">Visualizar</a> | Cancelar</td>
+                                    <td>
+                                        <form action="{{ route("franchise.dash.order.change-status.in-progress", [$order->id]) }}" method="post">
+                                            @csrf
+                                            @method("PATCH")
+
+                                            <button class="link" type="submit">Marcar como em andamento</button>
+                                        </form>
+                                    | <a target="blank" href="{{ route("franchise.dash.order.show", [$order->id]) }}">Visualizar</a> | Cancelar</td>
                                 </tr>
                                 @endforeach
                             <tr>
