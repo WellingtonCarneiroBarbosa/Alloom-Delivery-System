@@ -5,15 +5,15 @@
 @endsection
 
 @section("nav-content")
-    <x-franchise.manager.nav />
+    <x-franchise.nav />
 @endsection
 
 @section("sidebar-content")
-    <x-franchise.manager.sidebar />
+    <x-franchise.sidebar />
 @endsection
 
 @section("footer-content")
-    <x-franchise.manager.footer />
+    <x-franchise.footer />
 @endsection
 
 @section("main-content")

@@ -24,8 +24,16 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          <li class="nav-item has-treeview menu-open">
-            <a href="#" class="nav-link active">
+          <li class="nav-item has-treeview
+          @if(request()->routeIs("franchise.dash.manager.home") === true || request()->routeIs("franchise.dash.clerk.home") === true)
+                menu-open
+            @endif"
+            >
+            <a href="#" class="nav-link
+            @if(request()->routeIs("franchise.dash.manager.home") || request()->routeIs("franchise.dash.clerk.home"))
+                active
+            @endif
+            ">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
@@ -33,14 +41,16 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
+              @role("manager")
               <li class="nav-item">
-                <a href="{{ route("franchise.dash.manager.home") }}" class="nav-link active">
+                <a href="{{ route("franchise.dash.manager.home") }}" class="nav-link {{ request()->routeIs("franchise.dash.manager.home") ? 'active' : '' }}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Estatísticas</p>
                 </a>
               </li>
+              @endrole
               <li class="nav-item">
-                <a href="{{ route("franchise.dash.clerk.home") }}" class="nav-link">
+                <a href="{{ route("franchise.dash.clerk.home") }}" class="nav-link {{ request()->routeIs("franchise.dash.clerk.home") ? 'active' : '' }}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Pedidos</p>
                 </a>
