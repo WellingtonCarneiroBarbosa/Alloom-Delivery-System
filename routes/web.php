@@ -149,8 +149,15 @@ Route::group(['guard' => 'franchise'], function () {
              * Order Routes
              *
              */
-            Route::prefix("pedido")->namespace("Order")->name("order.")->group(function () {
+            Route::prefix("pedidos")->namespace("Order")->name("order.")->group(function () {
+
+                Route::get("/em-andamento", "OrderController@inProgress")->name('in-progress');
+                Route::get("/concluidos", "OrderController@completed")->name('completed');
+                Route::get("/a-caminho", "OrderController@delivering")->name('delivering');
+                Route::get("/entregues", "OrderController@delivered")->name('delivered');
+
                 Route::get('/{order_id}', 'OrderController@show')->name("show");
+
 
                 Route::prefix("{order_id}/status")->name("change-status.")->group(function () {
                     Route::patch("em-andamento", "OrderStatusController@inProgress")->name("in-progress");

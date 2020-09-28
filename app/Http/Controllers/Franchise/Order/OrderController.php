@@ -24,4 +24,16 @@ class OrderController extends Controller
             ]);
         }
     }
+
+    public function inProgress() {
+        $orders = Order::inProgress()->paginate(10);
+        $quantityPendingOrders = Order::pending()->count();
+        $quantityInProgressOrders = Order::inProgress()->count();
+
+        return view("franchise.order.in-progress", [
+            "orders" => $orders,
+            "quantityPendingOrders" => $quantityPendingOrders,
+            "quantityInProgressOrders" => $quantityInProgressOrders
+        ]);
+    }
 }
