@@ -19,7 +19,7 @@ class Authenticate extends Middleware
         }
 
         if (! $request->expectsJson() && $request->routeIs('tenant*')) {
-            return route('tenant.login');
+            return route('franchise.login');
         }
     }
 }
