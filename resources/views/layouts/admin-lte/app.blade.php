@@ -38,6 +38,7 @@
   @yield("sidebar-content")
 
   <!-- Content Wrapper. Contains page content -->
+  <x-tenant-front.alert />
   @yield("main-content")
   <!-- /.content-wrapper -->
 
