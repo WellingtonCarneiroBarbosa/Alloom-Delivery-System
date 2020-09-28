@@ -18,7 +18,7 @@ class Authenticate extends Middleware
             return route('alloom.login');
         }
 
-        if (! $request->expectsJson() && $request->routeIs('tenant*')) {
+        if (! $request->expectsJson() && $request->routeIs('franchise*')) {
             return route('franchise.login');
         }
     }
