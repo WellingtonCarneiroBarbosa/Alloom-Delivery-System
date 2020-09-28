@@ -13,9 +13,9 @@ class Order extends Model
      * | status |   caption   |
      * |  null  |   pending   |
      * |   1    | in progress |
-     * |   2    |  concluido  |
-     * |   3    |  a caminho  |
-     * |   4    |  entregue   |
+     * |   2    |  completed  |
+     * |   3    |  delivering |
+     * |   4    |  delivered  |
      * |   5    |  canceled   |
      * ------------------------
      */
@@ -36,6 +36,22 @@ class Order extends Model
 
     public static function inProgress() {
         return static::where("confirmed_by_receiver", "1")->where("status", "1")->orderBy("updated_at", "ASC");
+    }
+
+    public static function completed() {
+        return static::where("confirmed_by_receiver", "1")->where("status", "2")->orderBy("updated_at", "ASC");
+    }
+
+    public static function delivering() {
+        return static::where("confirmed_by_receiver", "1")->where("status", "3")->orderBy("updated_at", "ASC");
+    }
+
+    public static function delivered() {
+        return static::where("confirmed_by_receiver", "1")->where("status", "4")->orderBy("updated_at", "ASC");
+    }
+
+    public static function canceled() {
+        return static::where("confirmed_by_receiver", "1")->where("status", "5")->orderBy("updated_at", "ASC");
     }
 
     public function pizzas() {
