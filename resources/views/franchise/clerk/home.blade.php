@@ -88,6 +88,8 @@
                         <th>Ação</th>
                     </tr>
                     </tfoot>
+
+                    {{ $orders->links() }}
                   </table>
                 </div>
                 <!-- /.card-body -->

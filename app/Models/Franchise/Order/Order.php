@@ -17,6 +17,14 @@ class Order extends Model
         "totalPrice", "totalQuantity", "franchise_id", "access_key"
     ];
 
+    public static function pending() {
+        return static::where("confirmed_by_receiver", "1")->where("order_status_id", null)->orderBy("updated_at", "ASC");
+    }
+
+    public static function inProgress() {
+        return static::where("confirmed_by_receiver", "1")->where("order_status_id", "1")->orderBy("updated_at", "ASC");
+    }
+
     public function pizzas() {
         return $this->hasMany(Pizza::class, "order_id", "id");
     }
