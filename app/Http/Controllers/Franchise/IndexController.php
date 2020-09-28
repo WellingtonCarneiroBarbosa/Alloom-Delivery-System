@@ -4,13 +4,14 @@ namespace App\Http\Controllers\Franchise;
 
 use App\Http\Controllers\Controller;
 
-class HomeController extends Controller
+class IndexController extends Controller
 {
     public function index() {
         $user = auth()->user();
+
         if($user->hasRole("manager"))
-            return view("franchise.manager.home");
+            return redirect()->route("franchise.dash.manager.home");
         else if($user->hasRole("clerk"))
-            return view("franchise.clerk.home");
+            return redirect()->route("franchise.dash.clerk.home");
     }
 }

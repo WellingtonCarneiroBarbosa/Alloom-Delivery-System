@@ -1,15 +1,19 @@
 @extends("layouts.admin-lte.app")
 
+@section("title")
+    Início
+@endsection
+
 @section("nav-content")
-    <x-franchise.nav />
+    <x-franchise.manager.nav />
 @endsection
 
 @section("sidebar-content")
-    <x-franchise.sidebar />
+    <x-franchise.manager.sidebar />
 @endsection
 
 @section("footer-content")
-    <x-franchise.footer />
+    <x-franchise.manager.footer />
 @endsection
 
 @section("main-content")
