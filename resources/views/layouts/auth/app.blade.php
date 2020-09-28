@@ -13,6 +13,9 @@
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- icheck bootstrap -->
   <link rel="stylesheet" href="{{ asset("admin-lte/plugins/icheck-bootstrap/icheck-bootstrap.min.css") }}">
+  <!--sweetalert-->
+  <link rel="stylesheet" href="{{ asset('admin-lte/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css') }}">
+
   <!-- Theme style -->
   <link rel="stylesheet" href="{{ asset("admin-lte/dist/css/adminlte.min.css") }}">
   <!-- Google Font: Source Sans Pro -->
