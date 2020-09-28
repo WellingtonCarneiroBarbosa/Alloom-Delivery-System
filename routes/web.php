@@ -145,6 +145,15 @@ Route::group(['guard' => 'franchise'], function () {
                 Route::get('/', 'HomeController@index')->name("home");
             });
 
+            /**
+             * Order Routes
+             *
+             */
+            Route::prefix("pedido")->namespace("Order")->name("order.")->group(function () {
+                Route::get('/{order_id}', 'OrderController@show')->name("show");
+            });
+
+
             /**FRANCHISES MANAGEMENT
             Route::resource('restaurantes', 'RestaurantController', [
                 'except' => [

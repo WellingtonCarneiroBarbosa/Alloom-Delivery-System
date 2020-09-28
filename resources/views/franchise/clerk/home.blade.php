@@ -53,44 +53,48 @@
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
-                  <table id="example1" class="table table-bordered table-striped">
-                    <thead>
-                    <tr>
-                      <th>Nome</th>
-                      <th>Endereço</th>
-                      <th>Sub-Total</th>
-                      <th>Ação</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($orders as $order)
-                        <tr>
-                            <td>{{ $order->receiver_name }}</td>
-                            <td>
-                                @if(! $order->pick_up_at_the_counter)
-                                {{ $order->receiver_address }}
-                                @else
-                                Pedido para retirada
-                                @endif
-                            </td>
-                            <td>R$ {{ $order->totalPrice }}</td>
-                            <td>Marcar como em andamento | Cancelar</td>
-                        </tr>
-                        @endforeach
-                    <tr>
-                    </tr>
-                    </tbody>
-                    <tfoot>
-                    <tr>
-                        <th>Nome</th>
-                        <th>Endereço</th>
-                        <th>Sub-Total</th>
-                        <th>Ação</th>
-                    </tr>
-                    </tfoot>
+                    @if($quantityPendingOrders >= 1)
+                        <table id="example1" class="table table-bordered table-striped">
+                            <thead>
+                            <tr>
+                            <th>Nome</th>
+                            <th>Endereço</th>
+                            <th>Sub-Total</th>
+                            <th>Ação</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($orders as $order)
+                                <tr>
+                                    <td>{{ $order->receiver_name }}</td>
+                                    <td>
+                                        @if(! $order->pick_up_at_the_counter)
+                                        {{ $order->receiver_address }}
+                                        @else
+                                        Pedido para retirada
+                                        @endif
+                                    </td>
+                                    <td>R$ {{ $order->totalPrice }}</td>
+                                    <td>Marcar como em andamento | <a target="blank" href="{{ route("franchise.dash.order.show", [$order->id]) }}">Visualizar</a> | Cancelar</td>
+                                </tr>
+                                @endforeach
+                            <tr>
+                            </tr>
+                            </tbody>
+                            <tfoot>
+                            <tr>
+                                <th>Nome</th>
+                                <th>Endereço</th>
+                                <th>Sub-Total</th>
+                                <th>Ação</th>
+                            </tr>
+                            </tfoot>
 
-                    {{ $orders->links() }}
-                  </table>
+                            {{ $orders->links() }}
+                        </table>
+                    @else
+                    <h3>Nenhum pedido pendente no momento.</h3>
+                    @endif
                 </div>
                 <!-- /.card-body -->
               </div>
@@ -122,7 +126,8 @@
 
     var channel = pusher.subscribe(channelName);
     channel.bind(eventName, function(data) {
-      alert(JSON.stringify(data));
+        //TODO: contatenar pedido na lista de pedidos pendentes
+        alert(JSON.stringify(data));
     });
   </script>
 @endsection

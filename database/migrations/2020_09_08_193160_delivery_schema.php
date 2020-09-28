@@ -75,8 +75,7 @@ class DeliverySchema extends Migration
             $table->unsignedInteger("discount_code_id")->nullable();
             $table->foreign("discount_code_id")->references("id")->on("discount_codes")->onUpdate("cascade")->onDelete("set null");
             $table->boolean('pick_up_at_the_counter')->default(false);
-            $table->unsignedTinyInteger("order_status_id")->nullable();
-            $table->foreign("order_status_id")->references("id")->on("order_status")->onUpdate("cascade")->onDelete("set null");
+            $table->string("status", 2)->nullable();
             $table->string('delivery_fee')->nullable();
             $table->string("totalQuantity");
             $table->string('totalPrice');

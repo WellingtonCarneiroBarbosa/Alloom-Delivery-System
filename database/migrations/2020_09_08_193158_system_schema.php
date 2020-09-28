@@ -117,18 +117,6 @@ class SystemSchema extends Migration
 
 
         /**
-         * Status table
-         *
-         */
-        Schema::create('order_status', function (Blueprint $table) {
-            $table->tinyIncrements("id");
-            $table->string('name');
-            $table->float('progress');
-            $table->timestamps();
-        });
-        echo "\rMigrated order_status\n";
-
-        /**
          * Labels table
          *
          */
@@ -140,12 +128,6 @@ class SystemSchema extends Migration
             $table->timestamps();
         });
         echo "\rMigrated labels\n";
-
-
-        //Status::create([
-        //    'name' => '',
-        //    'progress' => '',
-        //]);
     }
 
     /**

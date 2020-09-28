@@ -2,7 +2,6 @@
 
 namespace App\Models\Franchise\Order;
 
-use App\Traits\MultiTenantTable;
 use App\Models\Franchise\Pizza\Size;
 use App\Models\Franchise\Pizza\Flavor;
 use Illuminate\Database\Eloquent\Model;
@@ -11,8 +10,6 @@ use App\Models\Franchise\Pizza\FlavorPrice;
 
 class Pizza extends Model
 {
-    use MultiTenantTable;
-
     protected $table = "pizza_order";
 
     protected $fillable = [
