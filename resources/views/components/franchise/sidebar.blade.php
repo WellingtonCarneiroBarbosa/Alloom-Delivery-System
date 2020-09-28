@@ -4,7 +4,7 @@
     <a href="{{ route("franchise.dash.home") }}" class="brand-link">
       <img src="{{ asset("admin-lte/dist/img/AdminLTELogo.png") }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
            style="opacity: .8">
-      <span class="brand-text font-weight-light">{{ auth()->user()->franchise->tenant->corporative_name }}</span>
+      <span class="brand-text font-weight-light">{{ auth()->user()->franchise->tenant->corporative_name }}<br><span>Unidade {{ auth()->user()->franchise->name }}</span></span>
     </a>
 
     <!-- Sidebar -->
@@ -15,7 +15,7 @@
           <img src="{{ asset('admin-lte/dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">{{ auth()->user()->name }}</a>
+          <a href="#" class="d-block">{{ auth()->user()->name }}<br><span>{{ auth()->user()->getRole() }}</span></a>
         </div>
       </div>
 

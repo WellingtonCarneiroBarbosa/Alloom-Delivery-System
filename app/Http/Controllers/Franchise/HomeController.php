@@ -7,6 +7,10 @@ use App\Http\Controllers\Controller;
 class HomeController extends Controller
 {
     public function index() {
-        return view("franchise.home");
+        $user = auth()->user();
+        if($user->hasRole("manager"))
+            return view("franchise.manager.home");
+        else if($user->hasRole("clerk"))
+            return view("franchise.clerk.home");
     }
 }
