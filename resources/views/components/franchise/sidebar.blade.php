@@ -75,7 +75,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{{ route('franchise.dash.order.completed') }}" class="nav-link {{ request()->routeIs("franchise.dash.order.completed") ? 'active' : '' }}">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Concluídos</p>
                     </a>
@@ -83,7 +83,7 @@
 
 
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{{ route('franchise.dash.order.delivering') }}" class="nav-link {{ request()->routeIs("franchise.dash.order.delivering") ? 'active' : '' }}">
                     <i class="far fa-circle nav-icon"></i>
                     <p>À caminho</p>
                     </a>
@@ -91,7 +91,7 @@
 
 
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{{ route('franchise.dash.order.delivered') }}" class="nav-link {{ request()->routeIs("franchise.dash.order.delivered") ? 'active' : '' }}">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Entregues</p>
                     </a>
@@ -99,7 +99,7 @@
 
 
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{{ route('franchise.dash.order.canceled') }}" class="nav-link {{ request()->routeIs("franchise.dash.order.canceled") ? 'active' : '' }}">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Cancelados</p>
                     </a>

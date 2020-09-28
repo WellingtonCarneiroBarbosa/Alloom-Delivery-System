@@ -155,12 +155,21 @@ Route::group(['guard' => 'franchise'], function () {
                 Route::get("/concluidos", "OrderController@completed")->name('completed');
                 Route::get("/a-caminho", "OrderController@delivering")->name('delivering');
                 Route::get("/entregues", "OrderController@delivered")->name('delivered');
+                Route::get("/cancelados", "OrderController@canceled")->name('canceled');
 
                 Route::get('/{order_id}', 'OrderController@show')->name("show");
 
 
+                /**
+                 * Change Order Status
+                 *
+                 */
                 Route::prefix("{order_id}/status")->name("change-status.")->group(function () {
                     Route::patch("em-andamento", "OrderStatusController@inProgress")->name("in-progress");
+                    Route::patch("concluido", "OrderStatusController@completed")->name("completed");
+                    Route::patch("a-caminho", "OrderStatusController@delivering")->name("delivering");
+                    Route::patch("entregue", "OrderStatusController@delivered")->name("delivered");
+                    Route::patch("cancelar", "OrderStatusController@canceled")->name("canceled");
                 });
             });
 

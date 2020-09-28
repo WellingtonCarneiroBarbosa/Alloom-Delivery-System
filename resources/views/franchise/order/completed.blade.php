@@ -1,7 +1,7 @@
 @extends("layouts.admin-lte.app")
 
 @section("title")
-    Pedidos Em Andamento
+    Pedidos Concluídos
 @endsection
 
 @section("nav-content")
@@ -30,7 +30,7 @@
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
               <li class="breadcrumb-item">Pedidos</li>
-              <li class="breadcrumb-item active">Em Andamento</li>
+              <li class="breadcrumb-item active">Concluídos</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -47,13 +47,11 @@
 
               <div class="card">
                 <div class="card-header">
-                  <h3 class="card-title">Pedidos Em Andamento - {{ $quantityInProgressOrders }}</h3>
-
-                  <h3 class="card-title float-right">Pedidos Pendentes - {{ $quantityPendingOrders }}</h3>
+                  <h3 class="card-title">Pedidos Concluídos - {{ $quantityCompletedOrders }}</h3>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
-                    @if($quantityInProgressOrders >= 1)
+                    @if($quantityCompletedOrders >= 1)
                         <table id="example1" class="table table-bordered table-striped">
                             <thead>
                             <tr>
@@ -76,12 +74,21 @@
                                     </td>
                                     <td>R$ {{ $order->totalPrice }}</td>
                                     <td>
-                                        <form action="{{ route("franchise.dash.order.change-status.completed", [$order->id]) }}" method="post">
+                                        @if(! $order->pick_up_at_the_counter)
+                                        <form action="{{ route("franchise.dash.order.change-status.delivering", [$order->id]) }}" method="post">
                                             @csrf
                                             @method("PATCH")
 
-                                            <button class="link" type="submit">Marcar como concluído</button>
+                                            <button class="link" type="submit">Marcar como à caminho</button>
                                         </form>
+                                        @else
+                                        <form action="{{ route("franchise.dash.order.change-status.delivered", [$order->id]) }}" method="post">
+                                            @csrf
+                                            @method("PATCH")
+
+                                            <button class="link" type="submit">Marcar como entregue</button>
+                                        </form>
+                                        @endif
                                     | <a target="blank" href="{{ route("franchise.dash.order.show", [$order->id]) }}">Visualizar</a></td>
                                 </tr>
                                 @endforeach
@@ -100,7 +107,7 @@
                             {{ $orders->links() }}
                         </table>
                     @else
-                    <h3>Nenhum pedido em andamento no momento. Há {{ $quantityPendingOrders }} pedidos pendentes.</h3>
+                    <h3>Nenhum pedido concluído no momento.</h3>
                     @endif
                 </div>
                 <!-- /.card-body -->
