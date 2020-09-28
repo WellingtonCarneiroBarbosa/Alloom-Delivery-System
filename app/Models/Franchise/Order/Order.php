@@ -2,12 +2,12 @@
 
 namespace App\Models\Franchise\Order;
 
-use App\Traits\MultiTenantTable;
+use App\Traits\MultiFranchiseTable;
 use Illuminate\Database\Eloquent\Model;
 
 class Order extends Model
 {
-    use MultiTenantTable;
+    use MultiFranchiseTable;
 
     protected $table = "orders";
 
