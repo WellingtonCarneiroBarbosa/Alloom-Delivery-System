@@ -100,7 +100,7 @@
                             {{ $orders->links() }}
                         </table>
                     @else
-                    <h3>Nenhum pedido pendente no momento.</h3>
+                    <h3>Nenhum pedido pendente no momento. Há {{ $quantityInProgressOrders }} pedidos em andamento.</h3>
                     @endif
                 </div>
                 <!-- /.card-body -->
@@ -118,7 +118,7 @@
 
 @section('scripts-content')
 
-  <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
+ {{--  <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
   <script>
 
     // Enable pusher logging - don't include this in production
@@ -136,5 +136,5 @@
         //TODO: contatenar pedido na lista de pedidos pendentes
         alert(JSON.stringify(data));
     });
-  </script>
+  </script> --}}
 @endsection

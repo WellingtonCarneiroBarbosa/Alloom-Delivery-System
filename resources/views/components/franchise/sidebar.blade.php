@@ -68,7 +68,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link  {{ request()->routeIs("franchise.dash.order.in-progress") ? 'active' : '' }}">
+                    <a href="{{ route("franchise.dash.order.in-progress") }}" class="nav-link  {{ request()->routeIs("franchise.dash.order.in-progress") ? 'active' : '' }}">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Em Andamento</p>
                     </a>

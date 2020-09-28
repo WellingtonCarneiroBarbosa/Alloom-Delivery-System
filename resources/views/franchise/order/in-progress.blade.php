@@ -82,7 +82,7 @@
 
                                             <button class="link" type="submit">Marcar como concluído</button>
                                         </form>
-                                    | <a target="blank" href="{{ route("franchise.dash.order.show", [$order->id]) }}">Visualizar</a> | Cancelar</td>
+                                    | <a target="blank" href="{{ route("franchise.dash.order.show", [$order->id]) }}">Visualizar</a></td>
                                 </tr>
                                 @endforeach
                             <tr>
@@ -117,8 +117,7 @@
 @endsection
 
 @section('scripts-content')
-
-  <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
+{{-- <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
   <script>
 
     // Enable pusher logging - don't include this in production
@@ -136,5 +135,5 @@
         //TODO: contatenar pedido na lista de pedidos pendentes
         alert(JSON.stringify(data));
     });
-  </script>
+  </script> --}}
 @endsection
