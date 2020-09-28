@@ -29,8 +29,7 @@
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
-
-  <!-- Navbar -->
+    <!-- Navbar -->
   @yield("nav-content")
   <!-- /.navbar -->
 
@@ -38,7 +37,6 @@
   @yield("sidebar-content")
 
   <!-- Content Wrapper. Contains page content -->
-  <x-tenant-front.alert />
   @yield("main-content")
   <!-- /.content-wrapper -->
 
@@ -86,6 +84,8 @@
 <script src="{{ asset('admin-lte/dist/js/pages/dashboard.js') }}"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{ asset('admin-lte/dist/js/demo.js') }}"></script>
+
+<x-admin-lte.toasts />
 
 @yield('scripts-content')
 </body>

@@ -5,8 +5,6 @@
 @endsection
 
 @section('content')
-<x-tenant-front.alert />
-
 <div class="card-body login-card-body mt-2">
     <p class="login-box-msg">Digite seus dados de acesso para entrar no sistema</p>
 
