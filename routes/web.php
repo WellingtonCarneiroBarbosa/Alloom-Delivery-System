@@ -129,11 +129,19 @@ Route::group(['guard' => 'franchise'], function () {
 
             Route::get("/", "IndexController@index");
 
+            /**
+             * Manager Routes
+             *
+             */
             Route::middleware(["role:manager"])->prefix("gerente")->namespace("Manager")->name("manager.")->group(function () {
                 Route::get('/', 'HomeController@index')->name("home");
             });
 
-            Route::middleware(["role:clerk"])->prefix("atendente")->namespace("Clerk")->name("clerk.")->group(function () {
+            /**
+             * Clerk Routes
+             *
+             */
+            Route::middleware(["role:clerk|manager"])->prefix("atendente")->namespace("Clerk")->name("clerk.")->group(function () {
                 Route::get('/', 'HomeController@index')->name("home");
             });
 
