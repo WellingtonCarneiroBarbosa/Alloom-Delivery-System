@@ -104,3 +104,25 @@
     <!-- /.content -->
   </div>
 @endsection
+
+@section('scripts-content')
+
+  <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
+  <script>
+
+    // Enable pusher logging - don't include this in production
+    Pusher.logToConsole = true;
+
+    var pusher = new Pusher('f5fb5c17616fc23275f4', {
+      cluster: 'mt1'
+    });
+
+    let channelName = 'franchise-channel-' + "{{ auth()->user()->franchise->id }}";
+    let eventName = 'new-order-' + "{{ auth()->user()->franchise->id }}";
+
+    var channel = pusher.subscribe(channelName);
+    channel.bind(eventName, function(data) {
+      alert(JSON.stringify(data));
+    });
+  </script>
+@endsection

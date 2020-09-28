@@ -3,16 +3,17 @@
 namespace App\Http\Controllers\TenantFront;
 
 use Route;
+use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 use App\Traits\FranchiseController;
+use App\Events\TenantFront\NewOrder;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Franchise\Order\Order;
 use App\Models\Franchise\Order\Pizza;
 use Illuminate\Support\Facades\Session;
-use App\Http\Requests\Tenant\Order\AddReceiverData;
 use App\Models\Franchise\Order\DeliveryFee;
-use GuzzleHttp\Client;
+use App\Http\Requests\Tenant\Order\AddReceiverData;
 
 class OrderController extends Controller
 {
@@ -153,6 +154,9 @@ class OrderController extends Controller
         $order->update([
             "confirmed_by_receiver" => true
         ]);
+
+        //emmit event
+        event(new NewOrder($order));
 
         return redirect()->route("tenant-front.franchise.order.details", [
             "tenant_url_prefix" =>  $franchise->tenant->url_prefix, "franchise_url_prefix" => $franchise->url_prefix,
