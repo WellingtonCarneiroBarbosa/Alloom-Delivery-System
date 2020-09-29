@@ -25,7 +25,7 @@ class Order extends Model
     protected $table = "orders";
 
     protected $fillable = [
-        "receiver_id", "receiver_name", "receiver_phone", "receiver_address", "confirmed_by_receiver",
+        "receiver_id", "receiver_name", "receiver_phone", "receiver_email", "receiver_address", "confirmed_by_receiver",
         "discount_code_id", "pick_up_at_the_counter", "status", "delivery_fee",
         "totalPrice", "totalQuantity", "franchise_id", "access_key"
     ];
