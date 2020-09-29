@@ -4,6 +4,7 @@ namespace App\Models\Franchise\Order;
 
 use App\Traits\MultiFranchiseTable;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
 
 class Order extends Model
 {
@@ -20,7 +21,7 @@ class Order extends Model
      * ------------------------
      */
 
-    use MultiFranchiseTable;
+    use MultiFranchiseTable, Notifiable;
 
     protected $table = "orders";
 
