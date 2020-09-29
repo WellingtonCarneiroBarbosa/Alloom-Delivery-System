@@ -11,14 +11,17 @@ class StatusChanged extends Notification
 {
     use Queueable;
 
+    public $order, $franchise;
+
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($order, $franchise)
     {
-        //
+        $this->order = $order;
+        $this->franchise = $franchise;
     }
 
     /**
@@ -40,10 +43,19 @@ class StatusChanged extends Notification
      */
     public function toMail($notifiable)
     {
+        if($this->order->pick_up_at_the_counter === 1) {
+            $message = "Seu pedido foi concluído e está aguardando a retirada.";
+        } else {
+            $message = "Seu pedido está a caminho!";
+        }
+
         return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
+                    ->line($message)
+                    ->action('Visualizar Detalhes', route("tenant-front.franchise.order.details", [
+                        $this->franchise->tenant->url_prefix, $this->franchise->url_prefix, $this->order->id
+                    ]))
+                    ->line('Agradecemos por realizar mais um pedido com a gente! Abraços.')
+                    ->line($this->franchise->tenant->corporative_name . ", " . $this->franchise->name );
     }
 
     /**

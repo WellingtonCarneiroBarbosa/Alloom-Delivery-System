@@ -41,7 +41,7 @@ class OrderStatusController extends Controller
                 $order->forceFill([
                     'name' => $order->receiver_name,
                     'email' => $order->receiver_email,
-                ])->notify(new StatusChanged());
+                ])->notify(new StatusChanged($order, auth()->user()->franchise));
                 $success_message = "Pedido marcado como concluído. O cliente foi notificado via e-mail";
             } else {
                 $success_message = "Pedido marcado como concluído.";
@@ -68,8 +68,13 @@ class OrderStatusController extends Controller
                 "status" => "3"
             ]);
 
+            $order->forceFill([
+                'name' => $order->receiver_name,
+                'email' => $order->receiver_email,
+            ])->notify(new StatusChanged($order, auth()->user()->franchise));
+
             return redirect()->back()->with([
-                "success" => "Pedido marcado como à caminho"
+                "success" => "Pedido marcado como à caminho. O cliente foi notificado via e-mail."
             ]);
         } catch (\Exception $e) {
             if(config("app.debug"))
