@@ -26,7 +26,7 @@ class OrderController extends Controller
     }
 
     public function inProgress() {
-        $orders = Order::inProgress()->paginate(10);
+        $orders = Order::inProgress()->recentlyUpdated()->paginate(10);
         $quantityPendingOrders = Order::pending()->count();
         $quantityInProgressOrders = Order::inProgress()->count();
 
@@ -38,7 +38,7 @@ class OrderController extends Controller
     }
 
     public function completed() {
-        $orders = Order::completed()->paginate(10);
+        $orders = Order::completed()->recentlyUpdated()->paginate(10);
         $quantityCompletedOrders = Order::completed()->count();
 
         return view("franchise.order.completed", [
@@ -48,7 +48,7 @@ class OrderController extends Controller
     }
 
     public function delivering() {
-        $orders = Order::delivering()->paginate(10);
+        $orders = Order::delivering()->recentlyUpdated()->paginate(10);
         $quantityDeliveringOrders = Order::delivering()->count();
 
         return view("franchise.order.delivering", [
@@ -58,7 +58,7 @@ class OrderController extends Controller
     }
 
     public function delivered() {
-        $orders = Order::delivered()->paginate(10);
+        $orders = Order::delivered()->recentlyCreated()->paginate(10);
         $quantityDeliveredOrders = Order::delivered()->count();
 
         return view("franchise.order.delivered", [
@@ -68,7 +68,7 @@ class OrderController extends Controller
     }
 
     public function canceled() {
-        $orders = Order::canceled()->paginate(10);
+        $orders = Order::canceled()->recentlyCreated()->paginate(10);
         $quantityCanceledOrders = Order::canceled()->count();
 
         return view("franchise.order.canceled", [

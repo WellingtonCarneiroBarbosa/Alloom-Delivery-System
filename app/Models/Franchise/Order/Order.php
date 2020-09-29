@@ -32,27 +32,43 @@ class Order extends Model
     ];
 
     public static function pending() {
-        return static::where("confirmed_by_receiver", "1")->where("status", null)->orderBy("updated_at", "ASC");
+        return static::where("confirmed_by_receiver", "1")->where("status", null);
     }
 
     public static function inProgress() {
-        return static::where("confirmed_by_receiver", "1")->where("status", "1")->orderBy("updated_at", "ASC");
+        return static::where("confirmed_by_receiver", "1")->where("status", "1");
     }
 
     public static function completed() {
-        return static::where("confirmed_by_receiver", "1")->where("status", "2")->orderBy("updated_at", "ASC");
+        return static::where("confirmed_by_receiver", "1")->where("status", "2");
     }
 
     public static function delivering() {
-        return static::where("confirmed_by_receiver", "1")->where("status", "3")->orderBy("updated_at", "ASC");
+        return static::where("confirmed_by_receiver", "1")->where("status", "3");
     }
 
     public static function delivered() {
-        return static::where("confirmed_by_receiver", "1")->where("status", "4")->orderBy("updated_at", "ASC");
+        return static::where("confirmed_by_receiver", "1")->where("status", "4");
     }
 
     public static function canceled() {
-        return static::where("confirmed_by_receiver", "1")->where("status", "5")->orderBy("updated_at", "ASC");
+        return static::where("confirmed_by_receiver", "1")->where("status", "5");
+    }
+
+    public static function recentlyUpdated() {
+        return static::where("updated_at", "ASC");
+    }
+
+    public static function recentlyCreated() {
+        return static::where("created_at", "ASC");
+    }
+
+    public static function oldestUpdated() {
+        return static::where("updated_at", "DESC");
+    }
+
+    public static function oldestCreated() {
+        return static::where("created_at", "DESC");
     }
 
     public function pizzas() {
