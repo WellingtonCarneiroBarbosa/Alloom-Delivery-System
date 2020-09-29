@@ -60,6 +60,7 @@
                             <th>Nome</th>
                             <th>Endereço</th>
                             <th>Sub-Total</th>
+                            <th>Pedido Realizado Em</th>
                             <th>Ação</th>
                             </tr>
                             </thead>
@@ -75,6 +76,7 @@
                                         @endif
                                     </td>
                                     <td>R$ {{ $order->totalPrice }}</td>
+                                    <td>{{ $order->created_at }}</td>
                                     <td>
                                         <form action="{{ route("franchise.dash.order.change-status.completed", [$order->id]) }}" method="post">
                                             @csrf
@@ -85,6 +87,7 @@
                                     | <a target="blank" href="{{ route("franchise.dash.order.show", [$order->id]) }}">Visualizar</a></td>
                                 </tr>
                                 @endforeach
+
                             <tr>
                             </tr>
                             </tbody>
@@ -93,6 +96,7 @@
                                 <th>Nome</th>
                                 <th>Endereço</th>
                                 <th>Sub-Total</th>
+                                <th>Pedido Realizado Em</th>
                                 <th>Ação</th>
                             </tr>
                             </tfoot>

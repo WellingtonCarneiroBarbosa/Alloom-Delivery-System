@@ -59,6 +59,7 @@
                             <th>Endereço</th>
                             <th>Sub-Total</th>
                             <th>Ação</th>
+                            <th>Pedido Realizado Em</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -69,6 +70,7 @@
                                         {{ $order->receiver_address }}
                                     </td>
                                     <td>R$ {{ $order->totalPrice }}</td>
+                                    <td>{{ $order->created_at }}</td>
                                     <td>
                                         <form action="{{ route("franchise.dash.order.change-status.delivered", [$order->id]) }}" method="post">
                                             @csrf
@@ -87,6 +89,7 @@
                                 <th>Nome</th>
                                 <th>Endereço</th>
                                 <th>Sub-Total</th>
+                                <th>Pedido Realizado Em</th>
                                 <th>Ação</th>
                             </tr>
                             </tfoot>

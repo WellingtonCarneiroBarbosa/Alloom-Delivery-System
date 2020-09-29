@@ -58,6 +58,7 @@
                             <th>Nome</th>
                             <th>Endereço</th>
                             <th>Sub-Total</th>
+                            <th>Pedido Realizado Em</th>
                             <th>Ação</th>
                             </tr>
                             </thead>
@@ -73,6 +74,7 @@
                                         @endif
                                     </td>
                                     <td>R$ {{ $order->totalPrice }}</td>
+                                    <td>{{ $order->created_at }}</td>
                                     <td>
                                         @if(! $order->pick_up_at_the_counter)
                                         <form action="{{ route("franchise.dash.order.change-status.delivering", [$order->id]) }}" method="post">
@@ -100,6 +102,7 @@
                                 <th>Nome</th>
                                 <th>Endereço</th>
                                 <th>Sub-Total</th>
+                                <th>Pedido Realizado Em</th>
                                 <th>Ação</th>
                             </tr>
                             </tfoot>

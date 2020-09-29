@@ -59,6 +59,7 @@
                             <th>Nome</th>
                             <th>Endereço</th>
                             <th>Sub-Total</th>
+                            <th>Pedido Realizado Em</th>
                             <th>Ação</th>
                             </tr>
                             </thead>
@@ -74,6 +75,7 @@
                                         @endif
                                     </td>
                                     <td>R$ {{ $order->totalPrice }}</td>
+                                    <td>{{ $order->created_at }}</td>
                                     <td>
                                         <a target="blank" href="{{ route("franchise.dash.order.show", [$order->id]) }}">Visualizar</a>
                                     </td>
@@ -87,6 +89,7 @@
                                 <th>Nome</th>
                                 <th>Endereço</th>
                                 <th>Sub-Total</th>
+                                <th>Pedido Realizado Em</th>
                                 <th>Ação</th>
                             </tr>
                             </tfoot>
