@@ -128,7 +128,7 @@
             <tbody>
               @if($order->receiver_address)
               <tr>
-                <th>Taxa</th>
+                <th>Taxa de entrega</th>
                 <td>{{ isset($order->delivery_fee) ? "R$ " . $order->delivery_fee : "Entrega Gratuita" }}</td>
               </tr>
 
