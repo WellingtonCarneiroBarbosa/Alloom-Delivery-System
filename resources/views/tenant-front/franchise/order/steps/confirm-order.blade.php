@@ -126,10 +126,6 @@
           <h4>Resumo da compra</h4>
           <table>
             <tbody>
-              <tr>
-                <th>Subtotal</th>
-                <td>R$ {{ $order->totalPrice }}</td>
-              </tr>
               @if($order->receiver_address)
               <tr>
                 <th>Taxa</th>
@@ -144,7 +140,7 @@
               @endif
               <tr>
                 <th>Total</th>
-                <td> <b>R$ 99,99</b> </td>
+                <td> <b>R$ {{ $order->totalPrice }}</b> </td>
               </tr>
             </tbody>
           </table>
