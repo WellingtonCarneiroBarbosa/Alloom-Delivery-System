@@ -60,7 +60,7 @@
                     <strong>Email cadastrado:</strong> {{ $order->receiver_email }}<br>
                     <strong>Endereço do receptor:</strong> {{ $order->receiver_address }}<br>
                     <!--{{ $order->confirmed_by_receiver }}<br>-->
-                    <strong>Chave de acesso:</strong> {{ $order->access_key }}<br>
+                    <!--<strong>Chave de acesso:</strong> {{ $order->access_key }}<br>-->
                     <strong>Pegar no balcão:</strong> {{ $order->pick_up_at_the_counter }}<br>
                     <!--<strong>Status</strong> {{ $order->status }}<br>-->
                     <strong>Taxa de entrega:</strong> R$ {{  $order->delivery_fee }},00<br>
