@@ -38,8 +38,9 @@
 
                             <div class="row">
                                 <div class="col-md-6 mt-2">
-                                    <label for="pick_up_at_the_counter">Retirada no Balcão?</label>
-                                    <input type="checkbox" onclick="ocultAddressInputs();" name="pick_up_at_the_counter" id="pick_up_at_the_counter" @if((int) old("pick_up_at_the_count") === 1) checked @endif value="{{ old("pick_up_at_the_counter" ?? 0) }}">
+                                    <label for="receiver_email">E-mail</label>
+                                    <input type="email" class="form-control" id="receiver_email" name="receiver_email" value="{{ old("receiver_email")  }}" required>
+                                    <p class="cpfWarning">Usaremos esse e-mail para lhe avisar sobre seu pedido. <a target="blank" href="{{ route("welcome.privacy-policy") }}">Saiba mais.</a></p>
                                 </div>
                                 <div class="col-md-6 mt-2">
                                     <label for="access_key">CPF</label>
@@ -47,6 +48,15 @@
                                     <p class="cpfWarning">ATENÇÃO! Seus dados estão seguros conosco. Seu CPF é necessário para garantir que somente você tenha acesso aos seus dados e é salvo com a mais alta tecnologia de criptografia disponível: bcrypt. <a target="blank" href="{{ route("welcome.privacy-policy") }}">Saiba mais.</a></p>
                                 </div>
                             </div>
+
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label for="pick_up_at_the_counter">Retirada no Balcão?</label>
+                                    <input type="checkbox" onclick="ocultAddressInputs();" name="pick_up_at_the_counter" id="pick_up_at_the_counter" @if((int) old("pick_up_at_the_count") === 1) checked @endif value="{{ old("pick_up_at_the_counter" ?? 0) }}">
+                                </div>
+                            </div>
+
                             <div id="receiver_address_form">
                                 <h4>Dados de Entrega</h4>
                                 <div class="row">

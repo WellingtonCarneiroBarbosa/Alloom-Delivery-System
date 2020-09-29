@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Events\TenantFront;
+namespace App\Events\Orders\Status;
 
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 
-class NewOrder implements ShouldBroadcast
+class InProgress implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
@@ -35,6 +35,6 @@ class NewOrder implements ShouldBroadcast
 
     public function broadcastAs()
     {
-        return 'new-order-' . $this->order->franchise_id;
+        return 'in-progress-order-' . $this->order->id;
     }
 }

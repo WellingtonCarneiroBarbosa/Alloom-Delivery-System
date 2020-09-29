@@ -19,6 +19,10 @@ Route::namespace("Welcome")->prefix("/")->name("welcome.")->group(function (){
     Route::get("/politica-de-privacidade", "HomeController@privacyPolicy")->name("privacy-policy");
 });
 
+Route::get("test", function () {
+    return view('welcome');
+});
+
 
 Route::get('/home', 'HomeController@index')->name('home');
 

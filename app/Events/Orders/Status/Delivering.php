@@ -1,26 +1,27 @@
 <?php
 
-namespace App\Events\TenantFront;
+namespace App\Events\Orders\Status;
 
-use Illuminate\Queue\SerializesModels;
-use Illuminate\Foundation\Events\Dispatchable;
+use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
+use Illuminate\Broadcasting\PresenceChannel;
+use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
+use Illuminate\Foundation\Events\Dispatchable;
+use Illuminate\Queue\SerializesModels;
 
-class NewOrder implements ShouldBroadcast
+class Delivering
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
-
-    public $order;
 
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct($order)
+    public function __construct()
     {
-        $this->order = $order;
+        //
     }
 
     /**
@@ -30,11 +31,6 @@ class NewOrder implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        return ['franchise-channel-' . $this->order->franchise_id];
-    }
-
-    public function broadcastAs()
-    {
-        return 'new-order-' . $this->order->franchise_id;
+        return new PrivateChannel('channel-name');
     }
 }

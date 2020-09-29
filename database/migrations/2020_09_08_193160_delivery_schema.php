@@ -68,6 +68,7 @@ class DeliverySchema extends Migration
             $table->foreignId('receiver_id')->nullable()->onUpdate('cascade')->onDelete('cascade');
             $table->string('receiver_name')->nullable();
             $table->string('receiver_phone')->nullable();
+            $table->string('receiver_email')->nullable();
             $table->string('receiver_address')->nullable();
             $table->boolean('confirmed_by_receiver')->default(false);
             $table->string("access_key");
