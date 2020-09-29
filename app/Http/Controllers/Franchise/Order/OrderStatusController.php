@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Franchise\Order;
 
 use App\Http\Controllers\Controller;
 use App\Models\Franchise\Order\Order;
+use App\Notifications\Orders\StatusChanged;
 
 class OrderStatusController extends Controller
 {
@@ -36,13 +37,18 @@ class OrderStatusController extends Controller
                 "status" => "2"
             ]);
 
-            if($order->pick_up_at_the_counter)
-                dd($order->receiver_email);
-            else
-                dd("pedido para entrega");
+            if($order->pick_up_at_the_counter) {
+                $order->forceFill([
+                    'name' => $order->receiver_name,
+                    'email' => $order->receiver_email,
+                ])->notify(new StatusChanged());
+                $success_message = "Pedido marcado como concluído. O cliente foi notificado via e-mail";
+            } else {
+                $success_message = "Pedido marcado como concluído.";
+            }
 
             return redirect()->back()->with([
-                "success" => "Pedido marcado como concluído"
+                "success" => $success_message
             ]);
         } catch (\Exception $e) {
             if(config("app.debug"))
