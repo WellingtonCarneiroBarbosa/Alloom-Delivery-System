@@ -36,6 +36,11 @@ class OrderStatusController extends Controller
                 "status" => "2"
             ]);
 
+            if($order->pick_up_at_the_counter)
+                dd($order->receiver_email);
+            else
+                dd("pedido para entrega");
+
             return redirect()->back()->with([
                 "success" => "Pedido marcado como concluído"
             ]);
