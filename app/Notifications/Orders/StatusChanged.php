@@ -44,18 +44,20 @@ class StatusChanged extends Notification
     public function toMail($notifiable)
     {
         if($this->order->pick_up_at_the_counter === 1) {
+            $subject = "Pedido " . $this->order->id . " pronto para retirada";
             $message = "Seu pedido foi concluído e está aguardando a retirada.";
         } else {
+            $subject = "Pedido " . $this->order->id . " a caminho";
             $message = "Seu pedido está a caminho!";
         }
 
         return (new MailMessage)
-                    ->line($message)
-                    ->action('Visualizar Detalhes', route("tenant-front.franchise.order.details", [
-                        $this->franchise->tenant->url_prefix, $this->franchise->url_prefix, $this->order->id
-                    ]))
-                    ->line('Agradecemos por realizar mais um pedido com a gente! Abraços.')
-                    ->line($this->franchise->tenant->corporative_name . ", " . $this->franchise->name );
+                    ->subject($subject)
+                    ->markdown('mail.orders.status-changed', [
+                        "order" => $this->order,
+                        "franchise" => $this->franchise,
+                        "message" => $message,
+                    ]);
     }
 
     /**
