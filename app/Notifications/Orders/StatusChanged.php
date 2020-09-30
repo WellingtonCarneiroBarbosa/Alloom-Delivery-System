@@ -44,10 +44,10 @@ class StatusChanged extends Notification
     public function toMail($notifiable)
     {
         if($this->order->pick_up_at_the_counter === 1) {
-            $subject = "Pedido " . $this->order->id . " pronto para retirada";
+            $subject = "Pedido ID " . $this->order->id . " pronto para retirada";
             $message = "Seu pedido foi concluído e está aguardando a retirada.";
         } else {
-            $subject = "Pedido " . $this->order->id . " a caminho";
+            $subject = "Pedido ID " . $this->order->id . " a caminho";
             $message = "Seu pedido está a caminho!";
         }
 
