@@ -53,7 +53,39 @@
                 <div class="card-body">
                   <!--Arrumando a visualização de dados para o usuario-->
                   <h6>
-
+                    @foreach ($order->pizzas as $pizza)
+                    <li>
+                        <strong>Tamanho: </strong>{{ $pizza->size->name }}
+                        <br>
+                      </li>
+                      <li>
+                        <strong>Borda: </strong>{{ $pizza->borderPrice ? $pizza->borderPrice->border->name : "tradicional" }}
+                        <br>
+                      </li>
+                      <li>
+                        <strong>Descrições:</strong>
+                            @foreach($pizza->getFlavors() as $flavor)
+                                {{ $flavor->name }}
+                                {{ $flavor->description }}
+                            @endforeach
+                        <br>
+                      </li>
+                      <li>
+                        @if($pizza->details)
+                            <strong>Detalhes: </strong>{{ $pizza->details }}
+                            <br>
+                          </li>
+                          <li>
+                        @endif
+                        <strong>Quantidade: </strong>{{ $pizza->quantity }}
+                        <br>
+                      </li>
+                      <li>
+                        <strong>Preço total: R$ </strong>{{ $pizza->total_price }}
+                      </li>
+                      <li>
+                    <strong>Criado em:</strong> {{ $order->created_at }}<br>
+                      </li>
                     <strong>id:</strong> {{ $order->id }}<br>
                     <strong>Nome:</strong> {{ $order->receiver_name }}<br>
                     <strong>Telefone:</strong> {{ $order->receiver_phone }}<br>
@@ -67,7 +99,6 @@
                     <strong>Quantidade total:</strong> {{ $order->totalQuantity }}<br>
                     <strong>Preço total: </strong> R$ {{ $order->totalPrice }},00<br>
                     <strong>Id de franquia:</strong> {{ $order->franchise_id }}<br>
-                    <strong>Criado em:</strong> {{ $order->created_at }}<br>
                     <!--<strong>Atualizado em:</strong> {{ $order->update_at }}<br>
                     <strong>Pizzas:</strong> {{ $order->pizzas }}<br>
                     <!--<strong>Id do tamanho das pizzas:</strong> {{ $order->pizza_size_id }}<br>
@@ -77,12 +108,15 @@
                     <strong>Detalhes:</strong> {{ $order->details }}<br>
                     <strong>Preço total:</strong> {{ $order->total_price }}<br>
                     <strong>Id do pedido:</strong> {{ $order->order_id }}<br>-->
-
+                    <hr>
+                @endforeach
                 </h6>
                 </div>
               </div>
+              
           </section>
         </div>
     </section>
 </div>
+
 @endsection
