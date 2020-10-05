@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Franchise\Order;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Mail;
 use App\Models\Franchise\Order\Order;
 use App\Notifications\Orders\StatusChanged;
 
@@ -37,9 +38,8 @@ class OrderStatusController extends Controller
                 "status" => "2"
             ]);
 
-            if($order->pick_up_at_the_counter) {
+            if($order->pick_up_at_the_counter === 1) {
                 $order->forceFill([
-                    'name' => $order->receiver_name,
                     'email' => $order->receiver_email,
                 ])->notify(new StatusChanged($order, auth()->user()->franchise));
                 $success_message = "Pedido marcado como concluído. O cliente foi notificado via e-mail";
@@ -68,8 +68,10 @@ class OrderStatusController extends Controller
                 "status" => "3"
             ]);
 
+            //send notification to customer
+            //Mail::to($order->receiver_email)->send(new StatusChanged($order, auth()->user()->franchise));
+
             $order->forceFill([
-                'name' => $order->receiver_name,
                 'email' => $order->receiver_email,
             ])->notify(new StatusChanged($order, auth()->user()->franchise));
 
