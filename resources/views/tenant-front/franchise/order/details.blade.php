@@ -53,9 +53,9 @@
             <h1>Pizzas</h1>
             @foreach ($order->pizzas as $pizza)
                 <li>
-                    <strong>Tamanho: {{ $pizza->size->name }}</strong>
+                    <strong>Tamanho da pizza: {{ $pizza->size->name }}</strong>
                     <br>
-                    <strong>Borda: {{ $pizza->borderPrice ? $pizza->borderPrice->border->name : "tradicional" }}</strong>
+                    <strong>Borda da pizza: {{ $pizza->borderPrice ? $pizza->borderPrice->border->name : "tradicional" }}</strong>
                     <br>
                     <strong>Sabores:
                         @foreach($pizza->getFlavors() as $flavor)
@@ -64,7 +64,7 @@
                     </strong>
                     <br>
                     @if($pizza->details)
-                        <strong>Detalhes: {{ $pizza->details }}</strong>
+                        <strong>Detalhes da pizza: {{ $pizza->details }}</strong>
                         <br>
                     @endif
                     <strong>Quantidade: {{ $pizza->quantity }}</strong>

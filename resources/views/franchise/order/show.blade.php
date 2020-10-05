@@ -55,15 +55,15 @@
                   <h6>
                     @foreach ($order->pizzas as $pizza)
                     <li>
-                        <strong>Tamanho: </strong>{{ $pizza->size->name }}
+                        <strong>Tamanho da pizza: </strong>{{ $pizza->size->name }}
                         <br>
                       </li>
                       <li>
-                        <strong>Borda: </strong>{{ $pizza->borderPrice ? $pizza->borderPrice->border->name : "tradicional" }}
+                        <strong>Borda da pizza: </strong>{{ $pizza->borderPrice ? $pizza->borderPrice->border->name : "tradicional" }}
                         <br>
                       </li>
                       <li>
-                        <strong>Descrições:</strong>
+                        <strong>Descrições da pizza:</strong>
                             @foreach($pizza->getFlavors() as $flavor)
                                 {{ $flavor->name }}
                                 {{ $flavor->description }}
@@ -72,24 +72,24 @@
                       </li>
                       <li>
                         @if($pizza->details)
-                            <strong>Detalhes: </strong>{{ $pizza->details }}
+                            <strong>Detalhes da pizza: </strong>{{ $pizza->details }}
                             <br>
                           </li>
                           <li>
                         @endif
-                        <strong>Quantidade: </strong>{{ $pizza->quantity }}
+                        <strong>Quantidade de pizza: </strong>{{ $pizza->quantity }}
                         <br>
                       </li>
                       <li>
-                        <strong>Preço total: R$ </strong>{{ $pizza->total_price }}
+                        <strong>Preço total da compra: R$ </strong>{{ $pizza->total_price }}
                       </li>
                       <li>
-                    <strong>Criado em:</strong> {{ $order->created_at }}<br>
+                    <strong>Pedido criado em:</strong> {{ $order->created_at }}<br>
                       </li>
-                    <strong>id:</strong> {{ $order->id }}<br>
-                    <strong>Nome:</strong> {{ $order->receiver_name }}<br>
-                    <strong>Telefone:</strong> {{ $order->receiver_phone }}<br>
-                    <strong>Email cadastrado:</strong> {{ $order->receiver_email }}<br>
+                    <!--<strong>id:</strong> {{ $order->id }}<br>-->
+                    <strong>Nome do cliente:</strong> {{ $order->receiver_name }}<br>
+                    <strong>Telefone do cliente:</strong> {{ $order->receiver_phone }}<br>
+                    <strong>Email cadastrado do cliente:</strong> {{ $order->receiver_email }}<br>
                     <strong>Endereço do receptor:</strong> {{ $order->receiver_address }}<br>
                     <!--{{ $order->confirmed_by_receiver }}<br>-->
                     <!--<strong>Chave de acesso:</strong> {{ $order->access_key }}<br>-->
